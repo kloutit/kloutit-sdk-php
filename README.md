@@ -83,10 +83,12 @@ Once you have the accessToken with the Login call, you can use it to make other 
 // Require composer autoloader
 require 'vendor/autoload.php';
 
-use \Kloutit\Configuration as KloutitConfiguration;
-use \Kloutit\KloutitEnvironment;
-use \Kloutit\Api\KloutitCaseApi;
-use \Kloutit\Model\KloutitCaseBody;
+use Kloutit\Configuration as KloutitConfiguration;
+use Kloutit\KloutitEnvironment;
+use Kloutit\Api\KloutitCaseApi;
+use Kloutit\Model\KloutitCaseBody;
+use Kloutit\KloutitChargebackReason;
+use Kloutit\KloutitOrganizationType;
 
 // Configure Bearer (JWT) authorization: bearer
 $caseConfig = KloutitConfiguration::getDefaultConfiguration()->setAccessToken($accessToken);
@@ -97,25 +99,43 @@ $kloutitCase = new KloutitCaseApi(
     $caseConfig
 );
 $kloutitCaseBody = new KloutitCaseBody([
-    'chargeback_reason' => 'PRODUCT_SERVICE_NOT_RECEIVED',
-    'customer_email' => 'kloutit-php@example.com',
-    'customer_name' => 'PHP SDK sample',
+    'organization_id' => $organizationId,
+    'organization_type' => KloutitOrganizationType.TECHNOLOGY,
+    'expedient_number' => 'EXPPHP0001',
+    'notification_date' => '2024-03-22T11:31:22.347Z',
+    'deadline' => '2024-03-22T11:31:22.347Z',
     'dispute_amount' => [
         'currency' => 'EUR',
         'value' => 10,
     ],
-    'expedient_number' => 'EXPPHP0001',
+    'chargeback_reason' => KloutitChargebackReason.PRODUCT_SERVICE_NOT_RECEIVED,
+    'transaction_date' => '2024-03-22T11:31:22.347Z',
+    'pan_number' => 'PAN000001',
+    'transaction_id' => 'TR0000001',
+    'bank_name' => 'Sample bank',
     'is3_ds_purchase' => true,
-    'is_charge_refundable' => true,
-    'notification_date' => '2024-03-22T11:31:22.347Z',
-    'organization_id' => $organizationId,
+    'purchase_date' => '2024-03-22T11:31:22.347Z',
     'purchase_amount' => [
         'currency' => 'EUR',
         'value' => 10,
     ],
-    'purchase_date' => '2024-03-22T11:31:22.347Z',
-    'transaction_date' => '2024-03-22T11:31:22.347Z',
-    'deadline' => '2024-03-22T11:31:22.347Z',
+
+    'product' => 'Sample product', // Product OR service should be informed
+    'service' => 'Sample service', // Product OR service should be informed
+    'is_charge_refundable' => true,
+    'shipping_city' => 'Barcelona',
+    'shipping_province' => 'Barcelona',
+    'shipping_postal_code' => '08000',
+    'shipping_date' => '2024-03-22T11:31:22.347Z',
+    'delivery_company' => 'Sample company',
+    'delivery_date' => '2024-03-22T11:31:22.347Z',
+    'delivery_confirmation' => true,
+
+    'customer_name' => 'PHP SDK sample',
+    'customer_email' => 'kloutit-php@example.com',
+    'contact_date' => '2024-04-22T11:31:22.347Z',
+    'customer_phone' => '612345678',
+    'additional_info' => 'Some optional additional info',
 ]);
 
 try {
@@ -126,6 +146,23 @@ try {
     throw new Exception($e->getMessage());
 }
 ```
+
+This example is made for TECHNOLOGY sector. You can find the needed body for each sector here:
+
+- [Education](tipologies/EDUCATION.md)
+- [Fashion](tipologies/FASHION.md)
+- [Food](tipologies/FOOD.md)
+- [Gaming](tipologies/GAMING.md)
+- [Health & beauty](tipologies/HEALTH_BEAUTY.md)
+- [Home](tipologies/HOME.md)
+- [Leisure](tipologies/LEISURE.md)
+- [Phone](tipologies/PHONE.md)
+- [Software](tipologies/SOFTWARE.md)
+- [Sport](tipologies/SPORT.md)
+- [Supply](tipologies/SUPPLY.md)
+- [Technology](tipologies/TECHNOLOGY.md)
+- [Travel Airline](tipologies/TRAVEL_AIRLINE.md)
+- [Travel Hotel](tipologies/TRAVEL_HOTEL.md)
 
 ### Documentation
 
