@@ -13,19 +13,19 @@ $kloutitCaseBody = new KloutitCaseBody([
     'organization_id' => $organizationId,
     'organization_type' => KloutitOrganizationType::LEISURE,
     'expedient_number' => 'EXPPHP0001',
-    'notification_date' => '2024-03-22T11:31:22.347Z',
-    'deadline' => '2024-03-22T11:31:22.347Z',
+    'notification_date' => '2024-09-22T11:31:22.347Z',
+    'deadline' => '2025-09-22T11:31:22.347Z',
     'dispute_amount' => [
         'currency' => 'EUR',
         'value' => 10,
     ],
     'chargeback_reason' => KloutitChargebackReason::PRODUCT_SERVICE_NOT_RECEIVED,
-    'transaction_date' => '2024-03-22T11:31:22.347Z',
+    'transaction_date' => '2024-09-22T11:31:22.347Z',
     'pan_number' => 'PAN000001',
     'transaction_id' => 'TR0000001',
     'bank_name' => 'Sample bank',
     'is3_ds_purchase' => true,
-    'purchase_date' => '2024-03-22T11:31:22.347Z',
+    'purchase_date' => '2024-09-22T11:31:22.347Z',
     'purchase_amount' => [
         'currency' => 'EUR',
         'value' => 10,
@@ -33,7 +33,7 @@ $kloutitCaseBody = new KloutitCaseBody([
 
     'service' => 'Sample service',
     'is_charge_refundable' => true,
-    'service_date' => '2024-03-22T11:31:22.347Z',
+    'service_date' => '2024-09-22T11:31:22.347Z',
     'service_was_provided' => true,
 
     'customer_name' => 'PHP SDK sample',
