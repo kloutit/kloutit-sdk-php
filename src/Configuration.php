@@ -541,3 +541,33 @@ class KloutitEnvironment
     const Development = 'development';
     const Production = 'production';
 }
+
+class KloutitOrganizationType
+{
+    const EDUCATION = 'EDUCATION';
+    const FASHION = 'FASHION';
+    const FOOD = 'FOOD';
+    const GAMING = 'GAMING';
+    const HEALTH_BEAUTY = 'HEALTH_BEAUTY';
+    const HOME = 'HOME';
+    const LEISURE = 'LEISURE';
+    const PHONE = 'PHONE';
+    const SOFTWARE = 'SOFTWARE';
+    const SPORT = 'SPORT';
+    const SUPPLY = 'SUPPLY';
+    const TECHNOLOGY = 'TECHNOLOGY';
+    const TRAVEL_AIRLINE = 'TRAVEL_AIRLINE';
+    const TRAVEL_HOTEL = 'TRAVEL_HOTEL';
+}
+
+class KloutitChargebackReason
+{
+    const FRAUD = 'FRAUD';
+    const PRODUCT_SERVICE_NOT_RECEIVED = 'PRODUCT_SERVICE_NOT_RECEIVED';
+    const DEFECTIVE_PRODUCT_SERVICE = 'DEFECTIVE_PRODUCT_SERVICE';
+    const PRODUCT_SERVICE_NOT_AS_DESCRIBED = 'PRODUCT_SERVICE_NOT_AS_DESCRIBED';
+    const INCORRECT_DUPLICATED_CHARGES = 'INCORRECT_DUPLICATED_CHARGES';
+    const PRODUCT_SERVICE_CANCELLED = 'PRODUCT_SERVICE_CANCELLED';
+    const REFUND_NOT_RECEIVED = 'REFUND_NOT_RECEIVED';
+    const RECURRENT_OPERATION_CANCELLED = 'RECURRENT_OPERATION_CANCELLED';
+}
