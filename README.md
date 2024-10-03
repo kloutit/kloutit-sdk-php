@@ -6,18 +6,17 @@ This SDK allows your organization to integrate with Kloutit, so your cases could
 
 ## Installation
 
-// ALEXIS REVISAR ESTO
-To install Kloutit SDK you can run the following npm command.
+To install Kloutit SDK you can run the following composer command.
 
 ```
-npm install kloutit-sdk@latest
+composer require kloutit/kloutit-sdk-php
 ```
 
 ## Prerequisites
 
-To be able to use any Kloutit SDK function, your organization must be registered into our system and SDK client keys for the organization must be created. You can register your organization by following a few simple steps from https://clients.kloutit.com.
+To be able to use any Kloutit SDK function, your organization must be registered into our system and SDK client keys for the organization must be created. You can register your organization by following a few simple steps from https://app.kloutit.com.
 
-Once your organization is successfully registered, you will be able to configure the SDK connection from the menu `Organization > Integration`. You will need to:
+Once your organization is successfully registered, you will be able to configure the SDK connection from the menu `My organization > Kloutit SDK`. You will need to:
 
 - Create a new client credentials
 - Add the allowed domains
@@ -29,30 +28,42 @@ To use the Kloutit SDK client, you will need to instantiate the KloutitLoginApi 
 ### Sample code Login
 
 ```
-import { KloutitEnvironment, KloutitLoginApi } from 'kloutit-sdk';
+<?php
+$clientId = '22311cca-9951-42dd-bc9b-bd0574335b55';
+$clientSecret = '6#.n3dcm-x4hc3Y0SrA/UR?DzggfM;';
+$organizationId = '660055bca25e9c2da9b87944';
 
-// Define your secret values (it should come from an .env or similar)
-const CLIENT_ID = '22311cca-9951-42dd-bc9b-bd0574335b55';
-const CLIENT_SECRET = '6#.n3dcm-x4hc3Y0SrA/UR?DzggfM;';
-const ORGANIZATION_ID = '660055bca25e9c2da9b87944';
+// If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+// This is optional, `GuzzleHttp\Client` will be used as default.
+$client = new GuzzleHttp\Client();
 
-// Create the login api instance (for development in this case)
-const kloutitLogin = new KloutitLoginApi(KloutitEnvironment.development);
+// Configure Login http basic authorization
+$loginConfig = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername($clientId)
+              ->setPassword($clientSecret);
 
-// Define the Base64 token auth
-const base64Auth = Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString('base64');
-
-// Define the Authorization header
-const headers = { Authorization: `Basic ${base64Auth}` };
-
-// Make the login call
-const loginResponse = await this.kloutitLogin.login(
-    ORGANIZATION_ID,
-    { grant_type: 'client_credentials' },
-    { headers }
+$kloutitLogin = new OpenAPI\Client\Api\KloutitLoginApi(
+    OpenAPI\Client\KloutitEnvironment::Development,
+    $client,
+    $loginConfig
 );
+$kloutitLoginBody = new \OpenAPI\Client\Model\KloutitLoginBody([
+    'grant_type' => 'client_credentials'
+]);
 
-const accessToken = loginResponse.data['accessToken'];
+$accessToken;
+
+// Login
+try {
+    echo "Getting Kloutit access token for organization $organizationId";
+    $loginResponse = $kloutitLogin->login($organizationId, $kloutitLoginBody);
+
+    $accessToken = $loginResponse->getAccessToken();
+    echo "Access token successfully retrieved!";
+} catch (Exception $e) {
+    echo "Error trying to login to Kloutit SDK.";
+    throw new Exception($e->getMessage());
+}
 ```
 
 ### Sample code other calls
@@ -60,16 +71,44 @@ const accessToken = loginResponse.data['accessToken'];
 Once you have the accessToken with the Login call, you can use it to make other calls, for instance, to create a case.
 
 ```
-import { KloutitEnvironment, KloutitCaseApi } from 'kloutit-sdk';
+<?php
+// Configure Bearer (JWT) authorization: bearer
+$caseConfig = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken($accessToken);
 
-// Create the desired api instance (for development in this case)
-const kloutitCase = new KloutitCaseApi(KloutitEnvironment.development);
+$kloutitCase = new OpenAPI\Client\Api\KloutitCaseApi(
+    OpenAPI\Client\KloutitEnvironment::Development,
+    $client,
+    $caseConfig
+);
+$kloutitCaseBody = new \OpenAPI\Client\Model\KloutitCaseBody([
+    'chargeback_reason' => 'PRODUCT_SERVICE_NOT_RECEIVED',
+    'customer_email' => 'kloutit-php@example.com',
+    'customer_name' => 'PHP SDK sample',
+    'dispute_amount' => [
+        'currency' => 'EUR',
+        'value' => 10,
+    ],
+    'expedient_number' => 'EXPPHP0001',
+    'is3_ds_purchase' => true,
+    'is_charge_refundable' => true,
+    'notification_date' => '2024-03-22T11:31:22.347Z',
+    'organization_id' => $organizationId,
+    'purchase_amount' => [
+        'currency' => 'EUR',
+        'value' => 10,
+    ],
+    'purchase_date' => '2024-03-22T11:31:22.347Z',
+    'transaction_date' => '2024-03-22T11:31:22.347Z',
+    'deadline' => '2024-03-22T11:31:22.347Z',
+]);
 
-// Define the Authorization header
-const headers = { Authorization: `Bearer ${accessToken}` };
-
-// Make the call with the requested body
-const caseResponse = await this.kloutitCase.createCase({...body});
+try {
+    $kloutitCase->createCase($kloutitCaseBody);
+    echo 'Case successfully created into Kloutit!';
+} catch (Exception $e) {
+    echo "Error trying to create case into Kloutit.";
+    throw new Exception($e->getMessage());
+}
 ```
 
 ### Documentation
@@ -87,4 +126,5 @@ Kloutit SDK does not store or refresh access tokens. Storing and refreshing acce
 Please, if you discover any security issues, report them to security@kloutit.com as soon as possible.
 
 ### License
-BSD-3-Clause
+
+Apache 2.0
