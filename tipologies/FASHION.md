@@ -11,7 +11,7 @@ use Kloutit\KloutitChargebackReason;
 
 $kloutitCaseBody = new KloutitCaseBody([
     'organization_id' => $organizationId,
-    'organization_type' => KloutitOrganizationType.FASHION,
+    'organization_type' => KloutitOrganizationType::FASHION,
     'expedient_number' => 'EXPPHP0001',
     'notification_date' => '2024-03-22T11:31:22.347Z',
     'deadline' => '2024-03-22T11:31:22.347Z',
@@ -19,7 +19,7 @@ $kloutitCaseBody = new KloutitCaseBody([
         'currency' => 'EUR',
         'value' => 10,
     ],
-    'chargeback_reason' => KloutitChargebackReason.PRODUCT_SERVICE_NOT_RECEIVED,
+    'chargeback_reason' => KloutitChargebackReason::PRODUCT_SERVICE_NOT_RECEIVED,
     'transaction_date' => '2024-03-22T11:31:22.347Z',
     'pan_number' => 'PAN000001',
     'transaction_id' => 'TR0000001',
