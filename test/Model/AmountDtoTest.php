@@ -101,4 +101,13 @@ class AmountDtoTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "conversion_rate"
+     */
+    public function testPropertyConversionRate()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

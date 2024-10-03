@@ -184,6 +184,24 @@ class OrganizationDtoTest extends TestCase
     }
 
     /**
+     * Test attribute "subscription_status"
+     */
+    public function testPropertySubscriptionStatus()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "subscription_plan"
+     */
+    public function testPropertySubscriptionPlan()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "terms_link"
      */
     public function testPropertyTermsLink()
@@ -205,6 +223,15 @@ class OrganizationDtoTest extends TestCase
      * Test attribute "country"
      */
     public function testPropertyCountry()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "preferred_currency"
+     */
+    public function testPropertyPreferredCurrency()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

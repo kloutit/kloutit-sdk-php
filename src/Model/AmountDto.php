@@ -63,7 +63,8 @@ class AmountDto implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'value' => 'float',
-        'currency' => 'string'
+        'currency' => 'string',
+        'conversion_rate' => 'float'
     ];
 
     /**
@@ -75,7 +76,8 @@ class AmountDto implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'value' => null,
-        'currency' => null
+        'currency' => null,
+        'conversion_rate' => null
     ];
 
     /**
@@ -85,7 +87,8 @@ class AmountDto implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'value' => false,
-        'currency' => false
+        'currency' => false,
+        'conversion_rate' => false
     ];
 
     /**
@@ -175,7 +178,8 @@ class AmountDto implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'value' => 'value',
-        'currency' => 'currency'
+        'currency' => 'currency',
+        'conversion_rate' => 'conversionRate'
     ];
 
     /**
@@ -185,7 +189,8 @@ class AmountDto implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'value' => 'setValue',
-        'currency' => 'setCurrency'
+        'currency' => 'setCurrency',
+        'conversion_rate' => 'setConversionRate'
     ];
 
     /**
@@ -195,7 +200,8 @@ class AmountDto implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'value' => 'getValue',
-        'currency' => 'getCurrency'
+        'currency' => 'getCurrency',
+        'conversion_rate' => 'getConversionRate'
     ];
 
     /**
@@ -257,6 +263,7 @@ class AmountDto implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->setIfExists('value', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
+        $this->setIfExists('conversion_rate', $data ?? [], null);
     }
 
     /**
@@ -357,6 +364,33 @@ class AmountDto implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable currency cannot be null');
         }
         $this->container['currency'] = $currency;
+
+        return $this;
+    }
+
+    /**
+     * Gets conversion_rate
+     *
+     * @return float|null
+     */
+    public function getConversionRate()
+    {
+        return $this->container['conversion_rate'];
+    }
+
+    /**
+     * Sets conversion_rate
+     *
+     * @param float|null $conversion_rate conversion_rate
+     *
+     * @return self
+     */
+    public function setConversionRate($conversion_rate)
+    {
+        if (is_null($conversion_rate)) {
+            throw new \InvalidArgumentException('non-nullable conversion_rate cannot be null');
+        }
+        $this->container['conversion_rate'] = $conversion_rate;
 
         return $this;
     }

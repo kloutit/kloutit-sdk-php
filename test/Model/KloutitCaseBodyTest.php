@@ -526,6 +526,15 @@ class KloutitCaseBodyTest extends TestCase
     }
 
     /**
+     * Test attribute "organization_type"
+     */
+    public function testPropertyOrganizationType()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "dispute"
      */
     public function testPropertyDispute()

@@ -111,6 +111,7 @@ class KloutitCaseResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'bank_name' => 'string',
         'card_brand' => 'string',
         'is3_ds_purchase' => 'bool',
+        'organization_type' => 'string',
         'organization' => '\Kloutit\Model\OrganizationDto',
         'dispute' => 'object'
     ];
@@ -172,6 +173,7 @@ class KloutitCaseResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'bank_name' => null,
         'card_brand' => null,
         'is3_ds_purchase' => null,
+        'organization_type' => null,
         'organization' => null,
         'dispute' => null
     ];
@@ -231,6 +233,7 @@ class KloutitCaseResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'bank_name' => false,
         'card_brand' => false,
         'is3_ds_purchase' => false,
+        'organization_type' => false,
         'organization' => false,
         'dispute' => false
     ];
@@ -370,6 +373,7 @@ class KloutitCaseResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'bank_name' => 'bankName',
         'card_brand' => 'cardBrand',
         'is3_ds_purchase' => 'is3DSPurchase',
+        'organization_type' => 'organizationType',
         'organization' => 'organization',
         'dispute' => 'dispute'
     ];
@@ -429,6 +433,7 @@ class KloutitCaseResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'bank_name' => 'setBankName',
         'card_brand' => 'setCardBrand',
         'is3_ds_purchase' => 'setIs3DsPurchase',
+        'organization_type' => 'setOrganizationType',
         'organization' => 'setOrganization',
         'dispute' => 'setDispute'
     ];
@@ -488,6 +493,7 @@ class KloutitCaseResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'bank_name' => 'getBankName',
         'card_brand' => 'getCardBrand',
         'is3_ds_purchase' => 'getIs3DsPurchase',
+        'organization_type' => 'getOrganizationType',
         'organization' => 'getOrganization',
         'dispute' => 'getDispute'
     ];
@@ -533,6 +539,45 @@ class KloutitCaseResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         return self::$openAPIModelName;
     }
 
+    public const ORGANIZATION_TYPE_EDUCATION = 'EDUCATION';
+    public const ORGANIZATION_TYPE_FASHION = 'FASHION';
+    public const ORGANIZATION_TYPE_FOOD = 'FOOD';
+    public const ORGANIZATION_TYPE_GAMING = 'GAMING';
+    public const ORGANIZATION_TYPE_HEALTH_BEAUTY = 'HEALTH_BEAUTY';
+    public const ORGANIZATION_TYPE_HOME = 'HOME';
+    public const ORGANIZATION_TYPE_LEISURE = 'LEISURE';
+    public const ORGANIZATION_TYPE_PHONE = 'PHONE';
+    public const ORGANIZATION_TYPE_SOFTWARE = 'SOFTWARE';
+    public const ORGANIZATION_TYPE_SPORT = 'SPORT';
+    public const ORGANIZATION_TYPE_SUPPLY = 'SUPPLY';
+    public const ORGANIZATION_TYPE_TECHNOLOGY = 'TECHNOLOGY';
+    public const ORGANIZATION_TYPE_TRAVEL_AIRLINE = 'TRAVEL_AIRLINE';
+    public const ORGANIZATION_TYPE_TRAVEL_HOTEL = 'TRAVEL_HOTEL';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getOrganizationTypeAllowableValues()
+    {
+        return [
+            self::ORGANIZATION_TYPE_EDUCATION,
+            self::ORGANIZATION_TYPE_FASHION,
+            self::ORGANIZATION_TYPE_FOOD,
+            self::ORGANIZATION_TYPE_GAMING,
+            self::ORGANIZATION_TYPE_HEALTH_BEAUTY,
+            self::ORGANIZATION_TYPE_HOME,
+            self::ORGANIZATION_TYPE_LEISURE,
+            self::ORGANIZATION_TYPE_PHONE,
+            self::ORGANIZATION_TYPE_SOFTWARE,
+            self::ORGANIZATION_TYPE_SPORT,
+            self::ORGANIZATION_TYPE_SUPPLY,
+            self::ORGANIZATION_TYPE_TECHNOLOGY,
+            self::ORGANIZATION_TYPE_TRAVEL_AIRLINE,
+            self::ORGANIZATION_TYPE_TRAVEL_HOTEL,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -598,6 +643,7 @@ class KloutitCaseResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('bank_name', $data ?? [], null);
         $this->setIfExists('card_brand', $data ?? [], null);
         $this->setIfExists('is3_ds_purchase', $data ?? [], null);
+        $this->setIfExists('organization_type', $data ?? [], null);
         $this->setIfExists('organization', $data ?? [], null);
         $this->setIfExists('dispute', $data ?? [], null);
     }
@@ -662,6 +708,18 @@ class KloutitCaseResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         if ($this->container['is3_ds_purchase'] === null) {
             $invalidProperties[] = "'is3_ds_purchase' can't be null";
         }
+        if ($this->container['organization_type'] === null) {
+            $invalidProperties[] = "'organization_type' can't be null";
+        }
+        $allowedValues = $this->getOrganizationTypeAllowableValues();
+        if (!is_null($this->container['organization_type']) && !in_array($this->container['organization_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'organization_type', must be one of '%s'",
+                $this->container['organization_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -1996,6 +2054,43 @@ class KloutitCaseResponse implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable is3_ds_purchase cannot be null');
         }
         $this->container['is3_ds_purchase'] = $is3_ds_purchase;
+
+        return $this;
+    }
+
+    /**
+     * Gets organization_type
+     *
+     * @return string
+     */
+    public function getOrganizationType()
+    {
+        return $this->container['organization_type'];
+    }
+
+    /**
+     * Sets organization_type
+     *
+     * @param string $organization_type Sector of the case. It must be one of the sectors of the organization, for instance: EDUCATION, SOFTWARE, TRAVEL_HOTEL,...
+     *
+     * @return self
+     */
+    public function setOrganizationType($organization_type)
+    {
+        if (is_null($organization_type)) {
+            throw new \InvalidArgumentException('non-nullable organization_type cannot be null');
+        }
+        $allowedValues = $this->getOrganizationTypeAllowableValues();
+        if (!in_array($organization_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'organization_type', must be one of '%s'",
+                    $organization_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['organization_type'] = $organization_type;
 
         return $this;
     }

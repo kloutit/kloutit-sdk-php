@@ -71,11 +71,14 @@ class OrganizationDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'string',
         'cif' => 'string',
         'billing_address' => 'string',
-        'type' => 'object',
+        'type' => 'string[]',
         'size' => 'object',
+        'subscription_status' => 'object',
+        'subscription_plan' => 'object',
         'terms_link' => 'string',
         'website' => 'string',
         'country' => 'string',
+        'preferred_currency' => 'string',
         'language' => 'object'
     ];
 
@@ -98,9 +101,12 @@ class OrganizationDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'billing_address' => null,
         'type' => null,
         'size' => null,
+        'subscription_status' => null,
+        'subscription_plan' => null,
         'terms_link' => null,
         'website' => null,
         'country' => null,
+        'preferred_currency' => null,
         'language' => null
     ];
 
@@ -121,9 +127,12 @@ class OrganizationDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'billing_address' => false,
         'type' => false,
         'size' => false,
+        'subscription_status' => false,
+        'subscription_plan' => false,
         'terms_link' => false,
         'website' => false,
         'country' => false,
+        'preferred_currency' => false,
         'language' => false
     ];
 
@@ -224,9 +233,12 @@ class OrganizationDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'billing_address' => 'billingAddress',
         'type' => 'type',
         'size' => 'size',
+        'subscription_status' => 'subscriptionStatus',
+        'subscription_plan' => 'subscriptionPlan',
         'terms_link' => 'termsLink',
         'website' => 'website',
         'country' => 'country',
+        'preferred_currency' => 'preferredCurrency',
         'language' => 'language'
     ];
 
@@ -247,9 +259,12 @@ class OrganizationDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'billing_address' => 'setBillingAddress',
         'type' => 'setType',
         'size' => 'setSize',
+        'subscription_status' => 'setSubscriptionStatus',
+        'subscription_plan' => 'setSubscriptionPlan',
         'terms_link' => 'setTermsLink',
         'website' => 'setWebsite',
         'country' => 'setCountry',
+        'preferred_currency' => 'setPreferredCurrency',
         'language' => 'setLanguage'
     ];
 
@@ -270,9 +285,12 @@ class OrganizationDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'billing_address' => 'getBillingAddress',
         'type' => 'getType',
         'size' => 'getSize',
+        'subscription_status' => 'getSubscriptionStatus',
+        'subscription_plan' => 'getSubscriptionPlan',
         'terms_link' => 'getTermsLink',
         'website' => 'getWebsite',
         'country' => 'getCountry',
+        'preferred_currency' => 'getPreferredCurrency',
         'language' => 'getLanguage'
     ];
 
@@ -317,6 +335,45 @@ class OrganizationDto implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const TYPE_EDUCATION = 'EDUCATION';
+    public const TYPE_FASHION = 'FASHION';
+    public const TYPE_FOOD = 'FOOD';
+    public const TYPE_GAMING = 'GAMING';
+    public const TYPE_HEALTH_BEAUTY = 'HEALTH_BEAUTY';
+    public const TYPE_HOME = 'HOME';
+    public const TYPE_LEISURE = 'LEISURE';
+    public const TYPE_PHONE = 'PHONE';
+    public const TYPE_SOFTWARE = 'SOFTWARE';
+    public const TYPE_SPORT = 'SPORT';
+    public const TYPE_SUPPLY = 'SUPPLY';
+    public const TYPE_TECHNOLOGY = 'TECHNOLOGY';
+    public const TYPE_TRAVEL_AIRLINE = 'TRAVEL_AIRLINE';
+    public const TYPE_TRAVEL_HOTEL = 'TRAVEL_HOTEL';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTypeAllowableValues()
+    {
+        return [
+            self::TYPE_EDUCATION,
+            self::TYPE_FASHION,
+            self::TYPE_FOOD,
+            self::TYPE_GAMING,
+            self::TYPE_HEALTH_BEAUTY,
+            self::TYPE_HOME,
+            self::TYPE_LEISURE,
+            self::TYPE_PHONE,
+            self::TYPE_SOFTWARE,
+            self::TYPE_SPORT,
+            self::TYPE_SUPPLY,
+            self::TYPE_TECHNOLOGY,
+            self::TYPE_TRAVEL_AIRLINE,
+            self::TYPE_TRAVEL_HOTEL,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -344,9 +401,12 @@ class OrganizationDto implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('billing_address', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('size', $data ?? [], null);
+        $this->setIfExists('subscription_status', $data ?? [], null);
+        $this->setIfExists('subscription_plan', $data ?? [], null);
         $this->setIfExists('terms_link', $data ?? [], null);
         $this->setIfExists('website', $data ?? [], null);
         $this->setIfExists('country', $data ?? [], null);
+        $this->setIfExists('preferred_currency', $data ?? [], null);
         $this->setIfExists('language', $data ?? [], null);
     }
 
@@ -392,6 +452,9 @@ class OrganizationDto implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['size'] === null) {
             $invalidProperties[] = "'size' can't be null";
         }
+        if ($this->container['subscription_status'] === null) {
+            $invalidProperties[] = "'subscription_status' can't be null";
+        }
         if ($this->container['terms_link'] === null) {
             $invalidProperties[] = "'terms_link' can't be null";
         }
@@ -400,6 +463,9 @@ class OrganizationDto implements ModelInterface, ArrayAccess, \JsonSerializable
         }
         if ($this->container['country'] === null) {
             $invalidProperties[] = "'country' can't be null";
+        }
+        if ($this->container['preferred_currency'] === null) {
+            $invalidProperties[] = "'preferred_currency' can't be null";
         }
         if ($this->container['language'] === null) {
             $invalidProperties[] = "'language' can't be null";
@@ -665,7 +731,7 @@ class OrganizationDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets type
      *
-     * @return object
+     * @return string[]
      */
     public function getType()
     {
@@ -675,7 +741,7 @@ class OrganizationDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets type
      *
-     * @param object $type type
+     * @param string[] $type type
      *
      * @return self
      */
@@ -683,6 +749,15 @@ class OrganizationDto implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($type)) {
             throw new \InvalidArgumentException('non-nullable type cannot be null');
+        }
+        $allowedValues = $this->getTypeAllowableValues();
+        if (array_diff($type, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'type', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
         }
         $this->container['type'] = $type;
 
@@ -712,6 +787,60 @@ class OrganizationDto implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable size cannot be null');
         }
         $this->container['size'] = $size;
+
+        return $this;
+    }
+
+    /**
+     * Gets subscription_status
+     *
+     * @return object
+     */
+    public function getSubscriptionStatus()
+    {
+        return $this->container['subscription_status'];
+    }
+
+    /**
+     * Sets subscription_status
+     *
+     * @param object $subscription_status subscription_status
+     *
+     * @return self
+     */
+    public function setSubscriptionStatus($subscription_status)
+    {
+        if (is_null($subscription_status)) {
+            throw new \InvalidArgumentException('non-nullable subscription_status cannot be null');
+        }
+        $this->container['subscription_status'] = $subscription_status;
+
+        return $this;
+    }
+
+    /**
+     * Gets subscription_plan
+     *
+     * @return object|null
+     */
+    public function getSubscriptionPlan()
+    {
+        return $this->container['subscription_plan'];
+    }
+
+    /**
+     * Sets subscription_plan
+     *
+     * @param object|null $subscription_plan subscription_plan
+     *
+     * @return self
+     */
+    public function setSubscriptionPlan($subscription_plan)
+    {
+        if (is_null($subscription_plan)) {
+            throw new \InvalidArgumentException('non-nullable subscription_plan cannot be null');
+        }
+        $this->container['subscription_plan'] = $subscription_plan;
 
         return $this;
     }
@@ -793,6 +922,33 @@ class OrganizationDto implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable country cannot be null');
         }
         $this->container['country'] = $country;
+
+        return $this;
+    }
+
+    /**
+     * Gets preferred_currency
+     *
+     * @return string
+     */
+    public function getPreferredCurrency()
+    {
+        return $this->container['preferred_currency'];
+    }
+
+    /**
+     * Sets preferred_currency
+     *
+     * @param string $preferred_currency preferred_currency
+     *
+     * @return self
+     */
+    public function setPreferredCurrency($preferred_currency)
+    {
+        if (is_null($preferred_currency)) {
+            throw new \InvalidArgumentException('non-nullable preferred_currency cannot be null');
+        }
+        $this->container['preferred_currency'] = $preferred_currency;
 
         return $this;
     }

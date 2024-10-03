@@ -13,11 +13,14 @@ Name | Type | Description | Notes
 **name** | **string** |  |
 **cif** | **string** |  |
 **billing_address** | **string** |  |
-**type** | **object** |  |
+**type** | **string[]** |  |
 **size** | **object** |  |
+**subscription_status** | **object** |  |
+**subscription_plan** | **object** |  | [optional]
 **terms_link** | **string** |  |
 **website** | **string** |  |
 **country** | **string** |  |
+**preferred_currency** | **string** |  |
 **language** | **object** |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
