@@ -539,6 +539,14 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const CHARGEBACK_REASON_FRAUD = 'FRAUD';
+    public const CHARGEBACK_REASON_PRODUCT_SERVICE_NOT_RECEIVED = 'PRODUCT_SERVICE_NOT_RECEIVED';
+    public const CHARGEBACK_REASON_DEFECTIVE_PRODUCT_SERVICE = 'DEFECTIVE_PRODUCT_SERVICE';
+    public const CHARGEBACK_REASON_PRODUCT_SERVICE_NOT_AS_DESCRIBED = 'PRODUCT_SERVICE_NOT_AS_DESCRIBED';
+    public const CHARGEBACK_REASON_INCORRECT_DUPLICATED_CHARGES = 'INCORRECT_DUPLICATED_CHARGES';
+    public const CHARGEBACK_REASON_PRODUCT_SERVICE_CANCELLED = 'PRODUCT_SERVICE_CANCELLED';
+    public const CHARGEBACK_REASON_REFUND_NOT_RECEIVED = 'REFUND_NOT_RECEIVED';
+    public const CHARGEBACK_REASON_RECURRENT_OPERATION_CANCELLED = 'RECURRENT_OPERATION_CANCELLED';
     public const ORGANIZATION_TYPE_EDUCATION = 'EDUCATION';
     public const ORGANIZATION_TYPE_FASHION = 'FASHION';
     public const ORGANIZATION_TYPE_FOOD = 'FOOD';
@@ -553,6 +561,25 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
     public const ORGANIZATION_TYPE_TECHNOLOGY = 'TECHNOLOGY';
     public const ORGANIZATION_TYPE_TRAVEL_AIRLINE = 'TRAVEL_AIRLINE';
     public const ORGANIZATION_TYPE_TRAVEL_HOTEL = 'TRAVEL_HOTEL';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getChargebackReasonAllowableValues()
+    {
+        return [
+            self::CHARGEBACK_REASON_FRAUD,
+            self::CHARGEBACK_REASON_PRODUCT_SERVICE_NOT_RECEIVED,
+            self::CHARGEBACK_REASON_DEFECTIVE_PRODUCT_SERVICE,
+            self::CHARGEBACK_REASON_PRODUCT_SERVICE_NOT_AS_DESCRIBED,
+            self::CHARGEBACK_REASON_INCORRECT_DUPLICATED_CHARGES,
+            self::CHARGEBACK_REASON_PRODUCT_SERVICE_CANCELLED,
+            self::CHARGEBACK_REASON_REFUND_NOT_RECEIVED,
+            self::CHARGEBACK_REASON_RECURRENT_OPERATION_CANCELLED,
+        ];
+    }
 
     /**
      * Gets allowable values of the enum
@@ -699,6 +726,15 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['chargeback_reason'] === null) {
             $invalidProperties[] = "'chargeback_reason' can't be null";
         }
+        $allowedValues = $this->getChargebackReasonAllowableValues();
+        if (!is_null($this->container['chargeback_reason']) && !in_array($this->container['chargeback_reason'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'chargeback_reason', must be one of '%s'",
+                $this->container['chargeback_reason'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['transaction_date'] === null) {
             $invalidProperties[] = "'transaction_date' can't be null";
         }
@@ -1758,6 +1794,16 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($chargeback_reason)) {
             throw new \InvalidArgumentException('non-nullable chargeback_reason cannot be null');
+        }
+        $allowedValues = $this->getChargebackReasonAllowableValues();
+        if (!in_array($chargeback_reason, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'chargeback_reason', must be one of '%s'",
+                    $chargeback_reason,
+                    implode("', '", $allowedValues)
+                )
+            );
         }
         $this->container['chargeback_reason'] = $chargeback_reason;
 
