@@ -27,8 +27,16 @@ To use the Kloutit SDK client, you will need to instantiate the KloutitLoginApi 
 
 ### Sample code Login
 
-```
+```php
 <?php
+// Require composer autoloader
+require 'vendor/autoload.php';
+
+use \Kloutit\Configuration as KloutitConfiguration;
+use \Kloutit\KloutitEnvironment;
+use \Kloutit\Api\KloutitLoginApi;
+use \Kloutit\Model\KloutitLoginBody;
+
 $clientId = '22311cca-9951-42dd-bc9b-bd0574335b55';
 $clientSecret = '6#.n3dcm-x4hc3Y0SrA/UR?DzggfM;';
 $organizationId = '660055bca25e9c2da9b87944';
@@ -38,16 +46,16 @@ $organizationId = '660055bca25e9c2da9b87944';
 $client = new GuzzleHttp\Client();
 
 // Configure Login http basic authorization
-$loginConfig = OpenAPI\Client\Configuration::getDefaultConfiguration()
+$loginConfig = KloutitConfiguration::getDefaultConfiguration()
               ->setUsername($clientId)
               ->setPassword($clientSecret);
 
-$kloutitLogin = new OpenAPI\Client\Api\KloutitLoginApi(
-    OpenAPI\Client\KloutitEnvironment::Development,
+$kloutitLogin = new KloutitLoginApi(
+    KloutitEnvironment::Development,
     $client,
     $loginConfig
 );
-$kloutitLoginBody = new \OpenAPI\Client\Model\KloutitLoginBody([
+$kloutitLoginBody = new KloutitLoginBody([
     'grant_type' => 'client_credentials'
 ]);
 
@@ -70,17 +78,25 @@ try {
 
 Once you have the accessToken with the Login call, you can use it to make other calls, for instance, to create a case.
 
-```
+```php
 <?php
-// Configure Bearer (JWT) authorization: bearer
-$caseConfig = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken($accessToken);
+// Require composer autoloader
+require 'vendor/autoload.php';
 
-$kloutitCase = new OpenAPI\Client\Api\KloutitCaseApi(
-    OpenAPI\Client\KloutitEnvironment::Development,
+use \Kloutit\Configuration as KloutitConfiguration;
+use \Kloutit\KloutitEnvironment;
+use \Kloutit\Api\KloutitCaseApi;
+use \Kloutit\Model\KloutitCaseBody;
+
+// Configure Bearer (JWT) authorization: bearer
+$caseConfig = KloutitConfiguration::getDefaultConfiguration()->setAccessToken($accessToken);
+
+$kloutitCase = new KloutitCaseApi(
+    KloutitEnvironment::Development,
     $client,
     $caseConfig
 );
-$kloutitCaseBody = new \OpenAPI\Client\Model\KloutitCaseBody([
+$kloutitCaseBody = new KloutitCaseBody([
     'chargeback_reason' => 'PRODUCT_SERVICE_NOT_RECEIVED',
     'customer_email' => 'kloutit-php@example.com',
     'customer_name' => 'PHP SDK sample',
