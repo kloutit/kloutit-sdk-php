@@ -8,6 +8,7 @@ This is a sample KloutitCaseBody for Travel Airline sector with all the paramete
 use Kloutit\Model\KloutitCaseBody;
 use Kloutit\KloutitOrganizationType;
 use Kloutit\KloutitChargebackReason;
+use Kloutit\Currencies;
 
 $kloutitCaseBody = new KloutitCaseBody([
     'organization_id' => $organizationId,
@@ -16,7 +17,7 @@ $kloutitCaseBody = new KloutitCaseBody([
     'notification_date' => '2024-09-22T11:31:22.347Z',
     'deadline' => '2025-09-22T11:31:22.347Z',
     'dispute_amount' => [
-        'currency' => 'EUR',
+        'currency' => Currencies::EUR,
         'value' => 10,
     ],
     'chargeback_reason' => KloutitChargebackReason::PRODUCT_SERVICE_NOT_RECEIVED,
@@ -27,7 +28,7 @@ $kloutitCaseBody = new KloutitCaseBody([
     'is3_ds_purchase' => true,
     'purchase_date' => '2024-09-22T11:31:22.347Z',
     'purchase_amount' => [
-        'currency' => 'EUR',
+        'currency' => Currencies::EUR,
         'value' => 10,
     ],
 
