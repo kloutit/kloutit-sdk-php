@@ -571,3 +571,66 @@ class KloutitChargebackReason
     const REFUND_NOT_RECEIVED = 'REFUND_NOT_RECEIVED';
     const RECURRENT_OPERATION_CANCELLED = 'RECURRENT_OPERATION_CANCELLED';
 }
+
+class Currencies {
+  // Europe
+  const EUR = 'EUR';
+  const GBP = 'GBP';
+  const CHF = 'CHF';
+  const NOK = 'NOK';
+  const DKK = 'DKK';
+  const SEK = 'SEK';
+  const BGN = 'BGN';
+  const HRK = 'HRK';
+  const CZK = 'CZK';
+  const HUF = 'HUF';
+  const PLN = 'PLN';
+  const RON = 'RON';
+  const ISK = 'ISK';
+  const RUB = 'RUB';
+  const MKD = 'MKD';
+  const RSD = 'RSD';
+  // South America
+  const ARS = 'ARS';
+  const BOB = 'BOB';
+  const BRL = 'BRL';
+  const CLP = 'CLP';
+  const COP = 'COP';
+  const CRC = 'CRC';
+  const CUP = 'CUP';
+  const DOP = 'DOP';
+  const GTQ = 'GTQ';
+  const HNL = 'HNL';
+  const MXN = 'MXN';
+  const NIO = 'NIO';
+  const PAB = 'PAB';
+  const PYG = 'PYG';
+  const PEN = 'PEN';
+  const SRD = 'SRD';
+  const UYU = 'UYU';
+  const VES = 'VES';
+  // North America
+  const USD = 'USD';
+  const CAD = 'CAD';
+  // Asia
+  const CNY = 'CNY';
+  const JPY = 'JPY';
+  const INR = 'INR';
+  const KRW = 'KRW';
+  const IDR = 'IDR';
+  const MYR = 'MYR';
+  const PHP = 'PHP';
+  const SGD = 'SGD';
+  const THB = 'THB';
+  const VND = 'VND';
+  const HKD = 'HKD';
+  const TWD = 'TWD';
+  const TRY = 'TRY';
+  // Oceania
+  const AUD = 'AUD';
+  const NZD = 'NZD';
+  const FJD = 'FJD';
+  const PGK = 'PGK';
+  const WST = 'WST';
+  const VUV = 'VUV';
+}

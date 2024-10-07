@@ -77,7 +77,7 @@ class HealthApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'health' => [
+        'healthControllerHealth' => [
             'application/json',
         ],
     ];
@@ -144,35 +144,35 @@ class HealthApi
     }
 
     /**
-     * Operation health
+     * Operation healthControllerHealth
      *
      * Health check
      *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['health'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['healthControllerHealth'] to see the possible values for this operation
      *
      * @throws \Kloutit\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function health(string $contentType = self::contentTypes['health'][0])
+    public function healthControllerHealth(string $contentType = self::contentTypes['healthControllerHealth'][0])
     {
-        $this->healthWithHttpInfo($contentType);
+        $this->healthControllerHealthWithHttpInfo($contentType);
     }
 
     /**
-     * Operation healthWithHttpInfo
+     * Operation healthControllerHealthWithHttpInfo
      *
      * Health check
      *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['health'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['healthControllerHealth'] to see the possible values for this operation
      *
      * @throws \Kloutit\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function healthWithHttpInfo(string $contentType = self::contentTypes['health'][0])
+    public function healthControllerHealthWithHttpInfo(string $contentType = self::contentTypes['healthControllerHealth'][0])
     {
-        $request = $this->healthRequest($contentType);
+        $request = $this->healthControllerHealthRequest($contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -219,18 +219,18 @@ class HealthApi
     }
 
     /**
-     * Operation healthAsync
+     * Operation healthControllerHealthAsync
      *
      * Health check
      *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['health'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['healthControllerHealth'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function healthAsync(string $contentType = self::contentTypes['health'][0])
+    public function healthControllerHealthAsync(string $contentType = self::contentTypes['healthControllerHealth'][0])
     {
-        return $this->healthAsyncWithHttpInfo($contentType)
+        return $this->healthControllerHealthAsyncWithHttpInfo($contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -239,19 +239,19 @@ class HealthApi
     }
 
     /**
-     * Operation healthAsyncWithHttpInfo
+     * Operation healthControllerHealthAsyncWithHttpInfo
      *
      * Health check
      *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['health'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['healthControllerHealth'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function healthAsyncWithHttpInfo(string $contentType = self::contentTypes['health'][0])
+    public function healthControllerHealthAsyncWithHttpInfo(string $contentType = self::contentTypes['healthControllerHealth'][0])
     {
         $returnType = '';
-        $request = $this->healthRequest($contentType);
+        $request = $this->healthControllerHealthRequest($contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -277,18 +277,18 @@ class HealthApi
     }
 
     /**
-     * Create request for operation 'health'
+     * Create request for operation 'healthControllerHealth'
      *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['health'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['healthControllerHealth'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function healthRequest(string $contentType = self::contentTypes['health'][0])
+    public function healthControllerHealthRequest(string $contentType = self::contentTypes['healthControllerHealth'][0])
     {
 
 
-        $resourcePath = '/';
+        $resourcePath = '/health';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

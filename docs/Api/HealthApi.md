@@ -4,13 +4,13 @@ All URIs are relative to http://localhost, except if the operation defines anoth
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**health()**](HealthApi.md#health) | **GET** / | Health check |
+| [**healthControllerHealth()**](HealthApi.md#healthControllerHealth) | **GET** /health | Health check |
 
 
-## `health()`
+## `healthControllerHealth()`
 
 ```php
-health()
+healthControllerHealth()
 ```
 
 Health check
@@ -30,9 +30,9 @@ $apiInstance = new Kloutit\Api\HealthApi(
 );
 
 try {
-    $apiInstance->health();
+    $apiInstance->healthControllerHealth();
 } catch (Exception $e) {
-    echo 'Exception when calling HealthApi->health: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling HealthApi->healthControllerHealth: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

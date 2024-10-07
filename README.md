@@ -33,7 +33,6 @@ To use the Kloutit SDK client, you will need to instantiate the KloutitLoginApi 
 require 'vendor/autoload.php';
 
 use \Kloutit\Configuration as KloutitConfiguration;
-use \Kloutit\KloutitEnvironment;
 use \Kloutit\Api\KloutitLoginApi;
 use \Kloutit\Model\KloutitLoginBody;
 
@@ -51,7 +50,6 @@ $loginConfig = KloutitConfiguration::getDefaultConfiguration()
               ->setPassword($clientSecret);
 
 $kloutitLogin = new KloutitLoginApi(
-    KloutitEnvironment::Development,
     $client,
     $loginConfig
 );
@@ -60,6 +58,8 @@ $kloutitLoginBody = new KloutitLoginBody([
 ]);
 
 $accessToken;
+$expiresIn;
+$expiresAt;
 
 // Login
 try {
@@ -67,6 +67,9 @@ try {
     $loginResponse = $kloutitLogin->login($organizationId, $kloutitLoginBody);
 
     $accessToken = $loginResponse->getAccessToken();
+    $expiresAt = $loginResponse->getExpiresAt();
+    $expiresIn = $loginResponse->getExpiresIn();
+    
     echo "Access token successfully retrieved!";
 } catch (Exception $e) {
     echo "Error trying to login to Kloutit SDK.";
@@ -89,12 +92,12 @@ use Kloutit\Api\KloutitCaseApi;
 use Kloutit\Model\KloutitCaseBody;
 use Kloutit\KloutitChargebackReason;
 use Kloutit\KloutitOrganizationType;
+use Kloutit\Currencies;
 
 // Configure Bearer (JWT) authorization: bearer
 $caseConfig = KloutitConfiguration::getDefaultConfiguration()->setAccessToken($accessToken);
 
 $kloutitCase = new KloutitCaseApi(
-    KloutitEnvironment::Development,
     $client,
     $caseConfig
 );
@@ -103,9 +106,9 @@ $kloutitCaseBody = new KloutitCaseBody([
     'organization_type' => KloutitOrganizationType::TECHNOLOGY,
     'expedient_number' => 'EXPPHP0001',
     'notification_date' => '2024-09-22T11:31:22.347Z',
-    'deadline' => '2025-09-22T11:31:22.347Z',
+    'deadline' => '2027-09-22T11:31:22.347Z',
     'dispute_amount' => [
-        'currency' => 'EUR',
+        'currency' => Currencies::EUR,
         'value' => 10,
     ],
     'chargeback_reason' => KloutitChargebackReason::PRODUCT_SERVICE_NOT_RECEIVED,
@@ -116,7 +119,7 @@ $kloutitCaseBody = new KloutitCaseBody([
     'is3_ds_purchase' => true,
     'purchase_date' => '2024-09-22T11:31:22.347Z',
     'purchase_amount' => [
-        'currency' => 'EUR',
+        'currency' => Currencies::EUR,
         'value' => 10,
     ],
 

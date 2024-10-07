@@ -77,12 +77,12 @@ class HealthApiTest extends TestCase
     }
 
     /**
-     * Test case for health
+     * Test case for healthControllerHealth
      *
      * Health check.
      *
      */
-    public function testHealth()
+    public function testHealthControllerHealth()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
