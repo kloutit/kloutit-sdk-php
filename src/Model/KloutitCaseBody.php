@@ -112,7 +112,6 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
         'card_brand' => 'string',
         'is3_ds_purchase' => 'bool',
         'organization_type' => 'string',
-        'dispute' => 'object',
         'organization_id' => 'string'
     ];
 
@@ -174,7 +173,6 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
         'card_brand' => null,
         'is3_ds_purchase' => null,
         'organization_type' => null,
-        'dispute' => null,
         'organization_id' => null
     ];
 
@@ -234,7 +232,6 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
         'card_brand' => false,
         'is3_ds_purchase' => false,
         'organization_type' => false,
-        'dispute' => false,
         'organization_id' => false
     ];
 
@@ -374,7 +371,6 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
         'card_brand' => 'cardBrand',
         'is3_ds_purchase' => 'is3DSPurchase',
         'organization_type' => 'organizationType',
-        'dispute' => 'dispute',
         'organization_id' => 'organizationId'
     ];
 
@@ -434,7 +430,6 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
         'card_brand' => 'setCardBrand',
         'is3_ds_purchase' => 'setIs3DsPurchase',
         'organization_type' => 'setOrganizationType',
-        'dispute' => 'setDispute',
         'organization_id' => 'setOrganizationId'
     ];
 
@@ -494,7 +489,6 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
         'card_brand' => 'getCardBrand',
         'is3_ds_purchase' => 'getIs3DsPurchase',
         'organization_type' => 'getOrganizationType',
-        'dispute' => 'getDispute',
         'organization_id' => 'getOrganizationId'
     ];
 
@@ -671,7 +665,6 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('card_brand', $data ?? [], null);
         $this->setIfExists('is3_ds_purchase', $data ?? [], null);
         $this->setIfExists('organization_type', $data ?? [], null);
-        $this->setIfExists('dispute', $data ?? [], null);
         $this->setIfExists('organization_id', $data ?? [], null);
     }
 
@@ -2140,33 +2133,6 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['organization_type'] = $organization_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets dispute
-     *
-     * @return object|null
-     */
-    public function getDispute()
-    {
-        return $this->container['dispute'];
-    }
-
-    /**
-     * Sets dispute
-     *
-     * @param object|null $dispute dispute
-     *
-     * @return self
-     */
-    public function setDispute($dispute)
-    {
-        if (is_null($dispute)) {
-            throw new \InvalidArgumentException('non-nullable dispute cannot be null');
-        }
-        $this->container['dispute'] = $dispute;
 
         return $this;
     }

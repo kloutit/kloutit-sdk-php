@@ -535,15 +535,6 @@ class KloutitCaseBodyTest extends TestCase
     }
 
     /**
-     * Test attribute "dispute"
-     */
-    public function testPropertyDispute()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
      * Test attribute "organization_id"
      */
     public function testPropertyOrganizationId()
