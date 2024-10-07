@@ -178,7 +178,7 @@ If you use an IDE such as VSCode, you will be able to see all the autocompletion
 
 Kloutit SDK does not store or refresh access tokens. Storing and refreshing access tokens is responsibility of the SDK consumer.
 
-Please, if you discover any security issues, report them to security@kloutit.com as soon as possible.
+Please, if you discover any security issues, report them to support@kloutit.com as soon as possible.
 
 ### License
 
