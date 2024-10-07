@@ -54,7 +54,7 @@ Name | Type | Description | Notes
 **card_brand** | **string** | Card brand that the customer used to make the payment. | [optional]
 **is3_ds_purchase** | **bool** | Flag that indicates if the purchase has been made with 3DS. |
 **organization_type** | **string** | Sector of the case. It must be one of the sectors of the organization, for instance: EDUCATION, SOFTWARE, TRAVEL_HOTEL,... |
-**dispute** | **object** |  | [optional]
+**dispute** | **object** |  | [optional] [readonly]
 **organization_id** | **string** | Your organization id. |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
