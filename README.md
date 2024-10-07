@@ -32,9 +32,9 @@ To use the Kloutit SDK client, you will need to instantiate the KloutitLoginApi 
 // Require composer autoloader
 require 'vendor/autoload.php';
 
-use \Kloutit\Configuration as KloutitConfiguration;
-use \Kloutit\Api\KloutitLoginApi;
-use \Kloutit\Model\KloutitLoginBody;
+use Kloutit\Configuration as KloutitConfiguration;
+use Kloutit\Api\KloutitLoginApi;
+use Kloutit\Model\KloutitLoginBody;
 
 $clientId = '22311cca-9951-42dd-bc9b-bd0574335b55';
 $clientSecret = '6#.n3dcm-x4hc3Y0SrA/UR?DzggfM;';
@@ -69,7 +69,7 @@ try {
     $accessToken = $loginResponse->getAccessToken();
     $expiresAt = $loginResponse->getExpiresAt();
     $expiresIn = $loginResponse->getExpiresIn();
-    
+
     echo "Access token successfully retrieved!";
 } catch (Exception $e) {
     echo "Error trying to login to Kloutit SDK.";
