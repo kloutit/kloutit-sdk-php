@@ -63,16 +63,16 @@ $expiresAt;
 
 // Login
 try {
-    echo "Getting Kloutit access token for organization $organizationId";
+    echo "Getting Kloutit access token for organization $organizationId\n";
     $loginResponse = $kloutitLogin->login($organizationId, $kloutitLoginBody);
 
     $accessToken = $loginResponse->getAccessToken();
     $expiresAt = $loginResponse->getExpiresAt();
     $expiresIn = $loginResponse->getExpiresIn();
 
-    echo "Access token successfully retrieved!";
+    echo "Access token successfully retrieved!\n";
 } catch (Exception $e) {
-    echo "Error trying to login to Kloutit SDK.";
+    echo "Error trying to login to Kloutit SDK.\n";
     throw new Exception($e->getMessage());
 }
 ```
@@ -142,9 +142,9 @@ $kloutitCaseBody = new KloutitCaseBody([
 
 try {
     $kloutitCase->createCase($kloutitCaseBody);
-    echo 'Case successfully created into Kloutit!';
+    echo "Case successfully created into Kloutit!\n";
 } catch (Exception $e) {
-    echo "Error trying to create case into Kloutit.";
+    echo "Error trying to create case into Kloutit.\n";
     throw new Exception($e->getMessage());
 }
 ```
