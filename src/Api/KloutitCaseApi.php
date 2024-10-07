@@ -89,9 +89,9 @@ class KloutitCaseApi
      * @param int             $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
-        $environment = KloutitEnvironment::Development,
         ClientInterface $client = null,
         Configuration $config = null,
+        $environment = KloutitEnvironment::Production,
         HeaderSelector $selector = null,
         $hostIndex = 0
     ) {
