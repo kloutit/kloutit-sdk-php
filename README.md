@@ -87,7 +87,6 @@ Once you have the accessToken with the Login call, you can use it to make other 
 require 'vendor/autoload.php';
 
 use Kloutit\Configuration as KloutitConfiguration;
-use Kloutit\KloutitEnvironment;
 use Kloutit\Api\KloutitCaseApi;
 use Kloutit\Model\KloutitCaseBody;
 use Kloutit\KloutitChargebackReason;
