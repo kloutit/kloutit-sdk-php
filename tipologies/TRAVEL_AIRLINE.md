@@ -40,7 +40,7 @@ $kloutitCaseBody = new KloutitCaseBody([
     'arrival_airport' => 'Sample airport',
     'rate' => 'Sample rate',
     'checkin_confirmation' => true,
-    'destination_country' => 'Spain'
+    'destination_country' => 'Spain',
 
     'customer_name' => 'PHP SDK sample',
     'customer_email' => 'kloutit-php@example.com',
