@@ -3,13 +3,14 @@
   "version": "1.0.0",
   "description": "Kloutit SDK API for client integrations",
   "keywords": [
-    "openapitools",
-    "openapi-generator",
-    "openapi",
+    "kloutit",
+    "chargebacks",
+    "chargeback",
+    "integration",
     "php",
     "sdk",
-    "rest",
-    "api"
+    "automation",
+    "saas"
   ],
   "homepage": "https://kloutit.com",
   "license": "Apache 2.0",
