@@ -16,10 +16,7 @@ composer require kloutit/kloutit-sdk-php
 
 To be able to use any Kloutit SDK function, your organization must be registered into our system and SDK client keys for the organization must be created. You can register your organization by following a few simple steps from https://app.kloutit.com.
 
-Once your organization is successfully registered, you will be able to configure the SDK connection from the menu `My organization > Kloutit SDK`. You will need to:
-
-- Create a new client credentials
-- Add the allowed domains
+Once your organization is successfully registered, you will be able to configure the SDK connection from the menu `My organization > Kloutit SDK`. You will need to create new client credentials.
 
 ## Usage
 
