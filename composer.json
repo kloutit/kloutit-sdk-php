@@ -1,6 +1,5 @@
 {
   "name": "kloutit/kloutit-sdk-php",
-  "version": "1.0.0",
   "description": "Kloutit SDK API for client integrations",
   "keywords": [
     "kloutit",
@@ -13,7 +12,7 @@
     "saas"
   ],
   "homepage": "https://kloutit.com",
-  "license": "Apache 2.0",
+  "license": "Apache-2.0",
   "authors": [
     {
       "name": "Kloutit Technologies S.L.",
