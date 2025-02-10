@@ -30,16 +30,16 @@ Once you have the apiKey, you can use it to instantiate the KloutitCaseApi and m
 <?php
 
 use Kloutit\Configuration as KloutitConfiguration;
-use Kloutit\Api\KloutitCaseApi
-use Kloutit\Model\UpdateCaseParams
+use Kloutit\Api\KloutitCaseApi;
+use Kloutit\Model\UpdateCaseParams;
 use Kloutit\Model\ChargebackReason;
 use Kloutit\Model\CaseSector;
 use Kloutit\Currencies;
 
 require_once('sdk/vendor/autoload.php');
 
-$apiKey = '99e2f0946cd541b598bdbd61148c850d_6TA8KHQWPzNfMqBBMDP6zEgz6cemNYFirRo7XCwRwnhb6H7KoMkUUNxzfnBS';
-$expedientNumber = 'dp_1Qk6O7KkhWp1jIM0kkAqFMkD';
+$apiKey = 'YOUR_API_KEY';
+$expedientNumber = 'EXPEDIENT_NUMBER';
 
 // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
 // This is optional, `GuzzleHttp\Client` will be used as default.
