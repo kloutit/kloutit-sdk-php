@@ -1,6 +1,6 @@
 <?php
 /**
- * CommunicationItemDtoTest
+ * AmountTest
  *
  * PHP version 7.4
  *
@@ -36,15 +36,15 @@ namespace Kloutit\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * CommunicationItemDtoTest Class Doc Comment
+ * AmountTest Class Doc Comment
  *
  * @category    Class
- * @description CommunicationItemDto
+ * @description Amount
  * @package     Kloutit
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class CommunicationItemDtoTest extends TestCase
+class AmountTest extends TestCase
 {
 
     /**
@@ -76,36 +76,27 @@ class CommunicationItemDtoTest extends TestCase
     }
 
     /**
-     * Test "CommunicationItemDto"
+     * Test "Amount"
      */
-    public function testCommunicationItemDto()
+    public function testAmount()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "sender"
+     * Test attribute "value"
      */
-    public function testPropertySender()
+    public function testPropertyValue()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "content"
+     * Test attribute "currency"
      */
-    public function testPropertyContent()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "date"
-     */
-    public function testPropertyDate()
+    public function testPropertyCurrency()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

@@ -1,6 +1,6 @@
 <?php
 /**
- * CommunicationItemDto
+ * MissingFieldsDto
  *
  * PHP version 7.4
  *
@@ -37,7 +37,7 @@ use \ArrayAccess;
 use \Kloutit\ObjectSerializer;
 
 /**
- * CommunicationItemDto Class Doc Comment
+ * MissingFieldsDto Class Doc Comment
  *
  * @category Class
  * @package  Kloutit
@@ -45,7 +45,7 @@ use \Kloutit\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CommunicationItemDto implements ModelInterface, ArrayAccess, \JsonSerializable
+class MissingFieldsDto implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -54,7 +54,7 @@ class CommunicationItemDto implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CommunicationItemDto';
+    protected static $openAPIModelName = 'MissingFieldsDto';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -62,9 +62,7 @@ class CommunicationItemDto implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'sender' => 'string',
-        'content' => 'string',
-        'date' => '\DateTime'
+        'missing_fields' => '\Kloutit\Model\MissingFieldDto[]'
     ];
 
     /**
@@ -75,9 +73,7 @@ class CommunicationItemDto implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'sender' => null,
-        'content' => null,
-        'date' => 'date-time'
+        'missing_fields' => null
     ];
 
     /**
@@ -86,9 +82,7 @@ class CommunicationItemDto implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'sender' => false,
-        'content' => false,
-        'date' => false
+        'missing_fields' => false
     ];
 
     /**
@@ -177,9 +171,7 @@ class CommunicationItemDto implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'sender' => 'sender',
-        'content' => 'content',
-        'date' => 'date'
+        'missing_fields' => 'missingFields'
     ];
 
     /**
@@ -188,9 +180,7 @@ class CommunicationItemDto implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'sender' => 'setSender',
-        'content' => 'setContent',
-        'date' => 'setDate'
+        'missing_fields' => 'setMissingFields'
     ];
 
     /**
@@ -199,9 +189,7 @@ class CommunicationItemDto implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'sender' => 'getSender',
-        'content' => 'getContent',
-        'date' => 'getDate'
+        'missing_fields' => 'getMissingFields'
     ];
 
     /**
@@ -261,9 +249,7 @@ class CommunicationItemDto implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('sender', $data ?? [], null);
-        $this->setIfExists('content', $data ?? [], null);
-        $this->setIfExists('date', $data ?? [], null);
+        $this->setIfExists('missing_fields', $data ?? [], null);
     }
 
     /**
@@ -293,14 +279,8 @@ class CommunicationItemDto implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
-        if ($this->container['sender'] === null) {
-            $invalidProperties[] = "'sender' can't be null";
-        }
-        if ($this->container['content'] === null) {
-            $invalidProperties[] = "'content' can't be null";
-        }
-        if ($this->container['date'] === null) {
-            $invalidProperties[] = "'date' can't be null";
+        if ($this->container['missing_fields'] === null) {
+            $invalidProperties[] = "'missing_fields' can't be null";
         }
         return $invalidProperties;
     }
@@ -318,82 +298,28 @@ class CommunicationItemDto implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets sender
+     * Gets missing_fields
      *
-     * @return string
+     * @return \Kloutit\Model\MissingFieldDto[]
      */
-    public function getSender()
+    public function getMissingFields()
     {
-        return $this->container['sender'];
+        return $this->container['missing_fields'];
     }
 
     /**
-     * Sets sender
+     * Sets missing_fields
      *
-     * @param string $sender sender
+     * @param \Kloutit\Model\MissingFieldDto[] $missing_fields Array of all the Case entity fields that are found missing for the evaluated case
      *
      * @return self
      */
-    public function setSender($sender)
+    public function setMissingFields($missing_fields)
     {
-        if (is_null($sender)) {
-            throw new \InvalidArgumentException('non-nullable sender cannot be null');
+        if (is_null($missing_fields)) {
+            throw new \InvalidArgumentException('non-nullable missing_fields cannot be null');
         }
-        $this->container['sender'] = $sender;
-
-        return $this;
-    }
-
-    /**
-     * Gets content
-     *
-     * @return string
-     */
-    public function getContent()
-    {
-        return $this->container['content'];
-    }
-
-    /**
-     * Sets content
-     *
-     * @param string $content content
-     *
-     * @return self
-     */
-    public function setContent($content)
-    {
-        if (is_null($content)) {
-            throw new \InvalidArgumentException('non-nullable content cannot be null');
-        }
-        $this->container['content'] = $content;
-
-        return $this;
-    }
-
-    /**
-     * Gets date
-     *
-     * @return \DateTime
-     */
-    public function getDate()
-    {
-        return $this->container['date'];
-    }
-
-    /**
-     * Sets date
-     *
-     * @param \DateTime $date date
-     *
-     * @return self
-     */
-    public function setDate($date)
-    {
-        if (is_null($date)) {
-            throw new \InvalidArgumentException('non-nullable date cannot be null');
-        }
-        $this->container['date'] = $date;
+        $this->container['missing_fields'] = $missing_fields;
 
         return $this;
     }

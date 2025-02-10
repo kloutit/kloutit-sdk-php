@@ -91,7 +91,6 @@ class HealthApi
     public function __construct(
         ClientInterface $client = null,
         Configuration $config = null,
-        $environment = KloutitEnvironment::Production,
         HeaderSelector $selector = null,
         $hostIndex = 0
     ) {
@@ -100,7 +99,9 @@ class HealthApi
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
 
-        $this->config->setHost($this->getBasePath($environment));
+        if (!$this->config->getHost()) {
+            $this->config->setHost($this->getBasePath(KloutitEnvironment::Production));
+        }
     }
 
     private function getBasePath($environment)
@@ -152,11 +153,12 @@ class HealthApi
      *
      * @throws \Kloutit\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return void
+     * @return string
      */
     public function healthControllerHealth(string $contentType = self::contentTypes['healthControllerHealth'][0])
     {
-        $this->healthControllerHealthWithHttpInfo($contentType);
+        list($response) = $this->healthControllerHealthWithHttpInfo($contentType);
+        return $response;
     }
 
     /**
@@ -168,7 +170,7 @@ class HealthApi
      *
      * @throws \Kloutit\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function healthControllerHealthWithHttpInfo(string $contentType = self::contentTypes['healthControllerHealth'][0])
     {
@@ -209,10 +211,74 @@ class HealthApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    if ('string' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('string' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, 'string', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = 'string';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    try {
+                        $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                    } catch (\JsonException $exception) {
+                        throw new ApiException(
+                            sprintf(
+                                'Error JSON decoding server response (%s)',
+                                $request->getUri()
+                            ),
+                            $statusCode,
+                            $response->getHeaders(),
+                            $content
+                        );
+                    }
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'string',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -250,14 +316,27 @@ class HealthApi
      */
     public function healthControllerHealthAsyncWithHttpInfo(string $contentType = self::contentTypes['healthControllerHealth'][0])
     {
-        $returnType = '';
+        $returnType = 'string';
         $request = $this->healthControllerHealthRequest($contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -300,7 +379,7 @@ class HealthApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            [],
+            ['application/json', ],
             $contentType,
             $multipart
         );

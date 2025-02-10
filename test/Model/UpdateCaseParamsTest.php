@@ -1,6 +1,6 @@
 <?php
 /**
- * KloutitCaseBodyTest
+ * UpdateCaseParamsTest
  *
  * PHP version 7.4
  *
@@ -36,15 +36,15 @@ namespace Kloutit\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * KloutitCaseBodyTest Class Doc Comment
+ * UpdateCaseParamsTest Class Doc Comment
  *
  * @category    Class
- * @description KloutitCaseBody
+ * @description UpdateCaseParams
  * @package     Kloutit
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class KloutitCaseBodyTest extends TestCase
+class UpdateCaseParamsTest extends TestCase
 {
 
     /**
@@ -76,63 +76,18 @@ class KloutitCaseBodyTest extends TestCase
     }
 
     /**
-     * Test "KloutitCaseBody"
+     * Test "UpdateCaseParams"
      */
-    public function testKloutitCaseBody()
+    public function testUpdateCaseParams()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "id"
+     * Test attribute "filial_identifier"
      */
-    public function testPropertyId()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "active"
-     */
-    public function testPropertyActive()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "created_at"
-     */
-    public function testPropertyCreatedAt()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "updated_at"
-     */
-    public function testPropertyUpdatedAt()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "is_deleted"
-     */
-    public function testPropertyIsDeleted()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "deleted_at"
-     */
-    public function testPropertyDeletedAt()
+    public function testPropertyFilialIdentifier()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -310,6 +265,24 @@ class KloutitCaseBodyTest extends TestCase
     }
 
     /**
+     * Test attribute "departure_city"
+     */
+    public function testPropertyDepartureCity()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "arrival_city"
+     */
+    public function testPropertyArrivalCity()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "shipping_city"
      */
     public function testPropertyShippingCity()
@@ -391,45 +364,18 @@ class KloutitCaseBodyTest extends TestCase
     }
 
     /**
-     * Test attribute "expedient_number"
+     * Test attribute "is_cancelled"
      */
-    public function testPropertyExpedientNumber()
+    public function testPropertyIsCancelled()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "notification_date"
+     * Test attribute "product_description"
      */
-    public function testPropertyNotificationDate()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "dispute_amount"
-     */
-    public function testPropertyDisputeAmount()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "chargeback_reason"
-     */
-    public function testPropertyChargebackReason()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "deadline"
-     */
-    public function testPropertyDeadline()
+    public function testPropertyProductDescription()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -463,18 +409,9 @@ class KloutitCaseBodyTest extends TestCase
     }
 
     /**
-     * Test attribute "pan_number"
+     * Test attribute "last4_digits"
      */
-    public function testPropertyPanNumber()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "transaction_id"
-     */
-    public function testPropertyTransactionId()
+    public function testPropertyLast4Digits()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -526,18 +463,54 @@ class KloutitCaseBodyTest extends TestCase
     }
 
     /**
-     * Test attribute "organization_type"
+     * Test attribute "sector"
      */
-    public function testPropertyOrganizationType()
+    public function testPropertySector()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "organization_id"
+     * Test attribute "seller_contact_date"
      */
-    public function testPropertyOrganizationId()
+    public function testPropertySellerContactDate()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "seller_additional_info"
+     */
+    public function testPropertySellerAdditionalInfo()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "seller_name"
+     */
+    public function testPropertySellerName()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "seller_phone"
+     */
+    public function testPropertySellerPhone()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "seller_email"
+     */
+    public function testPropertySellerEmail()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

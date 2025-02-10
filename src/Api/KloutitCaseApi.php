@@ -77,8 +77,17 @@ class KloutitCaseApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'createCase' => [
+        'checkCase' => [
             'application/json',
+        ],
+        'submitCompletedCase' => [
+            'application/json',
+        ],
+        'updateCase' => [
+            'application/json',
+        ],
+        'uploadFile' => [
+            'multipart/form-data',
         ],
     ];
 
@@ -91,7 +100,6 @@ class KloutitCaseApi
     public function __construct(
         ClientInterface $client = null,
         Configuration $config = null,
-        $environment = KloutitEnvironment::Production,
         HeaderSelector $selector = null,
         $hostIndex = 0
     ) {
@@ -100,7 +108,9 @@ class KloutitCaseApi
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
 
-        $this->config->setHost($this->getBasePath($environment));
+        if (!$this->config->getHost()) {
+            $this->config->setHost($this->getBasePath(KloutitEnvironment::Production));
+        }
     }
 
     private function getBasePath($environment)
@@ -144,38 +154,524 @@ class KloutitCaseApi
     }
 
     /**
-     * Operation createCase
+     * Operation checkCase
      *
-     * Create a new case into Kloutit.
+     * Check case information
      *
-     * @param  \Kloutit\Model\KloutitCaseBody $kloutit_case_body kloutit_case_body (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCase'] to see the possible values for this operation
+     * @param  string $expedient_number Case expedient number. This value must exist in Kloutit. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkCase'] to see the possible values for this operation
      *
      * @throws \Kloutit\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Kloutit\Model\KloutitCaseResponse
+     * @return void
      */
-    public function createCase($kloutit_case_body, string $contentType = self::contentTypes['createCase'][0])
+    public function checkCase($expedient_number, string $contentType = self::contentTypes['checkCase'][0])
     {
-        list($response) = $this->createCaseWithHttpInfo($kloutit_case_body, $contentType);
+        $this->checkCaseWithHttpInfo($expedient_number, $contentType);
+    }
+
+    /**
+     * Operation checkCaseWithHttpInfo
+     *
+     * Check case information
+     *
+     * @param  string $expedient_number Case expedient number. This value must exist in Kloutit. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkCase'] to see the possible values for this operation
+     *
+     * @throws \Kloutit\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function checkCaseWithHttpInfo($expedient_number, string $contentType = self::contentTypes['checkCase'][0])
+    {
+        $request = $this->checkCaseRequest($expedient_number, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 206:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Kloutit\Model\MissingFieldsDto',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 406:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Kloutit\Model\MissingFieldsDto',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation checkCaseAsync
+     *
+     * Check case information
+     *
+     * @param  string $expedient_number Case expedient number. This value must exist in Kloutit. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkCase'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function checkCaseAsync($expedient_number, string $contentType = self::contentTypes['checkCase'][0])
+    {
+        return $this->checkCaseAsyncWithHttpInfo($expedient_number, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation checkCaseAsyncWithHttpInfo
+     *
+     * Check case information
+     *
+     * @param  string $expedient_number Case expedient number. This value must exist in Kloutit. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkCase'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function checkCaseAsyncWithHttpInfo($expedient_number, string $contentType = self::contentTypes['checkCase'][0])
+    {
+        $returnType = '';
+        $request = $this->checkCaseRequest($expedient_number, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'checkCase'
+     *
+     * @param  string $expedient_number Case expedient number. This value must exist in Kloutit. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkCase'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function checkCaseRequest($expedient_number, string $contentType = self::contentTypes['checkCase'][0])
+    {
+
+        // verify the required parameter 'expedient_number' is set
+        if ($expedient_number === null || (is_array($expedient_number) && count($expedient_number) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $expedient_number when calling checkCase'
+            );
+        }
+
+
+        $resourcePath = '/case/{expedientNumber}/check-case';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($expedient_number !== null) {
+            $resourcePath = str_replace(
+                '{' . 'expedientNumber' . '}',
+                ObjectSerializer::toPathValue($expedient_number),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKey();
+        if ($apiKey !== null) {
+            $headers['x-api-key'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation submitCompletedCase
+     *
+     * Submit completed case
+     *
+     * @param  string $expedient_number Case expedient number. This value must exist in Kloutit. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['submitCompletedCase'] to see the possible values for this operation
+     *
+     * @throws \Kloutit\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function submitCompletedCase($expedient_number, string $contentType = self::contentTypes['submitCompletedCase'][0])
+    {
+        $this->submitCompletedCaseWithHttpInfo($expedient_number, $contentType);
+    }
+
+    /**
+     * Operation submitCompletedCaseWithHttpInfo
+     *
+     * Submit completed case
+     *
+     * @param  string $expedient_number Case expedient number. This value must exist in Kloutit. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['submitCompletedCase'] to see the possible values for this operation
+     *
+     * @throws \Kloutit\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function submitCompletedCaseWithHttpInfo($expedient_number, string $contentType = self::contentTypes['submitCompletedCase'][0])
+    {
+        $request = $this->submitCompletedCaseRequest($expedient_number, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation submitCompletedCaseAsync
+     *
+     * Submit completed case
+     *
+     * @param  string $expedient_number Case expedient number. This value must exist in Kloutit. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['submitCompletedCase'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function submitCompletedCaseAsync($expedient_number, string $contentType = self::contentTypes['submitCompletedCase'][0])
+    {
+        return $this->submitCompletedCaseAsyncWithHttpInfo($expedient_number, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation submitCompletedCaseAsyncWithHttpInfo
+     *
+     * Submit completed case
+     *
+     * @param  string $expedient_number Case expedient number. This value must exist in Kloutit. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['submitCompletedCase'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function submitCompletedCaseAsyncWithHttpInfo($expedient_number, string $contentType = self::contentTypes['submitCompletedCase'][0])
+    {
+        $returnType = '';
+        $request = $this->submitCompletedCaseRequest($expedient_number, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'submitCompletedCase'
+     *
+     * @param  string $expedient_number Case expedient number. This value must exist in Kloutit. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['submitCompletedCase'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function submitCompletedCaseRequest($expedient_number, string $contentType = self::contentTypes['submitCompletedCase'][0])
+    {
+
+        // verify the required parameter 'expedient_number' is set
+        if ($expedient_number === null || (is_array($expedient_number) && count($expedient_number) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $expedient_number when calling submitCompletedCase'
+            );
+        }
+
+
+        $resourcePath = '/case/{expedientNumber}/submit-completed-case';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($expedient_number !== null) {
+            $resourcePath = str_replace(
+                '{' . 'expedientNumber' . '}',
+                ObjectSerializer::toPathValue($expedient_number),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            [],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKey();
+        if ($apiKey !== null) {
+            $headers['x-api-key'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateCase
+     *
+     * Update case
+     *
+     * @param  string $expedient_number Case expedient number. This value must exist in Kloutit. (required)
+     * @param  \Kloutit\Model\UpdateCaseParams $update_case_params update_case_params (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCase'] to see the possible values for this operation
+     *
+     * @throws \Kloutit\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Kloutit\Model\ModelCase
+     */
+    public function updateCase($expedient_number, $update_case_params, string $contentType = self::contentTypes['updateCase'][0])
+    {
+        list($response) = $this->updateCaseWithHttpInfo($expedient_number, $update_case_params, $contentType);
         return $response;
     }
 
     /**
-     * Operation createCaseWithHttpInfo
+     * Operation updateCaseWithHttpInfo
      *
-     * Create a new case into Kloutit.
+     * Update case
      *
-     * @param  \Kloutit\Model\KloutitCaseBody $kloutit_case_body (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCase'] to see the possible values for this operation
+     * @param  string $expedient_number Case expedient number. This value must exist in Kloutit. (required)
+     * @param  \Kloutit\Model\UpdateCaseParams $update_case_params (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCase'] to see the possible values for this operation
      *
      * @throws \Kloutit\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Kloutit\Model\KloutitCaseResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Kloutit\Model\ModelCase, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createCaseWithHttpInfo($kloutit_case_body, string $contentType = self::contentTypes['createCase'][0])
+    public function updateCaseWithHttpInfo($expedient_number, $update_case_params, string $contentType = self::contentTypes['updateCase'][0])
     {
-        $request = $this->createCaseRequest($kloutit_case_body, $contentType);
+        $request = $this->updateCaseRequest($expedient_number, $update_case_params, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -213,12 +709,12 @@ class KloutitCaseApi
             }
 
             switch($statusCode) {
-                default:
-                    if ('\Kloutit\Model\KloutitCaseResponse' === '\SplFileObject') {
+                case 200:
+                    if ('\Kloutit\Model\ModelCase' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Kloutit\Model\KloutitCaseResponse' !== 'string') {
+                        if ('\Kloutit\Model\ModelCase' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -236,13 +732,13 @@ class KloutitCaseApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Kloutit\Model\KloutitCaseResponse', []),
+                        ObjectSerializer::deserialize($content, '\Kloutit\Model\ModelCase', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Kloutit\Model\KloutitCaseResponse';
+            $returnType = '\Kloutit\Model\ModelCase';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -272,10 +768,10 @@ class KloutitCaseApi
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                default:
+                case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Kloutit\Model\KloutitCaseResponse',
+                        '\Kloutit\Model\ModelCase',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -286,19 +782,20 @@ class KloutitCaseApi
     }
 
     /**
-     * Operation createCaseAsync
+     * Operation updateCaseAsync
      *
-     * Create a new case into Kloutit.
+     * Update case
      *
-     * @param  \Kloutit\Model\KloutitCaseBody $kloutit_case_body (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCase'] to see the possible values for this operation
+     * @param  string $expedient_number Case expedient number. This value must exist in Kloutit. (required)
+     * @param  \Kloutit\Model\UpdateCaseParams $update_case_params (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCase'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createCaseAsync($kloutit_case_body, string $contentType = self::contentTypes['createCase'][0])
+    public function updateCaseAsync($expedient_number, $update_case_params, string $contentType = self::contentTypes['updateCase'][0])
     {
-        return $this->createCaseAsyncWithHttpInfo($kloutit_case_body, $contentType)
+        return $this->updateCaseAsyncWithHttpInfo($expedient_number, $update_case_params, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -307,20 +804,21 @@ class KloutitCaseApi
     }
 
     /**
-     * Operation createCaseAsyncWithHttpInfo
+     * Operation updateCaseAsyncWithHttpInfo
      *
-     * Create a new case into Kloutit.
+     * Update case
      *
-     * @param  \Kloutit\Model\KloutitCaseBody $kloutit_case_body (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCase'] to see the possible values for this operation
+     * @param  string $expedient_number Case expedient number. This value must exist in Kloutit. (required)
+     * @param  \Kloutit\Model\UpdateCaseParams $update_case_params (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCase'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createCaseAsyncWithHttpInfo($kloutit_case_body, string $contentType = self::contentTypes['createCase'][0])
+    public function updateCaseAsyncWithHttpInfo($expedient_number, $update_case_params, string $contentType = self::contentTypes['updateCase'][0])
     {
-        $returnType = '\Kloutit\Model\KloutitCaseResponse';
-        $request = $this->createCaseRequest($kloutit_case_body, $contentType);
+        $returnType = '\Kloutit\Model\ModelCase';
+        $request = $this->updateCaseRequest($expedient_number, $update_case_params, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -359,26 +857,34 @@ class KloutitCaseApi
     }
 
     /**
-     * Create request for operation 'createCase'
+     * Create request for operation 'updateCase'
      *
-     * @param  \Kloutit\Model\KloutitCaseBody $kloutit_case_body (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCase'] to see the possible values for this operation
+     * @param  string $expedient_number Case expedient number. This value must exist in Kloutit. (required)
+     * @param  \Kloutit\Model\UpdateCaseParams $update_case_params (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCase'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createCaseRequest($kloutit_case_body, string $contentType = self::contentTypes['createCase'][0])
+    public function updateCaseRequest($expedient_number, $update_case_params, string $contentType = self::contentTypes['updateCase'][0])
     {
 
-        // verify the required parameter 'kloutit_case_body' is set
-        if ($kloutit_case_body === null || (is_array($kloutit_case_body) && count($kloutit_case_body) === 0)) {
+        // verify the required parameter 'expedient_number' is set
+        if ($expedient_number === null || (is_array($expedient_number) && count($expedient_number) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $kloutit_case_body when calling createCase'
+                'Missing the required parameter $expedient_number when calling updateCase'
+            );
+        }
+
+        // verify the required parameter 'update_case_params' is set
+        if ($update_case_params === null || (is_array($update_case_params) && count($update_case_params) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $update_case_params when calling updateCase'
             );
         }
 
 
-        $resourcePath = '/case';
+        $resourcePath = '/case/{expedientNumber}/update-case';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -387,6 +893,14 @@ class KloutitCaseApi
 
 
 
+        // path params
+        if ($expedient_number !== null) {
+            $resourcePath = str_replace(
+                '{' . 'expedientNumber' . '}',
+                ObjectSerializer::toPathValue($expedient_number),
+                $resourcePath
+            );
+        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -396,12 +910,12 @@ class KloutitCaseApi
         );
 
         // for model (json/xml)
-        if (isset($kloutit_case_body)) {
+        if (isset($update_case_params)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($kloutit_case_body));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_case_params));
             } else {
-                $httpBody = $kloutit_case_body;
+                $httpBody = $update_case_params;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -427,9 +941,362 @@ class KloutitCaseApi
             }
         }
 
-        // this endpoint requires Bearer (JWT) authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKey();
+        if ($apiKey !== null) {
+            $headers['x-api-key'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation uploadFile
+     *
+     * Upload file
+     *
+     * @param  string $expedient_number expedient_number (required)
+     * @param  \SplFileObject $file A file to upload. Make sure that the specifications follow RFC 2388, which defines file transfers for the multipart/form-data protocol. Allowed formats are &#x60;&#x60;PDF&#x60;&#x60;, &#x60;&#x60;JPG&#x60;&#x60;, &#x60;&#x60;JPEG&#x60;&#x60;, &#x60;&#x60;PNG&#x60;&#x60;. Max. file size is &#x60;&#x60;10Mb&#x60;&#x60;. Ensure that the file upload adheres to [RFC 2388](https://www.ietf.org/rfc/rfc2388.txt), which defines file transfers for the multipart/form-data protocol. (required)
+     * @param  string $type Type of file: &#x60;&#x60;customer&#x60;&#x60;, &#x60;&#x60;company&#x60;&#x60; or &#x60;&#x60;product&#x60;&#x60; (product only for marketplace) (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadFile'] to see the possible values for this operation
+     *
+     * @throws \Kloutit\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Kloutit\Model\FileItem
+     */
+    public function uploadFile($expedient_number, $file, $type, string $contentType = self::contentTypes['uploadFile'][0])
+    {
+        list($response) = $this->uploadFileWithHttpInfo($expedient_number, $file, $type, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation uploadFileWithHttpInfo
+     *
+     * Upload file
+     *
+     * @param  string $expedient_number (required)
+     * @param  \SplFileObject $file A file to upload. Make sure that the specifications follow RFC 2388, which defines file transfers for the multipart/form-data protocol. Allowed formats are &#x60;&#x60;PDF&#x60;&#x60;, &#x60;&#x60;JPG&#x60;&#x60;, &#x60;&#x60;JPEG&#x60;&#x60;, &#x60;&#x60;PNG&#x60;&#x60;. Max. file size is &#x60;&#x60;10Mb&#x60;&#x60;. Ensure that the file upload adheres to [RFC 2388](https://www.ietf.org/rfc/rfc2388.txt), which defines file transfers for the multipart/form-data protocol. (required)
+     * @param  string $type Type of file: &#x60;&#x60;customer&#x60;&#x60;, &#x60;&#x60;company&#x60;&#x60; or &#x60;&#x60;product&#x60;&#x60; (product only for marketplace) (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadFile'] to see the possible values for this operation
+     *
+     * @throws \Kloutit\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Kloutit\Model\FileItem, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function uploadFileWithHttpInfo($expedient_number, $file, $type, string $contentType = self::contentTypes['uploadFile'][0])
+    {
+        $request = $this->uploadFileRequest($expedient_number, $file, $type, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 201:
+                    if ('\Kloutit\Model\FileItem' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Kloutit\Model\FileItem' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Kloutit\Model\FileItem', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Kloutit\Model\FileItem';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    try {
+                        $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                    } catch (\JsonException $exception) {
+                        throw new ApiException(
+                            sprintf(
+                                'Error JSON decoding server response (%s)',
+                                $request->getUri()
+                            ),
+                            $statusCode,
+                            $response->getHeaders(),
+                            $content
+                        );
+                    }
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Kloutit\Model\FileItem',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation uploadFileAsync
+     *
+     * Upload file
+     *
+     * @param  string $expedient_number (required)
+     * @param  \SplFileObject $file A file to upload. Make sure that the specifications follow RFC 2388, which defines file transfers for the multipart/form-data protocol. Allowed formats are &#x60;&#x60;PDF&#x60;&#x60;, &#x60;&#x60;JPG&#x60;&#x60;, &#x60;&#x60;JPEG&#x60;&#x60;, &#x60;&#x60;PNG&#x60;&#x60;. Max. file size is &#x60;&#x60;10Mb&#x60;&#x60;. Ensure that the file upload adheres to [RFC 2388](https://www.ietf.org/rfc/rfc2388.txt), which defines file transfers for the multipart/form-data protocol. (required)
+     * @param  string $type Type of file: &#x60;&#x60;customer&#x60;&#x60;, &#x60;&#x60;company&#x60;&#x60; or &#x60;&#x60;product&#x60;&#x60; (product only for marketplace) (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadFile'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function uploadFileAsync($expedient_number, $file, $type, string $contentType = self::contentTypes['uploadFile'][0])
+    {
+        return $this->uploadFileAsyncWithHttpInfo($expedient_number, $file, $type, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation uploadFileAsyncWithHttpInfo
+     *
+     * Upload file
+     *
+     * @param  string $expedient_number (required)
+     * @param  \SplFileObject $file A file to upload. Make sure that the specifications follow RFC 2388, which defines file transfers for the multipart/form-data protocol. Allowed formats are &#x60;&#x60;PDF&#x60;&#x60;, &#x60;&#x60;JPG&#x60;&#x60;, &#x60;&#x60;JPEG&#x60;&#x60;, &#x60;&#x60;PNG&#x60;&#x60;. Max. file size is &#x60;&#x60;10Mb&#x60;&#x60;. Ensure that the file upload adheres to [RFC 2388](https://www.ietf.org/rfc/rfc2388.txt), which defines file transfers for the multipart/form-data protocol. (required)
+     * @param  string $type Type of file: &#x60;&#x60;customer&#x60;&#x60;, &#x60;&#x60;company&#x60;&#x60; or &#x60;&#x60;product&#x60;&#x60; (product only for marketplace) (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadFile'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function uploadFileAsyncWithHttpInfo($expedient_number, $file, $type, string $contentType = self::contentTypes['uploadFile'][0])
+    {
+        $returnType = '\Kloutit\Model\FileItem';
+        $request = $this->uploadFileRequest($expedient_number, $file, $type, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'uploadFile'
+     *
+     * @param  string $expedient_number (required)
+     * @param  \SplFileObject $file A file to upload. Make sure that the specifications follow RFC 2388, which defines file transfers for the multipart/form-data protocol. Allowed formats are &#x60;&#x60;PDF&#x60;&#x60;, &#x60;&#x60;JPG&#x60;&#x60;, &#x60;&#x60;JPEG&#x60;&#x60;, &#x60;&#x60;PNG&#x60;&#x60;. Max. file size is &#x60;&#x60;10Mb&#x60;&#x60;. Ensure that the file upload adheres to [RFC 2388](https://www.ietf.org/rfc/rfc2388.txt), which defines file transfers for the multipart/form-data protocol. (required)
+     * @param  string $type Type of file: &#x60;&#x60;customer&#x60;&#x60;, &#x60;&#x60;company&#x60;&#x60; or &#x60;&#x60;product&#x60;&#x60; (product only for marketplace) (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadFile'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function uploadFileRequest($expedient_number, $file, $type, string $contentType = self::contentTypes['uploadFile'][0])
+    {
+
+        // verify the required parameter 'expedient_number' is set
+        if ($expedient_number === null || (is_array($expedient_number) && count($expedient_number) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $expedient_number when calling uploadFile'
+            );
+        }
+
+        // verify the required parameter 'file' is set
+        if ($file === null || (is_array($file) && count($file) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $file when calling uploadFile'
+            );
+        }
+
+        // verify the required parameter 'type' is set
+        if ($type === null || (is_array($type) && count($type) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $type when calling uploadFile'
+            );
+        }
+
+
+        $resourcePath = '/case/{expedientNumber}/upload-file';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($expedient_number !== null) {
+            $resourcePath = str_replace(
+                '{' . 'expedientNumber' . '}',
+                ObjectSerializer::toPathValue($expedient_number),
+                $resourcePath
+            );
+        }
+
+        // form params
+        if ($file !== null) {
+            $multipart = true;
+            $formParams['file'] = [];
+            $paramFiles = is_array($file) ? $file : [$file];
+            foreach ($paramFiles as $paramFile) {
+                $formParams['file'][] = \GuzzleHttp\Psr7\Utils::tryFopen(
+                    ObjectSerializer::toFormValue($paramFile),
+                    'rb'
+                );
+            }
+        }
+        // form params
+        if ($type !== null) {
+            $formParams['type'] = ObjectSerializer::toFormValue($type);
+        }
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKey();
+        if ($apiKey !== null) {
+            $headers['x-api-key'] = $apiKey;
         }
 
         $defaultHeaders = [];

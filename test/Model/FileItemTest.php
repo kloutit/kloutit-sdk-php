@@ -1,6 +1,6 @@
 <?php
 /**
- * KloutitLoginResponseTest
+ * FileItemTest
  *
  * PHP version 7.4
  *
@@ -36,15 +36,15 @@ namespace Kloutit\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * KloutitLoginResponseTest Class Doc Comment
+ * FileItemTest Class Doc Comment
  *
  * @category    Class
- * @description KloutitLoginResponse
+ * @description FileItem
  * @package     Kloutit
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class KloutitLoginResponseTest extends TestCase
+class FileItemTest extends TestCase
 {
 
     /**
@@ -76,45 +76,45 @@ class KloutitLoginResponseTest extends TestCase
     }
 
     /**
-     * Test "KloutitLoginResponse"
+     * Test "FileItem"
      */
-    public function testKloutitLoginResponse()
+    public function testFileItem()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "access_token"
+     * Test attribute "name"
      */
-    public function testPropertyAccessToken()
+    public function testPropertyName()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "expires_in"
+     * Test attribute "uploaded_at"
      */
-    public function testPropertyExpiresIn()
+    public function testPropertyUploadedAt()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "expires_at"
+     * Test attribute "size"
      */
-    public function testPropertyExpiresAt()
+    public function testPropertySize()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "client"
+     * Test attribute "mimetype"
      */
-    public function testPropertyClient()
+    public function testPropertyMimetype()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

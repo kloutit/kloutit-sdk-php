@@ -1,6 +1,6 @@
 <?php
 /**
- * KloutitLoginResponse
+ * Amount
  *
  * PHP version 7.4
  *
@@ -37,7 +37,7 @@ use \ArrayAccess;
 use \Kloutit\ObjectSerializer;
 
 /**
- * KloutitLoginResponse Class Doc Comment
+ * Amount Class Doc Comment
  *
  * @category Class
  * @package  Kloutit
@@ -45,7 +45,7 @@ use \Kloutit\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class KloutitLoginResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class Amount implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -54,7 +54,7 @@ class KloutitLoginResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'KloutitLoginResponse';
+    protected static $openAPIModelName = 'Amount';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -62,10 +62,8 @@ class KloutitLoginResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'access_token' => 'string',
-        'expires_in' => 'float',
-        'expires_at' => 'float',
-        'client' => '\Kloutit\Model\KloutitLoginClient'
+        'value' => 'float',
+        'currency' => 'string'
     ];
 
     /**
@@ -76,10 +74,8 @@ class KloutitLoginResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'access_token' => null,
-        'expires_in' => null,
-        'expires_at' => null,
-        'client' => null
+        'value' => null,
+        'currency' => null
     ];
 
     /**
@@ -88,10 +84,8 @@ class KloutitLoginResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'access_token' => false,
-        'expires_in' => false,
-        'expires_at' => false,
-        'client' => false
+        'value' => false,
+        'currency' => false
     ];
 
     /**
@@ -180,10 +174,8 @@ class KloutitLoginResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'access_token' => 'accessToken',
-        'expires_in' => 'expiresIn',
-        'expires_at' => 'expiresAt',
-        'client' => 'client'
+        'value' => 'value',
+        'currency' => 'currency'
     ];
 
     /**
@@ -192,10 +184,8 @@ class KloutitLoginResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'access_token' => 'setAccessToken',
-        'expires_in' => 'setExpiresIn',
-        'expires_at' => 'setExpiresAt',
-        'client' => 'setClient'
+        'value' => 'setValue',
+        'currency' => 'setCurrency'
     ];
 
     /**
@@ -204,10 +194,8 @@ class KloutitLoginResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'access_token' => 'getAccessToken',
-        'expires_in' => 'getExpiresIn',
-        'expires_at' => 'getExpiresAt',
-        'client' => 'getClient'
+        'value' => 'getValue',
+        'currency' => 'getCurrency'
     ];
 
     /**
@@ -267,10 +255,8 @@ class KloutitLoginResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('access_token', $data ?? [], null);
-        $this->setIfExists('expires_in', $data ?? [], null);
-        $this->setIfExists('expires_at', $data ?? [], null);
-        $this->setIfExists('client', $data ?? [], null);
+        $this->setIfExists('value', $data ?? [], null);
+        $this->setIfExists('currency', $data ?? [], null);
     }
 
     /**
@@ -300,17 +286,11 @@ class KloutitLoginResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
-        if ($this->container['access_token'] === null) {
-            $invalidProperties[] = "'access_token' can't be null";
+        if ($this->container['value'] === null) {
+            $invalidProperties[] = "'value' can't be null";
         }
-        if ($this->container['expires_in'] === null) {
-            $invalidProperties[] = "'expires_in' can't be null";
-        }
-        if ($this->container['expires_at'] === null) {
-            $invalidProperties[] = "'expires_at' can't be null";
-        }
-        if ($this->container['client'] === null) {
-            $invalidProperties[] = "'client' can't be null";
+        if ($this->container['currency'] === null) {
+            $invalidProperties[] = "'currency' can't be null";
         }
         return $invalidProperties;
     }
@@ -328,109 +308,55 @@ class KloutitLoginResponse implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets access_token
+     * Gets value
+     *
+     * @return float
+     */
+    public function getValue()
+    {
+        return $this->container['value'];
+    }
+
+    /**
+     * Sets value
+     *
+     * @param float $value value
+     *
+     * @return self
+     */
+    public function setValue($value)
+    {
+        if (is_null($value)) {
+            throw new \InvalidArgumentException('non-nullable value cannot be null');
+        }
+        $this->container['value'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * Gets currency
      *
      * @return string
      */
-    public function getAccessToken()
+    public function getCurrency()
     {
-        return $this->container['access_token'];
+        return $this->container['currency'];
     }
 
     /**
-     * Sets access_token
+     * Sets currency
      *
-     * @param string $access_token Access token.
+     * @param string $currency currency
      *
      * @return self
      */
-    public function setAccessToken($access_token)
+    public function setCurrency($currency)
     {
-        if (is_null($access_token)) {
-            throw new \InvalidArgumentException('non-nullable access_token cannot be null');
+        if (is_null($currency)) {
+            throw new \InvalidArgumentException('non-nullable currency cannot be null');
         }
-        $this->container['access_token'] = $access_token;
-
-        return $this;
-    }
-
-    /**
-     * Gets expires_in
-     *
-     * @return float
-     */
-    public function getExpiresIn()
-    {
-        return $this->container['expires_in'];
-    }
-
-    /**
-     * Sets expires_in
-     *
-     * @param float $expires_in Token validity time in seconds.
-     *
-     * @return self
-     */
-    public function setExpiresIn($expires_in)
-    {
-        if (is_null($expires_in)) {
-            throw new \InvalidArgumentException('non-nullable expires_in cannot be null');
-        }
-        $this->container['expires_in'] = $expires_in;
-
-        return $this;
-    }
-
-    /**
-     * Gets expires_at
-     *
-     * @return float
-     */
-    public function getExpiresAt()
-    {
-        return $this->container['expires_at'];
-    }
-
-    /**
-     * Sets expires_at
-     *
-     * @param float $expires_at Token expiration time.
-     *
-     * @return self
-     */
-    public function setExpiresAt($expires_at)
-    {
-        if (is_null($expires_at)) {
-            throw new \InvalidArgumentException('non-nullable expires_at cannot be null');
-        }
-        $this->container['expires_at'] = $expires_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets client
-     *
-     * @return \Kloutit\Model\KloutitLoginClient
-     */
-    public function getClient()
-    {
-        return $this->container['client'];
-    }
-
-    /**
-     * Sets client
-     *
-     * @param \Kloutit\Model\KloutitLoginClient $client client
-     *
-     * @return self
-     */
-    public function setClient($client)
-    {
-        if (is_null($client)) {
-            throw new \InvalidArgumentException('non-nullable client cannot be null');
-        }
-        $this->container['client'] = $client;
+        $this->container['currency'] = $currency;
 
         return $this;
     }

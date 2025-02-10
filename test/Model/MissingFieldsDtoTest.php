@@ -1,6 +1,6 @@
 <?php
 /**
- * KloutitLoginClientTest
+ * MissingFieldsDtoTest
  *
  * PHP version 7.4
  *
@@ -36,15 +36,15 @@ namespace Kloutit\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * KloutitLoginClientTest Class Doc Comment
+ * MissingFieldsDtoTest Class Doc Comment
  *
  * @category    Class
- * @description KloutitLoginClient
+ * @description MissingFieldsDto
  * @package     Kloutit
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class KloutitLoginClientTest extends TestCase
+class MissingFieldsDtoTest extends TestCase
 {
 
     /**
@@ -76,18 +76,18 @@ class KloutitLoginClientTest extends TestCase
     }
 
     /**
-     * Test "KloutitLoginClient"
+     * Test "MissingFieldsDto"
      */
-    public function testKloutitLoginClient()
+    public function testMissingFieldsDto()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "organization_id"
+     * Test attribute "missing_fields"
      */
-    public function testPropertyOrganizationId()
+    public function testPropertyMissingFields()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

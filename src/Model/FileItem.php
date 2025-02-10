@@ -1,6 +1,6 @@
 <?php
 /**
- * AmountDto
+ * FileItem
  *
  * PHP version 7.4
  *
@@ -37,7 +37,7 @@ use \ArrayAccess;
 use \Kloutit\ObjectSerializer;
 
 /**
- * AmountDto Class Doc Comment
+ * FileItem Class Doc Comment
  *
  * @category Class
  * @package  Kloutit
@@ -45,7 +45,7 @@ use \Kloutit\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class AmountDto implements ModelInterface, ArrayAccess, \JsonSerializable
+class FileItem implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -54,7 +54,7 @@ class AmountDto implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'AmountDto';
+    protected static $openAPIModelName = 'FileItem';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -62,9 +62,10 @@ class AmountDto implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'value' => 'float',
-        'currency' => 'string',
-        'conversion_rate' => 'float'
+        'name' => 'string',
+        'uploaded_at' => '\DateTime',
+        'size' => 'float',
+        'mimetype' => 'string'
     ];
 
     /**
@@ -75,9 +76,10 @@ class AmountDto implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'value' => null,
-        'currency' => null,
-        'conversion_rate' => null
+        'name' => null,
+        'uploaded_at' => 'date-time',
+        'size' => null,
+        'mimetype' => null
     ];
 
     /**
@@ -86,9 +88,10 @@ class AmountDto implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'value' => false,
-        'currency' => false,
-        'conversion_rate' => false
+        'name' => false,
+        'uploaded_at' => false,
+        'size' => false,
+        'mimetype' => false
     ];
 
     /**
@@ -177,9 +180,10 @@ class AmountDto implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'value' => 'value',
-        'currency' => 'currency',
-        'conversion_rate' => 'conversionRate'
+        'name' => 'name',
+        'uploaded_at' => 'uploadedAt',
+        'size' => 'size',
+        'mimetype' => 'mimetype'
     ];
 
     /**
@@ -188,9 +192,10 @@ class AmountDto implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'value' => 'setValue',
-        'currency' => 'setCurrency',
-        'conversion_rate' => 'setConversionRate'
+        'name' => 'setName',
+        'uploaded_at' => 'setUploadedAt',
+        'size' => 'setSize',
+        'mimetype' => 'setMimetype'
     ];
 
     /**
@@ -199,9 +204,10 @@ class AmountDto implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'value' => 'getValue',
-        'currency' => 'getCurrency',
-        'conversion_rate' => 'getConversionRate'
+        'name' => 'getName',
+        'uploaded_at' => 'getUploadedAt',
+        'size' => 'getSize',
+        'mimetype' => 'getMimetype'
     ];
 
     /**
@@ -261,9 +267,10 @@ class AmountDto implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('value', $data ?? [], null);
-        $this->setIfExists('currency', $data ?? [], null);
-        $this->setIfExists('conversion_rate', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('uploaded_at', $data ?? [], null);
+        $this->setIfExists('size', $data ?? [], null);
+        $this->setIfExists('mimetype', $data ?? [], null);
     }
 
     /**
@@ -293,11 +300,17 @@ class AmountDto implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['value'] === null) {
-            $invalidProperties[] = "'value' can't be null";
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
         }
-        if ($this->container['currency'] === null) {
-            $invalidProperties[] = "'currency' can't be null";
+        if ($this->container['uploaded_at'] === null) {
+            $invalidProperties[] = "'uploaded_at' can't be null";
+        }
+        if ($this->container['size'] === null) {
+            $invalidProperties[] = "'size' can't be null";
+        }
+        if ($this->container['mimetype'] === null) {
+            $invalidProperties[] = "'mimetype' can't be null";
         }
         return $invalidProperties;
     }
@@ -315,82 +328,109 @@ class AmountDto implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets value
-     *
-     * @return float
-     */
-    public function getValue()
-    {
-        return $this->container['value'];
-    }
-
-    /**
-     * Sets value
-     *
-     * @param float $value value
-     *
-     * @return self
-     */
-    public function setValue($value)
-    {
-        if (is_null($value)) {
-            throw new \InvalidArgumentException('non-nullable value cannot be null');
-        }
-        $this->container['value'] = $value;
-
-        return $this;
-    }
-
-    /**
-     * Gets currency
+     * Gets name
      *
      * @return string
      */
-    public function getCurrency()
+    public function getName()
     {
-        return $this->container['currency'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets currency
+     * Sets name
      *
-     * @param string $currency currency
+     * @param string $name File name
      *
      * @return self
      */
-    public function setCurrency($currency)
+    public function setName($name)
     {
-        if (is_null($currency)) {
-            throw new \InvalidArgumentException('non-nullable currency cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $this->container['currency'] = $currency;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets conversion_rate
+     * Gets uploaded_at
      *
-     * @return float|null
+     * @return \DateTime
      */
-    public function getConversionRate()
+    public function getUploadedAt()
     {
-        return $this->container['conversion_rate'];
+        return $this->container['uploaded_at'];
     }
 
     /**
-     * Sets conversion_rate
+     * Sets uploaded_at
      *
-     * @param float|null $conversion_rate conversion_rate
+     * @param \DateTime $uploaded_at Uploaded file date
      *
      * @return self
      */
-    public function setConversionRate($conversion_rate)
+    public function setUploadedAt($uploaded_at)
     {
-        if (is_null($conversion_rate)) {
-            throw new \InvalidArgumentException('non-nullable conversion_rate cannot be null');
+        if (is_null($uploaded_at)) {
+            throw new \InvalidArgumentException('non-nullable uploaded_at cannot be null');
         }
-        $this->container['conversion_rate'] = $conversion_rate;
+        $this->container['uploaded_at'] = $uploaded_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets size
+     *
+     * @return float
+     */
+    public function getSize()
+    {
+        return $this->container['size'];
+    }
+
+    /**
+     * Sets size
+     *
+     * @param float $size File size in bytes
+     *
+     * @return self
+     */
+    public function setSize($size)
+    {
+        if (is_null($size)) {
+            throw new \InvalidArgumentException('non-nullable size cannot be null');
+        }
+        $this->container['size'] = $size;
+
+        return $this;
+    }
+
+    /**
+     * Gets mimetype
+     *
+     * @return string
+     */
+    public function getMimetype()
+    {
+        return $this->container['mimetype'];
+    }
+
+    /**
+     * Sets mimetype
+     *
+     * @param string $mimetype File mimetype
+     *
+     * @return self
+     */
+    public function setMimetype($mimetype)
+    {
+        if (is_null($mimetype)) {
+            throw new \InvalidArgumentException('non-nullable mimetype cannot be null');
+        }
+        $this->container['mimetype'] = $mimetype;
 
         return $this;
     }

@@ -1,23 +1,18 @@
-# # KloutitCaseResponse
+# # UpdateCaseParams
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** |  | [optional] [readonly]
-**active** | **bool** |  | [optional] [readonly] [default to true]
-**created_at** | **\DateTime** |  | [optional] [readonly]
-**updated_at** | **\DateTime** |  | [optional] [readonly]
-**is_deleted** | **bool** |  | [optional] [readonly] [default to false]
-**deleted_at** | **\DateTime** |  | [optional] [readonly]
-**purchase_date** | **\DateTime** | Date when the customer made the purchase. |
+**filial_identifier** | **string** | Filial identifier related to the case. This should be the NIF, VAT or other unique identifier that is configured for your organization in Kloutit. If you do not have filials in your organization, leave this field empty. | [optional]
+**purchase_date** | **\DateTime** | Date when the customer made the purchase. | [optional]
 **service** | **string** | Service that the customer bought. | [optional]
 **product** | **string** | Product that the customer bought. | [optional]
-**is_charge_refundable** | **bool** | Flag that indicates if the charge made is refundable regarding your company terms and conditions. |
-**customer_name** | **string** | Customer name. |
-**customer_email** | **string** | Customer email |
+**is_charge_refundable** | **bool** | Flag that indicates if the charge made is refundable regarding your company terms and conditions. | [optional]
+**customer_name** | **string** | Customer name. | [optional]
+**customer_email** | **string** | Customer email | [optional]
 **customer_phone** | **string** | Customer phone. | [optional]
-**service_date** | **\DateTime** | Date when the serve was provided or will be provided. | [optional]
+**service_date** | **\DateTime** | Date when the service was provided or will be provided. | [optional]
 **service_was_provided** | **bool** | Flag that indicates if the service was provided or not. | [optional]
 **checkin_date** | **\DateTime** | Check in date. | [optional]
 **checkout_date** | **\DateTime** | Check out date. | [optional]
@@ -29,6 +24,8 @@ Name | Type | Description | Notes
 **arrival_date** | **\DateTime** | Arrival date. | [optional]
 **departure_airport** | **string** | Departure airport. | [optional]
 **arrival_airport** | **string** | Arrival airport. | [optional]
+**departure_city** | **string** | Departure city. | [optional]
+**arrival_city** | **string** | Arrival city. | [optional]
 **shipping_city** | **string** | Shipping city. | [optional]
 **shipping_province** | **string** | Shipping province. | [optional]
 **shipping_postal_code** | **string** | Shipping postal code. | [optional]
@@ -38,23 +35,23 @@ Name | Type | Description | Notes
 **delivery_confirmation** | **bool** | Flag that indicates if the customer received the product. | [optional]
 **commitment_start_date** | **\DateTime** | Start date of the commitment that the customer has with the company. | [optional]
 **commitment_end_date** | **\DateTime** | End date of the commitment that the customer has with the company. | [optional]
-**expedient_number** | **string** | Chargeback expedient number. |
-**notification_date** | **\DateTime** | Chargeback notification date, when the merchant receives the chargeback notification. |
-**dispute_amount** | [**\Kloutit\Model\AmountDto**](AmountDto.md) | Amount that the customer claims. |
-**chargeback_reason** | **string** | Reason why the customer is requesting the chargeback. |
-**deadline** | **\DateTime** | Deadline date to resolve this chargeback. | [optional]
+**is_cancelled** | **bool** | Flag that indicates if the subscription is cancelled or active. | [optional]
+**product_description** | **string** | Product description. | [optional]
 **contact_date** | **\DateTime** | Date when the customer contacted to the merchant. | [optional]
-**communications** | [**\Kloutit\Model\CommunicationItemDto[]**](CommunicationItemDto.md) | Array of all the emails that the customer has sent regarding this dispute. | [optional]
+**communications** | [**\Kloutit\Model\CommunicationItem[]**](CommunicationItem.md) | Array of all the emails that the customer has sent regarding this dispute. The structure of each item contains: **sender**: *customer* or *company*, **date**, **content**: string containing the message | [optional]
 **additional_info** | **string** | Additional info related to the chargeback. | [optional]
-**pan_number** | **string** | Holder credit card number. | [optional]
-**transaction_id** | **string** | Transaction id. | [optional]
-**transaction_date** | **\DateTime** | Transaction date. |
-**purchase_amount** | [**\Kloutit\Model\AmountDto**](AmountDto.md) | Purchase amount. |
+**last4_digits** | **string** | Last 4 digits of the customer&#39;s credit card number. | [optional]
+**transaction_date** | **\DateTime** | Transaction date. | [optional]
+**purchase_amount** | [**\Kloutit\Model\Amount**](Amount.md) | Purchase amount. | [optional]
 **bank_name** | **string** | Customer bank name. | [optional]
 **card_brand** | **string** | Card brand that the customer used to make the payment. | [optional]
-**is3_ds_purchase** | **bool** | Flag that indicates if the purchase has been made with 3DS. |
-**organization_type** | **string** | Sector of the case. It must be one of the sectors of the organization, for instance: EDUCATION, SOFTWARE, TRAVEL_HOTEL,... |
-**organization** | [**\Kloutit\Model\OrganizationDto**](OrganizationDto.md) |  | [optional] [readonly]
-**dispute** | **object** |  | [optional] [readonly]
+**is3_ds_purchase** | **bool** | Flag that indicates if the purchase has been made with 3DS. | [optional]
+**sector** | [**\Kloutit\Model\CaseSector**](CaseSector.md) |  | [optional]
+**seller_contact_date** | **\DateTime** | Date when the customer contacted to the seller. | [optional]
+**seller_additional_info** | **string** | Seller additional infromation. | [optional]
+**seller_name** | **string** | Seller name. | [optional]
+**seller_phone** | **string** | Seller phone number. | [optional]
+**seller_email** | **string** | Seller email. | [optional]
+**terms_url** | **string** | Terms and Conditions URL. Only applies for sectors: TRAVEL_AIRLINE, TRAVEL_HOTEL and LEISURE. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

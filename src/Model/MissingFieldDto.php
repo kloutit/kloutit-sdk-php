@@ -1,6 +1,6 @@
 <?php
 /**
- * KloutitLoginClient
+ * MissingFieldDto
  *
  * PHP version 7.4
  *
@@ -37,7 +37,7 @@ use \ArrayAccess;
 use \Kloutit\ObjectSerializer;
 
 /**
- * KloutitLoginClient Class Doc Comment
+ * MissingFieldDto Class Doc Comment
  *
  * @category Class
  * @package  Kloutit
@@ -45,7 +45,7 @@ use \Kloutit\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class KloutitLoginClient implements ModelInterface, ArrayAccess, \JsonSerializable
+class MissingFieldDto implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -54,7 +54,7 @@ class KloutitLoginClient implements ModelInterface, ArrayAccess, \JsonSerializab
       *
       * @var string
       */
-    protected static $openAPIModelName = 'KloutitLoginClient';
+    protected static $openAPIModelName = 'MissingFieldDto';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -62,7 +62,9 @@ class KloutitLoginClient implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $openAPITypes = [
-        'organization_id' => 'string'
+        'field' => 'string',
+        'type' => 'string',
+        'required' => 'bool'
     ];
 
     /**
@@ -73,7 +75,9 @@ class KloutitLoginClient implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'organization_id' => null
+        'field' => null,
+        'type' => null,
+        'required' => null
     ];
 
     /**
@@ -82,7 +86,9 @@ class KloutitLoginClient implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'organization_id' => false
+        'field' => false,
+        'type' => false,
+        'required' => false
     ];
 
     /**
@@ -171,7 +177,9 @@ class KloutitLoginClient implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'organization_id' => 'organizationId'
+        'field' => 'field',
+        'type' => 'type',
+        'required' => 'required'
     ];
 
     /**
@@ -180,7 +188,9 @@ class KloutitLoginClient implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'organization_id' => 'setOrganizationId'
+        'field' => 'setField',
+        'type' => 'setType',
+        'required' => 'setRequired'
     ];
 
     /**
@@ -189,7 +199,9 @@ class KloutitLoginClient implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'organization_id' => 'getOrganizationId'
+        'field' => 'getField',
+        'type' => 'getType',
+        'required' => 'getRequired'
     ];
 
     /**
@@ -249,7 +261,9 @@ class KloutitLoginClient implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('organization_id', $data ?? [], null);
+        $this->setIfExists('field', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('required', $data ?? [], null);
     }
 
     /**
@@ -279,8 +293,14 @@ class KloutitLoginClient implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $invalidProperties = [];
 
-        if ($this->container['organization_id'] === null) {
-            $invalidProperties[] = "'organization_id' can't be null";
+        if ($this->container['field'] === null) {
+            $invalidProperties[] = "'field' can't be null";
+        }
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
+        }
+        if ($this->container['required'] === null) {
+            $invalidProperties[] = "'required' can't be null";
         }
         return $invalidProperties;
     }
@@ -298,28 +318,82 @@ class KloutitLoginClient implements ModelInterface, ArrayAccess, \JsonSerializab
 
 
     /**
-     * Gets organization_id
+     * Gets field
      *
      * @return string
      */
-    public function getOrganizationId()
+    public function getField()
     {
-        return $this->container['organization_id'];
+        return $this->container['field'];
     }
 
     /**
-     * Sets organization_id
+     * Sets field
      *
-     * @param string $organization_id Your organization id.
+     * @param string $field field
      *
      * @return self
      */
-    public function setOrganizationId($organization_id)
+    public function setField($field)
     {
-        if (is_null($organization_id)) {
-            throw new \InvalidArgumentException('non-nullable organization_id cannot be null');
+        if (is_null($field)) {
+            throw new \InvalidArgumentException('non-nullable field cannot be null');
         }
-        $this->container['organization_id'] = $organization_id;
+        $this->container['field'] = $field;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string $type type
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        }
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets required
+     *
+     * @return bool
+     */
+    public function getRequired()
+    {
+        return $this->container['required'];
+    }
+
+    /**
+     * Sets required
+     *
+     * @param bool $required required
+     *
+     * @return self
+     */
+    public function setRequired($required)
+    {
+        if (is_null($required)) {
+            throw new \InvalidArgumentException('non-nullable required cannot be null');
+        }
+        $this->container['required'] = $required;
 
         return $this;
     }

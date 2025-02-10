@@ -10,7 +10,7 @@ All URIs are relative to http://localhost, except if the operation defines anoth
 ## `healthControllerHealth()`
 
 ```php
-healthControllerHealth()
+healthControllerHealth(): string
 ```
 
 Health check
@@ -30,7 +30,8 @@ $apiInstance = new Kloutit\Api\HealthApi(
 );
 
 try {
-    $apiInstance->healthControllerHealth();
+    $result = $apiInstance->healthControllerHealth();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling HealthApi->healthControllerHealth: ', $e->getMessage(), PHP_EOL;
 }
@@ -42,7 +43,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -51,7 +52,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

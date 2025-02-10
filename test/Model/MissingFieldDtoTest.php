@@ -1,6 +1,6 @@
 <?php
 /**
- * AmountDtoTest
+ * MissingFieldDtoTest
  *
  * PHP version 7.4
  *
@@ -36,15 +36,15 @@ namespace Kloutit\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * AmountDtoTest Class Doc Comment
+ * MissingFieldDtoTest Class Doc Comment
  *
  * @category    Class
- * @description AmountDto
+ * @description MissingFieldDto
  * @package     Kloutit
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class AmountDtoTest extends TestCase
+class MissingFieldDtoTest extends TestCase
 {
 
     /**
@@ -76,36 +76,36 @@ class AmountDtoTest extends TestCase
     }
 
     /**
-     * Test "AmountDto"
+     * Test "MissingFieldDto"
      */
-    public function testAmountDto()
+    public function testMissingFieldDto()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "value"
+     * Test attribute "field"
      */
-    public function testPropertyValue()
+    public function testPropertyField()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "currency"
+     * Test attribute "type"
      */
-    public function testPropertyCurrency()
+    public function testPropertyType()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "conversion_rate"
+     * Test attribute "required"
      */
-    public function testPropertyConversionRate()
+    public function testPropertyRequired()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

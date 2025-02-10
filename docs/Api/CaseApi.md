@@ -1,13 +1,13 @@
-# Kloutit\KloutitCaseApi
+# Kloutit\CaseApi
 
-All URIs are relative to http://localhost, except if the operation defines another base path.
+All URIs are relative to https://clients-api.kloutit.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**checkCase()**](KloutitCaseApi.md#checkCase) | **POST** /case/{expedientNumber}/check-case | Check case information |
-| [**submitCompletedCase()**](KloutitCaseApi.md#submitCompletedCase) | **POST** /case/{expedientNumber}/submit-completed-case | Submit completed case |
-| [**updateCase()**](KloutitCaseApi.md#updateCase) | **POST** /case/{expedientNumber}/update-case | Update case |
-| [**uploadFile()**](KloutitCaseApi.md#uploadFile) | **POST** /case/{expedientNumber}/upload-file | Upload file |
+| [**checkCase()**](CaseApi.md#checkCase) | **POST** /case/{expedientNumber}/check-case | Check case information |
+| [**submitCompletedCase()**](CaseApi.md#submitCompletedCase) | **POST** /case/{expedientNumber}/submit-completed-case | Submit completed case |
+| [**updateCase()**](CaseApi.md#updateCase) | **POST** /case/{expedientNumber}/update-case | Update case |
+| [**uploadFile()**](CaseApi.md#uploadFile) | **POST** /case/{expedientNumber}/upload-file | Upload file |
 
 
 ## `checkCase()`
@@ -33,7 +33,7 @@ $config = Kloutit\Configuration::getDefaultConfiguration()->setApiKey('x-api-key
 // $config = Kloutit\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
 
 
-$apiInstance = new Kloutit\Api\KloutitCaseApi(
+$apiInstance = new Kloutit\Api\CaseApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -44,7 +44,7 @@ $expedient_number = 'expedient_number_example'; // string | Case expedient numbe
 try {
     $apiInstance->checkCase($expedient_number);
 } catch (Exception $e) {
-    echo 'Exception when calling KloutitCaseApi->checkCase: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CaseApi->checkCase: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -94,7 +94,7 @@ $config = Kloutit\Configuration::getDefaultConfiguration()->setApiKey('x-api-key
 // $config = Kloutit\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
 
 
-$apiInstance = new Kloutit\Api\KloutitCaseApi(
+$apiInstance = new Kloutit\Api\CaseApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -105,7 +105,7 @@ $expedient_number = 'expedient_number_example'; // string | Case expedient numbe
 try {
     $apiInstance->submitCompletedCase($expedient_number);
 } catch (Exception $e) {
-    echo 'Exception when calling KloutitCaseApi->submitCompletedCase: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CaseApi->submitCompletedCase: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -155,7 +155,7 @@ $config = Kloutit\Configuration::getDefaultConfiguration()->setApiKey('x-api-key
 // $config = Kloutit\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
 
 
-$apiInstance = new Kloutit\Api\KloutitCaseApi(
+$apiInstance = new Kloutit\Api\CaseApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -168,7 +168,7 @@ try {
     $result = $apiInstance->updateCase($expedient_number, $update_case_params);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling KloutitCaseApi->updateCase: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CaseApi->updateCase: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -219,7 +219,7 @@ $config = Kloutit\Configuration::getDefaultConfiguration()->setApiKey('x-api-key
 // $config = Kloutit\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
 
 
-$apiInstance = new Kloutit\Api\KloutitCaseApi(
+$apiInstance = new Kloutit\Api\CaseApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -233,7 +233,7 @@ try {
     $result = $apiInstance->uploadFile($expedient_number, $file, $type);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling KloutitCaseApi->uploadFile: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CaseApi->uploadFile: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

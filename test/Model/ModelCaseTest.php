@@ -1,6 +1,6 @@
 <?php
 /**
- * KloutitCaseResponseTest
+ * ModelCaseTest
  *
  * PHP version 7.4
  *
@@ -36,15 +36,15 @@ namespace Kloutit\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * KloutitCaseResponseTest Class Doc Comment
+ * ModelCaseTest Class Doc Comment
  *
  * @category    Class
- * @description KloutitCaseResponse
+ * @description ModelCase
  * @package     Kloutit
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class KloutitCaseResponseTest extends TestCase
+class ModelCaseTest extends TestCase
 {
 
     /**
@@ -76,9 +76,9 @@ class KloutitCaseResponseTest extends TestCase
     }
 
     /**
-     * Test "KloutitCaseResponse"
+     * Test "ModelCase"
      */
-    public function testKloutitCaseResponse()
+    public function testModelCase()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -133,6 +133,33 @@ class KloutitCaseResponseTest extends TestCase
      * Test attribute "deleted_at"
      */
     public function testPropertyDeletedAt()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "status"
+     */
+    public function testPropertyStatus()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "filial_identifier"
+     */
+    public function testPropertyFilialIdentifier()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "payment_processor"
+     */
+    public function testPropertyPaymentProcessor()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -310,6 +337,24 @@ class KloutitCaseResponseTest extends TestCase
     }
 
     /**
+     * Test attribute "departure_city"
+     */
+    public function testPropertyDepartureCity()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "arrival_city"
+     */
+    public function testPropertyArrivalCity()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "shipping_city"
      */
     public function testPropertyShippingCity()
@@ -391,6 +436,24 @@ class KloutitCaseResponseTest extends TestCase
     }
 
     /**
+     * Test attribute "is_cancelled"
+     */
+    public function testPropertyIsCancelled()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "product_description"
+     */
+    public function testPropertyProductDescription()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "expedient_number"
      */
     public function testPropertyExpedientNumber()
@@ -463,9 +526,9 @@ class KloutitCaseResponseTest extends TestCase
     }
 
     /**
-     * Test attribute "pan_number"
+     * Test attribute "last4_digits"
      */
-    public function testPropertyPanNumber()
+    public function testPropertyLast4Digits()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -526,27 +589,54 @@ class KloutitCaseResponseTest extends TestCase
     }
 
     /**
-     * Test attribute "organization_type"
+     * Test attribute "sector"
      */
-    public function testPropertyOrganizationType()
+    public function testPropertySector()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "organization"
+     * Test attribute "seller_contact_date"
      */
-    public function testPropertyOrganization()
+    public function testPropertySellerContactDate()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "dispute"
+     * Test attribute "seller_additional_info"
      */
-    public function testPropertyDispute()
+    public function testPropertySellerAdditionalInfo()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "seller_name"
+     */
+    public function testPropertySellerName()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "seller_phone"
+     */
+    public function testPropertySellerPhone()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "seller_email"
+     */
+    public function testPropertySellerEmail()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

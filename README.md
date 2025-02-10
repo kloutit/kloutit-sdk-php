@@ -2,7 +2,7 @@
 
 Kloutit is an AI-powered B2B SaaS that enables online merchants to effectively and efficiently defend and prevent chargebacks.
 
-This SDK allows your organization to integrate with Kloutit, so your cases could be automatically created into our system to take profit of all the following profits.
+This SDK allows your organization to integrate with Kloutit, so your cases could be automatically updated into our system to take profit of all the following profits.
 
 ## Installation
 
@@ -14,92 +14,50 @@ composer require kloutit/kloutit-sdk-php
 
 ## Prerequisites
 
-To be able to use any Kloutit SDK function, your organization must be registered into our system and SDK client keys for the organization must be created. You can register your organization by following a few simple steps from https://app.kloutit.com.
+To be able to use any Kloutit SDK function, your organization must be registered into our system and SDK client key for the organization must be created. You can register your organization by following a few simple steps from https://app.kloutit.com.
 
-Once your organization is successfully registered, you will be able to configure the SDK connection from the menu `My organization > Kloutit SDK`. You will need to create new client credentials.
+Once your organization is successfully registered, you will need to create new client key from the menu `My organization > Developers`.
 
 ## Usage
 
-To use the Kloutit SDK client, you will need to instantiate the KloutitLoginApi to obtain a valid accessToken (expires at 30m, then you can generate a new one). With this accessToken you will be able to instantiate the rest of the available APIs and make your actions.
+To use the Kloutit SDK client, you will need to instantiate the KloutitConfiguration using the client key and make your actions.
 
-### Sample code Login
+### Sample update call code
+
+Once you have the apiKey, you can use it to instantiate the KloutitCaseApi and make calls.
 
 ```php
 <?php
-// Require composer autoloader
-require 'vendor/autoload.php';
 
 use Kloutit\Configuration as KloutitConfiguration;
-use Kloutit\Api\KloutitLoginApi;
-use Kloutit\Model\KloutitLoginBody;
+use Kloutit\Api\KloutitCaseApi
+use Kloutit\Model\UpdateCaseParams
+use Kloutit\Model\ChargebackReason;
+use Kloutit\Model\CaseSector;
+use Kloutit\Currencies;
 
-$clientId = '22311cca-9951-42dd-bc9b-bd0574335b55';
-$clientSecret = '6#.n3dcm-x4hc3Y0SrA/UR?DzggfM;';
-$organizationId = '660055bca25e9c2da9b87944';
+require_once('sdk/vendor/autoload.php');
+
+$apiKey = '99e2f0946cd541b598bdbd61148c850d_6TA8KHQWPzNfMqBBMDP6zEgz6cemNYFirRo7XCwRwnhb6H7KoMkUUNxzfnBS';
+$expedientNumber = 'dp_1Qk6O7KkhWp1jIM0kkAqFMkD';
 
 // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
 // This is optional, `GuzzleHttp\Client` will be used as default.
 $client = new GuzzleHttp\Client();
 
-// Configure Login http basic authorization
-$loginConfig = KloutitConfiguration::getDefaultConfiguration()
-              ->setUsername($clientId)
-              ->setPassword($clientSecret);
+// Configure api key auth
+$config = KloutitConfiguration::getDefaultConfiguration()
+    ->setApiKey($apiKey);
 
-$kloutitLogin = new KloutitLoginApi(
-    $client,
-    $loginConfig
-);
-$kloutitLoginBody = new KloutitLoginBody([
-    'grant_type' => 'client_credentials'
-]);
-
-$accessToken;
-$expiresIn;
-$expiresAt;
-
-// Login
-try {
-    echo "Getting Kloutit access token for organization $organizationId\n";
-    $loginResponse = $kloutitLogin->login($organizationId, $kloutitLoginBody);
-
-    $accessToken = $loginResponse->getAccessToken();
-    $expiresAt = $loginResponse->getExpiresAt();
-    $expiresIn = $loginResponse->getExpiresIn();
-
-    echo "Access token successfully retrieved!\n";
-} catch (Exception $e) {
-    echo "Error trying to login to Kloutit SDK.\n";
-    throw new Exception($e->getMessage());
-}
-```
-
-### Sample code other calls
-
-Once you have the accessToken with the Login call, you can use it to make other calls, for instance, to create a case.
-
-```php
-<?php
-// Require composer autoloader
-require 'vendor/autoload.php';
-
-use Kloutit\Configuration as KloutitConfiguration;
-use Kloutit\Api\KloutitCaseApi;
-use Kloutit\Model\KloutitCaseBody;
-use Kloutit\KloutitChargebackReason;
-use Kloutit\KloutitOrganizationType;
-use Kloutit\Currencies;
-
-// Configure Bearer (JWT) authorization: bearer
-$caseConfig = KloutitConfiguration::getDefaultConfiguration()->setAccessToken($accessToken);
-
+// Create KloutitCaseApi instance
 $kloutitCase = new KloutitCaseApi(
     $client,
-    $caseConfig
+    $config,
 );
-$kloutitCaseBody = new KloutitCaseBody([
-    'organization_id' => $organizationId,
-    'organization_type' => KloutitOrganizationType::TECHNOLOGY,
+
+// Update case
+$kloutitCaseBody = new UpdateCaseParams([
+    'organization_type' => CaseSector::TECHNOLOGY,
     'expedient_number' => 'EXPPHP0001',
     'notification_date' => '2024-09-22T11:31:22.347Z',
     'deadline' => '2027-09-22T11:31:22.347Z',
@@ -107,7 +65,7 @@ $kloutitCaseBody = new KloutitCaseBody([
         'currency' => Currencies::EUR,
         'value' => 10,
     ],
-    'chargeback_reason' => KloutitChargebackReason::PRODUCT_SERVICE_NOT_RECEIVED,
+    'chargeback_reason' => ChargebackReason::PRODUCT_SERVICE_NOT_RECEIVED,
     'transaction_date' => '2024-09-22T11:31:22.347Z',
     'pan_number' => 'PAN000001',
     'transaction_id' => 'TR0000001',
@@ -138,16 +96,17 @@ $kloutitCaseBody = new KloutitCaseBody([
 ]);
 
 try {
-    $kloutitCase->createCase($kloutitCaseBody);
-    echo "Case successfully created into Kloutit!\n";
+    $kloutitCase->updateCase($expedientNumber,$kloutitCaseBody);
+    echo "Case successfully updated into Kloutit!\n";
 } catch (Exception $e) {
-    echo "Error trying to create case into Kloutit.\n";
+    echo "Error trying to update case into Kloutit.\n";
     throw new Exception($e->getMessage());
 }
 ```
 
 This example is made for TECHNOLOGY sector. You can find the needed body for each sector here:
 
+- [Digital product](tipologies/DIGITAL_PRODUCT.md)
 - [Education](tipologies/EDUCATION.md)
 - [Fashion](tipologies/FASHION.md)
 - [Food](tipologies/FOOD.md)
@@ -155,11 +114,14 @@ This example is made for TECHNOLOGY sector. You can find the needed body for eac
 - [Health & beauty](tipologies/HEALTH_BEAUTY.md)
 - [Home](tipologies/HOME.md)
 - [Leisure](tipologies/LEISURE.md)
+- [Marketplace](tipologies/MARKETPLACE.md)
 - [Phone](tipologies/PHONE.md)
 - [Software](tipologies/SOFTWARE.md)
 - [Sport](tipologies/SPORT.md)
+- [Subscription](tipologies/SUBSCRIPTION.md)
 - [Supply](tipologies/SUPPLY.md)
 - [Technology](tipologies/TECHNOLOGY.md)
+- [Transport](tipologies/TRANSPORT.md)
 - [Travel Airline](tipologies/TRAVEL_AIRLINE.md)
 - [Travel Hotel](tipologies/TRAVEL_HOTEL.md)
 

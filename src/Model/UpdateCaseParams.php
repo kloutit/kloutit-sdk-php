@@ -1,6 +1,6 @@
 <?php
 /**
- * KloutitCaseBody
+ * UpdateCaseParams
  *
  * PHP version 7.4
  *
@@ -37,7 +37,7 @@ use \ArrayAccess;
 use \Kloutit\ObjectSerializer;
 
 /**
- * KloutitCaseBody Class Doc Comment
+ * UpdateCaseParams Class Doc Comment
  *
  * @category Class
  * @package  Kloutit
@@ -45,7 +45,7 @@ use \Kloutit\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
+class UpdateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -54,7 +54,7 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'KloutitCaseBody';
+    protected static $openAPIModelName = 'UpdateCaseParams';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -62,12 +62,7 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'active' => 'bool',
-        'created_at' => '\DateTime',
-        'updated_at' => '\DateTime',
-        'is_deleted' => 'bool',
-        'deleted_at' => '\DateTime',
+        'filial_identifier' => 'string',
         'purchase_date' => '\DateTime',
         'service' => 'string',
         'product' => 'string',
@@ -87,6 +82,8 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
         'arrival_date' => '\DateTime',
         'departure_airport' => 'string',
         'arrival_airport' => 'string',
+        'departure_city' => 'string',
+        'arrival_city' => 'string',
         'shipping_city' => 'string',
         'shipping_province' => 'string',
         'shipping_postal_code' => 'string',
@@ -96,23 +93,24 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
         'delivery_confirmation' => 'bool',
         'commitment_start_date' => '\DateTime',
         'commitment_end_date' => '\DateTime',
-        'expedient_number' => 'string',
-        'notification_date' => '\DateTime',
-        'dispute_amount' => '\Kloutit\Model\AmountDto',
-        'chargeback_reason' => 'string',
-        'deadline' => '\DateTime',
+        'is_cancelled' => 'bool',
+        'product_description' => 'string',
         'contact_date' => '\DateTime',
-        'communications' => '\Kloutit\Model\CommunicationItemDto[]',
+        'communications' => '\Kloutit\Model\CommunicationItem[]',
         'additional_info' => 'string',
-        'pan_number' => 'string',
-        'transaction_id' => 'string',
+        'last4_digits' => 'string',
         'transaction_date' => '\DateTime',
-        'purchase_amount' => '\Kloutit\Model\AmountDto',
+        'purchase_amount' => '\Kloutit\Model\Amount',
         'bank_name' => 'string',
         'card_brand' => 'string',
         'is3_ds_purchase' => 'bool',
-        'organization_type' => 'string',
-        'organization_id' => 'string'
+        'sector' => '\Kloutit\Model\CaseSector',
+        'seller_contact_date' => '\DateTime',
+        'seller_additional_info' => 'string',
+        'seller_name' => 'string',
+        'seller_phone' => 'string',
+        'seller_email' => 'string',
+        'terms_url' => 'string'
     ];
 
     /**
@@ -123,12 +121,7 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'active' => null,
-        'created_at' => 'date-time',
-        'updated_at' => 'date-time',
-        'is_deleted' => null,
-        'deleted_at' => 'date-time',
+        'filial_identifier' => null,
         'purchase_date' => 'date-time',
         'service' => null,
         'product' => null,
@@ -148,6 +141,8 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
         'arrival_date' => 'date-time',
         'departure_airport' => null,
         'arrival_airport' => null,
+        'departure_city' => null,
+        'arrival_city' => null,
         'shipping_city' => null,
         'shipping_province' => null,
         'shipping_postal_code' => null,
@@ -157,23 +152,24 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
         'delivery_confirmation' => null,
         'commitment_start_date' => 'date-time',
         'commitment_end_date' => 'date-time',
-        'expedient_number' => null,
-        'notification_date' => 'date-time',
-        'dispute_amount' => null,
-        'chargeback_reason' => null,
-        'deadline' => 'date-time',
+        'is_cancelled' => null,
+        'product_description' => null,
         'contact_date' => 'date-time',
         'communications' => null,
         'additional_info' => null,
-        'pan_number' => null,
-        'transaction_id' => null,
+        'last4_digits' => null,
         'transaction_date' => 'date-time',
         'purchase_amount' => null,
         'bank_name' => null,
         'card_brand' => null,
         'is3_ds_purchase' => null,
-        'organization_type' => null,
-        'organization_id' => null
+        'sector' => null,
+        'seller_contact_date' => 'date-time',
+        'seller_additional_info' => null,
+        'seller_name' => null,
+        'seller_phone' => null,
+        'seller_email' => null,
+        'terms_url' => null
     ];
 
     /**
@@ -182,12 +178,7 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
-        'active' => false,
-        'created_at' => false,
-        'updated_at' => false,
-        'is_deleted' => false,
-        'deleted_at' => false,
+        'filial_identifier' => false,
         'purchase_date' => false,
         'service' => false,
         'product' => false,
@@ -207,6 +198,8 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
         'arrival_date' => false,
         'departure_airport' => false,
         'arrival_airport' => false,
+        'departure_city' => false,
+        'arrival_city' => false,
         'shipping_city' => false,
         'shipping_province' => false,
         'shipping_postal_code' => false,
@@ -216,23 +209,24 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
         'delivery_confirmation' => false,
         'commitment_start_date' => false,
         'commitment_end_date' => false,
-        'expedient_number' => false,
-        'notification_date' => false,
-        'dispute_amount' => false,
-        'chargeback_reason' => false,
-        'deadline' => false,
+        'is_cancelled' => false,
+        'product_description' => false,
         'contact_date' => false,
         'communications' => false,
         'additional_info' => false,
-        'pan_number' => false,
-        'transaction_id' => false,
+        'last4_digits' => false,
         'transaction_date' => false,
         'purchase_amount' => false,
         'bank_name' => false,
         'card_brand' => false,
         'is3_ds_purchase' => false,
-        'organization_type' => false,
-        'organization_id' => false
+        'sector' => false,
+        'seller_contact_date' => false,
+        'seller_additional_info' => false,
+        'seller_name' => false,
+        'seller_phone' => false,
+        'seller_email' => false,
+        'terms_url' => false
     ];
 
     /**
@@ -321,12 +315,7 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'active' => 'active',
-        'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt',
-        'is_deleted' => 'isDeleted',
-        'deleted_at' => 'deletedAt',
+        'filial_identifier' => 'filialIdentifier',
         'purchase_date' => 'purchaseDate',
         'service' => 'service',
         'product' => 'product',
@@ -346,6 +335,8 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
         'arrival_date' => 'arrivalDate',
         'departure_airport' => 'departureAirport',
         'arrival_airport' => 'arrivalAirport',
+        'departure_city' => 'departureCity',
+        'arrival_city' => 'arrivalCity',
         'shipping_city' => 'shippingCity',
         'shipping_province' => 'shippingProvince',
         'shipping_postal_code' => 'shippingPostalCode',
@@ -355,23 +346,24 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
         'delivery_confirmation' => 'deliveryConfirmation',
         'commitment_start_date' => 'commitmentStartDate',
         'commitment_end_date' => 'commitmentEndDate',
-        'expedient_number' => 'expedientNumber',
-        'notification_date' => 'notificationDate',
-        'dispute_amount' => 'disputeAmount',
-        'chargeback_reason' => 'chargebackReason',
-        'deadline' => 'deadline',
+        'is_cancelled' => 'isCancelled',
+        'product_description' => 'productDescription',
         'contact_date' => 'contactDate',
         'communications' => 'communications',
         'additional_info' => 'additionalInfo',
-        'pan_number' => 'panNumber',
-        'transaction_id' => 'transactionId',
+        'last4_digits' => 'last4Digits',
         'transaction_date' => 'transactionDate',
         'purchase_amount' => 'purchaseAmount',
         'bank_name' => 'bankName',
         'card_brand' => 'cardBrand',
         'is3_ds_purchase' => 'is3DSPurchase',
-        'organization_type' => 'organizationType',
-        'organization_id' => 'organizationId'
+        'sector' => 'sector',
+        'seller_contact_date' => 'sellerContactDate',
+        'seller_additional_info' => 'sellerAdditionalInfo',
+        'seller_name' => 'sellerName',
+        'seller_phone' => 'sellerPhone',
+        'seller_email' => 'sellerEmail',
+        'terms_url' => 'termsUrl'
     ];
 
     /**
@@ -380,12 +372,7 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'active' => 'setActive',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt',
-        'is_deleted' => 'setIsDeleted',
-        'deleted_at' => 'setDeletedAt',
+        'filial_identifier' => 'setFilialIdentifier',
         'purchase_date' => 'setPurchaseDate',
         'service' => 'setService',
         'product' => 'setProduct',
@@ -405,6 +392,8 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
         'arrival_date' => 'setArrivalDate',
         'departure_airport' => 'setDepartureAirport',
         'arrival_airport' => 'setArrivalAirport',
+        'departure_city' => 'setDepartureCity',
+        'arrival_city' => 'setArrivalCity',
         'shipping_city' => 'setShippingCity',
         'shipping_province' => 'setShippingProvince',
         'shipping_postal_code' => 'setShippingPostalCode',
@@ -414,23 +403,24 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
         'delivery_confirmation' => 'setDeliveryConfirmation',
         'commitment_start_date' => 'setCommitmentStartDate',
         'commitment_end_date' => 'setCommitmentEndDate',
-        'expedient_number' => 'setExpedientNumber',
-        'notification_date' => 'setNotificationDate',
-        'dispute_amount' => 'setDisputeAmount',
-        'chargeback_reason' => 'setChargebackReason',
-        'deadline' => 'setDeadline',
+        'is_cancelled' => 'setIsCancelled',
+        'product_description' => 'setProductDescription',
         'contact_date' => 'setContactDate',
         'communications' => 'setCommunications',
         'additional_info' => 'setAdditionalInfo',
-        'pan_number' => 'setPanNumber',
-        'transaction_id' => 'setTransactionId',
+        'last4_digits' => 'setLast4Digits',
         'transaction_date' => 'setTransactionDate',
         'purchase_amount' => 'setPurchaseAmount',
         'bank_name' => 'setBankName',
         'card_brand' => 'setCardBrand',
         'is3_ds_purchase' => 'setIs3DsPurchase',
-        'organization_type' => 'setOrganizationType',
-        'organization_id' => 'setOrganizationId'
+        'sector' => 'setSector',
+        'seller_contact_date' => 'setSellerContactDate',
+        'seller_additional_info' => 'setSellerAdditionalInfo',
+        'seller_name' => 'setSellerName',
+        'seller_phone' => 'setSellerPhone',
+        'seller_email' => 'setSellerEmail',
+        'terms_url' => 'setTermsUrl'
     ];
 
     /**
@@ -439,12 +429,7 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'active' => 'getActive',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt',
-        'is_deleted' => 'getIsDeleted',
-        'deleted_at' => 'getDeletedAt',
+        'filial_identifier' => 'getFilialIdentifier',
         'purchase_date' => 'getPurchaseDate',
         'service' => 'getService',
         'product' => 'getProduct',
@@ -464,6 +449,8 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
         'arrival_date' => 'getArrivalDate',
         'departure_airport' => 'getDepartureAirport',
         'arrival_airport' => 'getArrivalAirport',
+        'departure_city' => 'getDepartureCity',
+        'arrival_city' => 'getArrivalCity',
         'shipping_city' => 'getShippingCity',
         'shipping_province' => 'getShippingProvince',
         'shipping_postal_code' => 'getShippingPostalCode',
@@ -473,23 +460,24 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
         'delivery_confirmation' => 'getDeliveryConfirmation',
         'commitment_start_date' => 'getCommitmentStartDate',
         'commitment_end_date' => 'getCommitmentEndDate',
-        'expedient_number' => 'getExpedientNumber',
-        'notification_date' => 'getNotificationDate',
-        'dispute_amount' => 'getDisputeAmount',
-        'chargeback_reason' => 'getChargebackReason',
-        'deadline' => 'getDeadline',
+        'is_cancelled' => 'getIsCancelled',
+        'product_description' => 'getProductDescription',
         'contact_date' => 'getContactDate',
         'communications' => 'getCommunications',
         'additional_info' => 'getAdditionalInfo',
-        'pan_number' => 'getPanNumber',
-        'transaction_id' => 'getTransactionId',
+        'last4_digits' => 'getLast4Digits',
         'transaction_date' => 'getTransactionDate',
         'purchase_amount' => 'getPurchaseAmount',
         'bank_name' => 'getBankName',
         'card_brand' => 'getCardBrand',
         'is3_ds_purchase' => 'getIs3DsPurchase',
-        'organization_type' => 'getOrganizationType',
-        'organization_id' => 'getOrganizationId'
+        'sector' => 'getSector',
+        'seller_contact_date' => 'getSellerContactDate',
+        'seller_additional_info' => 'getSellerAdditionalInfo',
+        'seller_name' => 'getSellerName',
+        'seller_phone' => 'getSellerPhone',
+        'seller_email' => 'getSellerEmail',
+        'terms_url' => 'getTermsUrl'
     ];
 
     /**
@@ -533,72 +521,6 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const CHARGEBACK_REASON_FRAUD = 'FRAUD';
-    public const CHARGEBACK_REASON_PRODUCT_SERVICE_NOT_RECEIVED = 'PRODUCT_SERVICE_NOT_RECEIVED';
-    public const CHARGEBACK_REASON_DEFECTIVE_PRODUCT_SERVICE = 'DEFECTIVE_PRODUCT_SERVICE';
-    public const CHARGEBACK_REASON_PRODUCT_SERVICE_NOT_AS_DESCRIBED = 'PRODUCT_SERVICE_NOT_AS_DESCRIBED';
-    public const CHARGEBACK_REASON_INCORRECT_DUPLICATED_CHARGES = 'INCORRECT_DUPLICATED_CHARGES';
-    public const CHARGEBACK_REASON_PRODUCT_SERVICE_CANCELLED = 'PRODUCT_SERVICE_CANCELLED';
-    public const CHARGEBACK_REASON_REFUND_NOT_RECEIVED = 'REFUND_NOT_RECEIVED';
-    public const CHARGEBACK_REASON_RECURRENT_OPERATION_CANCELLED = 'RECURRENT_OPERATION_CANCELLED';
-    public const ORGANIZATION_TYPE_EDUCATION = 'EDUCATION';
-    public const ORGANIZATION_TYPE_FASHION = 'FASHION';
-    public const ORGANIZATION_TYPE_FOOD = 'FOOD';
-    public const ORGANIZATION_TYPE_GAMING = 'GAMING';
-    public const ORGANIZATION_TYPE_HEALTH_BEAUTY = 'HEALTH_BEAUTY';
-    public const ORGANIZATION_TYPE_HOME = 'HOME';
-    public const ORGANIZATION_TYPE_LEISURE = 'LEISURE';
-    public const ORGANIZATION_TYPE_PHONE = 'PHONE';
-    public const ORGANIZATION_TYPE_SOFTWARE = 'SOFTWARE';
-    public const ORGANIZATION_TYPE_SPORT = 'SPORT';
-    public const ORGANIZATION_TYPE_SUPPLY = 'SUPPLY';
-    public const ORGANIZATION_TYPE_TECHNOLOGY = 'TECHNOLOGY';
-    public const ORGANIZATION_TYPE_TRAVEL_AIRLINE = 'TRAVEL_AIRLINE';
-    public const ORGANIZATION_TYPE_TRAVEL_HOTEL = 'TRAVEL_HOTEL';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getChargebackReasonAllowableValues()
-    {
-        return [
-            self::CHARGEBACK_REASON_FRAUD,
-            self::CHARGEBACK_REASON_PRODUCT_SERVICE_NOT_RECEIVED,
-            self::CHARGEBACK_REASON_DEFECTIVE_PRODUCT_SERVICE,
-            self::CHARGEBACK_REASON_PRODUCT_SERVICE_NOT_AS_DESCRIBED,
-            self::CHARGEBACK_REASON_INCORRECT_DUPLICATED_CHARGES,
-            self::CHARGEBACK_REASON_PRODUCT_SERVICE_CANCELLED,
-            self::CHARGEBACK_REASON_REFUND_NOT_RECEIVED,
-            self::CHARGEBACK_REASON_RECURRENT_OPERATION_CANCELLED,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getOrganizationTypeAllowableValues()
-    {
-        return [
-            self::ORGANIZATION_TYPE_EDUCATION,
-            self::ORGANIZATION_TYPE_FASHION,
-            self::ORGANIZATION_TYPE_FOOD,
-            self::ORGANIZATION_TYPE_GAMING,
-            self::ORGANIZATION_TYPE_HEALTH_BEAUTY,
-            self::ORGANIZATION_TYPE_HOME,
-            self::ORGANIZATION_TYPE_LEISURE,
-            self::ORGANIZATION_TYPE_PHONE,
-            self::ORGANIZATION_TYPE_SOFTWARE,
-            self::ORGANIZATION_TYPE_SPORT,
-            self::ORGANIZATION_TYPE_SUPPLY,
-            self::ORGANIZATION_TYPE_TECHNOLOGY,
-            self::ORGANIZATION_TYPE_TRAVEL_AIRLINE,
-            self::ORGANIZATION_TYPE_TRAVEL_HOTEL,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -615,12 +537,7 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('active', $data ?? [], true);
-        $this->setIfExists('created_at', $data ?? [], null);
-        $this->setIfExists('updated_at', $data ?? [], null);
-        $this->setIfExists('is_deleted', $data ?? [], false);
-        $this->setIfExists('deleted_at', $data ?? [], null);
+        $this->setIfExists('filial_identifier', $data ?? [], null);
         $this->setIfExists('purchase_date', $data ?? [], null);
         $this->setIfExists('service', $data ?? [], null);
         $this->setIfExists('product', $data ?? [], null);
@@ -640,6 +557,8 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('arrival_date', $data ?? [], null);
         $this->setIfExists('departure_airport', $data ?? [], null);
         $this->setIfExists('arrival_airport', $data ?? [], null);
+        $this->setIfExists('departure_city', $data ?? [], null);
+        $this->setIfExists('arrival_city', $data ?? [], null);
         $this->setIfExists('shipping_city', $data ?? [], null);
         $this->setIfExists('shipping_province', $data ?? [], null);
         $this->setIfExists('shipping_postal_code', $data ?? [], null);
@@ -649,23 +568,24 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('delivery_confirmation', $data ?? [], null);
         $this->setIfExists('commitment_start_date', $data ?? [], null);
         $this->setIfExists('commitment_end_date', $data ?? [], null);
-        $this->setIfExists('expedient_number', $data ?? [], null);
-        $this->setIfExists('notification_date', $data ?? [], null);
-        $this->setIfExists('dispute_amount', $data ?? [], null);
-        $this->setIfExists('chargeback_reason', $data ?? [], null);
-        $this->setIfExists('deadline', $data ?? [], null);
+        $this->setIfExists('is_cancelled', $data ?? [], null);
+        $this->setIfExists('product_description', $data ?? [], null);
         $this->setIfExists('contact_date', $data ?? [], null);
         $this->setIfExists('communications', $data ?? [], null);
         $this->setIfExists('additional_info', $data ?? [], null);
-        $this->setIfExists('pan_number', $data ?? [], null);
-        $this->setIfExists('transaction_id', $data ?? [], null);
+        $this->setIfExists('last4_digits', $data ?? [], null);
         $this->setIfExists('transaction_date', $data ?? [], null);
         $this->setIfExists('purchase_amount', $data ?? [], null);
         $this->setIfExists('bank_name', $data ?? [], null);
         $this->setIfExists('card_brand', $data ?? [], null);
         $this->setIfExists('is3_ds_purchase', $data ?? [], null);
-        $this->setIfExists('organization_type', $data ?? [], null);
-        $this->setIfExists('organization_id', $data ?? [], null);
+        $this->setIfExists('sector', $data ?? [], null);
+        $this->setIfExists('seller_contact_date', $data ?? [], null);
+        $this->setIfExists('seller_additional_info', $data ?? [], null);
+        $this->setIfExists('seller_name', $data ?? [], null);
+        $this->setIfExists('seller_phone', $data ?? [], null);
+        $this->setIfExists('seller_email', $data ?? [], null);
+        $this->setIfExists('terms_url', $data ?? [], null);
     }
 
     /**
@@ -695,63 +615,6 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['purchase_date'] === null) {
-            $invalidProperties[] = "'purchase_date' can't be null";
-        }
-        if ($this->container['is_charge_refundable'] === null) {
-            $invalidProperties[] = "'is_charge_refundable' can't be null";
-        }
-        if ($this->container['customer_name'] === null) {
-            $invalidProperties[] = "'customer_name' can't be null";
-        }
-        if ($this->container['customer_email'] === null) {
-            $invalidProperties[] = "'customer_email' can't be null";
-        }
-        if ($this->container['expedient_number'] === null) {
-            $invalidProperties[] = "'expedient_number' can't be null";
-        }
-        if ($this->container['notification_date'] === null) {
-            $invalidProperties[] = "'notification_date' can't be null";
-        }
-        if ($this->container['dispute_amount'] === null) {
-            $invalidProperties[] = "'dispute_amount' can't be null";
-        }
-        if ($this->container['chargeback_reason'] === null) {
-            $invalidProperties[] = "'chargeback_reason' can't be null";
-        }
-        $allowedValues = $this->getChargebackReasonAllowableValues();
-        if (!is_null($this->container['chargeback_reason']) && !in_array($this->container['chargeback_reason'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'chargeback_reason', must be one of '%s'",
-                $this->container['chargeback_reason'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if ($this->container['transaction_date'] === null) {
-            $invalidProperties[] = "'transaction_date' can't be null";
-        }
-        if ($this->container['purchase_amount'] === null) {
-            $invalidProperties[] = "'purchase_amount' can't be null";
-        }
-        if ($this->container['is3_ds_purchase'] === null) {
-            $invalidProperties[] = "'is3_ds_purchase' can't be null";
-        }
-        if ($this->container['organization_type'] === null) {
-            $invalidProperties[] = "'organization_type' can't be null";
-        }
-        $allowedValues = $this->getOrganizationTypeAllowableValues();
-        if (!is_null($this->container['organization_type']) && !in_array($this->container['organization_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'organization_type', must be one of '%s'",
-                $this->container['organization_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if ($this->container['organization_id'] === null) {
-            $invalidProperties[] = "'organization_id' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -768,163 +631,28 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets id
+     * Gets filial_identifier
      *
      * @return string|null
      */
-    public function getId()
+    public function getFilialIdentifier()
     {
-        return $this->container['id'];
+        return $this->container['filial_identifier'];
     }
 
     /**
-     * Sets id
+     * Sets filial_identifier
      *
-     * @param string|null $id id
+     * @param string|null $filial_identifier Filial identifier related to the case. This should be the NIF, VAT or other unique identifier that is configured for your organization in Kloutit. If you do not have filials in your organization, leave this field empty.
      *
      * @return self
      */
-    public function setId($id)
+    public function setFilialIdentifier($filial_identifier)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($filial_identifier)) {
+            throw new \InvalidArgumentException('non-nullable filial_identifier cannot be null');
         }
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets active
-     *
-     * @return bool|null
-     */
-    public function getActive()
-    {
-        return $this->container['active'];
-    }
-
-    /**
-     * Sets active
-     *
-     * @param bool|null $active active
-     *
-     * @return self
-     */
-    public function setActive($active)
-    {
-        if (is_null($active)) {
-            throw new \InvalidArgumentException('non-nullable active cannot be null');
-        }
-        $this->container['active'] = $active;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     *
-     * @return \DateTime|null
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime|null $created_at created_at
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
-        }
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated_at
-     *
-     * @return \DateTime|null
-     */
-    public function getUpdatedAt()
-    {
-        return $this->container['updated_at'];
-    }
-
-    /**
-     * Sets updated_at
-     *
-     * @param \DateTime|null $updated_at updated_at
-     *
-     * @return self
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        if (is_null($updated_at)) {
-            throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
-        }
-        $this->container['updated_at'] = $updated_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_deleted
-     *
-     * @return bool|null
-     */
-    public function getIsDeleted()
-    {
-        return $this->container['is_deleted'];
-    }
-
-    /**
-     * Sets is_deleted
-     *
-     * @param bool|null $is_deleted is_deleted
-     *
-     * @return self
-     */
-    public function setIsDeleted($is_deleted)
-    {
-        if (is_null($is_deleted)) {
-            throw new \InvalidArgumentException('non-nullable is_deleted cannot be null');
-        }
-        $this->container['is_deleted'] = $is_deleted;
-
-        return $this;
-    }
-
-    /**
-     * Gets deleted_at
-     *
-     * @return \DateTime|null
-     */
-    public function getDeletedAt()
-    {
-        return $this->container['deleted_at'];
-    }
-
-    /**
-     * Sets deleted_at
-     *
-     * @param \DateTime|null $deleted_at deleted_at
-     *
-     * @return self
-     */
-    public function setDeletedAt($deleted_at)
-    {
-        if (is_null($deleted_at)) {
-            throw new \InvalidArgumentException('non-nullable deleted_at cannot be null');
-        }
-        $this->container['deleted_at'] = $deleted_at;
+        $this->container['filial_identifier'] = $filial_identifier;
 
         return $this;
     }
@@ -932,7 +660,7 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets purchase_date
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getPurchaseDate()
     {
@@ -942,7 +670,7 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets purchase_date
      *
-     * @param \DateTime $purchase_date Date when the customer made the purchase.
+     * @param \DateTime|null $purchase_date Date when the customer made the purchase.
      *
      * @return self
      */
@@ -1013,7 +741,7 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets is_charge_refundable
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIsChargeRefundable()
     {
@@ -1023,7 +751,7 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets is_charge_refundable
      *
-     * @param bool $is_charge_refundable Flag that indicates if the charge made is refundable regarding your company terms and conditions.
+     * @param bool|null $is_charge_refundable Flag that indicates if the charge made is refundable regarding your company terms and conditions.
      *
      * @return self
      */
@@ -1040,7 +768,7 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets customer_name
      *
-     * @return string
+     * @return string|null
      */
     public function getCustomerName()
     {
@@ -1050,7 +778,7 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets customer_name
      *
-     * @param string $customer_name Customer name.
+     * @param string|null $customer_name Customer name.
      *
      * @return self
      */
@@ -1067,7 +795,7 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets customer_email
      *
-     * @return string
+     * @return string|null
      */
     public function getCustomerEmail()
     {
@@ -1077,7 +805,7 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets customer_email
      *
-     * @param string $customer_email Customer email
+     * @param string|null $customer_email Customer email
      *
      * @return self
      */
@@ -1131,7 +859,7 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets service_date
      *
-     * @param \DateTime|null $service_date Date when the serve was provided or will be provided.
+     * @param \DateTime|null $service_date Date when the service was provided or will be provided.
      *
      * @return self
      */
@@ -1443,6 +1171,60 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets departure_city
+     *
+     * @return string|null
+     */
+    public function getDepartureCity()
+    {
+        return $this->container['departure_city'];
+    }
+
+    /**
+     * Sets departure_city
+     *
+     * @param string|null $departure_city Departure city.
+     *
+     * @return self
+     */
+    public function setDepartureCity($departure_city)
+    {
+        if (is_null($departure_city)) {
+            throw new \InvalidArgumentException('non-nullable departure_city cannot be null');
+        }
+        $this->container['departure_city'] = $departure_city;
+
+        return $this;
+    }
+
+    /**
+     * Gets arrival_city
+     *
+     * @return string|null
+     */
+    public function getArrivalCity()
+    {
+        return $this->container['arrival_city'];
+    }
+
+    /**
+     * Sets arrival_city
+     *
+     * @param string|null $arrival_city Arrival city.
+     *
+     * @return self
+     */
+    public function setArrivalCity($arrival_city)
+    {
+        if (is_null($arrival_city)) {
+            throw new \InvalidArgumentException('non-nullable arrival_city cannot be null');
+        }
+        $this->container['arrival_city'] = $arrival_city;
+
+        return $this;
+    }
+
+    /**
      * Gets shipping_city
      *
      * @return string|null
@@ -1686,146 +1468,55 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets expedient_number
+     * Gets is_cancelled
      *
-     * @return string
+     * @return bool|null
      */
-    public function getExpedientNumber()
+    public function getIsCancelled()
     {
-        return $this->container['expedient_number'];
+        return $this->container['is_cancelled'];
     }
 
     /**
-     * Sets expedient_number
+     * Sets is_cancelled
      *
-     * @param string $expedient_number Chargeback expedient number.
+     * @param bool|null $is_cancelled Flag that indicates if the subscription is cancelled or active.
      *
      * @return self
      */
-    public function setExpedientNumber($expedient_number)
+    public function setIsCancelled($is_cancelled)
     {
-        if (is_null($expedient_number)) {
-            throw new \InvalidArgumentException('non-nullable expedient_number cannot be null');
+        if (is_null($is_cancelled)) {
+            throw new \InvalidArgumentException('non-nullable is_cancelled cannot be null');
         }
-        $this->container['expedient_number'] = $expedient_number;
+        $this->container['is_cancelled'] = $is_cancelled;
 
         return $this;
     }
 
     /**
-     * Gets notification_date
+     * Gets product_description
      *
-     * @return \DateTime
+     * @return string|null
      */
-    public function getNotificationDate()
+    public function getProductDescription()
     {
-        return $this->container['notification_date'];
+        return $this->container['product_description'];
     }
 
     /**
-     * Sets notification_date
+     * Sets product_description
      *
-     * @param \DateTime $notification_date Chargeback notification date, when the merchant receives the chargeback notification.
+     * @param string|null $product_description Product description.
      *
      * @return self
      */
-    public function setNotificationDate($notification_date)
+    public function setProductDescription($product_description)
     {
-        if (is_null($notification_date)) {
-            throw new \InvalidArgumentException('non-nullable notification_date cannot be null');
+        if (is_null($product_description)) {
+            throw new \InvalidArgumentException('non-nullable product_description cannot be null');
         }
-        $this->container['notification_date'] = $notification_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets dispute_amount
-     *
-     * @return \Kloutit\Model\AmountDto
-     */
-    public function getDisputeAmount()
-    {
-        return $this->container['dispute_amount'];
-    }
-
-    /**
-     * Sets dispute_amount
-     *
-     * @param \Kloutit\Model\AmountDto $dispute_amount Amount that the customer claims.
-     *
-     * @return self
-     */
-    public function setDisputeAmount($dispute_amount)
-    {
-        if (is_null($dispute_amount)) {
-            throw new \InvalidArgumentException('non-nullable dispute_amount cannot be null');
-        }
-        $this->container['dispute_amount'] = $dispute_amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets chargeback_reason
-     *
-     * @return string
-     */
-    public function getChargebackReason()
-    {
-        return $this->container['chargeback_reason'];
-    }
-
-    /**
-     * Sets chargeback_reason
-     *
-     * @param string $chargeback_reason Reason why the customer is requesting the chargeback.
-     *
-     * @return self
-     */
-    public function setChargebackReason($chargeback_reason)
-    {
-        if (is_null($chargeback_reason)) {
-            throw new \InvalidArgumentException('non-nullable chargeback_reason cannot be null');
-        }
-        $allowedValues = $this->getChargebackReasonAllowableValues();
-        if (!in_array($chargeback_reason, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'chargeback_reason', must be one of '%s'",
-                    $chargeback_reason,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['chargeback_reason'] = $chargeback_reason;
-
-        return $this;
-    }
-
-    /**
-     * Gets deadline
-     *
-     * @return \DateTime|null
-     */
-    public function getDeadline()
-    {
-        return $this->container['deadline'];
-    }
-
-    /**
-     * Sets deadline
-     *
-     * @param \DateTime|null $deadline Deadline date to resolve this chargeback.
-     *
-     * @return self
-     */
-    public function setDeadline($deadline)
-    {
-        if (is_null($deadline)) {
-            throw new \InvalidArgumentException('non-nullable deadline cannot be null');
-        }
-        $this->container['deadline'] = $deadline;
+        $this->container['product_description'] = $product_description;
 
         return $this;
     }
@@ -1860,7 +1551,7 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets communications
      *
-     * @return \Kloutit\Model\CommunicationItemDto[]|null
+     * @return \Kloutit\Model\CommunicationItem[]|null
      */
     public function getCommunications()
     {
@@ -1870,7 +1561,7 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets communications
      *
-     * @param \Kloutit\Model\CommunicationItemDto[]|null $communications Array of all the emails that the customer has sent regarding this dispute.
+     * @param \Kloutit\Model\CommunicationItem[]|null $communications Array of all the emails that the customer has sent regarding this dispute. The structure of each item contains: **sender**: *customer* or *company*, **date**, **content**: string containing the message
      *
      * @return self
      */
@@ -1912,55 +1603,28 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets pan_number
+     * Gets last4_digits
      *
      * @return string|null
      */
-    public function getPanNumber()
+    public function getLast4Digits()
     {
-        return $this->container['pan_number'];
+        return $this->container['last4_digits'];
     }
 
     /**
-     * Sets pan_number
+     * Sets last4_digits
      *
-     * @param string|null $pan_number Holder credit card number.
+     * @param string|null $last4_digits Last 4 digits of the customer's credit card number.
      *
      * @return self
      */
-    public function setPanNumber($pan_number)
+    public function setLast4Digits($last4_digits)
     {
-        if (is_null($pan_number)) {
-            throw new \InvalidArgumentException('non-nullable pan_number cannot be null');
+        if (is_null($last4_digits)) {
+            throw new \InvalidArgumentException('non-nullable last4_digits cannot be null');
         }
-        $this->container['pan_number'] = $pan_number;
-
-        return $this;
-    }
-
-    /**
-     * Gets transaction_id
-     *
-     * @return string|null
-     */
-    public function getTransactionId()
-    {
-        return $this->container['transaction_id'];
-    }
-
-    /**
-     * Sets transaction_id
-     *
-     * @param string|null $transaction_id Transaction id.
-     *
-     * @return self
-     */
-    public function setTransactionId($transaction_id)
-    {
-        if (is_null($transaction_id)) {
-            throw new \InvalidArgumentException('non-nullable transaction_id cannot be null');
-        }
-        $this->container['transaction_id'] = $transaction_id;
+        $this->container['last4_digits'] = $last4_digits;
 
         return $this;
     }
@@ -1968,7 +1632,7 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets transaction_date
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getTransactionDate()
     {
@@ -1978,7 +1642,7 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets transaction_date
      *
-     * @param \DateTime $transaction_date Transaction date.
+     * @param \DateTime|null $transaction_date Transaction date.
      *
      * @return self
      */
@@ -1995,7 +1659,7 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets purchase_amount
      *
-     * @return \Kloutit\Model\AmountDto
+     * @return \Kloutit\Model\Amount|null
      */
     public function getPurchaseAmount()
     {
@@ -2005,7 +1669,7 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets purchase_amount
      *
-     * @param \Kloutit\Model\AmountDto $purchase_amount Purchase amount.
+     * @param \Kloutit\Model\Amount|null $purchase_amount Purchase amount.
      *
      * @return self
      */
@@ -2076,7 +1740,7 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets is3_ds_purchase
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIs3DsPurchase()
     {
@@ -2086,7 +1750,7 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets is3_ds_purchase
      *
-     * @param bool $is3_ds_purchase Flag that indicates if the purchase has been made with 3DS.
+     * @param bool|null $is3_ds_purchase Flag that indicates if the purchase has been made with 3DS.
      *
      * @return self
      */
@@ -2101,65 +1765,190 @@ class KloutitCaseBody implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets organization_type
+     * Gets sector
      *
-     * @return string
+     * @return \Kloutit\Model\CaseSector|null
      */
-    public function getOrganizationType()
+    public function getSector()
     {
-        return $this->container['organization_type'];
+        return $this->container['sector'];
     }
 
     /**
-     * Sets organization_type
+     * Sets sector
      *
-     * @param string $organization_type Sector of the case. It must be one of the sectors of the organization, for instance: EDUCATION, SOFTWARE, TRAVEL_HOTEL,...
+     * @param \Kloutit\Model\CaseSector|null $sector sector
      *
      * @return self
      */
-    public function setOrganizationType($organization_type)
+    public function setSector($sector)
     {
-        if (is_null($organization_type)) {
-            throw new \InvalidArgumentException('non-nullable organization_type cannot be null');
+        if (is_null($sector)) {
+            throw new \InvalidArgumentException('non-nullable sector cannot be null');
         }
-        $allowedValues = $this->getOrganizationTypeAllowableValues();
-        if (!in_array($organization_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'organization_type', must be one of '%s'",
-                    $organization_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['organization_type'] = $organization_type;
+        $this->container['sector'] = $sector;
 
         return $this;
     }
 
     /**
-     * Gets organization_id
+     * Gets seller_contact_date
      *
-     * @return string
+     * @return \DateTime|null
      */
-    public function getOrganizationId()
+    public function getSellerContactDate()
     {
-        return $this->container['organization_id'];
+        return $this->container['seller_contact_date'];
     }
 
     /**
-     * Sets organization_id
+     * Sets seller_contact_date
      *
-     * @param string $organization_id Your organization id.
+     * @param \DateTime|null $seller_contact_date Date when the customer contacted to the seller.
      *
      * @return self
      */
-    public function setOrganizationId($organization_id)
+    public function setSellerContactDate($seller_contact_date)
     {
-        if (is_null($organization_id)) {
-            throw new \InvalidArgumentException('non-nullable organization_id cannot be null');
+        if (is_null($seller_contact_date)) {
+            throw new \InvalidArgumentException('non-nullable seller_contact_date cannot be null');
         }
-        $this->container['organization_id'] = $organization_id;
+        $this->container['seller_contact_date'] = $seller_contact_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets seller_additional_info
+     *
+     * @return string|null
+     */
+    public function getSellerAdditionalInfo()
+    {
+        return $this->container['seller_additional_info'];
+    }
+
+    /**
+     * Sets seller_additional_info
+     *
+     * @param string|null $seller_additional_info Seller additional infromation.
+     *
+     * @return self
+     */
+    public function setSellerAdditionalInfo($seller_additional_info)
+    {
+        if (is_null($seller_additional_info)) {
+            throw new \InvalidArgumentException('non-nullable seller_additional_info cannot be null');
+        }
+        $this->container['seller_additional_info'] = $seller_additional_info;
+
+        return $this;
+    }
+
+    /**
+     * Gets seller_name
+     *
+     * @return string|null
+     */
+    public function getSellerName()
+    {
+        return $this->container['seller_name'];
+    }
+
+    /**
+     * Sets seller_name
+     *
+     * @param string|null $seller_name Seller name.
+     *
+     * @return self
+     */
+    public function setSellerName($seller_name)
+    {
+        if (is_null($seller_name)) {
+            throw new \InvalidArgumentException('non-nullable seller_name cannot be null');
+        }
+        $this->container['seller_name'] = $seller_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets seller_phone
+     *
+     * @return string|null
+     */
+    public function getSellerPhone()
+    {
+        return $this->container['seller_phone'];
+    }
+
+    /**
+     * Sets seller_phone
+     *
+     * @param string|null $seller_phone Seller phone number.
+     *
+     * @return self
+     */
+    public function setSellerPhone($seller_phone)
+    {
+        if (is_null($seller_phone)) {
+            throw new \InvalidArgumentException('non-nullable seller_phone cannot be null');
+        }
+        $this->container['seller_phone'] = $seller_phone;
+
+        return $this;
+    }
+
+    /**
+     * Gets seller_email
+     *
+     * @return string|null
+     */
+    public function getSellerEmail()
+    {
+        return $this->container['seller_email'];
+    }
+
+    /**
+     * Sets seller_email
+     *
+     * @param string|null $seller_email Seller email.
+     *
+     * @return self
+     */
+    public function setSellerEmail($seller_email)
+    {
+        if (is_null($seller_email)) {
+            throw new \InvalidArgumentException('non-nullable seller_email cannot be null');
+        }
+        $this->container['seller_email'] = $seller_email;
+
+        return $this;
+    }
+
+    /**
+     * Gets terms_url
+     *
+     * @return string|null
+     */
+    public function getTermsUrl()
+    {
+        return $this->container['terms_url'];
+    }
+
+    /**
+     * Sets terms_url
+     *
+     * @param string|null $terms_url Terms and Conditions URL. Only applies for sectors: TRAVEL_AIRLINE, TRAVEL_HOTEL and LEISURE.
+     *
+     * @return self
+     */
+    public function setTermsUrl($terms_url)
+    {
+        if (is_null($terms_url)) {
+            throw new \InvalidArgumentException('non-nullable terms_url cannot be null');
+        }
+        $this->container['terms_url'] = $terms_url;
 
         return $this;
     }

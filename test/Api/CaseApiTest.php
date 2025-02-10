@@ -1,6 +1,6 @@
 <?php
 /**
- * KloutitLoginApiTest
+ * CaseApiTest
  * PHP version 7.4
  *
  * @category Class
@@ -38,14 +38,14 @@ use \Kloutit\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
 
 /**
- * KloutitLoginApiTest Class Doc Comment
+ * CaseApiTest Class Doc Comment
  *
  * @category Class
  * @package  Kloutit
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class KloutitLoginApiTest extends TestCase
+class CaseApiTest extends TestCase
 {
 
     /**
@@ -77,12 +77,48 @@ class KloutitLoginApiTest extends TestCase
     }
 
     /**
-     * Test case for login
+     * Test case for checkCase
      *
-     * Get access token..
+     * Check case information.
      *
      */
-    public function testLogin()
+    public function testCheckCase()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for submitCompletedCase
+     *
+     * Submit completed case.
+     *
+     */
+    public function testSubmitCompletedCase()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for updateCase
+     *
+     * Update case.
+     *
+     */
+    public function testUpdateCase()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for uploadFile
+     *
+     * Upload file.
+     *
+     */
+    public function testUploadFile()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

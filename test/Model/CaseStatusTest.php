@@ -1,6 +1,6 @@
 <?php
 /**
- * KloutitLoginBodyTest
+ * CaseStatusTest
  *
  * PHP version 7.4
  *
@@ -36,15 +36,15 @@ namespace Kloutit\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * KloutitLoginBodyTest Class Doc Comment
+ * CaseStatusTest Class Doc Comment
  *
  * @category    Class
- * @description KloutitLoginBody
+ * @description Current status of the case.
  * @package     Kloutit
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class KloutitLoginBodyTest extends TestCase
+class CaseStatusTest extends TestCase
 {
 
     /**
@@ -76,18 +76,9 @@ class KloutitLoginBodyTest extends TestCase
     }
 
     /**
-     * Test "KloutitLoginBody"
+     * Test "CaseStatus"
      */
-    public function testKloutitLoginBody()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "grant_type"
-     */
-    public function testPropertyGrantType()
+    public function testCaseStatus()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

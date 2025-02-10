@@ -1,6 +1,6 @@
 <?php
 /**
- * KloutitLoginBody
+ * CommunicationItem
  *
  * PHP version 7.4
  *
@@ -37,7 +37,7 @@ use \ArrayAccess;
 use \Kloutit\ObjectSerializer;
 
 /**
- * KloutitLoginBody Class Doc Comment
+ * CommunicationItem Class Doc Comment
  *
  * @category Class
  * @package  Kloutit
@@ -45,7 +45,7 @@ use \Kloutit\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class KloutitLoginBody implements ModelInterface, ArrayAccess, \JsonSerializable
+class CommunicationItem implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -54,7 +54,7 @@ class KloutitLoginBody implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'KloutitLoginBody';
+    protected static $openAPIModelName = 'CommunicationItem';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -62,7 +62,9 @@ class KloutitLoginBody implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'grant_type' => 'string'
+        'sender' => 'string',
+        'content' => 'string',
+        'date' => '\DateTime'
     ];
 
     /**
@@ -73,7 +75,9 @@ class KloutitLoginBody implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'grant_type' => null
+        'sender' => null,
+        'content' => null,
+        'date' => 'date-time'
     ];
 
     /**
@@ -82,7 +86,9 @@ class KloutitLoginBody implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'grant_type' => false
+        'sender' => false,
+        'content' => false,
+        'date' => false
     ];
 
     /**
@@ -171,7 +177,9 @@ class KloutitLoginBody implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'grant_type' => 'grant_type'
+        'sender' => 'sender',
+        'content' => 'content',
+        'date' => 'date'
     ];
 
     /**
@@ -180,7 +188,9 @@ class KloutitLoginBody implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'grant_type' => 'setGrantType'
+        'sender' => 'setSender',
+        'content' => 'setContent',
+        'date' => 'setDate'
     ];
 
     /**
@@ -189,7 +199,9 @@ class KloutitLoginBody implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'grant_type' => 'getGrantType'
+        'sender' => 'getSender',
+        'content' => 'getContent',
+        'date' => 'getDate'
     ];
 
     /**
@@ -249,7 +261,9 @@ class KloutitLoginBody implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('grant_type', $data ?? [], null);
+        $this->setIfExists('sender', $data ?? [], null);
+        $this->setIfExists('content', $data ?? [], null);
+        $this->setIfExists('date', $data ?? [], null);
     }
 
     /**
@@ -279,8 +293,14 @@ class KloutitLoginBody implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['grant_type'] === null) {
-            $invalidProperties[] = "'grant_type' can't be null";
+        if ($this->container['sender'] === null) {
+            $invalidProperties[] = "'sender' can't be null";
+        }
+        if ($this->container['content'] === null) {
+            $invalidProperties[] = "'content' can't be null";
+        }
+        if ($this->container['date'] === null) {
+            $invalidProperties[] = "'date' can't be null";
         }
         return $invalidProperties;
     }
@@ -298,28 +318,82 @@ class KloutitLoginBody implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets grant_type
+     * Gets sender
      *
      * @return string
      */
-    public function getGrantType()
+    public function getSender()
     {
-        return $this->container['grant_type'];
+        return $this->container['sender'];
     }
 
     /**
-     * Sets grant_type
+     * Sets sender
      *
-     * @param string $grant_type Grant type used to get access token.
+     * @param string $sender sender
      *
      * @return self
      */
-    public function setGrantType($grant_type)
+    public function setSender($sender)
     {
-        if (is_null($grant_type)) {
-            throw new \InvalidArgumentException('non-nullable grant_type cannot be null');
+        if (is_null($sender)) {
+            throw new \InvalidArgumentException('non-nullable sender cannot be null');
         }
-        $this->container['grant_type'] = $grant_type;
+        $this->container['sender'] = $sender;
+
+        return $this;
+    }
+
+    /**
+     * Gets content
+     *
+     * @return string
+     */
+    public function getContent()
+    {
+        return $this->container['content'];
+    }
+
+    /**
+     * Sets content
+     *
+     * @param string $content content
+     *
+     * @return self
+     */
+    public function setContent($content)
+    {
+        if (is_null($content)) {
+            throw new \InvalidArgumentException('non-nullable content cannot be null');
+        }
+        $this->container['content'] = $content;
+
+        return $this;
+    }
+
+    /**
+     * Gets date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->container['date'];
+    }
+
+    /**
+     * Sets date
+     *
+     * @param \DateTime $date date
+     *
+     * @return self
+     */
+    public function setDate($date)
+    {
+        if (is_null($date)) {
+            throw new \InvalidArgumentException('non-nullable date cannot be null');
+        }
+        $this->container['date'] = $date;
 
         return $this;
     }
