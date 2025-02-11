@@ -16,3 +16,4 @@ composer.phar
 
 # Others
 .DS_Store
+git_push.sh

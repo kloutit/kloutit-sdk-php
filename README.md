@@ -28,6 +28,8 @@ Once you have the apiKey, you can use it to instantiate the KloutitCaseApi and m
 
 ```php
 <?php
+// Require composer autoloader
+require 'vendor/autoload.php';
 
 use Kloutit\Configuration as KloutitConfiguration;
 use Kloutit\Api\KloutitCaseApi;
@@ -35,8 +37,6 @@ use Kloutit\Model\UpdateCaseParams;
 use Kloutit\Model\ChargebackReason;
 use Kloutit\Model\CaseSector;
 use Kloutit\Currencies;
-
-require_once('sdk/vendor/autoload.php');
 
 $apiKey = 'YOUR_API_KEY';
 $expedientNumber = 'EXPEDIENT_NUMBER';
