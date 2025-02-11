@@ -132,7 +132,13 @@ If you use an IDE such as VSCode, you will be able to see all the autocompletion
 
 ### Security
 
-Kloutit SDK does not store or refresh access tokens. Storing and refreshing access tokens is responsibility of the SDK consumer.
+Kloutit SDK uses API key for authentication. It is the responsibility of the SDK consumer to keep the API key secure and not expose it in source code, public repositories, or insecure environments.
+
+To ensure the security of your integration:
+
+- Store the API key in environment variables or a secure secret manager.
+- Do not share your API key in public source code or with unauthorized third parties.
+- Regularly rotate API keys to minimize exposure risks.
 
 Please, if you discover any security issues, report them to support@kloutit.com as soon as possible.
 
