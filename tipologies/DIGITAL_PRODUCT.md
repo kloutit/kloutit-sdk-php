@@ -1,6 +1,6 @@
-### Sample body for Technology sector
+### Sample body for Digital Service / Product sector
 
-This is a sample UpdateCaseParams for Technology sector with all the parameters it admits.
+This is a sample UpdateCaseParams for Digital Service / Product sector with all the parameters it admits.
 
 ```php
 <?php
@@ -10,7 +10,7 @@ use Kloutit\Model\CaseSector;
 use Kloutit\Currencies;
 
 $kloutitCase = new UpdateCaseParams([
-    'sector' => CaseSector::TECHNOLOGY,
+    'sector' => CaseSector::DIGITAL_PRODUCT,
     'filialIdentifier' => 'B12345678', // If you do not have filials in your organization, leave this field empty
     'transactionDate' => new DateTime(),
     'bankName' => 'Sample bank',

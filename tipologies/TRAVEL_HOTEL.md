@@ -1,50 +1,45 @@
 ### Sample body for Travel Hotel sector
 
-This is a sample KloutitCaseBody for Travel Hotel sector with all the parameters it admits.
+This is a sample UpdateCaseParams for Travel Hotel sector with all the parameters it admits.
 
 ```php
 <?php
 
-use Kloutit\Model\KloutitCaseBody;
-use Kloutit\KloutitOrganizationType;
-use Kloutit\KloutitChargebackReason;
+use Kloutit\Model\UpdateCaseParams;
+use Kloutit\Model\CaseSector;
 use Kloutit\Currencies;
 
-$kloutitCaseBody = new KloutitCaseBody([
-    'organization_id' => $organizationId,
-    'organization_type' => KloutitOrganizationType::TRAVEL_HOTEL,
-    'expedient_number' => 'EXPPHP0001',
-    'notification_date' => '2024-09-22T11:31:22.347Z',
-    'deadline' => '2025-09-22T11:31:22.347Z',
-    'dispute_amount' => [
+$kloutitCase = new UpdateCaseParams([
+    'sector' => CaseSector::TRAVEL_HOTEL,
+    'filialIdentifier' => 'B12345678', // If you do not have filials in your organization, leave this field empty
+    'transactionDate' => new DateTime(),
+    'bankName' => 'Sample bank',
+    'cardBrand' => 'Sample card brand',
+    'last4Digits' => '1234',
+    'is3DSPurchase' => true,
+    'purchaseDate' => new DateTime(),
+    'purchaseAmount' => [
         'currency' => Currencies::EUR,
-        'value' => 10,
+        'value' => 10
     ],
-    'chargeback_reason' => KloutitChargebackReason::PRODUCT_SERVICE_NOT_RECEIVED,
-    'transaction_date' => '2024-09-22T11:31:22.347Z',
-    'pan_number' => 'PAN000001',
-    'transaction_id' => 'TR0000001',
-    'bank_name' => 'Sample bank',
-    'is3_ds_purchase' => true,
-    'purchase_date' => '2024-09-22T11:31:22.347Z',
-    'purchase_amount' => [
-        'currency' => Currencies::EUR,
-        'value' => 10,
+    'isChargeRefundable' => true,
+    'customerName' => 'Node SDK sample',
+    'customerEmail' => 'kloutit-node@example.com',
+    'customerPhone' => '612345678',
+    'additionalInfo' => 'Some optional additional info',
+    'communications' => [
+        [
+            'sender' => 'Sender name',
+            'content' => 'Communication content',
+            'date' => new DateTime(),
+        ],
     ],
-
     'service' => 'Sample service',
-    'is_charge_refundable' => true,
-    'checkin_date' => '2024-09-22T11:31:22.347Z',
-    'checkout_date' => '2024-09-22T11:31:22.347Z',
-    'hotel_name' => 'Sample hotel',
+    'checkinDate' => '2024-09-22T11:31:22.347Z',
+    'checkoutDate' => '2024-09-22T11:31:22.347Z',
+    'hotelName' => 'Sample hotel',
     'rate' => 'Sample rate',
-    'checkin_confirmation' => true,
-    'destination_country' => 'Spain',
-
-    'customer_name' => 'PHP SDK sample',
-    'customer_email' => 'kloutit-php@example.com',
-    'contact_date' => '2024-04-22T11:31:22.347Z',
-    'customer_phone' => '612345678',
-    'additional_info' => 'Some optional additional info',
+    'checkinConfirmation' => true,
+    'destinationCountry' => 'Spain',
 ]);
 ```
