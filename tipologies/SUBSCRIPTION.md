@@ -1,6 +1,6 @@
-### Sample body for Technology sector
+### Sample body for Subscription sector
 
-This is a sample UpdateCaseParams for Technology sector with all the parameters it admits.
+This is a sample UpdateCaseParams for Subscription sector with all the parameters it admits.
 
 ```php
 <?php
@@ -10,7 +10,7 @@ use Kloutit\Model\CaseSector;
 use Kloutit\Currencies;
 
 $kloutitCase = new UpdateCaseParams([
-    'sector' => CaseSector::TECHNOLOGY,
+    'sector' => CaseSector::SUBSCRIPTION,
     'filialIdentifier' => 'B12345678', // If you do not have filials in your organization, leave this field empty
     'transactionDate' => new DateTime(),
     'bankName' => 'Sample bank',
@@ -36,12 +36,8 @@ $kloutitCase = new UpdateCaseParams([
     ],
     'product' => 'Sample product',
     'service' => 'Sample service',
-    'shippingCity' => 'Barcelona',
-    'shippingProvince' => 'Barcelona',
-    'shippingPostalCode' => '08000',
-    'deliveryConfirmation' => true,
-    'shippingDate' => new DateTime(),
-    'deliveryDate' => new DateTime(),
-    'deliveryCompany' => 'Sample company',
+    'commitmentStartDate' => new DateTime(),
+    'commitmentEndDate' => new DateTime(),
+    'isCancelled' => true,
 ]);
 ```

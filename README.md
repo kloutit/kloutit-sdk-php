@@ -57,42 +57,39 @@ $kloutitCase = new KloutitCaseApi(
 
 // Update case
 $kloutitCaseBody = new UpdateCaseParams([
-    'organization_type' => CaseSector::TECHNOLOGY,
-    'expedient_number' => 'EXPPHP0001',
-    'notification_date' => '2024-09-22T11:31:22.347Z',
-    'deadline' => '2027-09-22T11:31:22.347Z',
-    'dispute_amount' => [
+    'sector' => CaseSector::TECHNOLOGY,
+    'filialIdentifier' => 'B12345678', // If you do not have filials in your organization, leave this field empty
+    'transactionDate' => new DateTime(),
+    'bankName' => 'Sample bank',
+    'cardBrand' => 'Sample card brand',
+    'last4Digits' => '1234',
+    'is3DSPurchase' => true,
+    'purchaseDate' => new DateTime(),
+    'purchaseAmount' => [
         'currency' => Currencies::EUR,
-        'value' => 10,
+        'value' => 10
     ],
-    'chargeback_reason' => ChargebackReason::PRODUCT_SERVICE_NOT_RECEIVED,
-    'transaction_date' => '2024-09-22T11:31:22.347Z',
-    'pan_number' => 'PAN000001',
-    'transaction_id' => 'TR0000001',
-    'bank_name' => 'Sample bank',
-    'is3_ds_purchase' => true,
-    'purchase_date' => '2024-09-22T11:31:22.347Z',
-    'purchase_amount' => [
-        'currency' => Currencies::EUR,
-        'value' => 10,
+    'isChargeRefundable' => true,
+    'customerName' => 'Node SDK sample',
+    'customerEmail' => 'kloutit-node@example.com',
+    'customerPhone' => '612345678',
+    'additionalInfo' => 'Some optional additional info',
+    'communications' => [
+        [
+            'sender' => 'Sender name',
+            'content' => 'Communication content',
+            'date' => new DateTime(),
+        ]
     ],
-
-    'product' => 'Sample product', // Product OR service should be informed
-    'service' => null, // Product OR service should be informed
-    'is_charge_refundable' => true,
-    'shipping_city' => 'Barcelona',
-    'shipping_province' => 'Barcelona',
-    'shipping_postal_code' => '08000',
-    'shipping_date' => '2024-09-22T11:31:22.347Z',
-    'delivery_company' => 'Sample company',
-    'delivery_date' => '2024-09-22T11:31:22.347Z',
-    'delivery_confirmation' => true,
-
-    'customer_name' => 'PHP SDK sample',
-    'customer_email' => 'kloutit-php@example.com',
-    'contact_date' => '2024-09-22T11:31:22.347Z',
-    'customer_phone' => '612345678',
-    'additional_info' => 'Some optional additional info',
+    'product' => 'Sample product',
+    'service' => 'Sample service',
+    'shippingCity' => 'Barcelona',
+    'shippingProvince' => 'Barcelona',
+    'shippingPostalCode' => '08000',
+    'deliveryConfirmation' => true,
+    'shippingDate' => new DateTime(),
+    'deliveryDate' => new DateTime(),
+    'deliveryCompany' => 'Sample company',
 ]);
 
 try {
