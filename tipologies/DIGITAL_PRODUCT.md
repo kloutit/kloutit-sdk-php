@@ -12,12 +12,12 @@ use Kloutit\Model\Currencies;
 $kloutitCase = new UpdateCaseParams([
     'sector' => CaseSector::DIGITAL_PRODUCT,
     'filialIdentifier' => 'B12345678', // If you do not have filials in your organization, leave this field empty
-    'transactionDate' => new DateTime(),
+    'transactionDate' => (new DateTime())->format(DateTime::ATOM), // UTC date
     'bankName' => 'Sample bank',
     'cardBrand' => 'Sample card brand',
     'last4Digits' => '1234',
     'is3DSPurchase' => true,
-    'purchaseDate' => new DateTime(),
+    'purchaseDate' => (new DateTime())->format(DateTime::ATOM), // UTC date
     'purchaseAmount' => [
         'currency' => Currencies::EUR,
         'value' => 10
@@ -31,7 +31,7 @@ $kloutitCase = new UpdateCaseParams([
         [
             'sender' => 'Sender name',
             'content' => 'Communication content',
-            'date' => new DateTime(),
+            'date' => (new DateTime())->format(DateTime::ATOM), // UTC date
         ]
     ],
     'product' => 'Sample product',
@@ -40,8 +40,8 @@ $kloutitCase = new UpdateCaseParams([
     'shippingProvince' => 'Barcelona',
     'shippingPostalCode' => '08000',
     'deliveryConfirmation' => true,
-    'shippingDate' => new DateTime(),
-    'deliveryDate' => new DateTime(),
+    'shippingDate' => (new DateTime())->format(DateTime::ATOM), // UTC date
+    'deliveryDate' => (new DateTime())->format(DateTime::ATOM), // UTC date
     'deliveryCompany' => 'Sample company',
 ]);
 ```
