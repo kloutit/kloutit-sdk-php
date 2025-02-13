@@ -7,7 +7,7 @@ This is a sample UpdateCaseParams for Health&Beauty sector with all the paramete
 
 use Kloutit\Model\UpdateCaseParams;
 use Kloutit\Model\CaseSector;
-use Kloutit\Currencies;
+use Kloutit\Model\Currencies;
 
 $kloutitCase = new UpdateCaseParams([
     'sector' => CaseSector::HEALTH_BEAUTY,

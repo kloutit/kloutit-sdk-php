@@ -7,7 +7,7 @@ This is a sample UpdateCaseParams for Travel Hotel sector with all the parameter
 
 use Kloutit\Model\UpdateCaseParams;
 use Kloutit\Model\CaseSector;
-use Kloutit\Currencies;
+use Kloutit\Model\Currencies;
 
 $kloutitCase = new UpdateCaseParams([
     'sector' => CaseSector::TRAVEL_HOTEL,

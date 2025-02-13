@@ -7,7 +7,7 @@ This is a sample UpdateCaseParams for Home sector with all the parameters it adm
 
 use Kloutit\Model\UpdateCaseParams;
 use Kloutit\Model\CaseSector;
-use Kloutit\Currencies;
+use Kloutit\Model\Currencies;
 
 $kloutitCase = new UpdateCaseParams([
     'sector' => CaseSector::HOME,

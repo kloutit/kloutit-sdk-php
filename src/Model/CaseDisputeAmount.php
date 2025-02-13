@@ -64,7 +64,7 @@ class CaseDisputeAmount implements ModelInterface, ArrayAccess, \JsonSerializabl
       */
     protected static $openAPITypes = [
         'value' => 'float',
-        'currency' => 'string'
+        'currency' => '\Kloutit\Model\Currencies'
     ];
 
     /**
@@ -338,7 +338,7 @@ class CaseDisputeAmount implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets currency
      *
-     * @return string
+     * @return \Kloutit\Model\Currencies
      */
     public function getCurrency()
     {
@@ -348,7 +348,7 @@ class CaseDisputeAmount implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets currency
      *
-     * @param string $currency currency
+     * @param \Kloutit\Model\Currencies $currency currency
      *
      * @return self
      */

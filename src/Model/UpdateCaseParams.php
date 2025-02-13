@@ -670,7 +670,7 @@ class UpdateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets purchase_date
      *
-     * @param \DateTime|null $purchase_date Date when the customer made the purchase.
+     * @param \DateTime|null $purchase_date Date when the customer made the purchase in UTC and ISO 8601 format.
      *
      * @return self
      */
@@ -859,7 +859,7 @@ class UpdateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets service_date
      *
-     * @param \DateTime|null $service_date Date when the service was provided or will be provided.
+     * @param \DateTime|null $service_date Date when the service was provided or will be provided in UTC and ISO 8601 format.
      *
      * @return self
      */
@@ -913,7 +913,7 @@ class UpdateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets checkin_date
      *
-     * @param \DateTime|null $checkin_date Check in date.
+     * @param \DateTime|null $checkin_date Check in date in UTC and ISO 8601 format.
      *
      * @return self
      */
@@ -940,7 +940,7 @@ class UpdateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets checkout_date
      *
-     * @param \DateTime|null $checkout_date Check out date.
+     * @param \DateTime|null $checkout_date Check out date in UTC and ISO 8601 format.
      *
      * @return self
      */
@@ -1075,7 +1075,7 @@ class UpdateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets departure_date
      *
-     * @param \DateTime|null $departure_date Departure date.
+     * @param \DateTime|null $departure_date Departure date in UTC and ISO 8601 format.
      *
      * @return self
      */
@@ -1102,7 +1102,7 @@ class UpdateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets arrival_date
      *
-     * @param \DateTime|null $arrival_date Arrival date.
+     * @param \DateTime|null $arrival_date Arrival date in UTC and ISO 8601 format.
      *
      * @return self
      */
@@ -1318,7 +1318,7 @@ class UpdateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets shipping_date
      *
-     * @param \DateTime|null $shipping_date Shipping date.
+     * @param \DateTime|null $shipping_date Shipping date in UTC and ISO 8601 format.
      *
      * @return self
      */
@@ -1345,7 +1345,7 @@ class UpdateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets delivery_date
      *
-     * @param \DateTime|null $delivery_date Delivery date.
+     * @param \DateTime|null $delivery_date Delivery date in UTC and ISO 8601 format.
      *
      * @return self
      */
@@ -1426,7 +1426,7 @@ class UpdateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets commitment_start_date
      *
-     * @param \DateTime|null $commitment_start_date Start date of the commitment that the customer has with the company.
+     * @param \DateTime|null $commitment_start_date Start date in UTC and ISO 8601 format of the commitment that the customer has with the company.
      *
      * @return self
      */
@@ -1453,7 +1453,7 @@ class UpdateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets commitment_end_date
      *
-     * @param \DateTime|null $commitment_end_date End date of the commitment that the customer has with the company.
+     * @param \DateTime|null $commitment_end_date End date in UTC and ISO 8601 format of the commitment that the customer has with the company.
      *
      * @return self
      */
@@ -1534,7 +1534,7 @@ class UpdateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets contact_date
      *
-     * @param \DateTime|null $contact_date Date when the customer contacted to the merchant.
+     * @param \DateTime|null $contact_date Date when the customer contacted to the merchant in UTC and ISO 8601 format.
      *
      * @return self
      */
@@ -1642,7 +1642,7 @@ class UpdateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets transaction_date
      *
-     * @param \DateTime|null $transaction_date Transaction date.
+     * @param \DateTime|null $transaction_date Transaction date in UTC and ISO 8601 format.
      *
      * @return self
      */
@@ -1804,7 +1804,7 @@ class UpdateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets seller_contact_date
      *
-     * @param \DateTime|null $seller_contact_date Date when the customer contacted to the seller.
+     * @param \DateTime|null $seller_contact_date Date when the customer contacted to the seller in UTC and ISO 8601 format.
      *
      * @return self
      */

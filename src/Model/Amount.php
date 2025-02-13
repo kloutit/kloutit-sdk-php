@@ -63,7 +63,7 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'value' => 'float',
-        'currency' => 'string'
+        'currency' => '\Kloutit\Model\Currencies'
     ];
 
     /**
@@ -337,7 +337,7 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets currency
      *
-     * @return string
+     * @return \Kloutit\Model\Currencies
      */
     public function getCurrency()
     {
@@ -347,7 +347,7 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets currency
      *
-     * @param string $currency currency
+     * @param \Kloutit\Model\Currencies $currency currency
      *
      * @return self
      */

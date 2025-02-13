@@ -606,6 +606,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     public const PAYMENT_PROCESSOR_PAYPAL = 'PAYPAL';
     public const PAYMENT_PROCESSOR_MANGOPAY = 'MANGOPAY';
     public const PAYMENT_PROCESSOR_ADYEN = 'ADYEN';
+    public const SECTOR_DIGITAL_PRODUCT = 'DIGITAL_PRODUCT';
     public const SECTOR_EDUCATION = 'EDUCATION';
     public const SECTOR_FASHION = 'FASHION';
     public const SECTOR_FOOD = 'FOOD';
@@ -613,17 +614,16 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     public const SECTOR_HEALTH_BEAUTY = 'HEALTH_BEAUTY';
     public const SECTOR_HOME = 'HOME';
     public const SECTOR_LEISURE = 'LEISURE';
+    public const SECTOR_MARKETPLACE = 'MARKETPLACE';
     public const SECTOR_PHONE = 'PHONE';
     public const SECTOR_SOFTWARE = 'SOFTWARE';
     public const SECTOR_SPORT = 'SPORT';
+    public const SECTOR_SUBSCRIPTION = 'SUBSCRIPTION';
     public const SECTOR_SUPPLY = 'SUPPLY';
     public const SECTOR_TECHNOLOGY = 'TECHNOLOGY';
+    public const SECTOR_TRANSPORT = 'TRANSPORT';
     public const SECTOR_TRAVEL_AIRLINE = 'TRAVEL_AIRLINE';
     public const SECTOR_TRAVEL_HOTEL = 'TRAVEL_HOTEL';
-    public const SECTOR_MARKETPLACE = 'MARKETPLACE';
-    public const SECTOR_DIGITAL_PRODUCT = 'DIGITAL_PRODUCT';
-    public const SECTOR_SUBSCRIPTION = 'SUBSCRIPTION';
-    public const SECTOR_TRANSPORT = 'TRANSPORT';
 
     /**
      * Gets allowable values of the enum
@@ -651,6 +651,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     public function getSectorAllowableValues()
     {
         return [
+            self::SECTOR_DIGITAL_PRODUCT,
             self::SECTOR_EDUCATION,
             self::SECTOR_FASHION,
             self::SECTOR_FOOD,
@@ -658,17 +659,16 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
             self::SECTOR_HEALTH_BEAUTY,
             self::SECTOR_HOME,
             self::SECTOR_LEISURE,
+            self::SECTOR_MARKETPLACE,
             self::SECTOR_PHONE,
             self::SECTOR_SOFTWARE,
             self::SECTOR_SPORT,
+            self::SECTOR_SUBSCRIPTION,
             self::SECTOR_SUPPLY,
             self::SECTOR_TECHNOLOGY,
+            self::SECTOR_TRANSPORT,
             self::SECTOR_TRAVEL_AIRLINE,
             self::SECTOR_TRAVEL_HOTEL,
-            self::SECTOR_MARKETPLACE,
-            self::SECTOR_DIGITAL_PRODUCT,
-            self::SECTOR_SUBSCRIPTION,
-            self::SECTOR_TRANSPORT,
         ];
     }
 
@@ -1104,7 +1104,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets purchase_date
      *
-     * @param \DateTime $purchase_date Date when the customer made the purchase.
+     * @param \DateTime $purchase_date Date when the customer made the purchase in UTC and ISO 8601 format.
      *
      * @return self
      */
@@ -1293,7 +1293,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets service_date
      *
-     * @param \DateTime|null $service_date Date when the service was provided or will be provided.
+     * @param \DateTime|null $service_date Date when the service was provided or will be provided in UTC and ISO 8601 format.
      *
      * @return self
      */
@@ -1347,7 +1347,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets checkin_date
      *
-     * @param \DateTime|null $checkin_date Check in date.
+     * @param \DateTime|null $checkin_date Check in date in UTC and ISO 8601 format.
      *
      * @return self
      */
@@ -1374,7 +1374,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets checkout_date
      *
-     * @param \DateTime|null $checkout_date Check out date.
+     * @param \DateTime|null $checkout_date Check out date in UTC and ISO 8601 format.
      *
      * @return self
      */
@@ -1509,7 +1509,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets departure_date
      *
-     * @param \DateTime|null $departure_date Departure date.
+     * @param \DateTime|null $departure_date Departure date in UTC and ISO 8601 format.
      *
      * @return self
      */
@@ -1536,7 +1536,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets arrival_date
      *
-     * @param \DateTime|null $arrival_date Arrival date.
+     * @param \DateTime|null $arrival_date Arrival date in UTC and ISO 8601 format.
      *
      * @return self
      */
@@ -1752,7 +1752,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets shipping_date
      *
-     * @param \DateTime|null $shipping_date Shipping date.
+     * @param \DateTime|null $shipping_date Shipping date in UTC and ISO 8601 format.
      *
      * @return self
      */
@@ -1779,7 +1779,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets delivery_date
      *
-     * @param \DateTime|null $delivery_date Delivery date.
+     * @param \DateTime|null $delivery_date Delivery date in UTC and ISO 8601 format.
      *
      * @return self
      */
@@ -1860,7 +1860,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets commitment_start_date
      *
-     * @param \DateTime|null $commitment_start_date Start date of the commitment that the customer has with the company.
+     * @param \DateTime|null $commitment_start_date Start date in UTC and ISO 8601 format of the commitment that the customer has with the company.
      *
      * @return self
      */
@@ -1887,7 +1887,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets commitment_end_date
      *
-     * @param \DateTime|null $commitment_end_date End date of the commitment that the customer has with the company.
+     * @param \DateTime|null $commitment_end_date End date in UTC and ISO 8601 format of the commitment that the customer has with the company.
      *
      * @return self
      */
@@ -1995,7 +1995,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets notification_date
      *
-     * @param \DateTime $notification_date Chargeback notification date, when the merchant receives the chargeback notification.
+     * @param \DateTime $notification_date Chargeback notification date, when the merchant receives the chargeback notification, in UTC and ISO 8601 format.
      *
      * @return self
      */
@@ -2076,7 +2076,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets deadline
      *
-     * @param \DateTime|null $deadline Deadline date to resolve this chargeback.
+     * @param \DateTime|null $deadline Deadline date to resolve this chargeback in UTC and ISO 8601 format.
      *
      * @return self
      */
@@ -2103,7 +2103,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets contact_date
      *
-     * @param \DateTime|null $contact_date Date when the customer contacted to the merchant.
+     * @param \DateTime|null $contact_date Date when the customer contacted to the merchant in UTC and ISO 8601 format.
      *
      * @return self
      */
@@ -2238,7 +2238,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets transaction_date
      *
-     * @param \DateTime $transaction_date Transaction date.
+     * @param \DateTime $transaction_date Transaction date in UTC and ISO 8601 format.
      *
      * @return self
      */
@@ -2410,7 +2410,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets seller_contact_date
      *
-     * @param \DateTime|null $seller_contact_date Date when the customer contacted to the seller.
+     * @param \DateTime|null $seller_contact_date Date when the customer contacted to the seller in UTC and ISO 8601 format.
      *
      * @return self
      */

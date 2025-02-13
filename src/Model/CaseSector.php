@@ -48,6 +48,8 @@ class CaseSector
     /**
      * Possible values of this enum
      */
+    public const DIGITAL_PRODUCT = 'DIGITAL_PRODUCT';
+
     public const EDUCATION = 'EDUCATION';
 
     public const FASHION = 'FASHION';
@@ -62,27 +64,25 @@ class CaseSector
 
     public const LEISURE = 'LEISURE';
 
+    public const MARKETPLACE = 'MARKETPLACE';
+
     public const PHONE = 'PHONE';
 
     public const SOFTWARE = 'SOFTWARE';
 
     public const SPORT = 'SPORT';
 
+    public const SUBSCRIPTION = 'SUBSCRIPTION';
+
     public const SUPPLY = 'SUPPLY';
 
     public const TECHNOLOGY = 'TECHNOLOGY';
 
+    public const TRANSPORT = 'TRANSPORT';
+
     public const TRAVEL_AIRLINE = 'TRAVEL_AIRLINE';
 
     public const TRAVEL_HOTEL = 'TRAVEL_HOTEL';
-
-    public const MARKETPLACE = 'MARKETPLACE';
-
-    public const DIGITAL_PRODUCT = 'DIGITAL_PRODUCT';
-
-    public const SUBSCRIPTION = 'SUBSCRIPTION';
-
-    public const TRANSPORT = 'TRANSPORT';
 
     /**
      * Gets allowable values of the enum
@@ -91,6 +91,7 @@ class CaseSector
     public static function getAllowableEnumValues()
     {
         return [
+            self::DIGITAL_PRODUCT,
             self::EDUCATION,
             self::FASHION,
             self::FOOD,
@@ -98,17 +99,16 @@ class CaseSector
             self::HEALTH_BEAUTY,
             self::HOME,
             self::LEISURE,
+            self::MARKETPLACE,
             self::PHONE,
             self::SOFTWARE,
             self::SPORT,
+            self::SUBSCRIPTION,
             self::SUPPLY,
             self::TECHNOLOGY,
+            self::TRANSPORT,
             self::TRAVEL_AIRLINE,
-            self::TRAVEL_HOTEL,
-            self::MARKETPLACE,
-            self::DIGITAL_PRODUCT,
-            self::SUBSCRIPTION,
-            self::TRANSPORT
+            self::TRAVEL_HOTEL
         ];
     }
 }

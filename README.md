@@ -34,9 +34,8 @@ require 'vendor/autoload.php';
 use Kloutit\Configuration as KloutitConfiguration;
 use Kloutit\Api\KloutitCaseApi;
 use Kloutit\Model\UpdateCaseParams;
-use Kloutit\Model\ChargebackReason;
 use Kloutit\Model\CaseSector;
-use Kloutit\Currencies;
+use Kloutit\Model\Currencies;
 
 $apiKey = 'YOUR_API_KEY';
 $expedientNumber = 'EXPEDIENT_NUMBER';
@@ -59,12 +58,12 @@ $kloutitCase = new KloutitCaseApi(
 $kloutitCaseBody = new UpdateCaseParams([
     'sector' => CaseSector::TECHNOLOGY,
     'filialIdentifier' => 'B12345678', // If you do not have filials in your organization, leave this field empty
-    'transactionDate' => new DateTime(),
+    'transactionDate' => (new DateTime())->format(DateTime::ATOM), // '2025-01-01T10:00:00.000Z'
     'bankName' => 'Sample bank',
     'cardBrand' => 'Sample card brand',
     'last4Digits' => '1234',
     'is3DSPurchase' => true,
-    'purchaseDate' => new DateTime(),
+    'purchaseDate' => '2025-01-01T10:00:00.000Z',
     'purchaseAmount' => [
         'currency' => Currencies::EUR,
         'value' => 10
@@ -78,7 +77,7 @@ $kloutitCaseBody = new UpdateCaseParams([
         [
             'sender' => 'Sender name',
             'content' => 'Communication content',
-            'date' => new DateTime(),
+            'date' => '2025-01-01T10:00:00.000Z',
         ]
     ],
     'product' => 'Sample product',
@@ -87,8 +86,8 @@ $kloutitCaseBody = new UpdateCaseParams([
     'shippingProvince' => 'Barcelona',
     'shippingPostalCode' => '08000',
     'deliveryConfirmation' => true,
-    'shippingDate' => new DateTime(),
-    'deliveryDate' => new DateTime(),
+    'shippingDate' => '2025-01-01T10:00:00.000Z',
+    'deliveryDate' => '2025-01-01T10:00:00.000Z',
     'deliveryCompany' => 'Sample company',
 ]);
 

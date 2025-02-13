@@ -7,7 +7,7 @@ This is a sample UpdateCaseParams for Technology sector with all the parameters 
 
 use Kloutit\Model\UpdateCaseParams;
 use Kloutit\Model\CaseSector;
-use Kloutit\Currencies;
+use Kloutit\Model\Currencies;
 
 $kloutitCase = new UpdateCaseParams([
     'sector' => CaseSector::TECHNOLOGY,

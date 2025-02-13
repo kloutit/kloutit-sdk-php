@@ -7,7 +7,7 @@ This is a sample UpdateCaseParams for Travel Airline sector with all the paramet
 
 use Kloutit\Model\UpdateCaseParams;
 use Kloutit\Model\CaseSector;
-use Kloutit\Currencies;
+use Kloutit\Model\Currencies;
 
 $kloutitCase = new UpdateCaseParams([
     'sector' => CaseSector::TRAVEL_AIRLINE,
