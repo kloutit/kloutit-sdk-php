@@ -62,6 +62,7 @@ class UpdateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'terms_url' => 'string',
         'filial_identifier' => 'string',
         'purchase_date' => '\DateTime',
         'service' => 'string',
@@ -109,8 +110,7 @@ class UpdateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         'seller_additional_info' => 'string',
         'seller_name' => 'string',
         'seller_phone' => 'string',
-        'seller_email' => 'string',
-        'terms_url' => 'string'
+        'seller_email' => 'string'
     ];
 
     /**
@@ -121,6 +121,7 @@ class UpdateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'terms_url' => null,
         'filial_identifier' => null,
         'purchase_date' => 'date-time',
         'service' => null,
@@ -168,8 +169,7 @@ class UpdateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         'seller_additional_info' => null,
         'seller_name' => null,
         'seller_phone' => null,
-        'seller_email' => null,
-        'terms_url' => null
+        'seller_email' => null
     ];
 
     /**
@@ -178,6 +178,7 @@ class UpdateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'terms_url' => false,
         'filial_identifier' => false,
         'purchase_date' => false,
         'service' => false,
@@ -225,8 +226,7 @@ class UpdateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         'seller_additional_info' => false,
         'seller_name' => false,
         'seller_phone' => false,
-        'seller_email' => false,
-        'terms_url' => false
+        'seller_email' => false
     ];
 
     /**
@@ -315,6 +315,7 @@ class UpdateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'terms_url' => 'termsUrl',
         'filial_identifier' => 'filialIdentifier',
         'purchase_date' => 'purchaseDate',
         'service' => 'service',
@@ -362,8 +363,7 @@ class UpdateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         'seller_additional_info' => 'sellerAdditionalInfo',
         'seller_name' => 'sellerName',
         'seller_phone' => 'sellerPhone',
-        'seller_email' => 'sellerEmail',
-        'terms_url' => 'termsUrl'
+        'seller_email' => 'sellerEmail'
     ];
 
     /**
@@ -372,6 +372,7 @@ class UpdateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'terms_url' => 'setTermsUrl',
         'filial_identifier' => 'setFilialIdentifier',
         'purchase_date' => 'setPurchaseDate',
         'service' => 'setService',
@@ -419,8 +420,7 @@ class UpdateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         'seller_additional_info' => 'setSellerAdditionalInfo',
         'seller_name' => 'setSellerName',
         'seller_phone' => 'setSellerPhone',
-        'seller_email' => 'setSellerEmail',
-        'terms_url' => 'setTermsUrl'
+        'seller_email' => 'setSellerEmail'
     ];
 
     /**
@@ -429,6 +429,7 @@ class UpdateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'terms_url' => 'getTermsUrl',
         'filial_identifier' => 'getFilialIdentifier',
         'purchase_date' => 'getPurchaseDate',
         'service' => 'getService',
@@ -476,8 +477,7 @@ class UpdateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         'seller_additional_info' => 'getSellerAdditionalInfo',
         'seller_name' => 'getSellerName',
         'seller_phone' => 'getSellerPhone',
-        'seller_email' => 'getSellerEmail',
-        'terms_url' => 'getTermsUrl'
+        'seller_email' => 'getSellerEmail'
     ];
 
     /**
@@ -537,6 +537,7 @@ class UpdateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->setIfExists('terms_url', $data ?? [], null);
         $this->setIfExists('filial_identifier', $data ?? [], null);
         $this->setIfExists('purchase_date', $data ?? [], null);
         $this->setIfExists('service', $data ?? [], null);
@@ -585,7 +586,6 @@ class UpdateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('seller_name', $data ?? [], null);
         $this->setIfExists('seller_phone', $data ?? [], null);
         $this->setIfExists('seller_email', $data ?? [], null);
-        $this->setIfExists('terms_url', $data ?? [], null);
     }
 
     /**
@@ -629,6 +629,33 @@ class UpdateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets terms_url
+     *
+     * @return string|null
+     */
+    public function getTermsUrl()
+    {
+        return $this->container['terms_url'];
+    }
+
+    /**
+     * Sets terms_url
+     *
+     * @param string|null $terms_url Terms and Conditions URL. Only applies for sectors: TRAVEL_AIRLINE, TRAVEL_HOTEL and LEISURE.
+     *
+     * @return self
+     */
+    public function setTermsUrl($terms_url)
+    {
+        if (is_null($terms_url)) {
+            throw new \InvalidArgumentException('non-nullable terms_url cannot be null');
+        }
+        $this->container['terms_url'] = $terms_url;
+
+        return $this;
+    }
 
     /**
      * Gets filial_identifier
@@ -1922,33 +1949,6 @@ class UpdateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable seller_email cannot be null');
         }
         $this->container['seller_email'] = $seller_email;
-
-        return $this;
-    }
-
-    /**
-     * Gets terms_url
-     *
-     * @return string|null
-     */
-    public function getTermsUrl()
-    {
-        return $this->container['terms_url'];
-    }
-
-    /**
-     * Sets terms_url
-     *
-     * @param string|null $terms_url Terms and Conditions URL. Only applies for sectors: TRAVEL_AIRLINE, TRAVEL_HOTEL and LEISURE.
-     *
-     * @return self
-     */
-    public function setTermsUrl($terms_url)
-    {
-        if (is_null($terms_url)) {
-            throw new \InvalidArgumentException('non-nullable terms_url cannot be null');
-        }
-        $this->container['terms_url'] = $terms_url;
 
         return $this;
     }

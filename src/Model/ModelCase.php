@@ -69,6 +69,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         'is_deleted' => 'bool',
         'deleted_at' => '\DateTime',
         'status' => '\Kloutit\Model\CaseStatus',
+        'terms_url' => 'string',
         'filial_identifier' => 'string',
         'payment_processor' => 'string',
         'purchase_date' => '\DateTime',
@@ -141,6 +142,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         'is_deleted' => null,
         'deleted_at' => 'date-time',
         'status' => null,
+        'terms_url' => null,
         'filial_identifier' => null,
         'payment_processor' => null,
         'purchase_date' => 'date-time',
@@ -211,6 +213,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         'is_deleted' => false,
         'deleted_at' => false,
         'status' => false,
+        'terms_url' => false,
         'filial_identifier' => false,
         'payment_processor' => false,
         'purchase_date' => false,
@@ -361,6 +364,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         'is_deleted' => 'isDeleted',
         'deleted_at' => 'deletedAt',
         'status' => 'status',
+        'terms_url' => 'termsUrl',
         'filial_identifier' => 'filialIdentifier',
         'payment_processor' => 'paymentProcessor',
         'purchase_date' => 'purchaseDate',
@@ -431,6 +435,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         'is_deleted' => 'setIsDeleted',
         'deleted_at' => 'setDeletedAt',
         'status' => 'setStatus',
+        'terms_url' => 'setTermsUrl',
         'filial_identifier' => 'setFilialIdentifier',
         'payment_processor' => 'setPaymentProcessor',
         'purchase_date' => 'setPurchaseDate',
@@ -501,6 +506,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         'is_deleted' => 'getIsDeleted',
         'deleted_at' => 'getDeletedAt',
         'status' => 'getStatus',
+        'terms_url' => 'getTermsUrl',
         'filial_identifier' => 'getFilialIdentifier',
         'payment_processor' => 'getPaymentProcessor',
         'purchase_date' => 'getPurchaseDate',
@@ -694,6 +700,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('is_deleted', $data ?? [], false);
         $this->setIfExists('deleted_at', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('terms_url', $data ?? [], null);
         $this->setIfExists('filial_identifier', $data ?? [], null);
         $this->setIfExists('payment_processor', $data ?? [], null);
         $this->setIfExists('purchase_date', $data ?? [], null);
@@ -1023,6 +1030,33 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
         $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets terms_url
+     *
+     * @return string|null
+     */
+    public function getTermsUrl()
+    {
+        return $this->container['terms_url'];
+    }
+
+    /**
+     * Sets terms_url
+     *
+     * @param string|null $terms_url Url of the terms and conditions applied to this case.
+     *
+     * @return self
+     */
+    public function setTermsUrl($terms_url)
+    {
+        if (is_null($terms_url)) {
+            throw new \InvalidArgumentException('non-nullable terms_url cannot be null');
+        }
+        $this->container['terms_url'] = $terms_url;
 
         return $this;
     }

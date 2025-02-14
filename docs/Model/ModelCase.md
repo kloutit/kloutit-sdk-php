@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **is_deleted** | **bool** |  | [optional] [readonly] [default to false]
 **deleted_at** | **\DateTime** |  | [optional] [readonly]
 **status** | [**\Kloutit\Model\CaseStatus**](CaseStatus.md) |  |
+**terms_url** | **string** | Url of the terms and conditions applied to this case. | [optional]
 **filial_identifier** | **string** | Filial identifier related to the case. | [optional]
 **payment_processor** | **string** |  | [optional] [readonly]
 **purchase_date** | **\DateTime** | Date when the customer made the purchase in UTC and ISO 8601 format. |

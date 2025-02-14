@@ -8,6 +8,7 @@ All URIs are relative to http://localhost, except if the operation defines anoth
 | [**submitCompletedCase()**](KloutitCaseApi.md#submitCompletedCase) | **POST** /case/{expedientNumber}/submit-completed-case | Submit completed case |
 | [**updateCase()**](KloutitCaseApi.md#updateCase) | **POST** /case/{expedientNumber}/update-case | Update case |
 | [**uploadFile()**](KloutitCaseApi.md#uploadFile) | **POST** /case/{expedientNumber}/upload-file | Upload file |
+| [**verifyEvent()**](KloutitCaseApi.md#verifyEvent) | **POST** /case/verify-event | Verify webhook event |
 
 
 ## `checkCase()`
@@ -257,6 +258,67 @@ try {
 
 - **Content-Type**: `multipart/form-data`
 - **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `verifyEvent()`
+
+```php
+verifyEvent($client_webhook_event_dto)
+```
+
+Verify webhook event
+
+Verifies if the webhook event received has been sent by Kloutit
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: x-api-key
+$config = Kloutit\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Kloutit\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
+
+$apiInstance = new Kloutit\Api\KloutitCaseApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$client_webhook_event_dto = new \Kloutit\Model\ClientWebhookEventDto(); // \Kloutit\Model\ClientWebhookEventDto
+
+try {
+    $apiInstance->verifyEvent($client_webhook_event_dto);
+} catch (Exception $e) {
+    echo 'Exception when calling KloutitCaseApi->verifyEvent: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **client_webhook_event_dto** | [**\Kloutit\Model\ClientWebhookEventDto**](../Model/ClientWebhookEventDto.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[x-api-key](../../README.md#x-api-key)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

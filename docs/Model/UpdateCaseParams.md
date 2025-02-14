@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**terms_url** | **string** | Terms and Conditions URL. Only applies for sectors: TRAVEL_AIRLINE, TRAVEL_HOTEL and LEISURE. | [optional]
 **filial_identifier** | **string** | Filial identifier related to the case. This should be the NIF, VAT or other unique identifier that is configured for your organization in Kloutit. If you do not have filials in your organization, leave this field empty. | [optional]
 **purchase_date** | **\DateTime** | Date when the customer made the purchase in UTC and ISO 8601 format. | [optional]
 **service** | **string** | Service that the customer bought. | [optional]
@@ -52,6 +53,5 @@ Name | Type | Description | Notes
 **seller_name** | **string** | Seller name. | [optional]
 **seller_phone** | **string** | Seller phone number. | [optional]
 **seller_email** | **string** | Seller email. | [optional]
-**terms_url** | **string** | Terms and Conditions URL. Only applies for sectors: TRAVEL_AIRLINE, TRAVEL_HOTEL and LEISURE. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

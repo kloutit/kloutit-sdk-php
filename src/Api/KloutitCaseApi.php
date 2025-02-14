@@ -89,6 +89,9 @@ class KloutitCaseApi
         'uploadFile' => [
             'multipart/form-data',
         ],
+        'verifyEvent' => [
+            'application/json',
+        ],
     ];
 
     /**
@@ -1270,6 +1273,239 @@ class KloutitCaseApi
 
         // for model (json/xml)
         if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKey();
+        if ($apiKey !== null) {
+            $headers['x-api-key'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation verifyEvent
+     *
+     * Verify webhook event
+     *
+     * @param  \Kloutit\Model\ClientWebhookEventDto $client_webhook_event_dto client_webhook_event_dto (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['verifyEvent'] to see the possible values for this operation
+     *
+     * @throws \Kloutit\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function verifyEvent($client_webhook_event_dto, string $contentType = self::contentTypes['verifyEvent'][0])
+    {
+        $this->verifyEventWithHttpInfo($client_webhook_event_dto, $contentType);
+    }
+
+    /**
+     * Operation verifyEventWithHttpInfo
+     *
+     * Verify webhook event
+     *
+     * @param  \Kloutit\Model\ClientWebhookEventDto $client_webhook_event_dto (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['verifyEvent'] to see the possible values for this operation
+     *
+     * @throws \Kloutit\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function verifyEventWithHttpInfo($client_webhook_event_dto, string $contentType = self::contentTypes['verifyEvent'][0])
+    {
+        $request = $this->verifyEventRequest($client_webhook_event_dto, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation verifyEventAsync
+     *
+     * Verify webhook event
+     *
+     * @param  \Kloutit\Model\ClientWebhookEventDto $client_webhook_event_dto (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['verifyEvent'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function verifyEventAsync($client_webhook_event_dto, string $contentType = self::contentTypes['verifyEvent'][0])
+    {
+        return $this->verifyEventAsyncWithHttpInfo($client_webhook_event_dto, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation verifyEventAsyncWithHttpInfo
+     *
+     * Verify webhook event
+     *
+     * @param  \Kloutit\Model\ClientWebhookEventDto $client_webhook_event_dto (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['verifyEvent'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function verifyEventAsyncWithHttpInfo($client_webhook_event_dto, string $contentType = self::contentTypes['verifyEvent'][0])
+    {
+        $returnType = '';
+        $request = $this->verifyEventRequest($client_webhook_event_dto, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'verifyEvent'
+     *
+     * @param  \Kloutit\Model\ClientWebhookEventDto $client_webhook_event_dto (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['verifyEvent'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function verifyEventRequest($client_webhook_event_dto, string $contentType = self::contentTypes['verifyEvent'][0])
+    {
+
+        // verify the required parameter 'client_webhook_event_dto' is set
+        if ($client_webhook_event_dto === null || (is_array($client_webhook_event_dto) && count($client_webhook_event_dto) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $client_webhook_event_dto when calling verifyEvent'
+            );
+        }
+
+
+        $resourcePath = '/case/verify-event';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            [],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($client_webhook_event_dto)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($client_webhook_event_dto));
+            } else {
+                $httpBody = $client_webhook_event_dto;
+            }
+        } elseif (count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {
