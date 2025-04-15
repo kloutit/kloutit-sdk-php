@@ -34,7 +34,6 @@ $kloutitCase = new UpdateCaseParams([
             'date' => (new DateTime())->format(DateTime::ATOM), // UTC date
         ]
     ],
-    'termsUrl' => 'www.terms.com',
     'service' => 'Sample service',
     'serviceDate' => (new DateTime())->format(DateTime::ATOM), // UTC date
     'serviceWasProvided' => true,

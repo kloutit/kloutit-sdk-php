@@ -34,6 +34,7 @@ $kloutitCase = new UpdateCaseParams([
             'date' => (new DateTime())->format(DateTime::ATOM), // UTC date
         ]
     ],
+
     'service' => 'Sample service',
     'departureDate' => (new DateTime())->format(DateTime::ATOM), // UTC date
     'arrivalDate' => (new DateTime())->format(DateTime::ATOM), // UTC date
@@ -41,6 +42,15 @@ $kloutitCase = new UpdateCaseParams([
     'arrivalCity' => 'Madrid',
     'rate' => 'Sample rate',
     'checkinConfirmation' => true,
+    'departureCountry' => 'Spain',
     'destinationCountry' => 'Spain',
+
+    'inboundDepartureDate' => (new DateTime())->format(DateTime::ATOM), // UTC date
+    'inboundArrivalDate' => (new DateTime())->format(DateTime::ATOM), // UTC date
+    'inboundDepartureCity' => 'Madrid',
+    'inboundArrivalCity' => 'Barcelona',
+    'inboundRate' => 'Sample return rate',
+    'inboundDepartureCountry' => 'Spain',
+    'inboundDestinationCountry' => 'Spain',
 ]);
 ```
