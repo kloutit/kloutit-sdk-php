@@ -69,7 +69,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         'is_deleted' => 'bool',
         'deleted_at' => '\DateTime',
         'status' => '\Kloutit\Model\CaseStatus',
-        'terms_url' => 'string',
+        'sales_channel_code' => 'string',
         'filial_identifier' => 'string',
         'payment_processor' => 'string',
         'purchase_date' => '\DateTime',
@@ -85,14 +85,22 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         'checkout_date' => '\DateTime',
         'hotel_name' => 'string',
         'rate' => 'string',
+        'inbound_rate' => 'string',
         'checkin_confirmation' => 'bool',
+        'departure_country' => 'string',
         'destination_country' => 'string',
         'departure_date' => '\DateTime',
         'arrival_date' => '\DateTime',
+        'inbound_departure_country' => 'string',
+        'inbound_destination_country' => 'string',
+        'inbound_departure_date' => '\DateTime',
+        'inbound_arrival_date' => '\DateTime',
         'departure_airport' => 'string',
         'arrival_airport' => 'string',
         'departure_city' => 'string',
         'arrival_city' => 'string',
+        'inbound_departure_city' => 'string',
+        'inbound_arrival_city' => 'string',
         'shipping_city' => 'string',
         'shipping_province' => 'string',
         'shipping_postal_code' => 'string',
@@ -142,7 +150,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         'is_deleted' => null,
         'deleted_at' => 'date-time',
         'status' => null,
-        'terms_url' => null,
+        'sales_channel_code' => null,
         'filial_identifier' => null,
         'payment_processor' => null,
         'purchase_date' => 'date-time',
@@ -158,14 +166,22 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         'checkout_date' => 'date-time',
         'hotel_name' => null,
         'rate' => null,
+        'inbound_rate' => null,
         'checkin_confirmation' => null,
+        'departure_country' => null,
         'destination_country' => null,
         'departure_date' => 'date-time',
         'arrival_date' => 'date-time',
+        'inbound_departure_country' => null,
+        'inbound_destination_country' => null,
+        'inbound_departure_date' => 'date-time',
+        'inbound_arrival_date' => 'date-time',
         'departure_airport' => null,
         'arrival_airport' => null,
         'departure_city' => null,
         'arrival_city' => null,
+        'inbound_departure_city' => null,
+        'inbound_arrival_city' => null,
         'shipping_city' => null,
         'shipping_province' => null,
         'shipping_postal_code' => null,
@@ -213,7 +229,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         'is_deleted' => false,
         'deleted_at' => false,
         'status' => false,
-        'terms_url' => false,
+        'sales_channel_code' => false,
         'filial_identifier' => false,
         'payment_processor' => false,
         'purchase_date' => false,
@@ -229,14 +245,22 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         'checkout_date' => false,
         'hotel_name' => false,
         'rate' => false,
+        'inbound_rate' => false,
         'checkin_confirmation' => false,
+        'departure_country' => false,
         'destination_country' => false,
         'departure_date' => false,
         'arrival_date' => false,
+        'inbound_departure_country' => false,
+        'inbound_destination_country' => false,
+        'inbound_departure_date' => false,
+        'inbound_arrival_date' => false,
         'departure_airport' => false,
         'arrival_airport' => false,
         'departure_city' => false,
         'arrival_city' => false,
+        'inbound_departure_city' => false,
+        'inbound_arrival_city' => false,
         'shipping_city' => false,
         'shipping_province' => false,
         'shipping_postal_code' => false,
@@ -364,7 +388,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         'is_deleted' => 'isDeleted',
         'deleted_at' => 'deletedAt',
         'status' => 'status',
-        'terms_url' => 'termsUrl',
+        'sales_channel_code' => 'salesChannelCode',
         'filial_identifier' => 'filialIdentifier',
         'payment_processor' => 'paymentProcessor',
         'purchase_date' => 'purchaseDate',
@@ -380,14 +404,22 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         'checkout_date' => 'checkoutDate',
         'hotel_name' => 'hotelName',
         'rate' => 'rate',
+        'inbound_rate' => 'inboundRate',
         'checkin_confirmation' => 'checkinConfirmation',
+        'departure_country' => 'departureCountry',
         'destination_country' => 'destinationCountry',
         'departure_date' => 'departureDate',
         'arrival_date' => 'arrivalDate',
+        'inbound_departure_country' => 'inboundDepartureCountry',
+        'inbound_destination_country' => 'inboundDestinationCountry',
+        'inbound_departure_date' => 'inboundDepartureDate',
+        'inbound_arrival_date' => 'inboundArrivalDate',
         'departure_airport' => 'departureAirport',
         'arrival_airport' => 'arrivalAirport',
         'departure_city' => 'departureCity',
         'arrival_city' => 'arrivalCity',
+        'inbound_departure_city' => 'inboundDepartureCity',
+        'inbound_arrival_city' => 'inboundArrivalCity',
         'shipping_city' => 'shippingCity',
         'shipping_province' => 'shippingProvince',
         'shipping_postal_code' => 'shippingPostalCode',
@@ -435,7 +467,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         'is_deleted' => 'setIsDeleted',
         'deleted_at' => 'setDeletedAt',
         'status' => 'setStatus',
-        'terms_url' => 'setTermsUrl',
+        'sales_channel_code' => 'setSalesChannelCode',
         'filial_identifier' => 'setFilialIdentifier',
         'payment_processor' => 'setPaymentProcessor',
         'purchase_date' => 'setPurchaseDate',
@@ -451,14 +483,22 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         'checkout_date' => 'setCheckoutDate',
         'hotel_name' => 'setHotelName',
         'rate' => 'setRate',
+        'inbound_rate' => 'setInboundRate',
         'checkin_confirmation' => 'setCheckinConfirmation',
+        'departure_country' => 'setDepartureCountry',
         'destination_country' => 'setDestinationCountry',
         'departure_date' => 'setDepartureDate',
         'arrival_date' => 'setArrivalDate',
+        'inbound_departure_country' => 'setInboundDepartureCountry',
+        'inbound_destination_country' => 'setInboundDestinationCountry',
+        'inbound_departure_date' => 'setInboundDepartureDate',
+        'inbound_arrival_date' => 'setInboundArrivalDate',
         'departure_airport' => 'setDepartureAirport',
         'arrival_airport' => 'setArrivalAirport',
         'departure_city' => 'setDepartureCity',
         'arrival_city' => 'setArrivalCity',
+        'inbound_departure_city' => 'setInboundDepartureCity',
+        'inbound_arrival_city' => 'setInboundArrivalCity',
         'shipping_city' => 'setShippingCity',
         'shipping_province' => 'setShippingProvince',
         'shipping_postal_code' => 'setShippingPostalCode',
@@ -506,7 +546,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         'is_deleted' => 'getIsDeleted',
         'deleted_at' => 'getDeletedAt',
         'status' => 'getStatus',
-        'terms_url' => 'getTermsUrl',
+        'sales_channel_code' => 'getSalesChannelCode',
         'filial_identifier' => 'getFilialIdentifier',
         'payment_processor' => 'getPaymentProcessor',
         'purchase_date' => 'getPurchaseDate',
@@ -522,14 +562,22 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         'checkout_date' => 'getCheckoutDate',
         'hotel_name' => 'getHotelName',
         'rate' => 'getRate',
+        'inbound_rate' => 'getInboundRate',
         'checkin_confirmation' => 'getCheckinConfirmation',
+        'departure_country' => 'getDepartureCountry',
         'destination_country' => 'getDestinationCountry',
         'departure_date' => 'getDepartureDate',
         'arrival_date' => 'getArrivalDate',
+        'inbound_departure_country' => 'getInboundDepartureCountry',
+        'inbound_destination_country' => 'getInboundDestinationCountry',
+        'inbound_departure_date' => 'getInboundDepartureDate',
+        'inbound_arrival_date' => 'getInboundArrivalDate',
         'departure_airport' => 'getDepartureAirport',
         'arrival_airport' => 'getArrivalAirport',
         'departure_city' => 'getDepartureCity',
         'arrival_city' => 'getArrivalCity',
+        'inbound_departure_city' => 'getInboundDepartureCity',
+        'inbound_arrival_city' => 'getInboundArrivalCity',
         'shipping_city' => 'getShippingCity',
         'shipping_province' => 'getShippingProvince',
         'shipping_postal_code' => 'getShippingPostalCode',
@@ -700,7 +748,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('is_deleted', $data ?? [], false);
         $this->setIfExists('deleted_at', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('terms_url', $data ?? [], null);
+        $this->setIfExists('sales_channel_code', $data ?? [], null);
         $this->setIfExists('filial_identifier', $data ?? [], null);
         $this->setIfExists('payment_processor', $data ?? [], null);
         $this->setIfExists('purchase_date', $data ?? [], null);
@@ -716,14 +764,22 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('checkout_date', $data ?? [], null);
         $this->setIfExists('hotel_name', $data ?? [], null);
         $this->setIfExists('rate', $data ?? [], null);
+        $this->setIfExists('inbound_rate', $data ?? [], null);
         $this->setIfExists('checkin_confirmation', $data ?? [], null);
+        $this->setIfExists('departure_country', $data ?? [], null);
         $this->setIfExists('destination_country', $data ?? [], null);
         $this->setIfExists('departure_date', $data ?? [], null);
         $this->setIfExists('arrival_date', $data ?? [], null);
+        $this->setIfExists('inbound_departure_country', $data ?? [], null);
+        $this->setIfExists('inbound_destination_country', $data ?? [], null);
+        $this->setIfExists('inbound_departure_date', $data ?? [], null);
+        $this->setIfExists('inbound_arrival_date', $data ?? [], null);
         $this->setIfExists('departure_airport', $data ?? [], null);
         $this->setIfExists('arrival_airport', $data ?? [], null);
         $this->setIfExists('departure_city', $data ?? [], null);
         $this->setIfExists('arrival_city', $data ?? [], null);
+        $this->setIfExists('inbound_departure_city', $data ?? [], null);
+        $this->setIfExists('inbound_arrival_city', $data ?? [], null);
         $this->setIfExists('shipping_city', $data ?? [], null);
         $this->setIfExists('shipping_province', $data ?? [], null);
         $this->setIfExists('shipping_postal_code', $data ?? [], null);
@@ -1035,28 +1091,28 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets terms_url
+     * Gets sales_channel_code
      *
      * @return string|null
      */
-    public function getTermsUrl()
+    public function getSalesChannelCode()
     {
-        return $this->container['terms_url'];
+        return $this->container['sales_channel_code'];
     }
 
     /**
-     * Sets terms_url
+     * Sets sales_channel_code
      *
-     * @param string|null $terms_url Url of the terms and conditions applied to this case.
+     * @param string|null $sales_channel_code The sales channel code related to the case.
      *
      * @return self
      */
-    public function setTermsUrl($terms_url)
+    public function setSalesChannelCode($sales_channel_code)
     {
-        if (is_null($terms_url)) {
-            throw new \InvalidArgumentException('non-nullable terms_url cannot be null');
+        if (is_null($sales_channel_code)) {
+            throw new \InvalidArgumentException('non-nullable sales_channel_code cannot be null');
         }
-        $this->container['terms_url'] = $terms_url;
+        $this->container['sales_channel_code'] = $sales_channel_code;
 
         return $this;
     }
@@ -1477,6 +1533,33 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets inbound_rate
+     *
+     * @return string|null
+     */
+    public function getInboundRate()
+    {
+        return $this->container['inbound_rate'];
+    }
+
+    /**
+     * Sets inbound_rate
+     *
+     * @param string|null $inbound_rate Rate applied in return trip.
+     *
+     * @return self
+     */
+    public function setInboundRate($inbound_rate)
+    {
+        if (is_null($inbound_rate)) {
+            throw new \InvalidArgumentException('non-nullable inbound_rate cannot be null');
+        }
+        $this->container['inbound_rate'] = $inbound_rate;
+
+        return $this;
+    }
+
+    /**
      * Gets checkin_confirmation
      *
      * @return bool|null
@@ -1499,6 +1582,33 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable checkin_confirmation cannot be null');
         }
         $this->container['checkin_confirmation'] = $checkin_confirmation;
+
+        return $this;
+    }
+
+    /**
+     * Gets departure_country
+     *
+     * @return string|null
+     */
+    public function getDepartureCountry()
+    {
+        return $this->container['departure_country'];
+    }
+
+    /**
+     * Sets departure_country
+     *
+     * @param string|null $departure_country Departure country.
+     *
+     * @return self
+     */
+    public function setDepartureCountry($departure_country)
+    {
+        if (is_null($departure_country)) {
+            throw new \InvalidArgumentException('non-nullable departure_country cannot be null');
+        }
+        $this->container['departure_country'] = $departure_country;
 
         return $this;
     }
@@ -1580,6 +1690,114 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable arrival_date cannot be null');
         }
         $this->container['arrival_date'] = $arrival_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets inbound_departure_country
+     *
+     * @return string|null
+     */
+    public function getInboundDepartureCountry()
+    {
+        return $this->container['inbound_departure_country'];
+    }
+
+    /**
+     * Sets inbound_departure_country
+     *
+     * @param string|null $inbound_departure_country Departure country of return trip.
+     *
+     * @return self
+     */
+    public function setInboundDepartureCountry($inbound_departure_country)
+    {
+        if (is_null($inbound_departure_country)) {
+            throw new \InvalidArgumentException('non-nullable inbound_departure_country cannot be null');
+        }
+        $this->container['inbound_departure_country'] = $inbound_departure_country;
+
+        return $this;
+    }
+
+    /**
+     * Gets inbound_destination_country
+     *
+     * @return string|null
+     */
+    public function getInboundDestinationCountry()
+    {
+        return $this->container['inbound_destination_country'];
+    }
+
+    /**
+     * Sets inbound_destination_country
+     *
+     * @param string|null $inbound_destination_country Destination country of return trip.
+     *
+     * @return self
+     */
+    public function setInboundDestinationCountry($inbound_destination_country)
+    {
+        if (is_null($inbound_destination_country)) {
+            throw new \InvalidArgumentException('non-nullable inbound_destination_country cannot be null');
+        }
+        $this->container['inbound_destination_country'] = $inbound_destination_country;
+
+        return $this;
+    }
+
+    /**
+     * Gets inbound_departure_date
+     *
+     * @return \DateTime|null
+     */
+    public function getInboundDepartureDate()
+    {
+        return $this->container['inbound_departure_date'];
+    }
+
+    /**
+     * Sets inbound_departure_date
+     *
+     * @param \DateTime|null $inbound_departure_date Departure date of return trip in UTC and ISO 8601 format.
+     *
+     * @return self
+     */
+    public function setInboundDepartureDate($inbound_departure_date)
+    {
+        if (is_null($inbound_departure_date)) {
+            throw new \InvalidArgumentException('non-nullable inbound_departure_date cannot be null');
+        }
+        $this->container['inbound_departure_date'] = $inbound_departure_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets inbound_arrival_date
+     *
+     * @return \DateTime|null
+     */
+    public function getInboundArrivalDate()
+    {
+        return $this->container['inbound_arrival_date'];
+    }
+
+    /**
+     * Sets inbound_arrival_date
+     *
+     * @param \DateTime|null $inbound_arrival_date Arrival date of return trip in UTC and ISO 8601 format.
+     *
+     * @return self
+     */
+    public function setInboundArrivalDate($inbound_arrival_date)
+    {
+        if (is_null($inbound_arrival_date)) {
+            throw new \InvalidArgumentException('non-nullable inbound_arrival_date cannot be null');
+        }
+        $this->container['inbound_arrival_date'] = $inbound_arrival_date;
 
         return $this;
     }
@@ -1688,6 +1906,60 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable arrival_city cannot be null');
         }
         $this->container['arrival_city'] = $arrival_city;
+
+        return $this;
+    }
+
+    /**
+     * Gets inbound_departure_city
+     *
+     * @return string|null
+     */
+    public function getInboundDepartureCity()
+    {
+        return $this->container['inbound_departure_city'];
+    }
+
+    /**
+     * Sets inbound_departure_city
+     *
+     * @param string|null $inbound_departure_city Departure city of return trip.
+     *
+     * @return self
+     */
+    public function setInboundDepartureCity($inbound_departure_city)
+    {
+        if (is_null($inbound_departure_city)) {
+            throw new \InvalidArgumentException('non-nullable inbound_departure_city cannot be null');
+        }
+        $this->container['inbound_departure_city'] = $inbound_departure_city;
+
+        return $this;
+    }
+
+    /**
+     * Gets inbound_arrival_city
+     *
+     * @return string|null
+     */
+    public function getInboundArrivalCity()
+    {
+        return $this->container['inbound_arrival_city'];
+    }
+
+    /**
+     * Sets inbound_arrival_city
+     *
+     * @param string|null $inbound_arrival_city Arrival city of return trip.
+     *
+     * @return self
+     */
+    public function setInboundArrivalCity($inbound_arrival_city)
+    {
+        if (is_null($inbound_arrival_city)) {
+            throw new \InvalidArgumentException('non-nullable inbound_arrival_city cannot be null');
+        }
+        $this->container['inbound_arrival_city'] = $inbound_arrival_city;
 
         return $this;
     }

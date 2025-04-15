@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**terms_url** | **string** | Terms and Conditions URL. Only applies for sectors: TRAVEL_AIRLINE, TRAVEL_HOTEL and LEISURE. | [optional]
+**sales_channel_code** | **string** | Sales channel code related to the case. This should be the sales channel code that is configured for your organization in Kloutit. If you do not have sales channels in your organization, leave this field empty. | [optional]
 **filial_identifier** | **string** | Filial identifier related to the case. This should be the NIF, VAT or other unique identifier that is configured for your organization in Kloutit. If you do not have filials in your organization, leave this field empty. | [optional]
 **purchase_date** | **\DateTime** | Date when the customer made the purchase in UTC and ISO 8601 format. | [optional]
 **service** | **string** | Service that the customer bought. | [optional]
@@ -19,14 +19,22 @@ Name | Type | Description | Notes
 **checkout_date** | **\DateTime** | Check out date in UTC and ISO 8601 format. | [optional]
 **hotel_name** | **string** | Hotel name. | [optional]
 **rate** | **string** | Rate applied. | [optional]
+**inbound_rate** | **string** | Rate applied in return trip. | [optional]
 **checkin_confirmation** | **bool** | Flag that indicates if the client made the checkin or not. | [optional]
+**departure_country** | **string** | Departure country. | [optional]
 **destination_country** | **string** | Destination country. | [optional]
 **departure_date** | **\DateTime** | Departure date in UTC and ISO 8601 format. | [optional]
 **arrival_date** | **\DateTime** | Arrival date in UTC and ISO 8601 format. | [optional]
+**inbound_departure_country** | **string** | Departure country of return trip. | [optional]
+**inbound_destination_country** | **string** | Destination country of return trip. | [optional]
+**inbound_departure_date** | **\DateTime** | Departure date of return trip in UTC and ISO 8601 format. | [optional]
+**inbound_arrival_date** | **\DateTime** | Arrival date of return trip in UTC and ISO 8601 format. | [optional]
 **departure_airport** | **string** | Departure airport. | [optional]
 **arrival_airport** | **string** | Arrival airport. | [optional]
 **departure_city** | **string** | Departure city. | [optional]
 **arrival_city** | **string** | Arrival city. | [optional]
+**inbound_departure_city** | **string** | Departure city of return trip. | [optional]
+**inbound_arrival_city** | **string** | Arrival city of return trip. | [optional]
 **shipping_city** | **string** | Shipping city. | [optional]
 **shipping_province** | **string** | Shipping province. | [optional]
 **shipping_postal_code** | **string** | Shipping postal code. | [optional]
@@ -53,5 +61,6 @@ Name | Type | Description | Notes
 **seller_name** | **string** | Seller name. | [optional]
 **seller_phone** | **string** | Seller phone number. | [optional]
 **seller_email** | **string** | Seller email. | [optional]
+**sales_channel_terms_url** | **string** | Sales channel Terms and Conditions URL. If Sales Channel Code is provided and not exists in organization, this field is required and should be the URL of the terms and conditions of the sales channel. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

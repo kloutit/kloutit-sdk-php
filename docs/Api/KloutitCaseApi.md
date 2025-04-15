@@ -8,6 +8,7 @@ All URIs are relative to http://localhost, except if the operation defines anoth
 | [**submitCompletedCase()**](KloutitCaseApi.md#submitCompletedCase) | **POST** /case/{expedientNumber}/submit-completed-case | Submit completed case |
 | [**updateCase()**](KloutitCaseApi.md#updateCase) | **POST** /case/{expedientNumber}/update-case | Update case |
 | [**uploadFile()**](KloutitCaseApi.md#uploadFile) | **POST** /case/{expedientNumber}/upload-file | Upload file |
+| [**uploadProductPhoto()**](KloutitCaseApi.md#uploadProductPhoto) | **POST** /case/{expedientNumber}/upload-product-photo | Upload product photo |
 | [**verifyEvent()**](KloutitCaseApi.md#verifyEvent) | **POST** /case/verify-event | Verify webhook event |
 
 
@@ -200,12 +201,12 @@ try {
 ## `uploadFile()`
 
 ```php
-uploadFile($expedient_number, $file, $type): \Kloutit\Model\FileItem
+uploadFile($expedient_number, $file, $category): \Kloutit\Model\FileItem
 ```
 
 Upload file
 
-Uploads a file into an existing case. You need to send a request of type ``multipart/form-data``. This file can be attached as a customer evidence, company evidence or product related file (for marketplace). Allowed formats are ``PDF``, ``JPG``, ``JPEG``, ``PNG``. Max. file size is ``10Mb``
+Uploads a file into an existing case. You need to send a request of type ``multipart/form-data``. Allowed formats are ``PDF``, ``JPG``, ``JPEG``, ``PNG``. Max. file size is ``10Mb``
 
 ### Example
 
@@ -228,10 +229,10 @@ $apiInstance = new Kloutit\Api\KloutitCaseApi(
 );
 $expedient_number = 'expedient_number_example'; // string
 $file = "/path/to/file.txt"; // \SplFileObject | A file to upload. Make sure that the specifications follow RFC 2388, which defines file transfers for the multipart/form-data protocol. Allowed formats are ``PDF``, ``JPG``, ``JPEG``, ``PNG``. Max. file size is ``10Mb``. Ensure that the file upload adheres to [RFC 2388](https://www.ietf.org/rfc/rfc2388.txt), which defines file transfers for the multipart/form-data protocol.
-$type = 'type_example'; // string | Type of file: ``customer``, ``company`` or ``product`` (product only for marketplace)
+$category = 'category_example'; // string | Category of the file
 
 try {
-    $result = $apiInstance->uploadFile($expedient_number, $file, $type);
+    $result = $apiInstance->uploadFile($expedient_number, $file, $category);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling KloutitCaseApi->uploadFile: ', $e->getMessage(), PHP_EOL;
@@ -244,7 +245,71 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **expedient_number** | **string**|  | |
 | **file** | **\SplFileObject****\SplFileObject**| A file to upload. Make sure that the specifications follow RFC 2388, which defines file transfers for the multipart/form-data protocol. Allowed formats are &#x60;&#x60;PDF&#x60;&#x60;, &#x60;&#x60;JPG&#x60;&#x60;, &#x60;&#x60;JPEG&#x60;&#x60;, &#x60;&#x60;PNG&#x60;&#x60;. Max. file size is &#x60;&#x60;10Mb&#x60;&#x60;. Ensure that the file upload adheres to [RFC 2388](https://www.ietf.org/rfc/rfc2388.txt), which defines file transfers for the multipart/form-data protocol. | |
-| **type** | **string**| Type of file: &#x60;&#x60;customer&#x60;&#x60;, &#x60;&#x60;company&#x60;&#x60; or &#x60;&#x60;product&#x60;&#x60; (product only for marketplace) | |
+| **category** | **string**| Category of the file | |
+
+### Return type
+
+[**\Kloutit\Model\FileItem**](../Model/FileItem.md)
+
+### Authorization
+
+[x-api-key](../../README.md#x-api-key)
+
+### HTTP request headers
+
+- **Content-Type**: `multipart/form-data`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `uploadProductPhoto()`
+
+```php
+uploadProductPhoto($expedient_number, $file): \Kloutit\Model\FileItem
+```
+
+Upload product photo
+
+Uploads a product file into an existing case. You need to send a request of type ``multipart/form-data``. This file can be attached only for marketplace company. Allowed formats are ``JPG``, ``JPEG``, ``PNG``. Max. file size is ``10Mb``
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: x-api-key
+$config = Kloutit\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Kloutit\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
+
+$apiInstance = new Kloutit\Api\KloutitCaseApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$expedient_number = 'expedient_number_example'; // string
+$file = "/path/to/file.txt"; // \SplFileObject | A file to upload. Make sure that the specifications follow RFC 2388, which defines file transfers for the multipart/form-data protocol. Allowed formats are ``JPG``, ``JPEG``, ``PNG``. Max. file size is ``10Mb``. Ensure that the file upload adheres to [RFC 2388](https://www.ietf.org/rfc/rfc2388.txt), which defines file transfers for the multipart/form-data protocol.
+
+try {
+    $result = $apiInstance->uploadProductPhoto($expedient_number, $file);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling KloutitCaseApi->uploadProductPhoto: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **expedient_number** | **string**|  | |
+| **file** | **\SplFileObject****\SplFileObject**| A file to upload. Make sure that the specifications follow RFC 2388, which defines file transfers for the multipart/form-data protocol. Allowed formats are &#x60;&#x60;JPG&#x60;&#x60;, &#x60;&#x60;JPEG&#x60;&#x60;, &#x60;&#x60;PNG&#x60;&#x60;. Max. file size is &#x60;&#x60;10Mb&#x60;&#x60;. Ensure that the file upload adheres to [RFC 2388](https://www.ietf.org/rfc/rfc2388.txt), which defines file transfers for the multipart/form-data protocol. | |
 
 ### Return type
 

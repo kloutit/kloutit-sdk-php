@@ -123,4 +123,28 @@ class KloutitCaseApiTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test case for uploadProductPhoto
+     *
+     * Upload product photo.
+     *
+     */
+    public function testUploadProductPhoto()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for verifyEvent
+     *
+     * Verify webhook event.
+     *
+     */
+    public function testVerifyEvent()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

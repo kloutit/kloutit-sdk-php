@@ -65,7 +65,8 @@ class FileItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'string',
         'uploaded_at' => '\DateTime',
         'size' => 'float',
-        'mimetype' => 'string'
+        'mimetype' => 'string',
+        'category' => 'string'
     ];
 
     /**
@@ -79,7 +80,8 @@ class FileItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => null,
         'uploaded_at' => 'date-time',
         'size' => null,
-        'mimetype' => null
+        'mimetype' => null,
+        'category' => null
     ];
 
     /**
@@ -91,7 +93,8 @@ class FileItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => false,
         'uploaded_at' => false,
         'size' => false,
-        'mimetype' => false
+        'mimetype' => false,
+        'category' => false
     ];
 
     /**
@@ -183,7 +186,8 @@ class FileItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'name',
         'uploaded_at' => 'uploadedAt',
         'size' => 'size',
-        'mimetype' => 'mimetype'
+        'mimetype' => 'mimetype',
+        'category' => 'category'
     ];
 
     /**
@@ -195,7 +199,8 @@ class FileItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'setName',
         'uploaded_at' => 'setUploadedAt',
         'size' => 'setSize',
-        'mimetype' => 'setMimetype'
+        'mimetype' => 'setMimetype',
+        'category' => 'setCategory'
     ];
 
     /**
@@ -207,7 +212,8 @@ class FileItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'getName',
         'uploaded_at' => 'getUploadedAt',
         'size' => 'getSize',
-        'mimetype' => 'getMimetype'
+        'mimetype' => 'getMimetype',
+        'category' => 'getCategory'
     ];
 
     /**
@@ -251,6 +257,47 @@ class FileItem implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const CATEGORY_RECEIPT = 'RECEIPT';
+    public const CATEGORY_CUSTOMER_COMMUNICATION = 'CUSTOMER_COMMUNICATION';
+    public const CATEGORY_CUSTOMER_SIGNATURE = 'CUSTOMER_SIGNATURE';
+    public const CATEGORY_PAYMENT_AUTHORIZATION = 'PAYMENT_AUTHORIZATION';
+    public const CATEGORY_CUSTOMER_VISUAL_EVIDENCE = 'CUSTOMER_VISUAL_EVIDENCE';
+    public const CATEGORY_CUSTOMER_UNCATEGORIZED_FILE = 'CUSTOMER_UNCATEGORIZED_FILE';
+    public const CATEGORY_CANCELLATION_POLICY = 'CANCELLATION_POLICY';
+    public const CATEGORY_REFUND_POLICY = 'REFUND_POLICY';
+    public const CATEGORY_REFUND_EVIDENCE = 'REFUND_EVIDENCE';
+    public const CATEGORY_TERMS_AND_CONDITIONS = 'TERMS_AND_CONDITIONS';
+    public const CATEGORY_DUPLICATE_CHARGE_DOCUMENTATION = 'DUPLICATE_CHARGE_DOCUMENTATION';
+    public const CATEGORY_SERVICE_EVIDENCE = 'SERVICE_EVIDENCE';
+    public const CATEGORY_SHIPPING_EVIDENCE = 'SHIPPING_EVIDENCE';
+    public const CATEGORY_COMPANY_VISUAL_EVIDENCE = 'COMPANY_VISUAL_EVIDENCE';
+    public const CATEGORY_COMPANY_UNCATEGORIZED_FILE = 'COMPANY_UNCATEGORIZED_FILE';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getCategoryAllowableValues()
+    {
+        return [
+            self::CATEGORY_RECEIPT,
+            self::CATEGORY_CUSTOMER_COMMUNICATION,
+            self::CATEGORY_CUSTOMER_SIGNATURE,
+            self::CATEGORY_PAYMENT_AUTHORIZATION,
+            self::CATEGORY_CUSTOMER_VISUAL_EVIDENCE,
+            self::CATEGORY_CUSTOMER_UNCATEGORIZED_FILE,
+            self::CATEGORY_CANCELLATION_POLICY,
+            self::CATEGORY_REFUND_POLICY,
+            self::CATEGORY_REFUND_EVIDENCE,
+            self::CATEGORY_TERMS_AND_CONDITIONS,
+            self::CATEGORY_DUPLICATE_CHARGE_DOCUMENTATION,
+            self::CATEGORY_SERVICE_EVIDENCE,
+            self::CATEGORY_SHIPPING_EVIDENCE,
+            self::CATEGORY_COMPANY_VISUAL_EVIDENCE,
+            self::CATEGORY_COMPANY_UNCATEGORIZED_FILE,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -271,6 +318,7 @@ class FileItem implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('uploaded_at', $data ?? [], null);
         $this->setIfExists('size', $data ?? [], null);
         $this->setIfExists('mimetype', $data ?? [], null);
+        $this->setIfExists('category', $data ?? [], null);
     }
 
     /**
@@ -312,6 +360,18 @@ class FileItem implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['mimetype'] === null) {
             $invalidProperties[] = "'mimetype' can't be null";
         }
+        if ($this->container['category'] === null) {
+            $invalidProperties[] = "'category' can't be null";
+        }
+        $allowedValues = $this->getCategoryAllowableValues();
+        if (!is_null($this->container['category']) && !in_array($this->container['category'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'category', must be one of '%s'",
+                $this->container['category'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -431,6 +491,43 @@ class FileItem implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable mimetype cannot be null');
         }
         $this->container['mimetype'] = $mimetype;
+
+        return $this;
+    }
+
+    /**
+     * Gets category
+     *
+     * @return string
+     */
+    public function getCategory()
+    {
+        return $this->container['category'];
+    }
+
+    /**
+     * Sets category
+     *
+     * @param string $category File category.
+     *
+     * @return self
+     */
+    public function setCategory($category)
+    {
+        if (is_null($category)) {
+            throw new \InvalidArgumentException('non-nullable category cannot be null');
+        }
+        $allowedValues = $this->getCategoryAllowableValues();
+        if (!in_array($category, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'category', must be one of '%s'",
+                    $category,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['category'] = $category;
 
         return $this;
     }

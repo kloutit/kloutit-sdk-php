@@ -148,6 +148,15 @@ class ModelCaseTest extends TestCase
     }
 
     /**
+     * Test attribute "sales_channel_code"
+     */
+    public function testPropertySalesChannelCode()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "filial_identifier"
      */
     public function testPropertyFilialIdentifier()
@@ -283,9 +292,27 @@ class ModelCaseTest extends TestCase
     }
 
     /**
+     * Test attribute "inbound_rate"
+     */
+    public function testPropertyInboundRate()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "checkin_confirmation"
      */
     public function testPropertyCheckinConfirmation()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "departure_country"
+     */
+    public function testPropertyDepartureCountry()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -313,6 +340,42 @@ class ModelCaseTest extends TestCase
      * Test attribute "arrival_date"
      */
     public function testPropertyArrivalDate()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "inbound_departure_country"
+     */
+    public function testPropertyInboundDepartureCountry()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "inbound_destination_country"
+     */
+    public function testPropertyInboundDestinationCountry()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "inbound_departure_date"
+     */
+    public function testPropertyInboundDepartureDate()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "inbound_arrival_date"
+     */
+    public function testPropertyInboundArrivalDate()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -349,6 +412,24 @@ class ModelCaseTest extends TestCase
      * Test attribute "arrival_city"
      */
     public function testPropertyArrivalCity()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "inbound_departure_city"
+     */
+    public function testPropertyInboundDepartureCity()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "inbound_arrival_city"
+     */
+    public function testPropertyInboundArrivalCity()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
