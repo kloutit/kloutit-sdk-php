@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## v2.1.0 - 22/08/2025
+
+### ADDED
+
+- Service to create a new case into Kloutit
+- Service to download the case defense
+
+
+### UPDATED
+
+- Adds new properties to case model
+
 ## v2.0.0 - 14/02/2025
 
 ### ADDED
