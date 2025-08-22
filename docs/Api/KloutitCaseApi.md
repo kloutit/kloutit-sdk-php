@@ -5,6 +5,8 @@ All URIs are relative to http://localhost, except if the operation defines anoth
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**checkCase()**](KloutitCaseApi.md#checkCase) | **POST** /case/{expedientNumber}/check-case | Check case information |
+| [**createCase()**](KloutitCaseApi.md#createCase) | **POST** /case | Create a new case into Kloutit. |
+| [**downloadCaseDefense()**](KloutitCaseApi.md#downloadCaseDefense) | **POST** /case/download-defense/{format}/{expedientNumber} | Download the case defense |
 | [**submitCompletedCase()**](KloutitCaseApi.md#submitCompletedCase) | **POST** /case/{expedientNumber}/submit-completed-case | Submit completed case |
 | [**updateCase()**](KloutitCaseApi.md#updateCase) | **POST** /case/{expedientNumber}/update-case | Update case |
 | [**uploadFile()**](KloutitCaseApi.md#uploadFile) | **POST** /case/{expedientNumber}/upload-file | Upload file |
@@ -68,6 +70,131 @@ void (empty response body)
 
 - **Content-Type**: Not defined
 - **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createCase()`
+
+```php
+createCase($clients_create_case_request_dto): \Kloutit\Model\ModelCase
+```
+
+Create a new case into Kloutit.
+
+Case SDK call to create a new chargeback case from your system into Kloutit. API Key authentication is required in the x-api-key header.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: x-api-key
+$config = Kloutit\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Kloutit\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
+
+$apiInstance = new Kloutit\Api\KloutitCaseApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$clients_create_case_request_dto = new \Kloutit\Model\ClientsCreateCaseRequestDto(); // \Kloutit\Model\ClientsCreateCaseRequestDto
+
+try {
+    $result = $apiInstance->createCase($clients_create_case_request_dto);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling KloutitCaseApi->createCase: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **clients_create_case_request_dto** | [**\Kloutit\Model\ClientsCreateCaseRequestDto**](../Model/ClientsCreateCaseRequestDto.md)|  | |
+
+### Return type
+
+[**\Kloutit\Model\ModelCase**](../Model/ModelCase.md)
+
+### Authorization
+
+[x-api-key](../../README.md#x-api-key)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `downloadCaseDefense()`
+
+```php
+downloadCaseDefense($expedient_number, $format)
+```
+
+Download the case defense
+
+Downloads the case defense with the given format
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: x-api-key
+$config = Kloutit\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Kloutit\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
+
+$apiInstance = new Kloutit\Api\KloutitCaseApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$expedient_number = 'expedient_number_example'; // string | Case expedient number
+$format = 'format_example'; // string | Format parameter
+
+try {
+    $apiInstance->downloadCaseDefense($expedient_number, $format);
+} catch (Exception $e) {
+    echo 'Exception when calling KloutitCaseApi->downloadCaseDefense: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **expedient_number** | **string**| Case expedient number | |
+| **format** | **string**| Format parameter | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[x-api-key](../../README.md#x-api-key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -272,7 +399,7 @@ uploadProductPhoto($expedient_number, $file): \Kloutit\Model\FileItem
 
 Upload product photo
 
-Uploads a product file into an existing case. You need to send a request of type ``multipart/form-data``. This file can be attached only for marketplace company. Allowed formats are ``JPG``, ``JPEG``, ``PNG``. Max. file size is ``10Mb``
+Uploads a product photo into an existing case. Only available for cases with sector MARKETPLACE. You need to send a request of type ``multipart/form-data``. This file can be attached only for marketplace company. Allowed formats are ``JPG``, ``JPEG``, ``PNG``. Max. file size is ``10Mb``
 
 ### Example
 

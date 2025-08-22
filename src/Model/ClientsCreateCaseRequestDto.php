@@ -1,6 +1,6 @@
 <?php
 /**
- * UpdateCaseParams
+ * ClientsCreateCaseRequestDto
  *
  * PHP version 7.4
  *
@@ -37,7 +37,7 @@ use \ArrayAccess;
 use \Kloutit\ObjectSerializer;
 
 /**
- * UpdateCaseParams Class Doc Comment
+ * ClientsCreateCaseRequestDto Class Doc Comment
  *
  * @category Class
  * @package  Kloutit
@@ -45,7 +45,7 @@ use \Kloutit\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class UpdateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
+class ClientsCreateCaseRequestDto implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -54,7 +54,7 @@ class UpdateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'UpdateCaseParams';
+    protected static $openAPIModelName = 'ClientsCreateCaseRequestDto';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -106,12 +106,18 @@ class UpdateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         'commitment_end_date' => '\DateTime',
         'is_cancelled' => 'bool',
         'product_description' => 'string',
+        'expedient_number' => 'string',
+        'notification_date' => '\DateTime',
+        'dispute_amount' => '\Kloutit\Model\ClientsCreateCaseRequestDtoDisputeAmount',
+        'chargeback_reason' => '\Kloutit\Model\ChargebackReason',
+        'deadline' => '\DateTime',
         'order_number' => 'string',
         'ticket_number' => 'string',
         'contact_date' => '\DateTime',
         'communications' => '\Kloutit\Model\CommunicationItem[]',
         'additional_info' => 'string',
         'last4_digits' => 'string',
+        'transaction_id' => 'string',
         'transaction_date' => '\DateTime',
         'purchase_amount' => '\Kloutit\Model\Amount',
         'bank_name' => 'string',
@@ -178,12 +184,18 @@ class UpdateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         'commitment_end_date' => 'date-time',
         'is_cancelled' => null,
         'product_description' => null,
+        'expedient_number' => null,
+        'notification_date' => 'date-time',
+        'dispute_amount' => null,
+        'chargeback_reason' => null,
+        'deadline' => 'date-time',
         'order_number' => null,
         'ticket_number' => null,
         'contact_date' => 'date-time',
         'communications' => null,
         'additional_info' => null,
         'last4_digits' => null,
+        'transaction_id' => null,
         'transaction_date' => 'date-time',
         'purchase_amount' => null,
         'bank_name' => null,
@@ -248,12 +260,18 @@ class UpdateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         'commitment_end_date' => false,
         'is_cancelled' => false,
         'product_description' => false,
+        'expedient_number' => false,
+        'notification_date' => false,
+        'dispute_amount' => false,
+        'chargeback_reason' => false,
+        'deadline' => false,
         'order_number' => false,
         'ticket_number' => false,
         'contact_date' => false,
         'communications' => false,
         'additional_info' => false,
         'last4_digits' => false,
+        'transaction_id' => false,
         'transaction_date' => false,
         'purchase_amount' => false,
         'bank_name' => false,
@@ -398,12 +416,18 @@ class UpdateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         'commitment_end_date' => 'commitmentEndDate',
         'is_cancelled' => 'isCancelled',
         'product_description' => 'productDescription',
+        'expedient_number' => 'expedientNumber',
+        'notification_date' => 'notificationDate',
+        'dispute_amount' => 'disputeAmount',
+        'chargeback_reason' => 'chargebackReason',
+        'deadline' => 'deadline',
         'order_number' => 'orderNumber',
         'ticket_number' => 'ticketNumber',
         'contact_date' => 'contactDate',
         'communications' => 'communications',
         'additional_info' => 'additionalInfo',
         'last4_digits' => 'last4Digits',
+        'transaction_id' => 'transactionId',
         'transaction_date' => 'transactionDate',
         'purchase_amount' => 'purchaseAmount',
         'bank_name' => 'bankName',
@@ -468,12 +492,18 @@ class UpdateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         'commitment_end_date' => 'setCommitmentEndDate',
         'is_cancelled' => 'setIsCancelled',
         'product_description' => 'setProductDescription',
+        'expedient_number' => 'setExpedientNumber',
+        'notification_date' => 'setNotificationDate',
+        'dispute_amount' => 'setDisputeAmount',
+        'chargeback_reason' => 'setChargebackReason',
+        'deadline' => 'setDeadline',
         'order_number' => 'setOrderNumber',
         'ticket_number' => 'setTicketNumber',
         'contact_date' => 'setContactDate',
         'communications' => 'setCommunications',
         'additional_info' => 'setAdditionalInfo',
         'last4_digits' => 'setLast4Digits',
+        'transaction_id' => 'setTransactionId',
         'transaction_date' => 'setTransactionDate',
         'purchase_amount' => 'setPurchaseAmount',
         'bank_name' => 'setBankName',
@@ -538,12 +568,18 @@ class UpdateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         'commitment_end_date' => 'getCommitmentEndDate',
         'is_cancelled' => 'getIsCancelled',
         'product_description' => 'getProductDescription',
+        'expedient_number' => 'getExpedientNumber',
+        'notification_date' => 'getNotificationDate',
+        'dispute_amount' => 'getDisputeAmount',
+        'chargeback_reason' => 'getChargebackReason',
+        'deadline' => 'getDeadline',
         'order_number' => 'getOrderNumber',
         'ticket_number' => 'getTicketNumber',
         'contact_date' => 'getContactDate',
         'communications' => 'getCommunications',
         'additional_info' => 'getAdditionalInfo',
         'last4_digits' => 'getLast4Digits',
+        'transaction_id' => 'getTransactionId',
         'transaction_date' => 'getTransactionDate',
         'purchase_amount' => 'getPurchaseAmount',
         'bank_name' => 'getBankName',
@@ -659,12 +695,18 @@ class UpdateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('commitment_end_date', $data ?? [], null);
         $this->setIfExists('is_cancelled', $data ?? [], null);
         $this->setIfExists('product_description', $data ?? [], null);
+        $this->setIfExists('expedient_number', $data ?? [], null);
+        $this->setIfExists('notification_date', $data ?? [], null);
+        $this->setIfExists('dispute_amount', $data ?? [], null);
+        $this->setIfExists('chargeback_reason', $data ?? [], null);
+        $this->setIfExists('deadline', $data ?? [], null);
         $this->setIfExists('order_number', $data ?? [], null);
         $this->setIfExists('ticket_number', $data ?? [], null);
         $this->setIfExists('contact_date', $data ?? [], null);
         $this->setIfExists('communications', $data ?? [], null);
         $this->setIfExists('additional_info', $data ?? [], null);
         $this->setIfExists('last4_digits', $data ?? [], null);
+        $this->setIfExists('transaction_id', $data ?? [], null);
         $this->setIfExists('transaction_date', $data ?? [], null);
         $this->setIfExists('purchase_amount', $data ?? [], null);
         $this->setIfExists('bank_name', $data ?? [], null);
@@ -1910,6 +1952,141 @@ class UpdateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets expedient_number
+     *
+     * @return string|null
+     */
+    public function getExpedientNumber()
+    {
+        return $this->container['expedient_number'];
+    }
+
+    /**
+     * Sets expedient_number
+     *
+     * @param string|null $expedient_number Chargeback expedient number.
+     *
+     * @return self
+     */
+    public function setExpedientNumber($expedient_number)
+    {
+        if (is_null($expedient_number)) {
+            throw new \InvalidArgumentException('non-nullable expedient_number cannot be null');
+        }
+        $this->container['expedient_number'] = $expedient_number;
+
+        return $this;
+    }
+
+    /**
+     * Gets notification_date
+     *
+     * @return \DateTime|null
+     */
+    public function getNotificationDate()
+    {
+        return $this->container['notification_date'];
+    }
+
+    /**
+     * Sets notification_date
+     *
+     * @param \DateTime|null $notification_date Chargeback notification date, when the merchant receives the chargeback notification, in UTC and ISO 8601 format.
+     *
+     * @return self
+     */
+    public function setNotificationDate($notification_date)
+    {
+        if (is_null($notification_date)) {
+            throw new \InvalidArgumentException('non-nullable notification_date cannot be null');
+        }
+        $this->container['notification_date'] = $notification_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets dispute_amount
+     *
+     * @return \Kloutit\Model\ClientsCreateCaseRequestDtoDisputeAmount|null
+     */
+    public function getDisputeAmount()
+    {
+        return $this->container['dispute_amount'];
+    }
+
+    /**
+     * Sets dispute_amount
+     *
+     * @param \Kloutit\Model\ClientsCreateCaseRequestDtoDisputeAmount|null $dispute_amount dispute_amount
+     *
+     * @return self
+     */
+    public function setDisputeAmount($dispute_amount)
+    {
+        if (is_null($dispute_amount)) {
+            throw new \InvalidArgumentException('non-nullable dispute_amount cannot be null');
+        }
+        $this->container['dispute_amount'] = $dispute_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets chargeback_reason
+     *
+     * @return \Kloutit\Model\ChargebackReason|null
+     */
+    public function getChargebackReason()
+    {
+        return $this->container['chargeback_reason'];
+    }
+
+    /**
+     * Sets chargeback_reason
+     *
+     * @param \Kloutit\Model\ChargebackReason|null $chargeback_reason chargeback_reason
+     *
+     * @return self
+     */
+    public function setChargebackReason($chargeback_reason)
+    {
+        if (is_null($chargeback_reason)) {
+            throw new \InvalidArgumentException('non-nullable chargeback_reason cannot be null');
+        }
+        $this->container['chargeback_reason'] = $chargeback_reason;
+
+        return $this;
+    }
+
+    /**
+     * Gets deadline
+     *
+     * @return \DateTime|null
+     */
+    public function getDeadline()
+    {
+        return $this->container['deadline'];
+    }
+
+    /**
+     * Sets deadline
+     *
+     * @param \DateTime|null $deadline Deadline date to resolve this chargeback in UTC and ISO 8601 format.
+     *
+     * @return self
+     */
+    public function setDeadline($deadline)
+    {
+        if (is_null($deadline)) {
+            throw new \InvalidArgumentException('non-nullable deadline cannot be null');
+        }
+        $this->container['deadline'] = $deadline;
+
+        return $this;
+    }
+
+    /**
      * Gets order_number
      *
      * @return string|null
@@ -2067,6 +2244,33 @@ class UpdateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable last4_digits cannot be null');
         }
         $this->container['last4_digits'] = $last4_digits;
+
+        return $this;
+    }
+
+    /**
+     * Gets transaction_id
+     *
+     * @return string|null
+     */
+    public function getTransactionId()
+    {
+        return $this->container['transaction_id'];
+    }
+
+    /**
+     * Sets transaction_id
+     *
+     * @param string|null $transaction_id Transaction id.
+     *
+     * @return self
+     */
+    public function setTransactionId($transaction_id)
+    {
+        if (is_null($transaction_id)) {
+            throw new \InvalidArgumentException('non-nullable transaction_id cannot be null');
+        }
+        $this->container['transaction_id'] = $transaction_id;
 
         return $this;
     }

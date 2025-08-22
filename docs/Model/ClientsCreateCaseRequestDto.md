@@ -1,4 +1,4 @@
-# # UpdateCaseParams
+# # ClientsCreateCaseRequestDto
 
 ## Properties
 
@@ -48,12 +48,18 @@ Name | Type | Description | Notes
 **commitment_end_date** | **\DateTime** | End date in UTC and ISO 8601 format of the commitment that the customer has with the company. | [optional]
 **is_cancelled** | **bool** | Flag that indicates if the subscription is cancelled or active. | [optional]
 **product_description** | **string** | Product description. | [optional]
+**expedient_number** | **string** | Chargeback expedient number. | [optional] [readonly]
+**notification_date** | **\DateTime** | Chargeback notification date, when the merchant receives the chargeback notification, in UTC and ISO 8601 format. | [optional] [readonly]
+**dispute_amount** | [**\Kloutit\Model\ClientsCreateCaseRequestDtoDisputeAmount**](ClientsCreateCaseRequestDtoDisputeAmount.md) |  | [optional]
+**chargeback_reason** | [**\Kloutit\Model\ChargebackReason**](ChargebackReason.md) |  | [optional]
+**deadline** | **\DateTime** | Deadline date to resolve this chargeback in UTC and ISO 8601 format. | [optional] [readonly]
 **order_number** | **string** | Order number related to the case. | [optional]
 **ticket_number** | **string** | Ticket number related to the case. | [optional]
 **contact_date** | **\DateTime** | Date when the customer contacted to the merchant in UTC and ISO 8601 format. | [optional]
 **communications** | [**\Kloutit\Model\CommunicationItem[]**](CommunicationItem.md) | Array of all the emails that the customer has sent regarding this dispute. The structure of each item contains: **sender**: *customer* or *company*, **date**, **content**: string containing the message | [optional]
 **additional_info** | **string** | Additional info related to the chargeback. | [optional]
 **last4_digits** | **string** | Last 4 digits of the customer&#39;s credit card number. | [optional]
+**transaction_id** | **string** | Transaction id. | [optional] [readonly]
 **transaction_date** | **\DateTime** | Transaction date in UTC and ISO 8601 format. | [optional]
 **purchase_amount** | [**\Kloutit\Model\Amount**](Amount.md) | Purchase amount. | [optional]
 **bank_name** | **string** | Customer bank name. | [optional]

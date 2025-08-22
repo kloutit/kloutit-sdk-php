@@ -39,6 +39,8 @@ Name | Type | Description | Notes
 **inbound_arrival_date** | **\DateTime** | Arrival date of return trip in UTC and ISO 8601 format. | [optional]
 **departure_airport** | **string** | Departure airport. | [optional]
 **arrival_airport** | **string** | Arrival airport. | [optional]
+**inbound_departure_airport** | **string** | Departure airport of return trip. | [optional]
+**inbound_arrival_airport** | **string** | Arrival airport of return trip. | [optional]
 **departure_city** | **string** | Departure city. | [optional]
 **arrival_city** | **string** | Arrival city. | [optional]
 **inbound_departure_city** | **string** | Departure city of return trip. | [optional]
@@ -56,9 +58,11 @@ Name | Type | Description | Notes
 **product_description** | **string** | Product description. | [optional]
 **expedient_number** | **string** | Chargeback expedient number. | [readonly]
 **notification_date** | **\DateTime** | Chargeback notification date, when the merchant receives the chargeback notification, in UTC and ISO 8601 format. | [readonly]
-**dispute_amount** | [**\Kloutit\Model\CaseDisputeAmount**](CaseDisputeAmount.md) |  |
+**dispute_amount** | [**\Kloutit\Model\ClientsCreateCaseRequestDtoDisputeAmount**](ClientsCreateCaseRequestDtoDisputeAmount.md) |  |
 **chargeback_reason** | [**\Kloutit\Model\ChargebackReason**](ChargebackReason.md) |  |
 **deadline** | **\DateTime** | Deadline date to resolve this chargeback in UTC and ISO 8601 format. | [optional] [readonly]
+**order_number** | **string** | Order number related to the case. | [optional]
+**ticket_number** | **string** | Ticket number related to the case. | [optional]
 **contact_date** | **\DateTime** | Date when the customer contacted to the merchant in UTC and ISO 8601 format. | [optional]
 **communications** | [**\Kloutit\Model\CommunicationItem[]**](CommunicationItem.md) | Array of all the emails that the customer has sent regarding this dispute. The structure of each item contains: **sender**: *customer* or *company*, **date**, **content**: string containing the message | [optional]
 **additional_info** | **string** | Additional info related to the chargeback. | [optional]
