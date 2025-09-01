@@ -78,7 +78,7 @@ void (empty response body)
 ## `createCase()`
 
 ```php
-createCase($clients_create_case_request_dto): \Kloutit\Model\ModelCase
+createCase($create_case_params): \Kloutit\Model\ModelCase
 ```
 
 Create a new case into Kloutit.
@@ -104,10 +104,10 @@ $apiInstance = new Kloutit\Api\KloutitCaseApi(
     new GuzzleHttp\Client(),
     $config
 );
-$clients_create_case_request_dto = new \Kloutit\Model\ClientsCreateCaseRequestDto(); // \Kloutit\Model\ClientsCreateCaseRequestDto
+$create_case_params = new \Kloutit\Model\CreateCaseParams(); // \Kloutit\Model\CreateCaseParams
 
 try {
-    $result = $apiInstance->createCase($clients_create_case_request_dto);
+    $result = $apiInstance->createCase($create_case_params);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling KloutitCaseApi->createCase: ', $e->getMessage(), PHP_EOL;
@@ -118,7 +118,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **clients_create_case_request_dto** | [**\Kloutit\Model\ClientsCreateCaseRequestDto**](../Model/ClientsCreateCaseRequestDto.md)|  | |
+| **create_case_params** | [**\Kloutit\Model\CreateCaseParams**](../Model/CreateCaseParams.md)|  | |
 
 ### Return type
 

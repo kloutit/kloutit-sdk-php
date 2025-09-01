@@ -1,6 +1,6 @@
 <?php
 /**
- * ModelCase
+ * CreateCaseParams
  *
  * PHP version 7.4
  *
@@ -37,7 +37,7 @@ use \ArrayAccess;
 use \Kloutit\ObjectSerializer;
 
 /**
- * ModelCase Class Doc Comment
+ * CreateCaseParams Class Doc Comment
  *
  * @category Class
  * @package  Kloutit
@@ -45,7 +45,7 @@ use \Kloutit\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -54,7 +54,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Case';
+    protected static $openAPIModelName = 'CreateCaseParams';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -62,16 +62,8 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'active' => 'bool',
-        'created_at' => '\DateTime',
-        'updated_at' => '\DateTime',
-        'is_deleted' => 'bool',
-        'deleted_at' => '\DateTime',
-        'status' => '\Kloutit\Model\CaseStatus',
         'sales_channel_code' => 'string',
         'filial_identifier' => 'string',
-        'payment_processor' => 'string',
         'purchase_date' => '\DateTime',
         'service' => 'string',
         'product' => 'string',
@@ -131,12 +123,13 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         'bank_name' => 'string',
         'card_brand' => 'string',
         'is3_ds_purchase' => 'bool',
-        'sector' => 'string',
+        'sector' => '\Kloutit\Model\CaseSector',
         'seller_contact_date' => '\DateTime',
         'seller_additional_info' => 'string',
         'seller_name' => 'string',
         'seller_phone' => 'string',
-        'seller_email' => 'string'
+        'seller_email' => 'string',
+        'sales_channel_terms_url' => 'string'
     ];
 
     /**
@@ -147,16 +140,8 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'active' => null,
-        'created_at' => 'date-time',
-        'updated_at' => 'date-time',
-        'is_deleted' => null,
-        'deleted_at' => 'date-time',
-        'status' => null,
         'sales_channel_code' => null,
         'filial_identifier' => null,
-        'payment_processor' => null,
         'purchase_date' => 'date-time',
         'service' => null,
         'product' => null,
@@ -221,7 +206,8 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         'seller_additional_info' => null,
         'seller_name' => null,
         'seller_phone' => null,
-        'seller_email' => null
+        'seller_email' => null,
+        'sales_channel_terms_url' => null
     ];
 
     /**
@@ -230,16 +216,8 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
-        'active' => false,
-        'created_at' => false,
-        'updated_at' => false,
-        'is_deleted' => false,
-        'deleted_at' => false,
-        'status' => false,
         'sales_channel_code' => false,
         'filial_identifier' => false,
-        'payment_processor' => false,
         'purchase_date' => false,
         'service' => false,
         'product' => false,
@@ -304,7 +282,8 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         'seller_additional_info' => false,
         'seller_name' => false,
         'seller_phone' => false,
-        'seller_email' => false
+        'seller_email' => false,
+        'sales_channel_terms_url' => false
     ];
 
     /**
@@ -393,16 +372,8 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'active' => 'active',
-        'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt',
-        'is_deleted' => 'isDeleted',
-        'deleted_at' => 'deletedAt',
-        'status' => 'status',
         'sales_channel_code' => 'salesChannelCode',
         'filial_identifier' => 'filialIdentifier',
-        'payment_processor' => 'paymentProcessor',
         'purchase_date' => 'purchaseDate',
         'service' => 'service',
         'product' => 'product',
@@ -467,7 +438,8 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         'seller_additional_info' => 'sellerAdditionalInfo',
         'seller_name' => 'sellerName',
         'seller_phone' => 'sellerPhone',
-        'seller_email' => 'sellerEmail'
+        'seller_email' => 'sellerEmail',
+        'sales_channel_terms_url' => 'salesChannelTermsUrl'
     ];
 
     /**
@@ -476,16 +448,8 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'active' => 'setActive',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt',
-        'is_deleted' => 'setIsDeleted',
-        'deleted_at' => 'setDeletedAt',
-        'status' => 'setStatus',
         'sales_channel_code' => 'setSalesChannelCode',
         'filial_identifier' => 'setFilialIdentifier',
-        'payment_processor' => 'setPaymentProcessor',
         'purchase_date' => 'setPurchaseDate',
         'service' => 'setService',
         'product' => 'setProduct',
@@ -550,7 +514,8 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         'seller_additional_info' => 'setSellerAdditionalInfo',
         'seller_name' => 'setSellerName',
         'seller_phone' => 'setSellerPhone',
-        'seller_email' => 'setSellerEmail'
+        'seller_email' => 'setSellerEmail',
+        'sales_channel_terms_url' => 'setSalesChannelTermsUrl'
     ];
 
     /**
@@ -559,16 +524,8 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'active' => 'getActive',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt',
-        'is_deleted' => 'getIsDeleted',
-        'deleted_at' => 'getDeletedAt',
-        'status' => 'getStatus',
         'sales_channel_code' => 'getSalesChannelCode',
         'filial_identifier' => 'getFilialIdentifier',
-        'payment_processor' => 'getPaymentProcessor',
         'purchase_date' => 'getPurchaseDate',
         'service' => 'getService',
         'product' => 'getProduct',
@@ -633,7 +590,8 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         'seller_additional_info' => 'getSellerAdditionalInfo',
         'seller_name' => 'getSellerName',
         'seller_phone' => 'getSellerPhone',
-        'seller_email' => 'getSellerEmail'
+        'seller_email' => 'getSellerEmail',
+        'sales_channel_terms_url' => 'getSalesChannelTermsUrl'
     ];
 
     /**
@@ -677,84 +635,6 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const PAYMENT_PROCESSOR_STRIPE = 'STRIPE';
-    public const PAYMENT_PROCESSOR_CHECKOUT_COM = 'CHECKOUT_COM';
-    public const PAYMENT_PROCESSOR_WORLDLINE = 'WORLDLINE';
-    public const PAYMENT_PROCESSOR_REDSYS = 'REDSYS';
-    public const PAYMENT_PROCESSOR_PAYPAL = 'PAYPAL';
-    public const PAYMENT_PROCESSOR_MANGOPAY = 'MANGOPAY';
-    public const PAYMENT_PROCESSOR_ADYEN = 'ADYEN';
-    public const PAYMENT_PROCESSOR_SHOPIFY = 'SHOPIFY';
-    public const PAYMENT_PROCESSOR_KLARNA = 'KLARNA';
-    public const PAYMENT_PROCESSOR_DLOCAL = 'DLOCAL';
-    public const SECTOR_DIGITAL_PRODUCT = 'DIGITAL_PRODUCT';
-    public const SECTOR_EDUCATION = 'EDUCATION';
-    public const SECTOR_FASHION = 'FASHION';
-    public const SECTOR_FOOD = 'FOOD';
-    public const SECTOR_GAMING = 'GAMING';
-    public const SECTOR_HEALTH_BEAUTY = 'HEALTH_BEAUTY';
-    public const SECTOR_HOME = 'HOME';
-    public const SECTOR_LEISURE = 'LEISURE';
-    public const SECTOR_MARKETPLACE = 'MARKETPLACE';
-    public const SECTOR_PHONE = 'PHONE';
-    public const SECTOR_SOFTWARE = 'SOFTWARE';
-    public const SECTOR_SPORT = 'SPORT';
-    public const SECTOR_SUBSCRIPTION = 'SUBSCRIPTION';
-    public const SECTOR_SUPPLY = 'SUPPLY';
-    public const SECTOR_TECHNOLOGY = 'TECHNOLOGY';
-    public const SECTOR_TRANSPORT = 'TRANSPORT';
-    public const SECTOR_TRAVEL_AIRLINE = 'TRAVEL_AIRLINE';
-    public const SECTOR_TRAVEL_HOTEL = 'TRAVEL_HOTEL';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getPaymentProcessorAllowableValues()
-    {
-        return [
-            self::PAYMENT_PROCESSOR_STRIPE,
-            self::PAYMENT_PROCESSOR_CHECKOUT_COM,
-            self::PAYMENT_PROCESSOR_WORLDLINE,
-            self::PAYMENT_PROCESSOR_REDSYS,
-            self::PAYMENT_PROCESSOR_PAYPAL,
-            self::PAYMENT_PROCESSOR_MANGOPAY,
-            self::PAYMENT_PROCESSOR_ADYEN,
-            self::PAYMENT_PROCESSOR_SHOPIFY,
-            self::PAYMENT_PROCESSOR_KLARNA,
-            self::PAYMENT_PROCESSOR_DLOCAL,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getSectorAllowableValues()
-    {
-        return [
-            self::SECTOR_DIGITAL_PRODUCT,
-            self::SECTOR_EDUCATION,
-            self::SECTOR_FASHION,
-            self::SECTOR_FOOD,
-            self::SECTOR_GAMING,
-            self::SECTOR_HEALTH_BEAUTY,
-            self::SECTOR_HOME,
-            self::SECTOR_LEISURE,
-            self::SECTOR_MARKETPLACE,
-            self::SECTOR_PHONE,
-            self::SECTOR_SOFTWARE,
-            self::SECTOR_SPORT,
-            self::SECTOR_SUBSCRIPTION,
-            self::SECTOR_SUPPLY,
-            self::SECTOR_TECHNOLOGY,
-            self::SECTOR_TRANSPORT,
-            self::SECTOR_TRAVEL_AIRLINE,
-            self::SECTOR_TRAVEL_HOTEL,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -771,16 +651,8 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('active', $data ?? [], true);
-        $this->setIfExists('created_at', $data ?? [], null);
-        $this->setIfExists('updated_at', $data ?? [], null);
-        $this->setIfExists('is_deleted', $data ?? [], false);
-        $this->setIfExists('deleted_at', $data ?? [], null);
-        $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('sales_channel_code', $data ?? [], null);
         $this->setIfExists('filial_identifier', $data ?? [], null);
-        $this->setIfExists('payment_processor', $data ?? [], null);
         $this->setIfExists('purchase_date', $data ?? [], null);
         $this->setIfExists('service', $data ?? [], null);
         $this->setIfExists('product', $data ?? [], null);
@@ -846,6 +718,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('seller_name', $data ?? [], null);
         $this->setIfExists('seller_phone', $data ?? [], null);
         $this->setIfExists('seller_email', $data ?? [], null);
+        $this->setIfExists('sales_channel_terms_url', $data ?? [], null);
     }
 
     /**
@@ -875,51 +748,6 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['status'] === null) {
-            $invalidProperties[] = "'status' can't be null";
-        }
-        $allowedValues = $this->getPaymentProcessorAllowableValues();
-        if (!is_null($this->container['payment_processor']) && !in_array($this->container['payment_processor'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'payment_processor', must be one of '%s'",
-                $this->container['payment_processor'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if ($this->container['purchase_date'] === null) {
-            $invalidProperties[] = "'purchase_date' can't be null";
-        }
-        if ($this->container['is_charge_refundable'] === null) {
-            $invalidProperties[] = "'is_charge_refundable' can't be null";
-        }
-        if ($this->container['expedient_number'] === null) {
-            $invalidProperties[] = "'expedient_number' can't be null";
-        }
-        if ($this->container['notification_date'] === null) {
-            $invalidProperties[] = "'notification_date' can't be null";
-        }
-        if ($this->container['dispute_amount'] === null) {
-            $invalidProperties[] = "'dispute_amount' can't be null";
-        }
-        if ($this->container['chargeback_reason'] === null) {
-            $invalidProperties[] = "'chargeback_reason' can't be null";
-        }
-        if ($this->container['transaction_date'] === null) {
-            $invalidProperties[] = "'transaction_date' can't be null";
-        }
-        if ($this->container['purchase_amount'] === null) {
-            $invalidProperties[] = "'purchase_amount' can't be null";
-        }
-        $allowedValues = $this->getSectorAllowableValues();
-        if (!is_null($this->container['sector']) && !in_array($this->container['sector'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'sector', must be one of '%s'",
-                $this->container['sector'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -936,195 +764,6 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets id
-     *
-     * @return string|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string|null $id id
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
-        }
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets active
-     *
-     * @return bool|null
-     */
-    public function getActive()
-    {
-        return $this->container['active'];
-    }
-
-    /**
-     * Sets active
-     *
-     * @param bool|null $active active
-     *
-     * @return self
-     */
-    public function setActive($active)
-    {
-        if (is_null($active)) {
-            throw new \InvalidArgumentException('non-nullable active cannot be null');
-        }
-        $this->container['active'] = $active;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     *
-     * @return \DateTime|null
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime|null $created_at created_at
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
-        }
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated_at
-     *
-     * @return \DateTime|null
-     */
-    public function getUpdatedAt()
-    {
-        return $this->container['updated_at'];
-    }
-
-    /**
-     * Sets updated_at
-     *
-     * @param \DateTime|null $updated_at updated_at
-     *
-     * @return self
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        if (is_null($updated_at)) {
-            throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
-        }
-        $this->container['updated_at'] = $updated_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_deleted
-     *
-     * @return bool|null
-     */
-    public function getIsDeleted()
-    {
-        return $this->container['is_deleted'];
-    }
-
-    /**
-     * Sets is_deleted
-     *
-     * @param bool|null $is_deleted is_deleted
-     *
-     * @return self
-     */
-    public function setIsDeleted($is_deleted)
-    {
-        if (is_null($is_deleted)) {
-            throw new \InvalidArgumentException('non-nullable is_deleted cannot be null');
-        }
-        $this->container['is_deleted'] = $is_deleted;
-
-        return $this;
-    }
-
-    /**
-     * Gets deleted_at
-     *
-     * @return \DateTime|null
-     */
-    public function getDeletedAt()
-    {
-        return $this->container['deleted_at'];
-    }
-
-    /**
-     * Sets deleted_at
-     *
-     * @param \DateTime|null $deleted_at deleted_at
-     *
-     * @return self
-     */
-    public function setDeletedAt($deleted_at)
-    {
-        if (is_null($deleted_at)) {
-            throw new \InvalidArgumentException('non-nullable deleted_at cannot be null');
-        }
-        $this->container['deleted_at'] = $deleted_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return \Kloutit\Model\CaseStatus
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param \Kloutit\Model\CaseStatus $status status
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
-        }
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
      * Gets sales_channel_code
      *
      * @return string|null
@@ -1137,7 +776,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets sales_channel_code
      *
-     * @param string|null $sales_channel_code The sales channel code related to the case.
+     * @param string|null $sales_channel_code Sales channel code related to the case. This should be the sales channel code that is configured for your organization in Kloutit. If you do not have sales channels in your organization, leave this field empty.
      *
      * @return self
      */
@@ -1164,7 +803,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets filial_identifier
      *
-     * @param string|null $filial_identifier Filial identifier related to the case.
+     * @param string|null $filial_identifier Filial identifier related to the case. This should be the NIF, VAT or other unique identifier that is configured for your organization in Kloutit. If you do not have filials in your organization, leave this field empty.
      *
      * @return self
      */
@@ -1179,46 +818,9 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets payment_processor
-     *
-     * @return string|null
-     */
-    public function getPaymentProcessor()
-    {
-        return $this->container['payment_processor'];
-    }
-
-    /**
-     * Sets payment_processor
-     *
-     * @param string|null $payment_processor payment_processor
-     *
-     * @return self
-     */
-    public function setPaymentProcessor($payment_processor)
-    {
-        if (is_null($payment_processor)) {
-            throw new \InvalidArgumentException('non-nullable payment_processor cannot be null');
-        }
-        $allowedValues = $this->getPaymentProcessorAllowableValues();
-        if (!in_array($payment_processor, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'payment_processor', must be one of '%s'",
-                    $payment_processor,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['payment_processor'] = $payment_processor;
-
-        return $this;
-    }
-
-    /**
      * Gets purchase_date
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getPurchaseDate()
     {
@@ -1228,7 +830,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets purchase_date
      *
-     * @param \DateTime $purchase_date Date when the customer made the purchase in UTC and ISO 8601 format.
+     * @param \DateTime|null $purchase_date Date when the customer made the purchase in UTC and ISO 8601 format.
      *
      * @return self
      */
@@ -1299,7 +901,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets is_charge_refundable
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIsChargeRefundable()
     {
@@ -1309,7 +911,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets is_charge_refundable
      *
-     * @param bool $is_charge_refundable Flag that indicates if the charge made is refundable regarding your company terms and conditions.
+     * @param bool|null $is_charge_refundable Flag that indicates if the charge made is refundable regarding your company terms and conditions.
      *
      * @return self
      */
@@ -2352,7 +1954,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets expedient_number
      *
-     * @return string
+     * @return string|null
      */
     public function getExpedientNumber()
     {
@@ -2362,7 +1964,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets expedient_number
      *
-     * @param string $expedient_number Chargeback expedient number.
+     * @param string|null $expedient_number Chargeback expedient number.
      *
      * @return self
      */
@@ -2379,7 +1981,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets notification_date
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getNotificationDate()
     {
@@ -2389,7 +1991,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets notification_date
      *
-     * @param \DateTime $notification_date Chargeback notification date, when the merchant receives the chargeback notification, in UTC and ISO 8601 format.
+     * @param \DateTime|null $notification_date Chargeback notification date, when the merchant receives the chargeback notification, in UTC and ISO 8601 format.
      *
      * @return self
      */
@@ -2406,7 +2008,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets dispute_amount
      *
-     * @return \Kloutit\Model\CreateCaseParamsDisputeAmount
+     * @return \Kloutit\Model\CreateCaseParamsDisputeAmount|null
      */
     public function getDisputeAmount()
     {
@@ -2416,7 +2018,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets dispute_amount
      *
-     * @param \Kloutit\Model\CreateCaseParamsDisputeAmount $dispute_amount dispute_amount
+     * @param \Kloutit\Model\CreateCaseParamsDisputeAmount|null $dispute_amount dispute_amount
      *
      * @return self
      */
@@ -2433,7 +2035,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets chargeback_reason
      *
-     * @return \Kloutit\Model\ChargebackReason
+     * @return \Kloutit\Model\ChargebackReason|null
      */
     public function getChargebackReason()
     {
@@ -2443,7 +2045,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets chargeback_reason
      *
-     * @param \Kloutit\Model\ChargebackReason $chargeback_reason chargeback_reason
+     * @param \Kloutit\Model\ChargebackReason|null $chargeback_reason chargeback_reason
      *
      * @return self
      */
@@ -2676,7 +2278,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets transaction_date
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getTransactionDate()
     {
@@ -2686,7 +2288,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets transaction_date
      *
-     * @param \DateTime $transaction_date Transaction date in UTC and ISO 8601 format.
+     * @param \DateTime|null $transaction_date Transaction date in UTC and ISO 8601 format.
      *
      * @return self
      */
@@ -2703,7 +2305,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets purchase_amount
      *
-     * @return \Kloutit\Model\Amount
+     * @return \Kloutit\Model\Amount|null
      */
     public function getPurchaseAmount()
     {
@@ -2713,7 +2315,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets purchase_amount
      *
-     * @param \Kloutit\Model\Amount $purchase_amount Purchase amount.
+     * @param \Kloutit\Model\Amount|null $purchase_amount Purchase amount.
      *
      * @return self
      */
@@ -2811,7 +2413,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets sector
      *
-     * @return string|null
+     * @return \Kloutit\Model\CaseSector|null
      */
     public function getSector()
     {
@@ -2821,7 +2423,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets sector
      *
-     * @param string|null $sector Organization sector of the case.
+     * @param \Kloutit\Model\CaseSector|null $sector sector
      *
      * @return self
      */
@@ -2829,16 +2431,6 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($sector)) {
             throw new \InvalidArgumentException('non-nullable sector cannot be null');
-        }
-        $allowedValues = $this->getSectorAllowableValues();
-        if (!in_array($sector, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'sector', must be one of '%s'",
-                    $sector,
-                    implode("', '", $allowedValues)
-                )
-            );
         }
         $this->container['sector'] = $sector;
 
@@ -2976,6 +2568,33 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable seller_email cannot be null');
         }
         $this->container['seller_email'] = $seller_email;
+
+        return $this;
+    }
+
+    /**
+     * Gets sales_channel_terms_url
+     *
+     * @return string|null
+     */
+    public function getSalesChannelTermsUrl()
+    {
+        return $this->container['sales_channel_terms_url'];
+    }
+
+    /**
+     * Sets sales_channel_terms_url
+     *
+     * @param string|null $sales_channel_terms_url Sales channel Terms and Conditions URL. If Sales Channel Code is provided and not exists in organization, this field is required and should be the URL of the terms and conditions of the sales channel.
+     *
+     * @return self
+     */
+    public function setSalesChannelTermsUrl($sales_channel_terms_url)
+    {
+        if (is_null($sales_channel_terms_url)) {
+            throw new \InvalidArgumentException('non-nullable sales_channel_terms_url cannot be null');
+        }
+        $this->container['sales_channel_terms_url'] = $sales_channel_terms_url;
 
         return $this;
     }

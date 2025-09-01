@@ -1,23 +1,15 @@
-# # ModelCase
+# # CreateCaseParams
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** |  | [optional] [readonly]
-**active** | **bool** |  | [optional] [readonly] [default to true]
-**created_at** | **\DateTime** |  | [optional] [readonly]
-**updated_at** | **\DateTime** |  | [optional] [readonly]
-**is_deleted** | **bool** |  | [optional] [readonly] [default to false]
-**deleted_at** | **\DateTime** |  | [optional] [readonly]
-**status** | [**\Kloutit\Model\CaseStatus**](CaseStatus.md) |  |
-**sales_channel_code** | **string** | The sales channel code related to the case. | [optional]
-**filial_identifier** | **string** | Filial identifier related to the case. | [optional]
-**payment_processor** | **string** |  | [optional] [readonly]
-**purchase_date** | **\DateTime** | Date when the customer made the purchase in UTC and ISO 8601 format. |
+**sales_channel_code** | **string** | Sales channel code related to the case. This should be the sales channel code that is configured for your organization in Kloutit. If you do not have sales channels in your organization, leave this field empty. | [optional]
+**filial_identifier** | **string** | Filial identifier related to the case. This should be the NIF, VAT or other unique identifier that is configured for your organization in Kloutit. If you do not have filials in your organization, leave this field empty. | [optional]
+**purchase_date** | **\DateTime** | Date when the customer made the purchase in UTC and ISO 8601 format. | [optional]
 **service** | **string** | Service that the customer bought. | [optional]
 **product** | **string** | Product that the customer bought. | [optional]
-**is_charge_refundable** | **bool** | Flag that indicates if the charge made is refundable regarding your company terms and conditions. |
+**is_charge_refundable** | **bool** | Flag that indicates if the charge made is refundable regarding your company terms and conditions. | [optional]
 **customer_name** | **string** | Customer name. | [optional]
 **customer_email** | **string** | Customer email | [optional]
 **customer_phone** | **string** | Customer phone. | [optional]
@@ -56,10 +48,10 @@ Name | Type | Description | Notes
 **commitment_end_date** | **\DateTime** | End date in UTC and ISO 8601 format of the commitment that the customer has with the company. | [optional]
 **is_cancelled** | **bool** | Flag that indicates if the subscription is cancelled or active. | [optional]
 **product_description** | **string** | Product description. | [optional]
-**expedient_number** | **string** | Chargeback expedient number. | [readonly]
-**notification_date** | **\DateTime** | Chargeback notification date, when the merchant receives the chargeback notification, in UTC and ISO 8601 format. | [readonly]
-**dispute_amount** | [**\Kloutit\Model\CreateCaseParamsDisputeAmount**](CreateCaseParamsDisputeAmount.md) |  |
-**chargeback_reason** | [**\Kloutit\Model\ChargebackReason**](ChargebackReason.md) |  |
+**expedient_number** | **string** | Chargeback expedient number. | [optional] [readonly]
+**notification_date** | **\DateTime** | Chargeback notification date, when the merchant receives the chargeback notification, in UTC and ISO 8601 format. | [optional] [readonly]
+**dispute_amount** | [**\Kloutit\Model\CreateCaseParamsDisputeAmount**](CreateCaseParamsDisputeAmount.md) |  | [optional]
+**chargeback_reason** | [**\Kloutit\Model\ChargebackReason**](ChargebackReason.md) |  | [optional]
 **deadline** | **\DateTime** | Deadline date to resolve this chargeback in UTC and ISO 8601 format. | [optional] [readonly]
 **order_number** | **string** | Order number related to the case. | [optional]
 **ticket_number** | **string** | Ticket number related to the case. | [optional]
@@ -68,16 +60,17 @@ Name | Type | Description | Notes
 **additional_info** | **string** | Additional info related to the chargeback. | [optional]
 **last4_digits** | **string** | Last 4 digits of the customer&#39;s credit card number. | [optional]
 **transaction_id** | **string** | Transaction id. | [optional] [readonly]
-**transaction_date** | **\DateTime** | Transaction date in UTC and ISO 8601 format. |
-**purchase_amount** | [**\Kloutit\Model\Amount**](Amount.md) | Purchase amount. |
+**transaction_date** | **\DateTime** | Transaction date in UTC and ISO 8601 format. | [optional]
+**purchase_amount** | [**\Kloutit\Model\Amount**](Amount.md) | Purchase amount. | [optional]
 **bank_name** | **string** | Customer bank name. | [optional]
 **card_brand** | **string** | Card brand that the customer used to make the payment. | [optional]
 **is3_ds_purchase** | **bool** | Flag that indicates if the purchase has been made with 3DS. | [optional]
-**sector** | **string** | Organization sector of the case. | [optional]
+**sector** | [**\Kloutit\Model\CaseSector**](CaseSector.md) |  | [optional]
 **seller_contact_date** | **\DateTime** | Date when the customer contacted to the seller in UTC and ISO 8601 format. | [optional]
 **seller_additional_info** | **string** | Seller additional infromation. | [optional]
 **seller_name** | **string** | Seller name. | [optional]
 **seller_phone** | **string** | Seller phone number. | [optional]
 **seller_email** | **string** | Seller email. | [optional]
+**sales_channel_terms_url** | **string** | Sales channel Terms and Conditions URL. If Sales Channel Code is provided and not exists in organization, this field is required and should be the URL of the terms and conditions of the sales channel. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

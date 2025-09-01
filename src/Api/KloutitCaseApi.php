@@ -420,16 +420,16 @@ class KloutitCaseApi
      *
      * Create a new case into Kloutit.
      *
-     * @param  \Kloutit\Model\ClientsCreateCaseRequestDto $clients_create_case_request_dto clients_create_case_request_dto (required)
+     * @param  \Kloutit\Model\CreateCaseParams $create_case_params create_case_params (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCase'] to see the possible values for this operation
      *
      * @throws \Kloutit\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Kloutit\Model\ModelCase
      */
-    public function createCase($clients_create_case_request_dto, string $contentType = self::contentTypes['createCase'][0])
+    public function createCase($create_case_params, string $contentType = self::contentTypes['createCase'][0])
     {
-        list($response) = $this->createCaseWithHttpInfo($clients_create_case_request_dto, $contentType);
+        list($response) = $this->createCaseWithHttpInfo($create_case_params, $contentType);
         return $response;
     }
 
@@ -438,16 +438,16 @@ class KloutitCaseApi
      *
      * Create a new case into Kloutit.
      *
-     * @param  \Kloutit\Model\ClientsCreateCaseRequestDto $clients_create_case_request_dto (required)
+     * @param  \Kloutit\Model\CreateCaseParams $create_case_params (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCase'] to see the possible values for this operation
      *
      * @throws \Kloutit\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Kloutit\Model\ModelCase, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createCaseWithHttpInfo($clients_create_case_request_dto, string $contentType = self::contentTypes['createCase'][0])
+    public function createCaseWithHttpInfo($create_case_params, string $contentType = self::contentTypes['createCase'][0])
     {
-        $request = $this->createCaseRequest($clients_create_case_request_dto, $contentType);
+        $request = $this->createCaseRequest($create_case_params, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -562,15 +562,15 @@ class KloutitCaseApi
      *
      * Create a new case into Kloutit.
      *
-     * @param  \Kloutit\Model\ClientsCreateCaseRequestDto $clients_create_case_request_dto (required)
+     * @param  \Kloutit\Model\CreateCaseParams $create_case_params (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCase'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createCaseAsync($clients_create_case_request_dto, string $contentType = self::contentTypes['createCase'][0])
+    public function createCaseAsync($create_case_params, string $contentType = self::contentTypes['createCase'][0])
     {
-        return $this->createCaseAsyncWithHttpInfo($clients_create_case_request_dto, $contentType)
+        return $this->createCaseAsyncWithHttpInfo($create_case_params, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -583,16 +583,16 @@ class KloutitCaseApi
      *
      * Create a new case into Kloutit.
      *
-     * @param  \Kloutit\Model\ClientsCreateCaseRequestDto $clients_create_case_request_dto (required)
+     * @param  \Kloutit\Model\CreateCaseParams $create_case_params (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCase'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createCaseAsyncWithHttpInfo($clients_create_case_request_dto, string $contentType = self::contentTypes['createCase'][0])
+    public function createCaseAsyncWithHttpInfo($create_case_params, string $contentType = self::contentTypes['createCase'][0])
     {
         $returnType = '\Kloutit\Model\ModelCase';
-        $request = $this->createCaseRequest($clients_create_case_request_dto, $contentType);
+        $request = $this->createCaseRequest($create_case_params, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -633,19 +633,19 @@ class KloutitCaseApi
     /**
      * Create request for operation 'createCase'
      *
-     * @param  \Kloutit\Model\ClientsCreateCaseRequestDto $clients_create_case_request_dto (required)
+     * @param  \Kloutit\Model\CreateCaseParams $create_case_params (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCase'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createCaseRequest($clients_create_case_request_dto, string $contentType = self::contentTypes['createCase'][0])
+    public function createCaseRequest($create_case_params, string $contentType = self::contentTypes['createCase'][0])
     {
 
-        // verify the required parameter 'clients_create_case_request_dto' is set
-        if ($clients_create_case_request_dto === null || (is_array($clients_create_case_request_dto) && count($clients_create_case_request_dto) === 0)) {
+        // verify the required parameter 'create_case_params' is set
+        if ($create_case_params === null || (is_array($create_case_params) && count($create_case_params) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $clients_create_case_request_dto when calling createCase'
+                'Missing the required parameter $create_case_params when calling createCase'
             );
         }
 
@@ -668,12 +668,12 @@ class KloutitCaseApi
         );
 
         // for model (json/xml)
-        if (isset($clients_create_case_request_dto)) {
+        if (isset($create_case_params)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($clients_create_case_request_dto));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_case_params));
             } else {
-                $httpBody = $clients_create_case_request_dto;
+                $httpBody = $create_case_params;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
