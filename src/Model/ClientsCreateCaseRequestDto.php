@@ -2477,7 +2477,7 @@ class ClientsCreateCaseRequestDto implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets seller_additional_info
      *
-     * @param string|null $seller_additional_info Seller additional infromation.
+     * @param string|null $seller_additional_info Seller additional information.
      *
      * @return self
      */
