@@ -97,6 +97,8 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         'inbound_arrival_date' => '\DateTime',
         'departure_airport' => 'string',
         'arrival_airport' => 'string',
+        'inbound_departure_airport' => 'string',
+        'inbound_arrival_airport' => 'string',
         'departure_city' => 'string',
         'arrival_city' => 'string',
         'inbound_departure_city' => 'string',
@@ -114,9 +116,11 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         'product_description' => 'string',
         'expedient_number' => 'string',
         'notification_date' => '\DateTime',
-        'dispute_amount' => '\Kloutit\Model\CaseDisputeAmount',
+        'dispute_amount' => '\Kloutit\Model\CreateCaseParamsDisputeAmount',
         'chargeback_reason' => '\Kloutit\Model\ChargebackReason',
         'deadline' => '\DateTime',
+        'order_number' => 'string',
+        'ticket_number' => 'string',
         'contact_date' => '\DateTime',
         'communications' => '\Kloutit\Model\CommunicationItem[]',
         'additional_info' => 'string',
@@ -178,6 +182,8 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         'inbound_arrival_date' => 'date-time',
         'departure_airport' => null,
         'arrival_airport' => null,
+        'inbound_departure_airport' => null,
+        'inbound_arrival_airport' => null,
         'departure_city' => null,
         'arrival_city' => null,
         'inbound_departure_city' => null,
@@ -198,6 +204,8 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         'dispute_amount' => null,
         'chargeback_reason' => null,
         'deadline' => 'date-time',
+        'order_number' => null,
+        'ticket_number' => null,
         'contact_date' => 'date-time',
         'communications' => null,
         'additional_info' => null,
@@ -257,6 +265,8 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         'inbound_arrival_date' => false,
         'departure_airport' => false,
         'arrival_airport' => false,
+        'inbound_departure_airport' => false,
+        'inbound_arrival_airport' => false,
         'departure_city' => false,
         'arrival_city' => false,
         'inbound_departure_city' => false,
@@ -277,6 +287,8 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         'dispute_amount' => false,
         'chargeback_reason' => false,
         'deadline' => false,
+        'order_number' => false,
+        'ticket_number' => false,
         'contact_date' => false,
         'communications' => false,
         'additional_info' => false,
@@ -416,6 +428,8 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         'inbound_arrival_date' => 'inboundArrivalDate',
         'departure_airport' => 'departureAirport',
         'arrival_airport' => 'arrivalAirport',
+        'inbound_departure_airport' => 'inboundDepartureAirport',
+        'inbound_arrival_airport' => 'inboundArrivalAirport',
         'departure_city' => 'departureCity',
         'arrival_city' => 'arrivalCity',
         'inbound_departure_city' => 'inboundDepartureCity',
@@ -436,6 +450,8 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         'dispute_amount' => 'disputeAmount',
         'chargeback_reason' => 'chargebackReason',
         'deadline' => 'deadline',
+        'order_number' => 'orderNumber',
+        'ticket_number' => 'ticketNumber',
         'contact_date' => 'contactDate',
         'communications' => 'communications',
         'additional_info' => 'additionalInfo',
@@ -495,6 +511,8 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         'inbound_arrival_date' => 'setInboundArrivalDate',
         'departure_airport' => 'setDepartureAirport',
         'arrival_airport' => 'setArrivalAirport',
+        'inbound_departure_airport' => 'setInboundDepartureAirport',
+        'inbound_arrival_airport' => 'setInboundArrivalAirport',
         'departure_city' => 'setDepartureCity',
         'arrival_city' => 'setArrivalCity',
         'inbound_departure_city' => 'setInboundDepartureCity',
@@ -515,6 +533,8 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         'dispute_amount' => 'setDisputeAmount',
         'chargeback_reason' => 'setChargebackReason',
         'deadline' => 'setDeadline',
+        'order_number' => 'setOrderNumber',
+        'ticket_number' => 'setTicketNumber',
         'contact_date' => 'setContactDate',
         'communications' => 'setCommunications',
         'additional_info' => 'setAdditionalInfo',
@@ -574,6 +594,8 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         'inbound_arrival_date' => 'getInboundArrivalDate',
         'departure_airport' => 'getDepartureAirport',
         'arrival_airport' => 'getArrivalAirport',
+        'inbound_departure_airport' => 'getInboundDepartureAirport',
+        'inbound_arrival_airport' => 'getInboundArrivalAirport',
         'departure_city' => 'getDepartureCity',
         'arrival_city' => 'getArrivalCity',
         'inbound_departure_city' => 'getInboundDepartureCity',
@@ -594,6 +616,8 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         'dispute_amount' => 'getDisputeAmount',
         'chargeback_reason' => 'getChargebackReason',
         'deadline' => 'getDeadline',
+        'order_number' => 'getOrderNumber',
+        'ticket_number' => 'getTicketNumber',
         'contact_date' => 'getContactDate',
         'communications' => 'getCommunications',
         'additional_info' => 'getAdditionalInfo',
@@ -660,6 +684,9 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     public const PAYMENT_PROCESSOR_PAYPAL = 'PAYPAL';
     public const PAYMENT_PROCESSOR_MANGOPAY = 'MANGOPAY';
     public const PAYMENT_PROCESSOR_ADYEN = 'ADYEN';
+    public const PAYMENT_PROCESSOR_SHOPIFY = 'SHOPIFY';
+    public const PAYMENT_PROCESSOR_KLARNA = 'KLARNA';
+    public const PAYMENT_PROCESSOR_DLOCAL = 'DLOCAL';
     public const SECTOR_DIGITAL_PRODUCT = 'DIGITAL_PRODUCT';
     public const SECTOR_EDUCATION = 'EDUCATION';
     public const SECTOR_FASHION = 'FASHION';
@@ -694,6 +721,9 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
             self::PAYMENT_PROCESSOR_PAYPAL,
             self::PAYMENT_PROCESSOR_MANGOPAY,
             self::PAYMENT_PROCESSOR_ADYEN,
+            self::PAYMENT_PROCESSOR_SHOPIFY,
+            self::PAYMENT_PROCESSOR_KLARNA,
+            self::PAYMENT_PROCESSOR_DLOCAL,
         ];
     }
 
@@ -776,6 +806,8 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('inbound_arrival_date', $data ?? [], null);
         $this->setIfExists('departure_airport', $data ?? [], null);
         $this->setIfExists('arrival_airport', $data ?? [], null);
+        $this->setIfExists('inbound_departure_airport', $data ?? [], null);
+        $this->setIfExists('inbound_arrival_airport', $data ?? [], null);
         $this->setIfExists('departure_city', $data ?? [], null);
         $this->setIfExists('arrival_city', $data ?? [], null);
         $this->setIfExists('inbound_departure_city', $data ?? [], null);
@@ -796,6 +828,8 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('dispute_amount', $data ?? [], null);
         $this->setIfExists('chargeback_reason', $data ?? [], null);
         $this->setIfExists('deadline', $data ?? [], null);
+        $this->setIfExists('order_number', $data ?? [], null);
+        $this->setIfExists('ticket_number', $data ?? [], null);
         $this->setIfExists('contact_date', $data ?? [], null);
         $this->setIfExists('communications', $data ?? [], null);
         $this->setIfExists('additional_info', $data ?? [], null);
@@ -1857,6 +1891,60 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets inbound_departure_airport
+     *
+     * @return string|null
+     */
+    public function getInboundDepartureAirport()
+    {
+        return $this->container['inbound_departure_airport'];
+    }
+
+    /**
+     * Sets inbound_departure_airport
+     *
+     * @param string|null $inbound_departure_airport Departure airport of return trip.
+     *
+     * @return self
+     */
+    public function setInboundDepartureAirport($inbound_departure_airport)
+    {
+        if (is_null($inbound_departure_airport)) {
+            throw new \InvalidArgumentException('non-nullable inbound_departure_airport cannot be null');
+        }
+        $this->container['inbound_departure_airport'] = $inbound_departure_airport;
+
+        return $this;
+    }
+
+    /**
+     * Gets inbound_arrival_airport
+     *
+     * @return string|null
+     */
+    public function getInboundArrivalAirport()
+    {
+        return $this->container['inbound_arrival_airport'];
+    }
+
+    /**
+     * Sets inbound_arrival_airport
+     *
+     * @param string|null $inbound_arrival_airport Arrival airport of return trip.
+     *
+     * @return self
+     */
+    public function setInboundArrivalAirport($inbound_arrival_airport)
+    {
+        if (is_null($inbound_arrival_airport)) {
+            throw new \InvalidArgumentException('non-nullable inbound_arrival_airport cannot be null');
+        }
+        $this->container['inbound_arrival_airport'] = $inbound_arrival_airport;
+
+        return $this;
+    }
+
+    /**
      * Gets departure_city
      *
      * @return string|null
@@ -2318,7 +2406,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets dispute_amount
      *
-     * @return \Kloutit\Model\CaseDisputeAmount
+     * @return \Kloutit\Model\CreateCaseParamsDisputeAmount
      */
     public function getDisputeAmount()
     {
@@ -2328,7 +2416,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets dispute_amount
      *
-     * @param \Kloutit\Model\CaseDisputeAmount $dispute_amount dispute_amount
+     * @param \Kloutit\Model\CreateCaseParamsDisputeAmount $dispute_amount dispute_amount
      *
      * @return self
      */
@@ -2392,6 +2480,60 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable deadline cannot be null');
         }
         $this->container['deadline'] = $deadline;
+
+        return $this;
+    }
+
+    /**
+     * Gets order_number
+     *
+     * @return string|null
+     */
+    public function getOrderNumber()
+    {
+        return $this->container['order_number'];
+    }
+
+    /**
+     * Sets order_number
+     *
+     * @param string|null $order_number Order number related to the case.
+     *
+     * @return self
+     */
+    public function setOrderNumber($order_number)
+    {
+        if (is_null($order_number)) {
+            throw new \InvalidArgumentException('non-nullable order_number cannot be null');
+        }
+        $this->container['order_number'] = $order_number;
+
+        return $this;
+    }
+
+    /**
+     * Gets ticket_number
+     *
+     * @return string|null
+     */
+    public function getTicketNumber()
+    {
+        return $this->container['ticket_number'];
+    }
+
+    /**
+     * Sets ticket_number
+     *
+     * @param string|null $ticket_number Ticket number related to the case.
+     *
+     * @return self
+     */
+    public function setTicketNumber($ticket_number)
+    {
+        if (is_null($ticket_number)) {
+            throw new \InvalidArgumentException('non-nullable ticket_number cannot be null');
+        }
+        $this->container['ticket_number'] = $ticket_number;
 
         return $this;
     }
