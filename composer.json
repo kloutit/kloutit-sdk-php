@@ -1,6 +1,6 @@
 {
   "name": "kloutit/kloutit-sdk-php",
-  "version": "4.0.0-beta.1",
+  "version": "4.0.0",
   "description": "Kloutit SDK API for client integrations",
   "keywords": [
     "kloutit",
