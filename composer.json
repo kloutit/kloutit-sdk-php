@@ -13,13 +13,14 @@
     "saas"
   ],
   "homepage": "https://kloutit.com",
-  "license": "Apache 2.0",
+  "license": "Apache-2.0",
   "authors": [
     {
       "name": "Kloutit Technologies S.L.",
       "homepage": "https://kloutit.com"
     }
   ],
+  "minimum-stability": "stable",
   "require": {
     "php": "^7.4 || ^8.0",
     "ext-curl": "*",
