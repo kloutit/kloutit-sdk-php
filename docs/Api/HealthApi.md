@@ -1,6 +1,6 @@
 # Kloutit\HealthApi
 
-All URIs are relative to http://localhost, except if the operation defines another base path.
+All URIs are relative to https://clients-api.kloutit.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |

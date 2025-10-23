@@ -107,7 +107,6 @@ class UpdateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         'is_cancelled' => 'bool',
         'product_description' => 'string',
         'order_number' => 'string',
-        'ticket_number' => 'string',
         'contact_date' => '\DateTime',
         'communications' => '\Kloutit\Model\CommunicationItem[]',
         'additional_info' => 'string',
@@ -179,7 +178,6 @@ class UpdateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         'is_cancelled' => null,
         'product_description' => null,
         'order_number' => null,
-        'ticket_number' => null,
         'contact_date' => 'date-time',
         'communications' => null,
         'additional_info' => null,
@@ -249,7 +247,6 @@ class UpdateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         'is_cancelled' => false,
         'product_description' => false,
         'order_number' => false,
-        'ticket_number' => false,
         'contact_date' => false,
         'communications' => false,
         'additional_info' => false,
@@ -399,7 +396,6 @@ class UpdateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         'is_cancelled' => 'isCancelled',
         'product_description' => 'productDescription',
         'order_number' => 'orderNumber',
-        'ticket_number' => 'ticketNumber',
         'contact_date' => 'contactDate',
         'communications' => 'communications',
         'additional_info' => 'additionalInfo',
@@ -469,7 +465,6 @@ class UpdateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         'is_cancelled' => 'setIsCancelled',
         'product_description' => 'setProductDescription',
         'order_number' => 'setOrderNumber',
-        'ticket_number' => 'setTicketNumber',
         'contact_date' => 'setContactDate',
         'communications' => 'setCommunications',
         'additional_info' => 'setAdditionalInfo',
@@ -539,7 +534,6 @@ class UpdateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         'is_cancelled' => 'getIsCancelled',
         'product_description' => 'getProductDescription',
         'order_number' => 'getOrderNumber',
-        'ticket_number' => 'getTicketNumber',
         'contact_date' => 'getContactDate',
         'communications' => 'getCommunications',
         'additional_info' => 'getAdditionalInfo',
@@ -660,7 +654,6 @@ class UpdateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('is_cancelled', $data ?? [], null);
         $this->setIfExists('product_description', $data ?? [], null);
         $this->setIfExists('order_number', $data ?? [], null);
-        $this->setIfExists('ticket_number', $data ?? [], null);
         $this->setIfExists('contact_date', $data ?? [], null);
         $this->setIfExists('communications', $data ?? [], null);
         $this->setIfExists('additional_info', $data ?? [], null);
@@ -1932,33 +1925,6 @@ class UpdateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable order_number cannot be null');
         }
         $this->container['order_number'] = $order_number;
-
-        return $this;
-    }
-
-    /**
-     * Gets ticket_number
-     *
-     * @return string|null
-     */
-    public function getTicketNumber()
-    {
-        return $this->container['ticket_number'];
-    }
-
-    /**
-     * Sets ticket_number
-     *
-     * @param string|null $ticket_number Ticket number related to the case.
-     *
-     * @return self
-     */
-    public function setTicketNumber($ticket_number)
-    {
-        if (is_null($ticket_number)) {
-            throw new \InvalidArgumentException('non-nullable ticket_number cannot be null');
-        }
-        $this->container['ticket_number'] = $ticket_number;
 
         return $this;
     }

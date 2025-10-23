@@ -418,7 +418,7 @@ class KloutitCaseApi
     /**
      * Operation createCase
      *
-     * Create a new case into Kloutit.
+     * Create case
      *
      * @param  \Kloutit\Model\CreateCaseParams $create_case_params create_case_params (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCase'] to see the possible values for this operation
@@ -436,7 +436,7 @@ class KloutitCaseApi
     /**
      * Operation createCaseWithHttpInfo
      *
-     * Create a new case into Kloutit.
+     * Create case
      *
      * @param  \Kloutit\Model\CreateCaseParams $create_case_params (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCase'] to see the possible values for this operation
@@ -560,7 +560,7 @@ class KloutitCaseApi
     /**
      * Operation createCaseAsync
      *
-     * Create a new case into Kloutit.
+     * Create case
      *
      * @param  \Kloutit\Model\CreateCaseParams $create_case_params (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCase'] to see the possible values for this operation
@@ -581,7 +581,7 @@ class KloutitCaseApi
     /**
      * Operation createCaseAsyncWithHttpInfo
      *
-     * Create a new case into Kloutit.
+     * Create case
      *
      * @param  \Kloutit\Model\CreateCaseParams $create_case_params (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCase'] to see the possible values for this operation
@@ -1551,8 +1551,8 @@ class KloutitCaseApi
      * Upload file
      *
      * @param  string $expedient_number expedient_number (required)
-     * @param  \SplFileObject $file A file to upload. Make sure that the specifications follow RFC 2388, which defines file transfers for the multipart/form-data protocol. Allowed formats are &#x60;&#x60;PDF&#x60;&#x60;, &#x60;&#x60;JPG&#x60;&#x60;, &#x60;&#x60;JPEG&#x60;&#x60;, &#x60;&#x60;PNG&#x60;&#x60;. Max. file size is &#x60;&#x60;10Mb&#x60;&#x60;. Ensure that the file upload adheres to [RFC 2388](https://www.ietf.org/rfc/rfc2388.txt), which defines file transfers for the multipart/form-data protocol. (required)
-     * @param  string $category Category of the file (required)
+     * @param  \SplFileObject $file A file to upload. Make sure that the specifications follow RFC 2388, which defines file transfers for the multipart/form-data protocol. Allowed formats are PDF, JPG, JPEG, PNG. Max. file size is 10Mb. Ensure that the file upload adheres to [RFC 2388](https://www.ietf.org/rfc/rfc2388.txt), which defines file transfers for the multipart/form-data protocol. (required)
+     * @param  \Kloutit\Model\FileCategoryEnum $category category (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadFile'] to see the possible values for this operation
      *
      * @throws \Kloutit\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1571,8 +1571,8 @@ class KloutitCaseApi
      * Upload file
      *
      * @param  string $expedient_number (required)
-     * @param  \SplFileObject $file A file to upload. Make sure that the specifications follow RFC 2388, which defines file transfers for the multipart/form-data protocol. Allowed formats are &#x60;&#x60;PDF&#x60;&#x60;, &#x60;&#x60;JPG&#x60;&#x60;, &#x60;&#x60;JPEG&#x60;&#x60;, &#x60;&#x60;PNG&#x60;&#x60;. Max. file size is &#x60;&#x60;10Mb&#x60;&#x60;. Ensure that the file upload adheres to [RFC 2388](https://www.ietf.org/rfc/rfc2388.txt), which defines file transfers for the multipart/form-data protocol. (required)
-     * @param  string $category Category of the file (required)
+     * @param  \SplFileObject $file A file to upload. Make sure that the specifications follow RFC 2388, which defines file transfers for the multipart/form-data protocol. Allowed formats are PDF, JPG, JPEG, PNG. Max. file size is 10Mb. Ensure that the file upload adheres to [RFC 2388](https://www.ietf.org/rfc/rfc2388.txt), which defines file transfers for the multipart/form-data protocol. (required)
+     * @param  \Kloutit\Model\FileCategoryEnum $category (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadFile'] to see the possible values for this operation
      *
      * @throws \Kloutit\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1697,8 +1697,8 @@ class KloutitCaseApi
      * Upload file
      *
      * @param  string $expedient_number (required)
-     * @param  \SplFileObject $file A file to upload. Make sure that the specifications follow RFC 2388, which defines file transfers for the multipart/form-data protocol. Allowed formats are &#x60;&#x60;PDF&#x60;&#x60;, &#x60;&#x60;JPG&#x60;&#x60;, &#x60;&#x60;JPEG&#x60;&#x60;, &#x60;&#x60;PNG&#x60;&#x60;. Max. file size is &#x60;&#x60;10Mb&#x60;&#x60;. Ensure that the file upload adheres to [RFC 2388](https://www.ietf.org/rfc/rfc2388.txt), which defines file transfers for the multipart/form-data protocol. (required)
-     * @param  string $category Category of the file (required)
+     * @param  \SplFileObject $file A file to upload. Make sure that the specifications follow RFC 2388, which defines file transfers for the multipart/form-data protocol. Allowed formats are PDF, JPG, JPEG, PNG. Max. file size is 10Mb. Ensure that the file upload adheres to [RFC 2388](https://www.ietf.org/rfc/rfc2388.txt), which defines file transfers for the multipart/form-data protocol. (required)
+     * @param  \Kloutit\Model\FileCategoryEnum $category (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1720,8 +1720,8 @@ class KloutitCaseApi
      * Upload file
      *
      * @param  string $expedient_number (required)
-     * @param  \SplFileObject $file A file to upload. Make sure that the specifications follow RFC 2388, which defines file transfers for the multipart/form-data protocol. Allowed formats are &#x60;&#x60;PDF&#x60;&#x60;, &#x60;&#x60;JPG&#x60;&#x60;, &#x60;&#x60;JPEG&#x60;&#x60;, &#x60;&#x60;PNG&#x60;&#x60;. Max. file size is &#x60;&#x60;10Mb&#x60;&#x60;. Ensure that the file upload adheres to [RFC 2388](https://www.ietf.org/rfc/rfc2388.txt), which defines file transfers for the multipart/form-data protocol. (required)
-     * @param  string $category Category of the file (required)
+     * @param  \SplFileObject $file A file to upload. Make sure that the specifications follow RFC 2388, which defines file transfers for the multipart/form-data protocol. Allowed formats are PDF, JPG, JPEG, PNG. Max. file size is 10Mb. Ensure that the file upload adheres to [RFC 2388](https://www.ietf.org/rfc/rfc2388.txt), which defines file transfers for the multipart/form-data protocol. (required)
+     * @param  \Kloutit\Model\FileCategoryEnum $category (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1772,8 +1772,8 @@ class KloutitCaseApi
      * Create request for operation 'uploadFile'
      *
      * @param  string $expedient_number (required)
-     * @param  \SplFileObject $file A file to upload. Make sure that the specifications follow RFC 2388, which defines file transfers for the multipart/form-data protocol. Allowed formats are &#x60;&#x60;PDF&#x60;&#x60;, &#x60;&#x60;JPG&#x60;&#x60;, &#x60;&#x60;JPEG&#x60;&#x60;, &#x60;&#x60;PNG&#x60;&#x60;. Max. file size is &#x60;&#x60;10Mb&#x60;&#x60;. Ensure that the file upload adheres to [RFC 2388](https://www.ietf.org/rfc/rfc2388.txt), which defines file transfers for the multipart/form-data protocol. (required)
-     * @param  string $category Category of the file (required)
+     * @param  \SplFileObject $file A file to upload. Make sure that the specifications follow RFC 2388, which defines file transfers for the multipart/form-data protocol. Allowed formats are PDF, JPG, JPEG, PNG. Max. file size is 10Mb. Ensure that the file upload adheres to [RFC 2388](https://www.ietf.org/rfc/rfc2388.txt), which defines file transfers for the multipart/form-data protocol. (required)
+     * @param  \Kloutit\Model\FileCategoryEnum $category (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

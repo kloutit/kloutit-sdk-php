@@ -62,7 +62,6 @@ Name | Type | Description | Notes
 **chargeback_reason** | [**\Kloutit\Model\ChargebackReason**](ChargebackReason.md) |  |
 **deadline** | **\DateTime** | Deadline date to resolve this chargeback in UTC and ISO 8601 format. | [optional] [readonly]
 **order_number** | **string** | Order number related to the case. | [optional]
-**ticket_number** | **string** | Ticket number related to the case. | [optional]
 **contact_date** | **\DateTime** | Date when the customer contacted to the merchant in UTC and ISO 8601 format. | [optional]
 **communications** | [**\Kloutit\Model\CommunicationItem[]**](CommunicationItem.md) | Array of all the emails that the customer has sent regarding this dispute. The structure of each item contains: **sender**: *customer* or *company*, **date**, **content**: string containing the message | [optional]
 **additional_info** | **string** | Additional info related to the chargeback. | [optional]

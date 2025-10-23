@@ -112,7 +112,6 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         'chargeback_reason' => '\Kloutit\Model\ChargebackReason',
         'deadline' => '\DateTime',
         'order_number' => 'string',
-        'ticket_number' => 'string',
         'contact_date' => '\DateTime',
         'communications' => '\Kloutit\Model\CommunicationItem[]',
         'additional_info' => 'string',
@@ -190,7 +189,6 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         'chargeback_reason' => null,
         'deadline' => 'date-time',
         'order_number' => null,
-        'ticket_number' => null,
         'contact_date' => 'date-time',
         'communications' => null,
         'additional_info' => null,
@@ -266,7 +264,6 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         'chargeback_reason' => false,
         'deadline' => false,
         'order_number' => false,
-        'ticket_number' => false,
         'contact_date' => false,
         'communications' => false,
         'additional_info' => false,
@@ -422,7 +419,6 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         'chargeback_reason' => 'chargebackReason',
         'deadline' => 'deadline',
         'order_number' => 'orderNumber',
-        'ticket_number' => 'ticketNumber',
         'contact_date' => 'contactDate',
         'communications' => 'communications',
         'additional_info' => 'additionalInfo',
@@ -498,7 +494,6 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         'chargeback_reason' => 'setChargebackReason',
         'deadline' => 'setDeadline',
         'order_number' => 'setOrderNumber',
-        'ticket_number' => 'setTicketNumber',
         'contact_date' => 'setContactDate',
         'communications' => 'setCommunications',
         'additional_info' => 'setAdditionalInfo',
@@ -574,7 +569,6 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         'chargeback_reason' => 'getChargebackReason',
         'deadline' => 'getDeadline',
         'order_number' => 'getOrderNumber',
-        'ticket_number' => 'getTicketNumber',
         'contact_date' => 'getContactDate',
         'communications' => 'getCommunications',
         'additional_info' => 'getAdditionalInfo',
@@ -701,7 +695,6 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('chargeback_reason', $data ?? [], null);
         $this->setIfExists('deadline', $data ?? [], null);
         $this->setIfExists('order_number', $data ?? [], null);
-        $this->setIfExists('ticket_number', $data ?? [], null);
         $this->setIfExists('contact_date', $data ?? [], null);
         $this->setIfExists('communications', $data ?? [], null);
         $this->setIfExists('additional_info', $data ?? [], null);
@@ -2109,33 +2102,6 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable order_number cannot be null');
         }
         $this->container['order_number'] = $order_number;
-
-        return $this;
-    }
-
-    /**
-     * Gets ticket_number
-     *
-     * @return string|null
-     */
-    public function getTicketNumber()
-    {
-        return $this->container['ticket_number'];
-    }
-
-    /**
-     * Sets ticket_number
-     *
-     * @param string|null $ticket_number Ticket number related to the case.
-     *
-     * @return self
-     */
-    public function setTicketNumber($ticket_number)
-    {
-        if (is_null($ticket_number)) {
-            throw new \InvalidArgumentException('non-nullable ticket_number cannot be null');
-        }
-        $this->container['ticket_number'] = $ticket_number;
 
         return $this;
     }

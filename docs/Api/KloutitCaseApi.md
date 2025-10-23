@@ -1,11 +1,11 @@
 # Kloutit\KloutitCaseApi
 
-All URIs are relative to http://localhost, except if the operation defines another base path.
+All URIs are relative to https://clients-api.kloutit.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**checkCase()**](KloutitCaseApi.md#checkCase) | **POST** /case/{expedientNumber}/check-case | Check case information |
-| [**createCase()**](KloutitCaseApi.md#createCase) | **POST** /case | Create a new case into Kloutit. |
+| [**createCase()**](KloutitCaseApi.md#createCase) | **POST** /case | Create case |
 | [**downloadCaseDefense()**](KloutitCaseApi.md#downloadCaseDefense) | **POST** /case/download-defense/{format}/{expedientNumber} | Download the case defense |
 | [**submitCompletedCase()**](KloutitCaseApi.md#submitCompletedCase) | **POST** /case/{expedientNumber}/submit-completed-case | Submit completed case |
 | [**updateCase()**](KloutitCaseApi.md#updateCase) | **POST** /case/{expedientNumber}/update-case | Update case |
@@ -81,7 +81,7 @@ void (empty response body)
 createCase($create_case_params): \Kloutit\Model\ModelCase
 ```
 
-Create a new case into Kloutit.
+Create case
 
 Case SDK call to create a new chargeback case from your system into Kloutit. API Key authentication is required in the x-api-key header.
 
@@ -355,8 +355,8 @@ $apiInstance = new Kloutit\Api\KloutitCaseApi(
     $config
 );
 $expedient_number = 'expedient_number_example'; // string
-$file = "/path/to/file.txt"; // \SplFileObject | A file to upload. Make sure that the specifications follow RFC 2388, which defines file transfers for the multipart/form-data protocol. Allowed formats are ``PDF``, ``JPG``, ``JPEG``, ``PNG``. Max. file size is ``10Mb``. Ensure that the file upload adheres to [RFC 2388](https://www.ietf.org/rfc/rfc2388.txt), which defines file transfers for the multipart/form-data protocol.
-$category = 'category_example'; // string | Category of the file
+$file = "/path/to/file.txt"; // \SplFileObject | A file to upload. Make sure that the specifications follow RFC 2388, which defines file transfers for the multipart/form-data protocol. Allowed formats are PDF, JPG, JPEG, PNG. Max. file size is 10Mb. Ensure that the file upload adheres to [RFC 2388](https://www.ietf.org/rfc/rfc2388.txt), which defines file transfers for the multipart/form-data protocol.
+$category = new \Kloutit\Model\FileCategoryEnum(); // \Kloutit\Model\FileCategoryEnum
 
 try {
     $result = $apiInstance->uploadFile($expedient_number, $file, $category);
@@ -371,8 +371,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **expedient_number** | **string**|  | |
-| **file** | **\SplFileObject****\SplFileObject**| A file to upload. Make sure that the specifications follow RFC 2388, which defines file transfers for the multipart/form-data protocol. Allowed formats are &#x60;&#x60;PDF&#x60;&#x60;, &#x60;&#x60;JPG&#x60;&#x60;, &#x60;&#x60;JPEG&#x60;&#x60;, &#x60;&#x60;PNG&#x60;&#x60;. Max. file size is &#x60;&#x60;10Mb&#x60;&#x60;. Ensure that the file upload adheres to [RFC 2388](https://www.ietf.org/rfc/rfc2388.txt), which defines file transfers for the multipart/form-data protocol. | |
-| **category** | **string**| Category of the file | |
+| **file** | **\SplFileObject****\SplFileObject**| A file to upload. Make sure that the specifications follow RFC 2388, which defines file transfers for the multipart/form-data protocol. Allowed formats are PDF, JPG, JPEG, PNG. Max. file size is 10Mb. Ensure that the file upload adheres to [RFC 2388](https://www.ietf.org/rfc/rfc2388.txt), which defines file transfers for the multipart/form-data protocol. | |
+| **category** | [**\Kloutit\Model\FileCategoryEnum**](../Model/FileCategoryEnum.md)|  | |
 
 ### Return type
 

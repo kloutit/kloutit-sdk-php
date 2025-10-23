@@ -535,15 +535,6 @@ class CreateCaseParamsTest extends TestCase
     }
 
     /**
-     * Test attribute "ticket_number"
-     */
-    public function testPropertyTicketNumber()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
      * Test attribute "contact_date"
      */
     public function testPropertyContactDate()

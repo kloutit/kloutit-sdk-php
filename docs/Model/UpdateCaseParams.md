@@ -49,7 +49,6 @@ Name | Type | Description | Notes
 **is_cancelled** | **bool** | Flag that indicates if the subscription is cancelled or active. | [optional]
 **product_description** | **string** | Product description. | [optional]
 **order_number** | **string** | Order number related to the case. | [optional]
-**ticket_number** | **string** | Ticket number related to the case. | [optional]
 **contact_date** | **\DateTime** | Date when the customer contacted to the merchant in UTC and ISO 8601 format. | [optional]
 **communications** | [**\Kloutit\Model\CommunicationItem[]**](CommunicationItem.md) | Array of all the emails that the customer has sent regarding this dispute. The structure of each item contains: **sender**: *customer* or *company*, **date**, **content**: string containing the message | [optional]
 **additional_info** | **string** | Additional info related to the chargeback. | [optional]

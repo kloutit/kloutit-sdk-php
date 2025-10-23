@@ -327,7 +327,7 @@ class Configuration
     {
         return [
             [
-                "url" => "",
+                "url" => "https://clients-api.kloutit.com",
                 "description" => "No description provided",
             ]
         ];
