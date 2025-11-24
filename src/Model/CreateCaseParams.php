@@ -73,6 +73,7 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         'customer_phone' => 'string',
         'service_date' => '\DateTime',
         'service_was_provided' => 'bool',
+        'service_duration_type' => '\Kloutit\Model\ServiceDuration',
         'checkin_date' => '\DateTime',
         'checkout_date' => '\DateTime',
         'hotel_name' => 'string',
@@ -106,6 +107,21 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         'commitment_end_date' => '\DateTime',
         'is_cancelled' => 'bool',
         'product_description' => 'string',
+        'rental_origin_location' => 'string',
+        'rental_destination_location' => 'string',
+        'rental_pickup_date' => '\DateTime',
+        'rental_delivery_date' => '\DateTime',
+        'private_owner_rental' => 'bool',
+        'rental_owner_name' => 'string',
+        'rental_currency' => 'string',
+        'rental_amount' => '\Kloutit\Model\Amount',
+        'extra_distance_amount' => '\Kloutit\Model\Amount',
+        'penalty_amount' => '\Kloutit\Model\Amount',
+        'deposit_amount' => '\Kloutit\Model\Amount',
+        'damages_amount' => '\Kloutit\Model\Amount',
+        'product_brand' => 'string',
+        'product_id' => 'string',
+        'tracking_number' => 'string',
         'expedient_number' => 'string',
         'notification_date' => '\DateTime',
         'dispute_amount' => '\Kloutit\Model\CreateCaseParamsDisputeAmount',
@@ -150,6 +166,7 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         'customer_phone' => null,
         'service_date' => 'date-time',
         'service_was_provided' => null,
+        'service_duration_type' => null,
         'checkin_date' => 'date-time',
         'checkout_date' => 'date-time',
         'hotel_name' => null,
@@ -183,6 +200,21 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         'commitment_end_date' => 'date-time',
         'is_cancelled' => null,
         'product_description' => null,
+        'rental_origin_location' => null,
+        'rental_destination_location' => null,
+        'rental_pickup_date' => 'date-time',
+        'rental_delivery_date' => 'date-time',
+        'private_owner_rental' => null,
+        'rental_owner_name' => null,
+        'rental_currency' => null,
+        'rental_amount' => null,
+        'extra_distance_amount' => null,
+        'penalty_amount' => null,
+        'deposit_amount' => null,
+        'damages_amount' => null,
+        'product_brand' => null,
+        'product_id' => null,
+        'tracking_number' => null,
         'expedient_number' => null,
         'notification_date' => 'date-time',
         'dispute_amount' => null,
@@ -225,6 +257,7 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         'customer_phone' => false,
         'service_date' => false,
         'service_was_provided' => false,
+        'service_duration_type' => false,
         'checkin_date' => false,
         'checkout_date' => false,
         'hotel_name' => false,
@@ -258,6 +291,21 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         'commitment_end_date' => false,
         'is_cancelled' => false,
         'product_description' => false,
+        'rental_origin_location' => false,
+        'rental_destination_location' => false,
+        'rental_pickup_date' => false,
+        'rental_delivery_date' => false,
+        'private_owner_rental' => false,
+        'rental_owner_name' => false,
+        'rental_currency' => false,
+        'rental_amount' => false,
+        'extra_distance_amount' => false,
+        'penalty_amount' => false,
+        'deposit_amount' => false,
+        'damages_amount' => false,
+        'product_brand' => false,
+        'product_id' => false,
+        'tracking_number' => false,
         'expedient_number' => false,
         'notification_date' => false,
         'dispute_amount' => false,
@@ -380,6 +428,7 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         'customer_phone' => 'customerPhone',
         'service_date' => 'serviceDate',
         'service_was_provided' => 'serviceWasProvided',
+        'service_duration_type' => 'serviceDurationType',
         'checkin_date' => 'checkinDate',
         'checkout_date' => 'checkoutDate',
         'hotel_name' => 'hotelName',
@@ -413,6 +462,21 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         'commitment_end_date' => 'commitmentEndDate',
         'is_cancelled' => 'isCancelled',
         'product_description' => 'productDescription',
+        'rental_origin_location' => 'rentalOriginLocation',
+        'rental_destination_location' => 'rentalDestinationLocation',
+        'rental_pickup_date' => 'rentalPickupDate',
+        'rental_delivery_date' => 'rentalDeliveryDate',
+        'private_owner_rental' => 'privateOwnerRental',
+        'rental_owner_name' => 'rentalOwnerName',
+        'rental_currency' => 'rentalCurrency',
+        'rental_amount' => 'rentalAmount',
+        'extra_distance_amount' => 'extraDistanceAmount',
+        'penalty_amount' => 'penaltyAmount',
+        'deposit_amount' => 'depositAmount',
+        'damages_amount' => 'damagesAmount',
+        'product_brand' => 'productBrand',
+        'product_id' => 'productId',
+        'tracking_number' => 'trackingNumber',
         'expedient_number' => 'expedientNumber',
         'notification_date' => 'notificationDate',
         'dispute_amount' => 'disputeAmount',
@@ -455,6 +519,7 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         'customer_phone' => 'setCustomerPhone',
         'service_date' => 'setServiceDate',
         'service_was_provided' => 'setServiceWasProvided',
+        'service_duration_type' => 'setServiceDurationType',
         'checkin_date' => 'setCheckinDate',
         'checkout_date' => 'setCheckoutDate',
         'hotel_name' => 'setHotelName',
@@ -488,6 +553,21 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         'commitment_end_date' => 'setCommitmentEndDate',
         'is_cancelled' => 'setIsCancelled',
         'product_description' => 'setProductDescription',
+        'rental_origin_location' => 'setRentalOriginLocation',
+        'rental_destination_location' => 'setRentalDestinationLocation',
+        'rental_pickup_date' => 'setRentalPickupDate',
+        'rental_delivery_date' => 'setRentalDeliveryDate',
+        'private_owner_rental' => 'setPrivateOwnerRental',
+        'rental_owner_name' => 'setRentalOwnerName',
+        'rental_currency' => 'setRentalCurrency',
+        'rental_amount' => 'setRentalAmount',
+        'extra_distance_amount' => 'setExtraDistanceAmount',
+        'penalty_amount' => 'setPenaltyAmount',
+        'deposit_amount' => 'setDepositAmount',
+        'damages_amount' => 'setDamagesAmount',
+        'product_brand' => 'setProductBrand',
+        'product_id' => 'setProductId',
+        'tracking_number' => 'setTrackingNumber',
         'expedient_number' => 'setExpedientNumber',
         'notification_date' => 'setNotificationDate',
         'dispute_amount' => 'setDisputeAmount',
@@ -530,6 +610,7 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         'customer_phone' => 'getCustomerPhone',
         'service_date' => 'getServiceDate',
         'service_was_provided' => 'getServiceWasProvided',
+        'service_duration_type' => 'getServiceDurationType',
         'checkin_date' => 'getCheckinDate',
         'checkout_date' => 'getCheckoutDate',
         'hotel_name' => 'getHotelName',
@@ -563,6 +644,21 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         'commitment_end_date' => 'getCommitmentEndDate',
         'is_cancelled' => 'getIsCancelled',
         'product_description' => 'getProductDescription',
+        'rental_origin_location' => 'getRentalOriginLocation',
+        'rental_destination_location' => 'getRentalDestinationLocation',
+        'rental_pickup_date' => 'getRentalPickupDate',
+        'rental_delivery_date' => 'getRentalDeliveryDate',
+        'private_owner_rental' => 'getPrivateOwnerRental',
+        'rental_owner_name' => 'getRentalOwnerName',
+        'rental_currency' => 'getRentalCurrency',
+        'rental_amount' => 'getRentalAmount',
+        'extra_distance_amount' => 'getExtraDistanceAmount',
+        'penalty_amount' => 'getPenaltyAmount',
+        'deposit_amount' => 'getDepositAmount',
+        'damages_amount' => 'getDamagesAmount',
+        'product_brand' => 'getProductBrand',
+        'product_id' => 'getProductId',
+        'tracking_number' => 'getTrackingNumber',
         'expedient_number' => 'getExpedientNumber',
         'notification_date' => 'getNotificationDate',
         'dispute_amount' => 'getDisputeAmount',
@@ -656,6 +752,7 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('customer_phone', $data ?? [], null);
         $this->setIfExists('service_date', $data ?? [], null);
         $this->setIfExists('service_was_provided', $data ?? [], null);
+        $this->setIfExists('service_duration_type', $data ?? [], null);
         $this->setIfExists('checkin_date', $data ?? [], null);
         $this->setIfExists('checkout_date', $data ?? [], null);
         $this->setIfExists('hotel_name', $data ?? [], null);
@@ -689,6 +786,21 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('commitment_end_date', $data ?? [], null);
         $this->setIfExists('is_cancelled', $data ?? [], null);
         $this->setIfExists('product_description', $data ?? [], null);
+        $this->setIfExists('rental_origin_location', $data ?? [], null);
+        $this->setIfExists('rental_destination_location', $data ?? [], null);
+        $this->setIfExists('rental_pickup_date', $data ?? [], null);
+        $this->setIfExists('rental_delivery_date', $data ?? [], null);
+        $this->setIfExists('private_owner_rental', $data ?? [], null);
+        $this->setIfExists('rental_owner_name', $data ?? [], null);
+        $this->setIfExists('rental_currency', $data ?? [], null);
+        $this->setIfExists('rental_amount', $data ?? [], null);
+        $this->setIfExists('extra_distance_amount', $data ?? [], null);
+        $this->setIfExists('penalty_amount', $data ?? [], null);
+        $this->setIfExists('deposit_amount', $data ?? [], null);
+        $this->setIfExists('damages_amount', $data ?? [], null);
+        $this->setIfExists('product_brand', $data ?? [], null);
+        $this->setIfExists('product_id', $data ?? [], null);
+        $this->setIfExists('tracking_number', $data ?? [], null);
         $this->setIfExists('expedient_number', $data ?? [], null);
         $this->setIfExists('notification_date', $data ?? [], null);
         $this->setIfExists('dispute_amount', $data ?? [], null);
@@ -1049,6 +1161,33 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable service_was_provided cannot be null');
         }
         $this->container['service_was_provided'] = $service_was_provided;
+
+        return $this;
+    }
+
+    /**
+     * Gets service_duration_type
+     *
+     * @return \Kloutit\Model\ServiceDuration|null
+     */
+    public function getServiceDurationType()
+    {
+        return $this->container['service_duration_type'];
+    }
+
+    /**
+     * Sets service_duration_type
+     *
+     * @param \Kloutit\Model\ServiceDuration|null $service_duration_type service_duration_type
+     *
+     * @return self
+     */
+    public function setServiceDurationType($service_duration_type)
+    {
+        if (is_null($service_duration_type)) {
+            throw new \InvalidArgumentException('non-nullable service_duration_type cannot be null');
+        }
+        $this->container['service_duration_type'] = $service_duration_type;
 
         return $this;
     }
@@ -1940,6 +2079,411 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable product_description cannot be null');
         }
         $this->container['product_description'] = $product_description;
+
+        return $this;
+    }
+
+    /**
+     * Gets rental_origin_location
+     *
+     * @return string|null
+     */
+    public function getRentalOriginLocation()
+    {
+        return $this->container['rental_origin_location'];
+    }
+
+    /**
+     * Sets rental_origin_location
+     *
+     * @param string|null $rental_origin_location For RENTING_VEHICLE typology. Origin location for vehicle rental.
+     *
+     * @return self
+     */
+    public function setRentalOriginLocation($rental_origin_location)
+    {
+        if (is_null($rental_origin_location)) {
+            throw new \InvalidArgumentException('non-nullable rental_origin_location cannot be null');
+        }
+        $this->container['rental_origin_location'] = $rental_origin_location;
+
+        return $this;
+    }
+
+    /**
+     * Gets rental_destination_location
+     *
+     * @return string|null
+     */
+    public function getRentalDestinationLocation()
+    {
+        return $this->container['rental_destination_location'];
+    }
+
+    /**
+     * Sets rental_destination_location
+     *
+     * @param string|null $rental_destination_location For RENTING_VEHICLE typology. Destination location for vehicle rental.
+     *
+     * @return self
+     */
+    public function setRentalDestinationLocation($rental_destination_location)
+    {
+        if (is_null($rental_destination_location)) {
+            throw new \InvalidArgumentException('non-nullable rental_destination_location cannot be null');
+        }
+        $this->container['rental_destination_location'] = $rental_destination_location;
+
+        return $this;
+    }
+
+    /**
+     * Gets rental_pickup_date
+     *
+     * @return \DateTime|null
+     */
+    public function getRentalPickupDate()
+    {
+        return $this->container['rental_pickup_date'];
+    }
+
+    /**
+     * Sets rental_pickup_date
+     *
+     * @param \DateTime|null $rental_pickup_date For RENTING_VEHICLE typology. Rental pickup date in UTC and ISO 8601 format.
+     *
+     * @return self
+     */
+    public function setRentalPickupDate($rental_pickup_date)
+    {
+        if (is_null($rental_pickup_date)) {
+            throw new \InvalidArgumentException('non-nullable rental_pickup_date cannot be null');
+        }
+        $this->container['rental_pickup_date'] = $rental_pickup_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets rental_delivery_date
+     *
+     * @return \DateTime|null
+     */
+    public function getRentalDeliveryDate()
+    {
+        return $this->container['rental_delivery_date'];
+    }
+
+    /**
+     * Sets rental_delivery_date
+     *
+     * @param \DateTime|null $rental_delivery_date For RENTING_VEHICLE typology. Rental delivery date in UTC and ISO 8601 format.
+     *
+     * @return self
+     */
+    public function setRentalDeliveryDate($rental_delivery_date)
+    {
+        if (is_null($rental_delivery_date)) {
+            throw new \InvalidArgumentException('non-nullable rental_delivery_date cannot be null');
+        }
+        $this->container['rental_delivery_date'] = $rental_delivery_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets private_owner_rental
+     *
+     * @return bool|null
+     */
+    public function getPrivateOwnerRental()
+    {
+        return $this->container['private_owner_rental'];
+    }
+
+    /**
+     * Sets private_owner_rental
+     *
+     * @param bool|null $private_owner_rental For RENTING_VEHICLE typology. Flag that indicates if the customer is the rental owner.
+     *
+     * @return self
+     */
+    public function setPrivateOwnerRental($private_owner_rental)
+    {
+        if (is_null($private_owner_rental)) {
+            throw new \InvalidArgumentException('non-nullable private_owner_rental cannot be null');
+        }
+        $this->container['private_owner_rental'] = $private_owner_rental;
+
+        return $this;
+    }
+
+    /**
+     * Gets rental_owner_name
+     *
+     * @return string|null
+     */
+    public function getRentalOwnerName()
+    {
+        return $this->container['rental_owner_name'];
+    }
+
+    /**
+     * Sets rental_owner_name
+     *
+     * @param string|null $rental_owner_name For RENTING_VEHICLE typology. Name of the rental owner/company.
+     *
+     * @return self
+     */
+    public function setRentalOwnerName($rental_owner_name)
+    {
+        if (is_null($rental_owner_name)) {
+            throw new \InvalidArgumentException('non-nullable rental_owner_name cannot be null');
+        }
+        $this->container['rental_owner_name'] = $rental_owner_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets rental_currency
+     *
+     * @return string|null
+     */
+    public function getRentalCurrency()
+    {
+        return $this->container['rental_currency'];
+    }
+
+    /**
+     * Sets rental_currency
+     *
+     * @param string|null $rental_currency For RENTING_VEHICLE typology. Currency for rental amounts.
+     *
+     * @return self
+     */
+    public function setRentalCurrency($rental_currency)
+    {
+        if (is_null($rental_currency)) {
+            throw new \InvalidArgumentException('non-nullable rental_currency cannot be null');
+        }
+        $this->container['rental_currency'] = $rental_currency;
+
+        return $this;
+    }
+
+    /**
+     * Gets rental_amount
+     *
+     * @return \Kloutit\Model\Amount|null
+     */
+    public function getRentalAmount()
+    {
+        return $this->container['rental_amount'];
+    }
+
+    /**
+     * Sets rental_amount
+     *
+     * @param \Kloutit\Model\Amount|null $rental_amount For RENTING_VEHICLE typology. Base rental amount.
+     *
+     * @return self
+     */
+    public function setRentalAmount($rental_amount)
+    {
+        if (is_null($rental_amount)) {
+            throw new \InvalidArgumentException('non-nullable rental_amount cannot be null');
+        }
+        $this->container['rental_amount'] = $rental_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets extra_distance_amount
+     *
+     * @return \Kloutit\Model\Amount|null
+     */
+    public function getExtraDistanceAmount()
+    {
+        return $this->container['extra_distance_amount'];
+    }
+
+    /**
+     * Sets extra_distance_amount
+     *
+     * @param \Kloutit\Model\Amount|null $extra_distance_amount For RENTING_VEHICLE typology. Extra distance charge amount.
+     *
+     * @return self
+     */
+    public function setExtraDistanceAmount($extra_distance_amount)
+    {
+        if (is_null($extra_distance_amount)) {
+            throw new \InvalidArgumentException('non-nullable extra_distance_amount cannot be null');
+        }
+        $this->container['extra_distance_amount'] = $extra_distance_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets penalty_amount
+     *
+     * @return \Kloutit\Model\Amount|null
+     */
+    public function getPenaltyAmount()
+    {
+        return $this->container['penalty_amount'];
+    }
+
+    /**
+     * Sets penalty_amount
+     *
+     * @param \Kloutit\Model\Amount|null $penalty_amount For RENTING_VEHICLE typology. Penalty amount for rental violations.
+     *
+     * @return self
+     */
+    public function setPenaltyAmount($penalty_amount)
+    {
+        if (is_null($penalty_amount)) {
+            throw new \InvalidArgumentException('non-nullable penalty_amount cannot be null');
+        }
+        $this->container['penalty_amount'] = $penalty_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets deposit_amount
+     *
+     * @return \Kloutit\Model\Amount|null
+     */
+    public function getDepositAmount()
+    {
+        return $this->container['deposit_amount'];
+    }
+
+    /**
+     * Sets deposit_amount
+     *
+     * @param \Kloutit\Model\Amount|null $deposit_amount For RENTING_VEHICLE typology. Security deposit amount.
+     *
+     * @return self
+     */
+    public function setDepositAmount($deposit_amount)
+    {
+        if (is_null($deposit_amount)) {
+            throw new \InvalidArgumentException('non-nullable deposit_amount cannot be null');
+        }
+        $this->container['deposit_amount'] = $deposit_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets damages_amount
+     *
+     * @return \Kloutit\Model\Amount|null
+     */
+    public function getDamagesAmount()
+    {
+        return $this->container['damages_amount'];
+    }
+
+    /**
+     * Sets damages_amount
+     *
+     * @param \Kloutit\Model\Amount|null $damages_amount For RENTING_VEHICLE typology. Damages amount charged to customer.
+     *
+     * @return self
+     */
+    public function setDamagesAmount($damages_amount)
+    {
+        if (is_null($damages_amount)) {
+            throw new \InvalidArgumentException('non-nullable damages_amount cannot be null');
+        }
+        $this->container['damages_amount'] = $damages_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets product_brand
+     *
+     * @return string|null
+     */
+    public function getProductBrand()
+    {
+        return $this->container['product_brand'];
+    }
+
+    /**
+     * Sets product_brand
+     *
+     * @param string|null $product_brand For RENTING_VEHICLE typology. Model of the rented vehicle.
+     *
+     * @return self
+     */
+    public function setProductBrand($product_brand)
+    {
+        if (is_null($product_brand)) {
+            throw new \InvalidArgumentException('non-nullable product_brand cannot be null');
+        }
+        $this->container['product_brand'] = $product_brand;
+
+        return $this;
+    }
+
+    /**
+     * Gets product_id
+     *
+     * @return string|null
+     */
+    public function getProductId()
+    {
+        return $this->container['product_id'];
+    }
+
+    /**
+     * Sets product_id
+     *
+     * @param string|null $product_id Product identifier. If RENTING_VEHICLE typology, this is the vehicle plate number.
+     *
+     * @return self
+     */
+    public function setProductId($product_id)
+    {
+        if (is_null($product_id)) {
+            throw new \InvalidArgumentException('non-nullable product_id cannot be null');
+        }
+        $this->container['product_id'] = $product_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets tracking_number
+     *
+     * @return string|null
+     */
+    public function getTrackingNumber()
+    {
+        return $this->container['tracking_number'];
+    }
+
+    /**
+     * Sets tracking_number
+     *
+     * @param string|null $tracking_number Tracking number related to the shipment of the product.
+     *
+     * @return self
+     */
+    public function setTrackingNumber($tracking_number)
+    {
+        if (is_null($tracking_number)) {
+            throw new \InvalidArgumentException('non-nullable tracking_number cannot be null');
+        }
+        $this->container['tracking_number'] = $tracking_number;
 
         return $this;
     }

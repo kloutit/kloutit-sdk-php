@@ -85,6 +85,15 @@ class UpdateCaseParamsTest extends TestCase
     }
 
     /**
+     * Test attribute "sales_channel_code"
+     */
+    public function testPropertySalesChannelCode()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "filial_identifier"
      */
     public function testPropertyFilialIdentifier()
@@ -175,6 +184,15 @@ class UpdateCaseParamsTest extends TestCase
     }
 
     /**
+     * Test attribute "service_duration_type"
+     */
+    public function testPropertyServiceDurationType()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "checkin_date"
      */
     public function testPropertyCheckinDate()
@@ -211,9 +229,27 @@ class UpdateCaseParamsTest extends TestCase
     }
 
     /**
+     * Test attribute "inbound_rate"
+     */
+    public function testPropertyInboundRate()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "checkin_confirmation"
      */
     public function testPropertyCheckinConfirmation()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "departure_country"
+     */
+    public function testPropertyDepartureCountry()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -247,6 +283,42 @@ class UpdateCaseParamsTest extends TestCase
     }
 
     /**
+     * Test attribute "inbound_departure_country"
+     */
+    public function testPropertyInboundDepartureCountry()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "inbound_destination_country"
+     */
+    public function testPropertyInboundDestinationCountry()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "inbound_departure_date"
+     */
+    public function testPropertyInboundDepartureDate()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "inbound_arrival_date"
+     */
+    public function testPropertyInboundArrivalDate()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "departure_airport"
      */
     public function testPropertyDepartureAirport()
@@ -265,6 +337,24 @@ class UpdateCaseParamsTest extends TestCase
     }
 
     /**
+     * Test attribute "inbound_departure_airport"
+     */
+    public function testPropertyInboundDepartureAirport()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "inbound_arrival_airport"
+     */
+    public function testPropertyInboundArrivalAirport()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "departure_city"
      */
     public function testPropertyDepartureCity()
@@ -277,6 +367,24 @@ class UpdateCaseParamsTest extends TestCase
      * Test attribute "arrival_city"
      */
     public function testPropertyArrivalCity()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "inbound_departure_city"
+     */
+    public function testPropertyInboundDepartureCity()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "inbound_arrival_city"
+     */
+    public function testPropertyInboundArrivalCity()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -376,6 +484,150 @@ class UpdateCaseParamsTest extends TestCase
      * Test attribute "product_description"
      */
     public function testPropertyProductDescription()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "rental_origin_location"
+     */
+    public function testPropertyRentalOriginLocation()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "rental_destination_location"
+     */
+    public function testPropertyRentalDestinationLocation()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "rental_pickup_date"
+     */
+    public function testPropertyRentalPickupDate()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "rental_delivery_date"
+     */
+    public function testPropertyRentalDeliveryDate()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "private_owner_rental"
+     */
+    public function testPropertyPrivateOwnerRental()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "rental_owner_name"
+     */
+    public function testPropertyRentalOwnerName()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "rental_currency"
+     */
+    public function testPropertyRentalCurrency()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "rental_amount"
+     */
+    public function testPropertyRentalAmount()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "extra_distance_amount"
+     */
+    public function testPropertyExtraDistanceAmount()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "penalty_amount"
+     */
+    public function testPropertyPenaltyAmount()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "deposit_amount"
+     */
+    public function testPropertyDepositAmount()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "damages_amount"
+     */
+    public function testPropertyDamagesAmount()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "product_brand"
+     */
+    public function testPropertyProductBrand()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "product_id"
+     */
+    public function testPropertyProductId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "tracking_number"
+     */
+    public function testPropertyTrackingNumber()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "order_number"
+     */
+    public function testPropertyOrderNumber()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -511,6 +763,15 @@ class UpdateCaseParamsTest extends TestCase
      * Test attribute "seller_email"
      */
     public function testPropertySellerEmail()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "sales_channel_terms_url"
+     */
+    public function testPropertySalesChannelTermsUrl()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
