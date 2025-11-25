@@ -89,6 +89,30 @@ class KloutitCaseApiTest extends TestCase
     }
 
     /**
+     * Test case for createCase
+     *
+     * Create case.
+     *
+     */
+    public function testCreateCase()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for downloadCaseDefense
+     *
+     * Download the case defense.
+     *
+     */
+    public function testDownloadCaseDefense()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for submitCompletedCase
      *
      * Submit completed case.
@@ -119,6 +143,30 @@ class KloutitCaseApiTest extends TestCase
      *
      */
     public function testUploadFile()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for uploadProductPhoto
+     *
+     * Upload product photo.
+     *
+     */
+    public function testUploadProductPhoto()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for verifyEvent
+     *
+     * Verify webhook event.
+     *
+     */
+    public function testVerifyEvent()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

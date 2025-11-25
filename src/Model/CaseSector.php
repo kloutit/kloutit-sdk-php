@@ -66,6 +66,8 @@ class CaseSector
 
     public const MARKETPLACE = 'MARKETPLACE';
 
+    public const PARKING = 'PARKING';
+
     public const PHONE = 'PHONE';
 
     public const SOFTWARE = 'SOFTWARE';
@@ -84,6 +86,8 @@ class CaseSector
 
     public const TRAVEL_HOTEL = 'TRAVEL_HOTEL';
 
+    public const RENTING_VEHICLE = 'RENTING_VEHICLE';
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -100,6 +104,7 @@ class CaseSector
             self::HOME,
             self::LEISURE,
             self::MARKETPLACE,
+            self::PARKING,
             self::PHONE,
             self::SOFTWARE,
             self::SPORT,
@@ -108,7 +113,8 @@ class CaseSector
             self::TECHNOLOGY,
             self::TRANSPORT,
             self::TRAVEL_AIRLINE,
-            self::TRAVEL_HOTEL
+            self::TRAVEL_HOTEL,
+            self::RENTING_VEHICLE
         ];
     }
 }
