@@ -103,6 +103,15 @@ class ClientWebhookEventDtoTest extends TestCase
     }
 
     /**
+     * Test attribute "payment_processor"
+     */
+    public function testPropertyPaymentProcessor()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "details"
      */
     public function testPropertyDetails()

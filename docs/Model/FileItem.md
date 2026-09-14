@@ -9,5 +9,6 @@ Name | Type | Description | Notes
 **size** | **float** | File size in bytes |
 **mimetype** | **string** | File mimetype |
 **category** | **string** | File category. |
+**is_data_extracted** | **bool** | Whether this file has already been processed by data extraction | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

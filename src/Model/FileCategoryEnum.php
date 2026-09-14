@@ -38,7 +38,6 @@ use \Kloutit\ObjectSerializer;
  * FileCategoryEnum Class Doc Comment
  *
  * @category Class
- * @description Category of the file
  * @package  Kloutit
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

@@ -39,7 +39,7 @@ use PHPUnit\Framework\TestCase;
  * CaseSectorTest Class Doc Comment
  *
  * @category    Class
- * @description Sector of the case. It must be one of the sectors of the organization, for instance: EDUCATION, SOFTWARE, TRAVEL_HOTEL,...
+ * @description Sectors configured for the organization. These are the only sectors accepted when creating or enriching a case, for instance: EDUCATION, SOFTWARE, TRAVEL_HOTEL,...
  * @package     Kloutit
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech

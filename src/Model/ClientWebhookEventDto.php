@@ -64,7 +64,8 @@ class ClientWebhookEventDto implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static $openAPITypes = [
         'event_type' => 'string',
         'expedient_number' => 'string',
-        'details' => 'object'
+        'payment_processor' => 'string',
+        'details' => '\Kloutit\Model\ClientWebhookEventDetailsDto'
     ];
 
     /**
@@ -77,6 +78,7 @@ class ClientWebhookEventDto implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static $openAPIFormats = [
         'event_type' => null,
         'expedient_number' => null,
+        'payment_processor' => null,
         'details' => null
     ];
 
@@ -88,6 +90,7 @@ class ClientWebhookEventDto implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static array $openAPINullables = [
         'event_type' => false,
         'expedient_number' => false,
+        'payment_processor' => false,
         'details' => false
     ];
 
@@ -179,6 +182,7 @@ class ClientWebhookEventDto implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static $attributeMap = [
         'event_type' => 'eventType',
         'expedient_number' => 'expedientNumber',
+        'payment_processor' => 'paymentProcessor',
         'details' => 'details'
     ];
 
@@ -190,6 +194,7 @@ class ClientWebhookEventDto implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static $setters = [
         'event_type' => 'setEventType',
         'expedient_number' => 'setExpedientNumber',
+        'payment_processor' => 'setPaymentProcessor',
         'details' => 'setDetails'
     ];
 
@@ -201,6 +206,7 @@ class ClientWebhookEventDto implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static $getters = [
         'event_type' => 'getEventType',
         'expedient_number' => 'getExpedientNumber',
+        'payment_processor' => 'getPaymentProcessor',
         'details' => 'getDetails'
     ];
 
@@ -263,6 +269,7 @@ class ClientWebhookEventDto implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         $this->setIfExists('event_type', $data ?? [], null);
         $this->setIfExists('expedient_number', $data ?? [], null);
+        $this->setIfExists('payment_processor', $data ?? [], null);
         $this->setIfExists('details', $data ?? [], null);
     }
 
@@ -298,9 +305,6 @@ class ClientWebhookEventDto implements ModelInterface, ArrayAccess, \JsonSeriali
         }
         if ($this->container['expedient_number'] === null) {
             $invalidProperties[] = "'expedient_number' can't be null";
-        }
-        if ($this->container['details'] === null) {
-            $invalidProperties[] = "'details' can't be null";
         }
         return $invalidProperties;
     }
@@ -372,9 +376,36 @@ class ClientWebhookEventDto implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
+     * Gets payment_processor
+     *
+     * @return string|null
+     */
+    public function getPaymentProcessor()
+    {
+        return $this->container['payment_processor'];
+    }
+
+    /**
+     * Sets payment_processor
+     *
+     * @param string|null $payment_processor The payment processor of the case
+     *
+     * @return self
+     */
+    public function setPaymentProcessor($payment_processor)
+    {
+        if (is_null($payment_processor)) {
+            throw new \InvalidArgumentException('non-nullable payment_processor cannot be null');
+        }
+        $this->container['payment_processor'] = $payment_processor;
+
+        return $this;
+    }
+
+    /**
      * Gets details
      *
-     * @return object
+     * @return \Kloutit\Model\ClientWebhookEventDetailsDto|null
      */
     public function getDetails()
     {
@@ -384,7 +415,7 @@ class ClientWebhookEventDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets details
      *
-     * @param object $details The details of the case that the webhook event is related to
+     * @param \Kloutit\Model\ClientWebhookEventDetailsDto|null $details The details of the case that the webhook event is related to
      *
      * @return self
      */
