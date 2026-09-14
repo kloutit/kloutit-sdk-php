@@ -39,7 +39,7 @@ use PHPUnit\Framework\TestCase;
  * FileCategoryEnumTest Class Doc Comment
  *
  * @category    Class
- * @description Category of the file
+ * @description FileCategoryEnum
  * @package     Kloutit
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech

@@ -64,6 +64,10 @@ class ChargebackReason
 
     public const RECURRENT_OPERATION_CANCELLED = 'RECURRENT_OPERATION_CANCELLED';
 
+    public const PROCESSING_ERROR = 'PROCESSING_ERROR';
+
+    public const OTHER = 'OTHER';
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -78,7 +82,9 @@ class ChargebackReason
             self::INCORRECT_DUPLICATED_CHARGES,
             self::PRODUCT_SERVICE_CANCELLED,
             self::REFUND_NOT_RECEIVED,
-            self::RECURRENT_OPERATION_CANCELLED
+            self::RECURRENT_OPERATION_CANCELLED,
+            self::PROCESSING_ERROR,
+            self::OTHER
         ];
     }
 }

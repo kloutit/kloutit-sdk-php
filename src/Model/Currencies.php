@@ -119,6 +119,8 @@ class Currencies
 
     public const CAD = 'CAD';
 
+    public const AED = 'AED';
+
     public const CNY = 'CNY';
 
     public const JPY = 'JPY';
@@ -156,6 +158,8 @@ class Currencies
     public const WST = 'WST';
 
     public const VUV = 'VUV';
+
+    public const ZAR = 'ZAR';
 
     /**
      * Gets allowable values of the enum
@@ -200,6 +204,7 @@ class Currencies
             self::VES,
             self::USD,
             self::CAD,
+            self::AED,
             self::CNY,
             self::JPY,
             self::INR,
@@ -218,7 +223,8 @@ class Currencies
             self::FJD,
             self::PGK,
             self::WST,
-            self::VUV
+            self::VUV,
+            self::ZAR
         ];
     }
 }

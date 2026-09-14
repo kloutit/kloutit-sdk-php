@@ -2,7 +2,7 @@
 
 Kloutit is an AI-powered B2B SaaS that enables online merchants to effectively and efficiently defend and prevent chargebacks.
 
-This SDK allows your organization to integrate with Kloutit Clients API v2.0, providing comprehensive case management capabilities including creating cases, uploading files, updating case information, and managing the complete chargeback defense workflow.
+This SDK allows your organization to integrate with Kloutit Clients API v2.2, providing comprehensive case management capabilities including creating cases, uploading files, updating case information, and managing the complete chargeback defense workflow.
 
 ## Installation
 
@@ -20,7 +20,7 @@ Once your organization is successfully registered, you will need to create new c
 
 ## Available Endpoints
 
-The Kloutit Clients API v2.0 provides the following main endpoints:
+The Kloutit Clients API v2.2 provides the following main endpoints:
 
 - **Create Case** - Create a new chargeback case
 - **Upload File** - Upload supporting documents to a case
@@ -28,8 +28,11 @@ The Kloutit Clients API v2.0 provides the following main endpoints:
 - **Update Case** - Update case information with additional data
 - **Check Case** - Validate case completeness and get missing fields
 - **Submit Completed Case** - Mark case as ready for defense generation
+- **Update Case Status** - Report the outcome (won or lost) of a case you defended outside Kloutit
 - **Verify Event** - Verify webhook events from Kloutit
 - **Download Defense** - Download the generated defense document
+- **Connection Info** - Check the organization your API key is connected to (`KloutitConnectionApi`)
+- **Webhooks** - List, subscribe and unsubscribe webhook endpoints (`KloutitWebhooksApi`)
 
 ## Usage
 
@@ -187,6 +190,28 @@ try {
     throw $e;
 }
 ```
+
+### Resolving a Case as Won or Lost
+
+For cases you defend outside Kloutit: once the defense has been sent (case in `ALLEGED` status), report its outcome. A resolved case cannot change its status again, and a case linked to a connected payment processor is resolved by the processor itself, so it cannot be updated this way.
+
+```php
+<?php
+use Kloutit\Model\UpdateCaseStatusParams;
+use Kloutit\Model\CaseResolutionStatus;
+
+try {
+    echo "Resolving case\n";
+    $resolvedCase = $kloutitCase->updateCaseStatus(
+        'CASE_EXPEDIENT_NUMBER',
+        new UpdateCaseStatusParams(['status' => CaseResolutionStatus::WON]) // or CaseResolutionStatus::LOST
+    );
+    echo "Case resolved: " . $resolvedCase->getStatus() . "\n";
+} catch (Exception $e) {
+    echo "Error resolving case: " . $e->getMessage() . "\n";
+    throw $e;
+}
+```
 ```
 
 ## Sector-Specific Requirements
@@ -202,7 +227,9 @@ This example is made for TECHNOLOGY sector. You can find the needed body for eac
 - [Home](tipologies/HOME.md)
 - [Leisure](tipologies/LEISURE.md)
 - [Marketplace](tipologies/MARKETPLACE.md)
+- [Parking](tipologies/PARKING.md)
 - [Phone](tipologies/PHONE.md)
+- [Renting vehicle](tipologies/RENTING_VEHICLE.md)
 - [Software](tipologies/SOFTWARE.md)
 - [Sport](tipologies/SPORT.md)
 - [Subscription](tipologies/SUBSCRIPTION.md)
@@ -274,6 +301,8 @@ use Kloutit\Model\UpdateCaseParams;
 use Kloutit\Model\CaseSector;
 use Kloutit\Model\Currencies;
 use Kloutit\Model\FileCategoryEnum;
+use Kloutit\Model\UpdateCaseStatusParams;
+use Kloutit\Model\CaseResolutionStatus;
 
 // Configure API
 $config = KloutitConfiguration::getDefaultConfiguration()
@@ -314,6 +343,12 @@ try {
     
     // 6. Download defense when ready
     $defense = $kloutitCase->downloadCaseDefense('PDF', 'CASE_001');
+
+    // 7. Once the defense is sent and the outcome is known, report it
+    $kloutitCase->updateCaseStatus(
+        'CASE_001',
+        new UpdateCaseStatusParams(['status' => CaseResolutionStatus::WON])
+    );
     
     echo "Workflow completed successfully!\n";
     
@@ -333,6 +368,7 @@ The API returns standard HTTP status codes:
 - **206** - Partial content (case has non-required fields missing)
 - **400** - Bad request (validation errors)
 - **401** - Unauthorized (invalid API key)
+- **403** - Forbidden (e.g. the case status is owned by a connected payment processor)
 - **404** - Not found (case doesn't exist)
 - **406** - Not acceptable (case has required fields missing)
 

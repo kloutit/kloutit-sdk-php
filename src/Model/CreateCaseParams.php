@@ -64,6 +64,7 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'sales_channel_code' => 'string',
         'filial_identifier' => 'string',
+        'payment_processor' => 'string',
         'purchase_date' => '\DateTime',
         'service' => 'string',
         'product' => 'string',
@@ -132,19 +133,23 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         'communications' => '\Kloutit\Model\CommunicationItem[]',
         'additional_info' => 'string',
         'last4_digits' => 'string',
+        'bin_number' => 'string',
         'transaction_id' => 'string',
         'transaction_date' => '\DateTime',
         'purchase_amount' => '\Kloutit\Model\Amount',
         'bank_name' => 'string',
         'card_brand' => 'string',
         'is3_ds_purchase' => 'bool',
+        'liability_shift' => '\Kloutit\Model\LiabilityShift',
         'sector' => '\Kloutit\Model\CaseSector',
         'seller_contact_date' => '\DateTime',
         'seller_additional_info' => 'string',
         'seller_name' => 'string',
         'seller_phone' => 'string',
         'seller_email' => 'string',
-        'sales_channel_terms_url' => 'string'
+        'filial_name' => 'string',
+        'sales_channel_terms_url' => 'string',
+        'preferred_defense_language' => '\Kloutit\Model\Languages'
     ];
 
     /**
@@ -157,6 +162,7 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'sales_channel_code' => null,
         'filial_identifier' => null,
+        'payment_processor' => null,
         'purchase_date' => 'date-time',
         'service' => null,
         'product' => null,
@@ -225,19 +231,23 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         'communications' => null,
         'additional_info' => null,
         'last4_digits' => null,
+        'bin_number' => null,
         'transaction_id' => null,
         'transaction_date' => 'date-time',
         'purchase_amount' => null,
         'bank_name' => null,
         'card_brand' => null,
         'is3_ds_purchase' => null,
+        'liability_shift' => null,
         'sector' => null,
         'seller_contact_date' => 'date-time',
         'seller_additional_info' => null,
         'seller_name' => null,
         'seller_phone' => null,
         'seller_email' => null,
-        'sales_channel_terms_url' => null
+        'filial_name' => null,
+        'sales_channel_terms_url' => null,
+        'preferred_defense_language' => null
     ];
 
     /**
@@ -248,6 +258,7 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'sales_channel_code' => false,
         'filial_identifier' => false,
+        'payment_processor' => false,
         'purchase_date' => false,
         'service' => false,
         'product' => false,
@@ -316,19 +327,23 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         'communications' => false,
         'additional_info' => false,
         'last4_digits' => false,
+        'bin_number' => false,
         'transaction_id' => false,
         'transaction_date' => false,
         'purchase_amount' => false,
         'bank_name' => false,
         'card_brand' => false,
         'is3_ds_purchase' => false,
+        'liability_shift' => false,
         'sector' => false,
         'seller_contact_date' => false,
         'seller_additional_info' => false,
         'seller_name' => false,
         'seller_phone' => false,
         'seller_email' => false,
-        'sales_channel_terms_url' => false
+        'filial_name' => false,
+        'sales_channel_terms_url' => false,
+        'preferred_defense_language' => false
     ];
 
     /**
@@ -419,6 +434,7 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'sales_channel_code' => 'salesChannelCode',
         'filial_identifier' => 'filialIdentifier',
+        'payment_processor' => 'paymentProcessor',
         'purchase_date' => 'purchaseDate',
         'service' => 'service',
         'product' => 'product',
@@ -487,19 +503,23 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         'communications' => 'communications',
         'additional_info' => 'additionalInfo',
         'last4_digits' => 'last4Digits',
+        'bin_number' => 'binNumber',
         'transaction_id' => 'transactionId',
         'transaction_date' => 'transactionDate',
         'purchase_amount' => 'purchaseAmount',
         'bank_name' => 'bankName',
         'card_brand' => 'cardBrand',
         'is3_ds_purchase' => 'is3DSPurchase',
+        'liability_shift' => 'liabilityShift',
         'sector' => 'sector',
         'seller_contact_date' => 'sellerContactDate',
         'seller_additional_info' => 'sellerAdditionalInfo',
         'seller_name' => 'sellerName',
         'seller_phone' => 'sellerPhone',
         'seller_email' => 'sellerEmail',
-        'sales_channel_terms_url' => 'salesChannelTermsUrl'
+        'filial_name' => 'filialName',
+        'sales_channel_terms_url' => 'salesChannelTermsUrl',
+        'preferred_defense_language' => 'preferredDefenseLanguage'
     ];
 
     /**
@@ -510,6 +530,7 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'sales_channel_code' => 'setSalesChannelCode',
         'filial_identifier' => 'setFilialIdentifier',
+        'payment_processor' => 'setPaymentProcessor',
         'purchase_date' => 'setPurchaseDate',
         'service' => 'setService',
         'product' => 'setProduct',
@@ -578,19 +599,23 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         'communications' => 'setCommunications',
         'additional_info' => 'setAdditionalInfo',
         'last4_digits' => 'setLast4Digits',
+        'bin_number' => 'setBinNumber',
         'transaction_id' => 'setTransactionId',
         'transaction_date' => 'setTransactionDate',
         'purchase_amount' => 'setPurchaseAmount',
         'bank_name' => 'setBankName',
         'card_brand' => 'setCardBrand',
         'is3_ds_purchase' => 'setIs3DsPurchase',
+        'liability_shift' => 'setLiabilityShift',
         'sector' => 'setSector',
         'seller_contact_date' => 'setSellerContactDate',
         'seller_additional_info' => 'setSellerAdditionalInfo',
         'seller_name' => 'setSellerName',
         'seller_phone' => 'setSellerPhone',
         'seller_email' => 'setSellerEmail',
-        'sales_channel_terms_url' => 'setSalesChannelTermsUrl'
+        'filial_name' => 'setFilialName',
+        'sales_channel_terms_url' => 'setSalesChannelTermsUrl',
+        'preferred_defense_language' => 'setPreferredDefenseLanguage'
     ];
 
     /**
@@ -601,6 +626,7 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'sales_channel_code' => 'getSalesChannelCode',
         'filial_identifier' => 'getFilialIdentifier',
+        'payment_processor' => 'getPaymentProcessor',
         'purchase_date' => 'getPurchaseDate',
         'service' => 'getService',
         'product' => 'getProduct',
@@ -669,19 +695,23 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         'communications' => 'getCommunications',
         'additional_info' => 'getAdditionalInfo',
         'last4_digits' => 'getLast4Digits',
+        'bin_number' => 'getBinNumber',
         'transaction_id' => 'getTransactionId',
         'transaction_date' => 'getTransactionDate',
         'purchase_amount' => 'getPurchaseAmount',
         'bank_name' => 'getBankName',
         'card_brand' => 'getCardBrand',
         'is3_ds_purchase' => 'getIs3DsPurchase',
+        'liability_shift' => 'getLiabilityShift',
         'sector' => 'getSector',
         'seller_contact_date' => 'getSellerContactDate',
         'seller_additional_info' => 'getSellerAdditionalInfo',
         'seller_name' => 'getSellerName',
         'seller_phone' => 'getSellerPhone',
         'seller_email' => 'getSellerEmail',
-        'sales_channel_terms_url' => 'getSalesChannelTermsUrl'
+        'filial_name' => 'getFilialName',
+        'sales_channel_terms_url' => 'getSalesChannelTermsUrl',
+        'preferred_defense_language' => 'getPreferredDefenseLanguage'
     ];
 
     /**
@@ -725,6 +755,47 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const PAYMENT_PROCESSOR_STRIPE = 'STRIPE';
+    public const PAYMENT_PROCESSOR_CHECKOUT_COM = 'CHECKOUT_COM';
+    public const PAYMENT_PROCESSOR_WORLDLINE = 'WORLDLINE';
+    public const PAYMENT_PROCESSOR_REDSYS = 'REDSYS';
+    public const PAYMENT_PROCESSOR_PAYPAL = 'PAYPAL';
+    public const PAYMENT_PROCESSOR_MANGOPAY = 'MANGOPAY';
+    public const PAYMENT_PROCESSOR_ADYEN = 'ADYEN';
+    public const PAYMENT_PROCESSOR_SHOPIFY = 'SHOPIFY';
+    public const PAYMENT_PROCESSOR_KLARNA = 'KLARNA';
+    public const PAYMENT_PROCESSOR_DLOCAL = 'DLOCAL';
+    public const PAYMENT_PROCESSOR_MERCADO_PAGO = 'MERCADO_PAGO';
+    public const PAYMENT_PROCESSOR_WORLDPAY = 'WORLDPAY';
+    public const PAYMENT_PROCESSOR_BRAINTREE = 'BRAINTREE';
+    public const PAYMENT_PROCESSOR_GETNET = 'GETNET';
+    public const PAYMENT_PROCESSOR_CONEKTA = 'CONEKTA';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPaymentProcessorAllowableValues()
+    {
+        return [
+            self::PAYMENT_PROCESSOR_STRIPE,
+            self::PAYMENT_PROCESSOR_CHECKOUT_COM,
+            self::PAYMENT_PROCESSOR_WORLDLINE,
+            self::PAYMENT_PROCESSOR_REDSYS,
+            self::PAYMENT_PROCESSOR_PAYPAL,
+            self::PAYMENT_PROCESSOR_MANGOPAY,
+            self::PAYMENT_PROCESSOR_ADYEN,
+            self::PAYMENT_PROCESSOR_SHOPIFY,
+            self::PAYMENT_PROCESSOR_KLARNA,
+            self::PAYMENT_PROCESSOR_DLOCAL,
+            self::PAYMENT_PROCESSOR_MERCADO_PAGO,
+            self::PAYMENT_PROCESSOR_WORLDPAY,
+            self::PAYMENT_PROCESSOR_BRAINTREE,
+            self::PAYMENT_PROCESSOR_GETNET,
+            self::PAYMENT_PROCESSOR_CONEKTA,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -743,6 +814,7 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->setIfExists('sales_channel_code', $data ?? [], null);
         $this->setIfExists('filial_identifier', $data ?? [], null);
+        $this->setIfExists('payment_processor', $data ?? [], null);
         $this->setIfExists('purchase_date', $data ?? [], null);
         $this->setIfExists('service', $data ?? [], null);
         $this->setIfExists('product', $data ?? [], null);
@@ -811,19 +883,23 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('communications', $data ?? [], null);
         $this->setIfExists('additional_info', $data ?? [], null);
         $this->setIfExists('last4_digits', $data ?? [], null);
+        $this->setIfExists('bin_number', $data ?? [], null);
         $this->setIfExists('transaction_id', $data ?? [], null);
         $this->setIfExists('transaction_date', $data ?? [], null);
         $this->setIfExists('purchase_amount', $data ?? [], null);
         $this->setIfExists('bank_name', $data ?? [], null);
         $this->setIfExists('card_brand', $data ?? [], null);
         $this->setIfExists('is3_ds_purchase', $data ?? [], null);
+        $this->setIfExists('liability_shift', $data ?? [], null);
         $this->setIfExists('sector', $data ?? [], null);
         $this->setIfExists('seller_contact_date', $data ?? [], null);
         $this->setIfExists('seller_additional_info', $data ?? [], null);
         $this->setIfExists('seller_name', $data ?? [], null);
         $this->setIfExists('seller_phone', $data ?? [], null);
         $this->setIfExists('seller_email', $data ?? [], null);
+        $this->setIfExists('filial_name', $data ?? [], null);
         $this->setIfExists('sales_channel_terms_url', $data ?? [], null);
+        $this->setIfExists('preferred_defense_language', $data ?? [], null);
     }
 
     /**
@@ -852,6 +928,15 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getPaymentProcessorAllowableValues();
+        if (!is_null($this->container['payment_processor']) && !in_array($this->container['payment_processor'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'payment_processor', must be one of '%s'",
+                $this->container['payment_processor'],
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -918,6 +1003,43 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable filial_identifier cannot be null');
         }
         $this->container['filial_identifier'] = $filial_identifier;
+
+        return $this;
+    }
+
+    /**
+     * Gets payment_processor
+     *
+     * @return string|null
+     */
+    public function getPaymentProcessor()
+    {
+        return $this->container['payment_processor'];
+    }
+
+    /**
+     * Sets payment_processor
+     *
+     * @param string|null $payment_processor payment_processor
+     *
+     * @return self
+     */
+    public function setPaymentProcessor($payment_processor)
+    {
+        if (is_null($payment_processor)) {
+            throw new \InvalidArgumentException('non-nullable payment_processor cannot be null');
+        }
+        $allowedValues = $this->getPaymentProcessorAllowableValues();
+        if (!in_array($payment_processor, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'payment_processor', must be one of '%s'",
+                    $payment_processor,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['payment_processor'] = $payment_processor;
 
         return $this;
     }
@@ -1178,7 +1300,7 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets service_duration_type
      *
-     * @param \Kloutit\Model\ServiceDuration|null $service_duration_type service_duration_type
+     * @param \Kloutit\Model\ServiceDuration|null $service_duration_type For PARKING typology. Duration of the service.
      *
      * @return self
      */
@@ -2582,7 +2704,7 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets chargeback_reason
      *
-     * @param \Kloutit\Model\ChargebackReason|null $chargeback_reason chargeback_reason
+     * @param \Kloutit\Model\ChargebackReason|null $chargeback_reason Reason why the customer is requesting the chargeback.
      *
      * @return self
      */
@@ -2759,6 +2881,33 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets bin_number
+     *
+     * @return string|null
+     */
+    public function getBinNumber()
+    {
+        return $this->container['bin_number'];
+    }
+
+    /**
+     * Sets bin_number
+     *
+     * @param string|null $bin_number Bank Identification Number.
+     *
+     * @return self
+     */
+    public function setBinNumber($bin_number)
+    {
+        if (is_null($bin_number)) {
+            throw new \InvalidArgumentException('non-nullable bin_number cannot be null');
+        }
+        $this->container['bin_number'] = $bin_number;
+
+        return $this;
+    }
+
+    /**
      * Gets transaction_id
      *
      * @return string|null
@@ -2921,6 +3070,33 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets liability_shift
+     *
+     * @return \Kloutit\Model\LiabilityShift|null
+     */
+    public function getLiabilityShift()
+    {
+        return $this->container['liability_shift'];
+    }
+
+    /**
+     * Sets liability_shift
+     *
+     * @param \Kloutit\Model\LiabilityShift|null $liability_shift Liability shift status of the payment. YES means the issuer or card network assumes responsibility for fraud (applies to 3DS, Apple Pay, Google Pay, etc.). NO means no liability shift. NOT_APPLICABLE means the payment method does not support liability shift (e.g. PayPal).
+     *
+     * @return self
+     */
+    public function setLiabilityShift($liability_shift)
+    {
+        if (is_null($liability_shift)) {
+            throw new \InvalidArgumentException('non-nullable liability_shift cannot be null');
+        }
+        $this->container['liability_shift'] = $liability_shift;
+
+        return $this;
+    }
+
+    /**
      * Gets sector
      *
      * @return \Kloutit\Model\CaseSector|null
@@ -2933,7 +3109,7 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets sector
      *
-     * @param \Kloutit\Model\CaseSector|null $sector sector
+     * @param \Kloutit\Model\CaseSector|null $sector Sector of the case. It must be one of the sectors of the organization, for instance: EDUCATION, SOFTWARE, TRAVEL_HOTEL,...
      *
      * @return self
      */
@@ -3083,6 +3259,33 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets filial_name
+     *
+     * @return string|null
+     */
+    public function getFilialName()
+    {
+        return $this->container['filial_name'];
+    }
+
+    /**
+     * Sets filial_name
+     *
+     * @param string|null $filial_name Filial name. This name will be used if a new filial is created in your organization from the provided filialIdentifier. If you do not have filials in your organization, leave this field empty.
+     *
+     * @return self
+     */
+    public function setFilialName($filial_name)
+    {
+        if (is_null($filial_name)) {
+            throw new \InvalidArgumentException('non-nullable filial_name cannot be null');
+        }
+        $this->container['filial_name'] = $filial_name;
+
+        return $this;
+    }
+
+    /**
      * Gets sales_channel_terms_url
      *
      * @return string|null
@@ -3105,6 +3308,33 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable sales_channel_terms_url cannot be null');
         }
         $this->container['sales_channel_terms_url'] = $sales_channel_terms_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets preferred_defense_language
+     *
+     * @return \Kloutit\Model\Languages|null
+     */
+    public function getPreferredDefenseLanguage()
+    {
+        return $this->container['preferred_defense_language'];
+    }
+
+    /**
+     * Sets preferred_defense_language
+     *
+     * @param \Kloutit\Model\Languages|null $preferred_defense_language Preferred defense language for the case. It must be one of the supported languages
+     *
+     * @return self
+     */
+    public function setPreferredDefenseLanguage($preferred_defense_language)
+    {
+        if (is_null($preferred_defense_language)) {
+            throw new \InvalidArgumentException('non-nullable preferred_defense_language cannot be null');
+        }
+        $this->container['preferred_defense_language'] = $preferred_defense_language;
 
         return $this;
     }

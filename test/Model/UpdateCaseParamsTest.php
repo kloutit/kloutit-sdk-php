@@ -670,6 +670,15 @@ class UpdateCaseParamsTest extends TestCase
     }
 
     /**
+     * Test attribute "bin_number"
+     */
+    public function testPropertyBinNumber()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "transaction_date"
      */
     public function testPropertyTransactionDate()
@@ -709,6 +718,15 @@ class UpdateCaseParamsTest extends TestCase
      * Test attribute "is3_ds_purchase"
      */
     public function testPropertyIs3DsPurchase()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "liability_shift"
+     */
+    public function testPropertyLiabilityShift()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -769,9 +787,27 @@ class UpdateCaseParamsTest extends TestCase
     }
 
     /**
+     * Test attribute "filial_name"
+     */
+    public function testPropertyFilialName()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "sales_channel_terms_url"
      */
     public function testPropertySalesChannelTermsUrl()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "preferred_defense_language"
+     */
+    public function testPropertyPreferredDefenseLanguage()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

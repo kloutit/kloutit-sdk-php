@@ -137,6 +137,18 @@ class KloutitCaseApiTest extends TestCase
     }
 
     /**
+     * Test case for updateCaseStatus
+     *
+     * Update case status.
+     *
+     */
+    public function testUpdateCaseStatus()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for uploadFile
      *
      * Upload file.

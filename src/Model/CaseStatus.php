@@ -58,6 +58,12 @@ class CaseStatus
 
     public const ALLEGED = 'ALLEGED';
 
+    public const REOPENED = 'REOPENED';
+
+    public const PREARBITRATION = 'PREARBITRATION';
+
+    public const ARBITRATION = 'ARBITRATION';
+
     public const WON = 'WON';
 
     public const LOST = 'LOST';
@@ -78,6 +84,9 @@ class CaseStatus
             self::GENERATED,
             self::ALLEGING,
             self::ALLEGED,
+            self::REOPENED,
+            self::PREARBITRATION,
+            self::ARBITRATION,
             self::WON,
             self::LOST,
             self::ACCEPTED,

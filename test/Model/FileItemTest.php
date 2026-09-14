@@ -128,4 +128,13 @@ class FileItemTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "is_data_extracted"
+     */
+    public function testPropertyIsDataExtracted()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

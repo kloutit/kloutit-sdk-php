@@ -66,7 +66,8 @@ class FileItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'uploaded_at' => '\DateTime',
         'size' => 'float',
         'mimetype' => 'string',
-        'category' => 'string'
+        'category' => 'string',
+        'is_data_extracted' => 'bool'
     ];
 
     /**
@@ -81,7 +82,8 @@ class FileItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'uploaded_at' => 'date-time',
         'size' => null,
         'mimetype' => null,
-        'category' => null
+        'category' => null,
+        'is_data_extracted' => null
     ];
 
     /**
@@ -94,7 +96,8 @@ class FileItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'uploaded_at' => false,
         'size' => false,
         'mimetype' => false,
-        'category' => false
+        'category' => false,
+        'is_data_extracted' => false
     ];
 
     /**
@@ -187,7 +190,8 @@ class FileItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'uploaded_at' => 'uploadedAt',
         'size' => 'size',
         'mimetype' => 'mimetype',
-        'category' => 'category'
+        'category' => 'category',
+        'is_data_extracted' => 'isDataExtracted'
     ];
 
     /**
@@ -200,7 +204,8 @@ class FileItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'uploaded_at' => 'setUploadedAt',
         'size' => 'setSize',
         'mimetype' => 'setMimetype',
-        'category' => 'setCategory'
+        'category' => 'setCategory',
+        'is_data_extracted' => 'setIsDataExtracted'
     ];
 
     /**
@@ -213,7 +218,8 @@ class FileItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'uploaded_at' => 'getUploadedAt',
         'size' => 'getSize',
         'mimetype' => 'getMimetype',
-        'category' => 'getCategory'
+        'category' => 'getCategory',
+        'is_data_extracted' => 'getIsDataExtracted'
     ];
 
     /**
@@ -325,6 +331,7 @@ class FileItem implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('size', $data ?? [], null);
         $this->setIfExists('mimetype', $data ?? [], null);
         $this->setIfExists('category', $data ?? [], null);
+        $this->setIfExists('is_data_extracted', $data ?? [], null);
     }
 
     /**
@@ -534,6 +541,33 @@ class FileItem implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['category'] = $category;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_data_extracted
+     *
+     * @return bool|null
+     */
+    public function getIsDataExtracted()
+    {
+        return $this->container['is_data_extracted'];
+    }
+
+    /**
+     * Sets is_data_extracted
+     *
+     * @param bool|null $is_data_extracted Whether this file has already been processed by data extraction
+     *
+     * @return self
+     */
+    public function setIsDataExtracted($is_data_extracted)
+    {
+        if (is_null($is_data_extracted)) {
+            throw new \InvalidArgumentException('non-nullable is_data_extracted cannot be null');
+        }
+        $this->container['is_data_extracted'] = $is_data_extracted;
 
         return $this;
     }

@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## v4.2.0 - 10/09/2026
+
+### ADDED
+
+- Service to resolve a case as won or lost (`updateCaseStatus`)
+- Services to read the connection info and to list, subscribe and unsubscribe webhooks
+
+### UPDATED
+
+- Case models: payment processor and BIN number on creation, preferred defense language, liability shift, `PROCESSING_ERROR` chargeback reason, webhook event payload details
+- Sector guides: parking and renting vehicle added, travel airline updated
+
 ## v2.1.0 - 22/08/2025
 
 ### ADDED

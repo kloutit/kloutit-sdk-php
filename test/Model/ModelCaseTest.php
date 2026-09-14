@@ -787,6 +787,15 @@ class ModelCaseTest extends TestCase
     }
 
     /**
+     * Test attribute "bin_number"
+     */
+    public function testPropertyBinNumber()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "transaction_id"
      */
     public function testPropertyTransactionId()
@@ -835,6 +844,15 @@ class ModelCaseTest extends TestCase
      * Test attribute "is3_ds_purchase"
      */
     public function testPropertyIs3DsPurchase()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "liability_shift"
+     */
+    public function testPropertyLiabilityShift()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

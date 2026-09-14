@@ -9,6 +9,7 @@ All URIs are relative to https://clients-api.kloutit.com, except if the operatio
 | [**downloadCaseDefense()**](KloutitCaseApi.md#downloadCaseDefense) | **POST** /case/download-defense/{format}/{expedientNumber} | Download the case defense |
 | [**submitCompletedCase()**](KloutitCaseApi.md#submitCompletedCase) | **POST** /case/{expedientNumber}/submit-completed-case | Submit completed case |
 | [**updateCase()**](KloutitCaseApi.md#updateCase) | **POST** /case/{expedientNumber}/update-case | Update case |
+| [**updateCaseStatus()**](KloutitCaseApi.md#updateCaseStatus) | **POST** /case/{expedientNumber}/update-status | Update case status |
 | [**uploadFile()**](KloutitCaseApi.md#uploadFile) | **POST** /case/{expedientNumber}/upload-file | Upload file |
 | [**uploadProductPhoto()**](KloutitCaseApi.md#uploadProductPhoto) | **POST** /case/{expedientNumber}/upload-product-photo | Upload product photo |
 | [**verifyEvent()**](KloutitCaseApi.md#verifyEvent) | **POST** /case/verify-event | Verify webhook event |
@@ -307,6 +308,70 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **expedient_number** | **string**| Case expedient number. This value must exist in Kloutit. | |
 | **update_case_params** | [**\Kloutit\Model\UpdateCaseParams**](../Model/UpdateCaseParams.md)|  | |
+
+### Return type
+
+[**\Kloutit\Model\ModelCase**](../Model/ModelCase.md)
+
+### Authorization
+
+[x-api-key](../../README.md#x-api-key)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateCaseStatus()`
+
+```php
+updateCaseStatus($expedient_number, $update_case_status_params): \Kloutit\Model\ModelCase
+```
+
+Update case status
+
+Resolves an existing case as ``WON`` or ``LOST``, for cases you defend outside Kloutit. The case must be in ``ALLEGED`` status (defense already sent). A case already resolved cannot change its status again, and a case linked to a connected payment processor is resolved by the processor itself, so it cannot be updated through this endpoint.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: x-api-key
+$config = Kloutit\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Kloutit\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
+
+$apiInstance = new Kloutit\Api\KloutitCaseApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$expedient_number = 'expedient_number_example'; // string | Case expedient number. This value must exist in Kloutit.
+$update_case_status_params = new \Kloutit\Model\UpdateCaseStatusParams(); // \Kloutit\Model\UpdateCaseStatusParams
+
+try {
+    $result = $apiInstance->updateCaseStatus($expedient_number, $update_case_status_params);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling KloutitCaseApi->updateCaseStatus: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **expedient_number** | **string**| Case expedient number. This value must exist in Kloutit. | |
+| **update_case_status_params** | [**\Kloutit\Model\UpdateCaseStatusParams**](../Model/UpdateCaseStatusParams.md)|  | |
 
 ### Return type
 

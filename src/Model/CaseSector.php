@@ -38,7 +38,7 @@ use \Kloutit\ObjectSerializer;
  * CaseSector Class Doc Comment
  *
  * @category Class
- * @description Sector of the case. It must be one of the sectors of the organization, for instance: EDUCATION, SOFTWARE, TRAVEL_HOTEL,...
+ * @description Sectors configured for the organization. These are the only sectors accepted when creating or enriching a case, for instance: EDUCATION, SOFTWARE, TRAVEL_HOTEL,...
  * @package  Kloutit
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -86,6 +86,8 @@ class CaseSector
 
     public const TRAVEL_HOTEL = 'TRAVEL_HOTEL';
 
+    public const TRAVEL_HOTEL_AIRLINE = 'TRAVEL_HOTEL_AIRLINE';
+
     public const RENTING_VEHICLE = 'RENTING_VEHICLE';
 
     /**
@@ -114,6 +116,7 @@ class CaseSector
             self::TRANSPORT,
             self::TRAVEL_AIRLINE,
             self::TRAVEL_HOTEL,
+            self::TRAVEL_HOTEL_AIRLINE,
             self::RENTING_VEHICLE
         ];
     }

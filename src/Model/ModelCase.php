@@ -140,12 +140,14 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         'communications' => '\Kloutit\Model\CommunicationItem[]',
         'additional_info' => 'string',
         'last4_digits' => 'string',
+        'bin_number' => 'string',
         'transaction_id' => 'string',
         'transaction_date' => '\DateTime',
         'purchase_amount' => '\Kloutit\Model\Amount',
         'bank_name' => 'string',
         'card_brand' => 'string',
         'is3_ds_purchase' => 'bool',
+        'liability_shift' => '\Kloutit\Model\LiabilityShift',
         'sector' => 'string',
         'seller_contact_date' => '\DateTime',
         'seller_additional_info' => 'string',
@@ -240,12 +242,14 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         'communications' => null,
         'additional_info' => null,
         'last4_digits' => null,
+        'bin_number' => null,
         'transaction_id' => null,
         'transaction_date' => 'date-time',
         'purchase_amount' => null,
         'bank_name' => null,
         'card_brand' => null,
         'is3_ds_purchase' => null,
+        'liability_shift' => null,
         'sector' => null,
         'seller_contact_date' => 'date-time',
         'seller_additional_info' => null,
@@ -338,12 +342,14 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         'communications' => false,
         'additional_info' => false,
         'last4_digits' => false,
+        'bin_number' => false,
         'transaction_id' => false,
         'transaction_date' => false,
         'purchase_amount' => false,
         'bank_name' => false,
         'card_brand' => false,
         'is3_ds_purchase' => false,
+        'liability_shift' => false,
         'sector' => false,
         'seller_contact_date' => false,
         'seller_additional_info' => false,
@@ -516,12 +522,14 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         'communications' => 'communications',
         'additional_info' => 'additionalInfo',
         'last4_digits' => 'last4Digits',
+        'bin_number' => 'binNumber',
         'transaction_id' => 'transactionId',
         'transaction_date' => 'transactionDate',
         'purchase_amount' => 'purchaseAmount',
         'bank_name' => 'bankName',
         'card_brand' => 'cardBrand',
         'is3_ds_purchase' => 'is3DSPurchase',
+        'liability_shift' => 'liabilityShift',
         'sector' => 'sector',
         'seller_contact_date' => 'sellerContactDate',
         'seller_additional_info' => 'sellerAdditionalInfo',
@@ -614,12 +622,14 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         'communications' => 'setCommunications',
         'additional_info' => 'setAdditionalInfo',
         'last4_digits' => 'setLast4Digits',
+        'bin_number' => 'setBinNumber',
         'transaction_id' => 'setTransactionId',
         'transaction_date' => 'setTransactionDate',
         'purchase_amount' => 'setPurchaseAmount',
         'bank_name' => 'setBankName',
         'card_brand' => 'setCardBrand',
         'is3_ds_purchase' => 'setIs3DsPurchase',
+        'liability_shift' => 'setLiabilityShift',
         'sector' => 'setSector',
         'seller_contact_date' => 'setSellerContactDate',
         'seller_additional_info' => 'setSellerAdditionalInfo',
@@ -712,12 +722,14 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         'communications' => 'getCommunications',
         'additional_info' => 'getAdditionalInfo',
         'last4_digits' => 'getLast4Digits',
+        'bin_number' => 'getBinNumber',
         'transaction_id' => 'getTransactionId',
         'transaction_date' => 'getTransactionDate',
         'purchase_amount' => 'getPurchaseAmount',
         'bank_name' => 'getBankName',
         'card_brand' => 'getCardBrand',
         'is3_ds_purchase' => 'getIs3DsPurchase',
+        'liability_shift' => 'getLiabilityShift',
         'sector' => 'getSector',
         'seller_contact_date' => 'getSellerContactDate',
         'seller_additional_info' => 'getSellerAdditionalInfo',
@@ -777,6 +789,11 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     public const PAYMENT_PROCESSOR_SHOPIFY = 'SHOPIFY';
     public const PAYMENT_PROCESSOR_KLARNA = 'KLARNA';
     public const PAYMENT_PROCESSOR_DLOCAL = 'DLOCAL';
+    public const PAYMENT_PROCESSOR_MERCADO_PAGO = 'MERCADO_PAGO';
+    public const PAYMENT_PROCESSOR_WORLDPAY = 'WORLDPAY';
+    public const PAYMENT_PROCESSOR_BRAINTREE = 'BRAINTREE';
+    public const PAYMENT_PROCESSOR_GETNET = 'GETNET';
+    public const PAYMENT_PROCESSOR_CONEKTA = 'CONEKTA';
     public const SECTOR_DIGITAL_PRODUCT = 'DIGITAL_PRODUCT';
     public const SECTOR_EDUCATION = 'EDUCATION';
     public const SECTOR_FASHION = 'FASHION';
@@ -796,6 +813,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     public const SECTOR_TRANSPORT = 'TRANSPORT';
     public const SECTOR_TRAVEL_AIRLINE = 'TRAVEL_AIRLINE';
     public const SECTOR_TRAVEL_HOTEL = 'TRAVEL_HOTEL';
+    public const SECTOR_TRAVEL_HOTEL_AIRLINE = 'TRAVEL_HOTEL_AIRLINE';
     public const SECTOR_RENTING_VEHICLE = 'RENTING_VEHICLE';
 
     /**
@@ -816,6 +834,11 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
             self::PAYMENT_PROCESSOR_SHOPIFY,
             self::PAYMENT_PROCESSOR_KLARNA,
             self::PAYMENT_PROCESSOR_DLOCAL,
+            self::PAYMENT_PROCESSOR_MERCADO_PAGO,
+            self::PAYMENT_PROCESSOR_WORLDPAY,
+            self::PAYMENT_PROCESSOR_BRAINTREE,
+            self::PAYMENT_PROCESSOR_GETNET,
+            self::PAYMENT_PROCESSOR_CONEKTA,
         ];
     }
 
@@ -846,6 +869,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
             self::SECTOR_TRANSPORT,
             self::SECTOR_TRAVEL_AIRLINE,
             self::SECTOR_TRAVEL_HOTEL,
+            self::SECTOR_TRAVEL_HOTEL_AIRLINE,
             self::SECTOR_RENTING_VEHICLE,
         ];
     }
@@ -943,12 +967,14 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('communications', $data ?? [], null);
         $this->setIfExists('additional_info', $data ?? [], null);
         $this->setIfExists('last4_digits', $data ?? [], null);
+        $this->setIfExists('bin_number', $data ?? [], null);
         $this->setIfExists('transaction_id', $data ?? [], null);
         $this->setIfExists('transaction_date', $data ?? [], null);
         $this->setIfExists('purchase_amount', $data ?? [], null);
         $this->setIfExists('bank_name', $data ?? [], null);
         $this->setIfExists('card_brand', $data ?? [], null);
         $this->setIfExists('is3_ds_purchase', $data ?? [], null);
+        $this->setIfExists('liability_shift', $data ?? [], null);
         $this->setIfExists('sector', $data ?? [], null);
         $this->setIfExists('seller_contact_date', $data ?? [], null);
         $this->setIfExists('seller_additional_info', $data ?? [], null);
@@ -1219,7 +1245,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param \Kloutit\Model\CaseStatus $status status
+     * @param \Kloutit\Model\CaseStatus $status Current status of the case.
      *
      * @return self
      */
@@ -1580,7 +1606,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets service_duration_type
      *
-     * @param \Kloutit\Model\ServiceDuration|null $service_duration_type service_duration_type
+     * @param \Kloutit\Model\ServiceDuration|null $service_duration_type For PARKING typology. Duration of the service.
      *
      * @return self
      */
@@ -2984,7 +3010,7 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets chargeback_reason
      *
-     * @param \Kloutit\Model\ChargebackReason $chargeback_reason chargeback_reason
+     * @param \Kloutit\Model\ChargebackReason $chargeback_reason Reason why the customer is requesting the chargeback.
      *
      * @return self
      */
@@ -3161,6 +3187,33 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets bin_number
+     *
+     * @return string|null
+     */
+    public function getBinNumber()
+    {
+        return $this->container['bin_number'];
+    }
+
+    /**
+     * Sets bin_number
+     *
+     * @param string|null $bin_number Bank Identification Number.
+     *
+     * @return self
+     */
+    public function setBinNumber($bin_number)
+    {
+        if (is_null($bin_number)) {
+            throw new \InvalidArgumentException('non-nullable bin_number cannot be null');
+        }
+        $this->container['bin_number'] = $bin_number;
+
+        return $this;
+    }
+
+    /**
      * Gets transaction_id
      *
      * @return string|null
@@ -3318,6 +3371,33 @@ class ModelCase implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable is3_ds_purchase cannot be null');
         }
         $this->container['is3_ds_purchase'] = $is3_ds_purchase;
+
+        return $this;
+    }
+
+    /**
+     * Gets liability_shift
+     *
+     * @return \Kloutit\Model\LiabilityShift|null
+     */
+    public function getLiabilityShift()
+    {
+        return $this->container['liability_shift'];
+    }
+
+    /**
+     * Sets liability_shift
+     *
+     * @param \Kloutit\Model\LiabilityShift|null $liability_shift Liability shift status of the payment. YES means the issuer or card network assumes responsibility for fraud (applies to 3DS, Apple Pay, Google Pay, etc.). NO means no liability shift. NOT_APPLICABLE means the payment method does not support liability shift (e.g. PayPal).
+     *
+     * @return self
+     */
+    public function setLiabilityShift($liability_shift)
+    {
+        if (is_null($liability_shift)) {
+            throw new \InvalidArgumentException('non-nullable liability_shift cannot be null');
+        }
+        $this->container['liability_shift'] = $liability_shift;
 
         return $this;
     }
