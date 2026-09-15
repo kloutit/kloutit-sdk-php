@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **status** | [**\Kloutit\Model\CaseStatus**](CaseStatus.md) | Current status of the case. | [readonly]
 **sales_channel_code** | **string** | The sales channel code related to the case. | [optional]
 **filial_identifier** | **string** | Filial identifier related to the case. | [optional]
-**payment_processor** | **string** |  | [optional] [readonly]
+**payment_processor** | **string** |  | [optional]
 **purchase_date** | **\DateTime** | Date when the customer made the purchase in UTC and ISO 8601 format. |
 **service** | **string** | Service that the customer bought. | [optional]
 **product** | **string** | Product that the customer bought. | [optional]

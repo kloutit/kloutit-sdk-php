@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **sales_channel_code** | **string** | Sales channel code related to the case. This should be the sales channel code that is configured for your organization in Kloutit. If you do not have sales channels in your organization, leave this field empty. | [optional]
 **filial_identifier** | **string** | Filial identifier related to the case. This should be the NIF, VAT or other unique identifier that is configured for your organization in Kloutit. If you do not have filials in your organization, leave this field empty. | [optional]
-**payment_processor** | **string** |  | [optional] [readonly]
+**payment_processor** | **string** |  | [optional]
 **purchase_date** | **\DateTime** | Date when the customer made the purchase in UTC and ISO 8601 format. | [optional]
 **service** | **string** | Service that the customer bought. | [optional]
 **product** | **string** | Product that the customer bought. | [optional]

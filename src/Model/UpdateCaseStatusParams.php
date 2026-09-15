@@ -310,7 +310,7 @@ class UpdateCaseStatusParams implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets status
      *
-     * @param \Kloutit\Model\CaseResolutionStatus $status Outcome of the case: WON or LOST. Only a case whose defense has already been sent (status ALLEGED) can be resolved, and a resolved case cannot change its status again.
+     * @param \Kloutit\Model\CaseResolutionStatus $status New status of the case. ``ALLEGED``: you have sent the generated defense to the payment processor yourself (only from ``GENERATED``). ``ACCEPTED``: you accept the chargeback and stop defending the case (from ``PENDING``, ``GENERATED``, ``ALLEGED``, ``REOPENED``, ``PREARBITRATION`` or ``ARBITRATION``). ``WON`` / ``LOST``: outcome of the case once its defense has been sent (only from ``ALLEGED``). A resolved case cannot change its status again.
      *
      * @return self
      */

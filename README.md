@@ -28,7 +28,7 @@ The Kloutit Clients API v2.2 provides the following main endpoints:
 - **Update Case** - Update case information with additional data
 - **Check Case** - Validate case completeness and get missing fields
 - **Submit Completed Case** - Mark case as ready for defense generation
-- **Update Case Status** - Report the outcome (won or lost) of a case you defended outside Kloutit
+- **Update Case Status** - Mark a case as alleged or accepted, or report its outcome (won or lost), for cases you manage outside Kloutit
 - **Verify Event** - Verify webhook events from Kloutit
 - **Download Defense** - Download the generated defense document
 - **Connection Info** - Check the organization your API key is connected to (`KloutitConnectionApi`)
@@ -191,9 +191,15 @@ try {
 }
 ```
 
-### Resolving a Case as Won or Lost
+### Updating the Case Status
 
-For cases you defend outside Kloutit: once the defense has been sent (case in `ALLEGED` status), report its outcome. A resolved case cannot change its status again, and a case linked to a connected payment processor is resolved by the processor itself, so it cannot be updated this way.
+For cases you manage outside Kloutit, `updateCaseStatus` moves the case along its lifecycle:
+
+- `ALLEGED`: you have sent the generated defense to the payment processor yourself. Only from `GENERATED`, whichever stage the defense belongs to (initial defense, reopening, prearbitration or arbitration).
+- `ACCEPTED`: you accept the chargeback and stop defending the case, whether or not a defense has been sent (`PENDING`, `GENERATED`, `ALLEGED`, `REOPENED`, `PREARBITRATION` or `ARBITRATION`).
+- `WON` / `LOST`: the outcome of the case once its defense has been sent (`ALLEGED`).
+
+A resolved case cannot change its status again, and a case linked to a connected payment processor is managed by the processor itself, so it cannot be updated this way.
 
 ```php
 <?php
@@ -201,17 +207,22 @@ use Kloutit\Model\UpdateCaseStatusParams;
 use Kloutit\Model\CaseResolutionStatus;
 
 try {
-    echo "Resolving case\n";
+    // The defense was downloaded and sent to the processor by you
+    $kloutitCase->updateCaseStatus(
+        'CASE_EXPEDIENT_NUMBER',
+        new UpdateCaseStatusParams(['status' => CaseResolutionStatus::ALLEGED])
+    );
+
+    // Later, once the outcome is known
     $resolvedCase = $kloutitCase->updateCaseStatus(
         'CASE_EXPEDIENT_NUMBER',
         new UpdateCaseStatusParams(['status' => CaseResolutionStatus::WON]) // or CaseResolutionStatus::LOST
     );
     echo "Case resolved: " . $resolvedCase->getStatus() . "\n";
 } catch (Exception $e) {
-    echo "Error resolving case: " . $e->getMessage() . "\n";
+    echo "Error updating case status: " . $e->getMessage() . "\n";
     throw $e;
 }
-```
 ```
 
 ## Sector-Specific Requirements
@@ -344,7 +355,13 @@ try {
     // 6. Download defense when ready
     $defense = $kloutitCase->downloadCaseDefense('PDF', 'CASE_001');
 
-    // 7. Once the defense is sent and the outcome is known, report it
+    // 7. Mark the defense as sent once you have filed it with the processor
+    $kloutitCase->updateCaseStatus(
+        'CASE_001',
+        new UpdateCaseStatusParams(['status' => CaseResolutionStatus::ALLEGED])
+    );
+
+    // 8. Once the outcome is known, report it (or ACCEPTED to stop defending)
     $kloutitCase->updateCaseStatus(
         'CASE_001',
         new UpdateCaseStatusParams(['status' => CaseResolutionStatus::WON])
