@@ -766,10 +766,22 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
     public const PAYMENT_PROCESSOR_KLARNA = 'KLARNA';
     public const PAYMENT_PROCESSOR_DLOCAL = 'DLOCAL';
     public const PAYMENT_PROCESSOR_MERCADO_PAGO = 'MERCADO_PAGO';
+    public const PAYMENT_PROCESSOR_MEO_WALLET = 'MEO_WALLET';
     public const PAYMENT_PROCESSOR_WORLDPAY = 'WORLDPAY';
     public const PAYMENT_PROCESSOR_BRAINTREE = 'BRAINTREE';
     public const PAYMENT_PROCESSOR_GETNET = 'GETNET';
     public const PAYMENT_PROCESSOR_CONEKTA = 'CONEKTA';
+    public const PAYMENT_PROCESSOR_AMEX = 'AMEX';
+    public const PAYMENT_PROCESSOR_SQUARE = 'SQUARE';
+    public const PAYMENT_PROCESSOR_ALIPAY = 'ALIPAY';
+    public const PAYMENT_PROCESSOR_WECHAT_PAY = 'WECHAT_PAY';
+    public const PAYMENT_PROCESSOR_APPLE_PAY = 'APPLE_PAY';
+    public const PAYMENT_PROCESSOR_GOOGLE_PAY = 'GOOGLE_PAY';
+    public const PAYMENT_PROCESSOR_AMAZON_PAYMENTS = 'AMAZON_PAYMENTS';
+    public const PAYMENT_PROCESSOR_RAZORPAY = 'RAZORPAY';
+    public const PAYMENT_PROCESSOR_BAMBORA = 'BAMBORA';
+    public const PAYMENT_PROCESSOR_BARCLAYS = 'BARCLAYS';
+    public const PAYMENT_PROCESSOR_REVOLUT = 'REVOLUT';
 
     /**
      * Gets allowable values of the enum
@@ -790,10 +802,22 @@ class CreateCaseParams implements ModelInterface, ArrayAccess, \JsonSerializable
             self::PAYMENT_PROCESSOR_KLARNA,
             self::PAYMENT_PROCESSOR_DLOCAL,
             self::PAYMENT_PROCESSOR_MERCADO_PAGO,
+            self::PAYMENT_PROCESSOR_MEO_WALLET,
             self::PAYMENT_PROCESSOR_WORLDPAY,
             self::PAYMENT_PROCESSOR_BRAINTREE,
             self::PAYMENT_PROCESSOR_GETNET,
             self::PAYMENT_PROCESSOR_CONEKTA,
+            self::PAYMENT_PROCESSOR_AMEX,
+            self::PAYMENT_PROCESSOR_SQUARE,
+            self::PAYMENT_PROCESSOR_ALIPAY,
+            self::PAYMENT_PROCESSOR_WECHAT_PAY,
+            self::PAYMENT_PROCESSOR_APPLE_PAY,
+            self::PAYMENT_PROCESSOR_GOOGLE_PAY,
+            self::PAYMENT_PROCESSOR_AMAZON_PAYMENTS,
+            self::PAYMENT_PROCESSOR_RAZORPAY,
+            self::PAYMENT_PROCESSOR_BAMBORA,
+            self::PAYMENT_PROCESSOR_BARCLAYS,
+            self::PAYMENT_PROCESSOR_REVOLUT,
         ];
     }
 

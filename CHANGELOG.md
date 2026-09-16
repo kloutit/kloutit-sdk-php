@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## v4.3.0 - 15/09/2026
+
+### ADDED
+
+- `updateCaseStatus` accepts `ALLEGED` (you sent the generated defense yourself) and `ACCEPTED` (stop defending the case), besides `WON` and `LOST`
+
+### UPDATED
+
+- Case models: `paymentProcessor` is writable on creation and lists every processor the API accepts
+
 ## v4.2.0 - 10/09/2026
 
 ### ADDED

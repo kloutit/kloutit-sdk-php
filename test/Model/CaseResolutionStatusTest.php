@@ -39,7 +39,7 @@ use PHPUnit\Framework\TestCase;
  * CaseResolutionStatusTest Class Doc Comment
  *
  * @category    Class
- * @description Outcome of the case: WON or LOST. Only a case whose defense has already been sent (status ALLEGED) can be resolved, and a resolved case cannot change its status again.
+ * @description New status of the case. &#x60;&#x60;ALLEGED&#x60;&#x60;: you have sent the generated defense to the payment processor yourself (only from &#x60;&#x60;GENERATED&#x60;&#x60;). &#x60;&#x60;ACCEPTED&#x60;&#x60;: you accept the chargeback and stop defending the case (from &#x60;&#x60;PENDING&#x60;&#x60;, &#x60;&#x60;GENERATED&#x60;&#x60;, &#x60;&#x60;ALLEGED&#x60;&#x60;, &#x60;&#x60;REOPENED&#x60;&#x60;, &#x60;&#x60;PREARBITRATION&#x60;&#x60; or &#x60;&#x60;ARBITRATION&#x60;&#x60;). &#x60;&#x60;WON&#x60;&#x60; / &#x60;&#x60;LOST&#x60;&#x60;: outcome of the case once its defense has been sent (only from &#x60;&#x60;ALLEGED&#x60;&#x60;). A resolved case cannot change its status again.
  * @package     Kloutit
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech

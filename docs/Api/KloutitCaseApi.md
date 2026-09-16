@@ -334,7 +334,7 @@ updateCaseStatus($expedient_number, $update_case_status_params): \Kloutit\Model\
 
 Update case status
 
-Resolves an existing case as ``WON`` or ``LOST``, for cases you defend outside Kloutit. The case must be in ``ALLEGED`` status (defense already sent). A case already resolved cannot change its status again, and a case linked to a connected payment processor is resolved by the processor itself, so it cannot be updated through this endpoint.
+Changes the status of an existing case, for cases you manage outside Kloutit. Set ``ALLEGED`` once you have sent the generated defense to the payment processor yourself: the case must be in ``GENERATED`` status, whichever stage the defense belongs to (initial defense, reopening, prearbitration or arbitration). Set ``ACCEPTED`` to accept the chargeback and stop defending the case, whether or not a defense has been sent (``PENDING``, ``GENERATED``, ``ALLEGED``, ``REOPENED``, ``PREARBITRATION`` or ``ARBITRATION``). Set ``WON`` or ``LOST`` to register the outcome once the defense has been sent (``ALLEGED``). A case already resolved cannot change its status again, and a case linked to a connected payment processor is managed by the processor itself, so it cannot be updated through this endpoint.
 
 ### Example
 
